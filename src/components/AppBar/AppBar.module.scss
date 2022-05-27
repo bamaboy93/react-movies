@@ -1,0 +1,26 @@
+@import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 80px;
+  margin-bottom: 20px;
+}
+.block {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-family: $logo-font;
+  font-style: normal;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  color: $main-text;
+  margin-left: 10px;
+  text-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
