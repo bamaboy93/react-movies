@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 
 import s from "./PopUp.module.scss";
 
+import Trailer from "../Trailer/Trailer";
+
 const modalRoot = document.querySelector("#modal-root");
 const PopUp = ({ onClose, children }) => {
   useEffect(() => {
@@ -27,9 +29,8 @@ const PopUp = ({ onClose, children }) => {
     <div className={s.Modal__backdrop} onClick={handleBackdropClick}>
       <div className={s.Modal__content}>
         {children}
-        <button className={s.Modal__button} type="button" onClick={onClose}>
-          &#10006;
-        </button>
+
+        <Trailer />
       </div>
     </div>,
     modalRoot

@@ -1,0 +1,96 @@
+@import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
+
+.wrapper {
+  text-align: center;
+  display: flex;
+}
+
+.image {
+  margin-right: 30px;
+  margin-bottom: 0;
+
+  max-width: 400px;
+  height: 500px;
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+.description {
+  text-align: left;
+}
+
+.movieTitle {
+  margin-top: 0;
+  margin-bottom: 40px;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.16;
+  letter-spacing: 0.03em;
+  text-align: left;
+  color: $main-text;
+}
+
+.info {
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-size: 18px;
+  color: $sec-text;
+}
+
+.title {
+  margin-top: 0;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: $main-text;
+}
+
+.item {
+  color: orange;
+  display: inline-block;
+}
+
+.genre li:not(:last-child)::after {
+  content: ",";
+  margin-right: 5px;
+}
+
+.submenu {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 0;
+  padding: 30px 0;
+}
+
+.submenuItem {
+  margin-right: 24px;
+  font-weight: 500;
+  font-size: 18px;
+  color: #161515;
+}
+
+.activeSubmenuItem {
+  color: #2196f3;
+}
+
+.btn {
+  padding: 5px 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: none;
+  font-size: 16px;
+  border-radius: 2px;
+}
+
+.youBtn {
+  border: none;
+  outline: none;
+  background: transparent;
+  transition: all 0.4s ease-in-out;
+  width: 60px;
+  height: 60px;
+  &:hover {
+    transform: scale(1.1);
+  }
+}

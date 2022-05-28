@@ -3,8 +3,9 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import Status from "../../services/status";
 import api from "../../services/api/movies-api";
+import noImageFound from "../../icons/noimage.jpg";
 
-import PopUp from "../../components/PopUp/PopUp";
+import Slider from "../../components/Slider/Slider";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Container from "../../components/Container/Container";
 import LoadBtn from "../../components/LoadBtn/LoadBtn";
@@ -19,7 +20,6 @@ function HomePage() {
   const [movies, setMovies] = useState(null);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
-  const [showPopUp, setPopUp] = useState(false);
 
   /////Popular Movies
   useEffect(() => {
@@ -84,10 +84,6 @@ function HomePage() {
 
   /////////////////////////Popup
 
-  const togglePopUp = () => {
-    setPopUp(!showPopUp);
-  };
-
   return (
     <main>
       <Container>
@@ -109,25 +105,32 @@ function HomePage() {
           <div className={s.wrapper}>
             <ul className={s.moviesList}>
               {movies.map(({ id, poster_path, title }) => (
-                <li key={id} className={s.moviesItem} onClick={togglePopUp}>
-                  <img
-                    src={
-                      (poster_path = `https://image.tmdb.org/t/p/w500/${poster_path}`)
-                    }
-                    alt={title}
-                    className={s.poster}
-                  />
+                <li key={id} className={s.moviesItem}>
+                  <Link
+                    to={{
+                      pathname: `movies/${id}`,
+                    }}
+                  >
+                    <img
+                      src={
+                        poster_path
+                          ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                          : `${noImageFound}`
+                      }
+                      alt={title}
+                      className={s.poster}
+                    />
 
-                  <div className={s.movieCard}>
-                    <p className={s.movieTitle}>{title}</p>
-                  </div>
+                    <div className={s.movieCard}>
+                      <p className={s.movieTitle}>{title}</p>
+                    </div>
+                  </Link>
                 </li>
               ))}
             </ul>
             <LoadBtn />
           </div>
         )}
-        {showPopUp && <PopUp onClose={togglePopUp}></PopUp>}
       </Container>
     </main>
   );

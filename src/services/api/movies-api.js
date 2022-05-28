@@ -26,7 +26,7 @@ async function getPopularMovies() {
 async function getUpcomingMovies() {
   try {
     const config = {
-      url: `trending/movie/upcoming`,
+      url: `/movie/upcoming`,
     };
     const { data } = await axios(config);
 

@@ -1,0 +1,19 @@
+@import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
+
+.title {
+  margin-top: 0;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: $main-text;
+}
+
+.item {
+  color: orange;
+  display: inline-block;
+}
+
+.cast li:not(:last-child)::after {
+  content: ",";
+  margin-right: 5px;
+}

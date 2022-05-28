@@ -1,3 +1,6 @@
+@import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
+
 .Modal__backdrop {
   position: fixed;
   top: 0;
@@ -14,17 +17,16 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  min-height: 450px;
-  max-width: 320px;
+  min-height: 600px;
+  max-width: 1140px;
   width: 100%;
   padding: 12px;
-  background-color: #fff;
+  background-color: $white;
   border-radius: 20px;
-  border: 2px solid #ffab9d;
-  box-shadow: rgba(255, 116, 92, 0.19) 0px 14px 28px,
-    rgba(251, 83, 61, 0.23) 0px 10px 10px;
+  border: 2px solid $main-text;
+  box-shadow: $main-text 0px 3px 8px;
 
-  background: linear-gradient(90deg, #5d54a4, #7c78b8);
+  background-color: $main-bg;
 }
 
 .Modal__button {
@@ -45,7 +47,7 @@
   &:focus,
   &:active {
     outline: none;
-    border: 1px solid #ffab9d;
-    color: #ffab9d;
+    border: 1px solid $main-text;
+    color: $main-text;
   }
 }
