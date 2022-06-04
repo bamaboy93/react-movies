@@ -5,8 +5,9 @@ import api from "../../services/api/movies-api";
 
 import Status from "../../services/status";
 import s from "./Trailer.module.scss";
+import noVideo from "../../icons/YouTube.jpg";
 
-// import { ReactComponent as IconNotFound } from "../../icons/noVideo.svg";
+import VideoError from "../VideoError/VideoError";
 
 export default function Trailer() {
   const { movieId } = useParams();
@@ -18,10 +19,14 @@ export default function Trailer() {
     api
       .getMovieVideo(movieId)
       .then((results) => {
-        if (results.length === 0) {
-          throw new Error("Sorry. We don't have any video on this movie yet");
+        let total = [];
+        for (const res of results) {
+          if (res.type === "Trailer") {
+            total.push(res);
+          }
         }
-        setTrailer(results);
+
+        setTrailer(total);
         setStatus(Status.RESOLVED);
       })
       .catch((error) => {
@@ -32,28 +37,21 @@ export default function Trailer() {
 
   return (
     <>
-      {/* <IconNotFound
-        width={300}
-        height={150}
-        fill="#64ffda"
-        style={{ marginTop: 220, marginLeft: 400 }}
-      /> */}
       {status === Status.RESOLVED && (
         <ul>
-          {trailer.map((tr) => (
+          {trailer.slice(0, 1).map((tr) => (
             <li key={tr.id}>
-              {tr.name === "Official Trailer" && (
-                <iframe
-                  className={s.video}
-                  src={`https://www.youtube.com/embed/${tr.key}`}
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              )}
+              <iframe
+                className={s.iframe}
+                src={`https://www.youtube.com/embed/${tr.key}`}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
             </li>
           ))}
+          <li>{trailer.length === 0 && <VideoError />}</li>
         </ul>
       )}
 

@@ -34,7 +34,7 @@ export default function Cast() {
       {status === Status.REJECTED}
 
       {status === Status.RESOLVED && (
-        <>
+        <div className={s.block}>
           <h3 className={s.title}>Cast</h3>
           <ul className={s.cast}>
             {actors.slice(0, 8).map((actor) => (
@@ -43,7 +43,7 @@ export default function Cast() {
               </li>
             ))}
           </ul>
-        </>
+        </div>
       )}
     </>
   );

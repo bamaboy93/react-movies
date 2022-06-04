@@ -7,9 +7,12 @@
   letter-spacing: 0.1em;
   color: $main-text;
 }
+.block {
+  margin-bottom: 10px;
+}
 
 .item {
-  color: orange;
+  color: $add-text;
   display: inline-block;
 }
 

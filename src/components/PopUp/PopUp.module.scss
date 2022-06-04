@@ -1,7 +1,7 @@
 @import "../../styles/colors.scss";
 @import "../../styles/variables.scss";
 
-.Modal__backdrop {
+.modaloverlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -12,21 +12,11 @@
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.Modal__content {
+.modal {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  min-height: 600px;
-  max-width: 1140px;
-  width: 100%;
-  padding: 12px;
-  background-color: $white;
-  border-radius: 20px;
-  border: 2px solid $main-text;
-  box-shadow: $main-text 0px 3px 8px;
-
-  background-color: $main-bg;
 }
 
 .Modal__button {

@@ -28,12 +28,20 @@ function MovieView() {
     api
       .getMovieById(movieId)
       .then(
-        ({ poster_path, original_title, vote_average, overview, genres }) => {
+        ({
+          poster_path,
+          original_title,
+          vote_average,
+          overview,
+          release_date,
+          genres,
+        }) => {
           setMovie({
             src: poster_path
               ? `https://image.tmdb.org/t/p/w500${poster_path}`
               : `${noImageFound}`,
             title: original_title,
+            year: release_date,
             score: vote_average,
             overview,
             genres,
@@ -75,19 +83,25 @@ function MovieView() {
               <button type="button" onClick={togglePopUp} className={s.youBtn}>
                 <IconPlay />
               </button>
-              <h3 className={s.title}>Score</h3>
-              <p className={s.info}>{movie.score}</p>
-              <Cast />
-              <h3 className={s.title}>About</h3>
-              <p className={s.info}>{movie.overview}</p>
-              <h3 className={s.title}>Genres</h3>
-              <ul className={s.genre}>
-                {movie.genres.map((genre) => (
-                  <li key={genre.id} className={s.item}>
-                    {genre.name}
-                  </li>
-                ))}
-              </ul>
+              <div className={s.infoWrapper}>
+                <h3 className={s.title}>Year</h3>
+                <p className={s.infoYear}>
+                  {movie.year.split("").slice(0, 4).join("")}
+                </p>
+                <h3 className={s.title}>Score</h3>
+                <p className={s.info}>{movie.score}</p>
+                <Cast />
+                <h3 className={s.title}>About</h3>
+                <p className={s.info}>{movie.overview}</p>
+                <h3 className={s.title}>Genres</h3>
+                <ul className={s.genre}>
+                  {movie.genres.map((genre) => (
+                    <li key={genre.id} className={s.item}>
+                      {genre.name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 

@@ -96,6 +96,20 @@ async function getMovieVideo(id) {
   }
 }
 
+async function getMovieImages(id) {
+  try {
+    const config = {
+      url: `movie/${id}/images`,
+    };
+    const { data } = await axios(config, id);
+
+    return data.results;
+  } catch (error) {
+    console.log("error", { error });
+    return null;
+  }
+}
+
 const api = {
   getPopularMovies,
   getUpcomingMovies,
@@ -103,6 +117,7 @@ const api = {
   getMovieById,
   getCastInfo,
   getMovieVideo,
+  getMovieImages,
 };
 
 export default api;

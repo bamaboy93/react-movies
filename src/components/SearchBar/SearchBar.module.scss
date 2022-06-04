@@ -8,8 +8,9 @@
   background-color: $white;
   border-radius: 3px;
   overflow: hidden;
-  margin-right: auto;
-  margin-left: auto;
+  margin-right: 60px;
+
+  box-shadow: $main-text 0px 2px 8px;
 }
 
 .searchFormButton {

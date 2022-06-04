@@ -26,8 +26,8 @@ const PopUp = ({ onClose, children }) => {
     }
   };
   return createPortal(
-    <div className={s.Modal__backdrop} onClick={handleBackdropClick}>
-      <div className={s.Modal__content}>
+    <div className={s.modaloverlay} onClick={handleBackdropClick}>
+      <div className={s.modal}>
         {children}
 
         <Trailer />
