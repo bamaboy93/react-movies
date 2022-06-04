@@ -5,7 +5,6 @@ import Status from "../../services/status";
 import api from "../../services/api/movies-api";
 import noImageFound from "../../icons/noimage.jpg";
 
-import Slider from "../../components/Slider/Slider";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Container from "../../components/Container/Container";
 import LoadBtn from "../../components/LoadBtn/LoadBtn";
