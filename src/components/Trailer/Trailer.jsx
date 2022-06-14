@@ -5,7 +5,6 @@ import api from "../../services/api/movies-api";
 
 import Status from "../../services/status";
 import s from "./Trailer.module.scss";
-import noVideo from "../../icons/YouTube.jpg";
 
 import VideoError from "../VideoError/VideoError";
 

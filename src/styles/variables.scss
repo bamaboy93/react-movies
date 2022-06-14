@@ -1,5 +1,8 @@
-$main-font: "Poppins", sans-serif;
-$logo-font: "Ubuntu", sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Fascinate&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap");
+
+$main-font: "Nunito", sans-serif;
+$logo-font: "Fascinate", cursive;
 
 $mobile: 320px;
 $tablet: 768px;

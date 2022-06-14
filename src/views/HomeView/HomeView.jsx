@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
+
 import Status from "../../services/status";
 import api from "../../services/api/movies-api";
 import noImageFound from "../../icons/noimage.jpg";
@@ -10,6 +11,7 @@ import Container from "../../components/Container/Container";
 import LoadBtn from "../../components/LoadBtn/LoadBtn";
 
 import s from "./HomeView.module.scss";
+import Loader from "../../components/Loader/Loader";
 
 function HomePage() {
   const history = useNavigate();
@@ -96,7 +98,7 @@ function HomePage() {
           </a>
         </div>
 
-        {status === Status.PENDING}
+        {status === Status.PENDING && <Loader />}
 
         {status === Status.REJECTED}
 
