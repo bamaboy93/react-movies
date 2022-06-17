@@ -9,14 +9,17 @@ axios.defaults.params = {
   language: "en-US",
 };
 
-async function getPopularMovies() {
+async function getPopularMovies(page) {
   try {
     const config = {
       url: `trending/movie/day`,
+      params: {
+        page,
+      },
     };
-    const { data } = await axios(config);
+    const { data } = await axios(config, page);
 
-    return data.results;
+    return data;
   } catch (error) {
     console.log("error", { error });
     return null;
@@ -37,15 +40,16 @@ async function getUpcomingMovies() {
   }
 }
 
-async function getMoviesByQuery(query) {
+async function getMoviesByQuery(query, page) {
   try {
     const config = {
       url: `search/movie`,
       params: {
         query,
+        page,
       },
     };
-    const { data } = await axios(config, query);
+    const { data } = await axios(config, query, page);
 
     return data.results;
   } catch (error) {

@@ -18,6 +18,8 @@ function HomePage() {
   const location = useLocation();
 
   const [query, setQuery] = useState("");
+  const [page, setPage] = useState(null);
+
   const [movies, setMovies] = useState(null);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
@@ -25,10 +27,12 @@ function HomePage() {
   /////Popular Movies
   useEffect(() => {
     setStatus(Status.PENDING);
+
     api
       .getPopularMovies()
-      .then((results) => {
+      .then(({ results, page }) => {
         setMovies(results);
+        setPage(page);
         setStatus(Status.RESOLVED);
       })
       .catch((error) => {
@@ -36,7 +40,17 @@ function HomePage() {
         setError(error);
         setStatus(Status.REJECTED);
       });
-  }, [error]);
+  }, [error, page]);
+
+  const OnLoadMore = () => {
+    setPage(page);
+    if (page !== 1) {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  };
 
   //////////Search Query
 
@@ -129,7 +143,7 @@ function HomePage() {
                 </li>
               ))}
             </ul>
-            <LoadBtn />
+            <LoadBtn onBtnClick={OnLoadMore} />
           </div>
         )}
       </Container>
