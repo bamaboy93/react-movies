@@ -56,6 +56,17 @@ function MovieView() {
       });
   }, [movieId, error]);
 
+  function getColor(vote) {
+    const num = vote.toFixed();
+    if (num >= 8) {
+      return "#7dd87d";
+    } else if (num < 8 && num >= 5) {
+      return "#eec60a";
+    } else {
+      return "#eb2632";
+    }
+  }
+
   const goBack = () => {
     history.push(location?.state?.from ?? "/");
   };
@@ -77,7 +88,17 @@ function MovieView() {
       {status === Status.RESOLVED && (
         <>
           <div className={s.wrapper}>
-            <img className={s.image} src={movie.src} alt={movie.title} />
+            <div className={s.posterWrapper}>
+              <img className={s.image} src={movie.src} alt={movie.title} />
+              <div className={s.overlayScore}>
+                <p
+                  style={{ color: getColor(movie.score) }}
+                  className={s.infoScore}
+                >
+                  {movie.score.toFixed()}
+                </p>
+              </div>
+            </div>
             <div className={s.description}>
               <h2 className={s.movieTitle}>{movie.title}</h2>
               <button type="button" onClick={togglePopUp} className={s.youBtn}>
@@ -88,8 +109,7 @@ function MovieView() {
                 <p className={s.infoYear}>
                   {movie.year.split("").slice(0, 4).join("")}
                 </p>
-                <h3 className={s.title}>Score</h3>
-                <p className={s.info}>{movie.score}</p>
+
                 <Cast />
                 <h3 className={s.title}>About</h3>
                 <p className={s.info}>{movie.overview}</p>

@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import { toast } from "react-toastify";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import Status from "../../services/status";
 import api from "../../services/api/movies-api";
-import noImageFound from "../../icons/noimage.jpg";
 
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Container from "../../components/Container/Container";
+import Loader from "../../components/Loader/Loader";
 import LoadBtn from "../../components/LoadBtn/LoadBtn";
+import MovieData from "../../components/MovieData/MovieData";
 
 import s from "./HomeView.module.scss";
-import Loader from "../../components/Loader/Loader";
+import ErrorWrapper from "../../components/ErrorWrapper/ErrorWrapper";
 
 function HomePage() {
   const history = useNavigate();
@@ -42,16 +42,29 @@ function HomePage() {
       });
   }, [error, page]);
 
-  const OnLoadMore = () => {
-    setPage(page);
-    if (page !== 1) {
-      window.scrollTo({
-        top: document.documentElement.scrollHeight,
-        behavior: "smooth",
-      });
-    }
-  };
+  /////Upcoming Movies
+  // const handleClick = (newRes) => {
+  //   if (newRes === movies) return;
+  //   setMovies(null);
+  //   setStatus(Status.IDLE);
+  // };
 
+  // useEffect(() => {
+  //   setStatus(Status.PENDING);
+
+  //   api
+  //     .getUpcomingMovies()
+  //     .then(({ results, page }) => {
+  //       setMovies(results);
+  //       setPage(page);
+  //       setStatus(Status.RESOLVED);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       setError(error);
+  //       setStatus(Status.REJECTED);
+  //     });
+  // }, [error, page]);
   //////////Search Query
 
   const handleFormSubmit = (newQuery) => {
@@ -82,7 +95,6 @@ function HomePage() {
       .getMoviesByQuery(query)
       .then((results) => {
         if (results.length === 0) {
-          toast.error(`No movies found on ${query}.`);
           setStatus(Status.REJECTED);
           return;
         }
@@ -96,8 +108,6 @@ function HomePage() {
         setStatus(Status.REJECTED);
       });
   }, [query, error]);
-
-  /////////////////////////Popup
 
   return (
     <main>
@@ -114,37 +124,13 @@ function HomePage() {
 
         {status === Status.PENDING && <Loader />}
 
-        {status === Status.REJECTED}
+        {status === Status.REJECTED && <ErrorWrapper query={query} />}
 
         {status === Status.RESOLVED && (
-          <div className={s.wrapper}>
-            <ul className={s.moviesList}>
-              {movies.map(({ id, poster_path, title }) => (
-                <li key={id} className={s.moviesItem}>
-                  <Link
-                    to={{
-                      pathname: `movies/${id}`,
-                    }}
-                  >
-                    <img
-                      src={
-                        poster_path
-                          ? `https://image.tmdb.org/t/p/w500${poster_path}`
-                          : `${noImageFound}`
-                      }
-                      alt={title}
-                      className={s.poster}
-                    />
-
-                    <div className={s.movieCard}>
-                      <p className={s.movieTitle}>{title}</p>
-                    </div>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <LoadBtn onBtnClick={OnLoadMore} />
-          </div>
+          <>
+            <MovieData movies={movies} />
+            <LoadBtn />
+          </>
         )}
       </Container>
     </main>

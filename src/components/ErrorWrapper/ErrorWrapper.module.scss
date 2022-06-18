@@ -1,0 +1,18 @@
+@import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
+
+.title {
+  font-size: 144px;
+  margin: 0px;
+  font-weight: 700;
+  color: $main-text;
+  text-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+.text {
+  font-size: 44px;
+  margin: 0px;
+  font-weight: 400;
+  color: $main-text;
+  text-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}

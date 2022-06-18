@@ -33,7 +33,7 @@ async function getUpcomingMovies() {
     };
     const { data } = await axios(config);
 
-    return data.results;
+    return data;
   } catch (error) {
     console.log("error", { error });
     return null;
