@@ -2,10 +2,12 @@ import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 
-import s from "./PopUp.module.scss";
+import LoginForm from "../LoginForm/LoginForm";
+
+import s from "./LoginPopUp.module.scss";
 
 const modalRoot = document.querySelector("#modal-root");
-const PopUp = ({ onClose, children }) => {
+const LoginPopUp = ({ onClose }) => {
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
 
@@ -24,15 +26,17 @@ const PopUp = ({ onClose, children }) => {
     }
   };
   return createPortal(
-    <div className={s.modaloverlay} onClick={handleBackdropClick}>
-      <div className={s.modal}>{children}</div>
+    <div className={s.modal} onClick={handleBackdropClick}>
+      <div className={s.content}>
+        <LoginForm />
+      </div>
     </div>,
     modalRoot
   );
 };
 
-PopUp.propTypes = {
+LoginPopUp.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default PopUp;
+export default LoginPopUp;

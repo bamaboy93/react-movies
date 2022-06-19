@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Status from "../../services/status";
 import api from "../../services/api/movies-api";
 
-import SearchBar from "../../components/SearchBar/SearchBar";
+import SearchBar from "../../components/SearchBar/SearchBar2";
 import Container from "../../components/Container/Container";
 import Loader from "../../components/Loader/Loader";
 import LoadBtn from "../../components/LoadBtn/LoadBtn";
@@ -42,29 +42,6 @@ function HomePage() {
       });
   }, [error, page]);
 
-  /////Upcoming Movies
-  // const handleClick = (newRes) => {
-  //   if (newRes === movies) return;
-  //   setMovies(null);
-  //   setStatus(Status.IDLE);
-  // };
-
-  // useEffect(() => {
-  //   setStatus(Status.PENDING);
-
-  //   api
-  //     .getUpcomingMovies()
-  //     .then(({ results, page }) => {
-  //       setMovies(results);
-  //       setPage(page);
-  //       setStatus(Status.RESOLVED);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //       setError(error);
-  //       setStatus(Status.REJECTED);
-  //     });
-  // }, [error, page]);
   //////////Search Query
 
   const handleFormSubmit = (newQuery) => {

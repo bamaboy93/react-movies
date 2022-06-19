@@ -11,6 +11,7 @@ import Container from "../../components/Container/Container";
 import PopUp from "../../components/PopUp/PopUp";
 
 import s from "./MovieView.module.scss";
+import Trailer from "../../components/Trailer/Trailer";
 
 function MovieView() {
   const history = useNavigate();
@@ -125,7 +126,11 @@ function MovieView() {
             </div>
           </div>
 
-          {showPopUp && <PopUp onClose={togglePopUp}></PopUp>}
+          {showPopUp && (
+            <PopUp onClose={togglePopUp}>
+              <Trailer />
+            </PopUp>
+          )}
         </>
       )}
     </Container>

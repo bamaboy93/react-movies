@@ -3,24 +3,54 @@
 
 .header {
   display: flex;
-  justify-content: space-between;
+
   align-items: center;
-  min-height: 80px;
-  margin-bottom: 20px;
+  height: 80px;
+  margin-bottom: 40px;
 }
 .block {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+}
+
+.loginBlock {
+  display: flex;
+}
+
+.button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .logo {
   font-family: $logo-font;
   font-style: normal;
   font-size: 32px;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  color: $main-text;
+  text-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
 
+.login {
+  font-family: $main-font;
+  font-style: normal;
+  font-size: 24px;
   line-height: 1.5;
   letter-spacing: 1px;
   color: $main-text;
 
   text-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+.line {
+  font-family: $main-font;
+  font-style: normal;
+  font-size: 24px;
+  color: $main-text;
+  margin-right: 10px;
+  margin-left: 10px;
 }
