@@ -18,8 +18,6 @@ function HomePage() {
   const location = useLocation();
 
   const [query, setQuery] = useState("");
-  const [page, setPage] = useState(null);
-
   const [movies, setMovies] = useState(null);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
@@ -30,9 +28,9 @@ function HomePage() {
 
     api
       .getPopularMovies()
-      .then(({ results, page }) => {
+      .then(({ results }) => {
         setMovies(results);
-        setPage(page);
+
         setStatus(Status.RESOLVED);
       })
       .catch((error) => {
@@ -40,7 +38,24 @@ function HomePage() {
         setError(error);
         setStatus(Status.REJECTED);
       });
-  }, [error, page]);
+  }, [error]);
+
+  useEffect(() => {
+    setStatus(Status.PENDING);
+
+    api
+      .getUpcomingMovies()
+      .then(({ results }) => {
+        setMovies(results);
+
+        setStatus(Status.RESOLVED);
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error);
+        setStatus(Status.REJECTED);
+      });
+  }, []);
 
   //////////Search Query
 
