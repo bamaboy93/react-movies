@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import PropTypes from "prop-types";
-import { ReactComponent as IconSearch } from "../../icons/search.svg";
 
 import s from "./SearchBar.module.scss";
 
@@ -24,21 +23,21 @@ export default function Searchbar({ onSubmit }) {
   };
 
   return (
-    <form className={s.searchForm} onSubmit={handleSubmit}>
-      <button type="submit" className={s.searchFormButton}>
-        <IconSearch />
-        <span className={s.searchFormButtonLabel}>Search</span>
-      </button>
-
-      <input
-        className={s.searchFormInput}
-        type="text"
-        value={query}
-        autoComplete="off"
-        placeholder="Search ..."
-        onChange={handelQueryChange}
-      />
-    </form>
+    <div className={s.positionBox}>
+      <div className={s.searchBox}>
+        <form onSubmit={handleSubmit}>
+          <input
+            className={s.search}
+            type="text"
+            value={query}
+            autoComplete="off"
+            placeholder="Search ..."
+            onChange={handelQueryChange}
+          />
+          <span className={s.bar}></span>
+        </form>
+      </div>
+    </div>
   );
 }
 

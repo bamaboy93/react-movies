@@ -1,0 +1,29 @@
+@import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
+
+.linkContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.link {
+  text-decoration: none;
+  color: $main-text;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
+.active {
+  text-decoration: none;
+  color: $main-text;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 1px;
+
+  border-bottom: 3px solid $main-text;
+  border-radius: 2px;
+}

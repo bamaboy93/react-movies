@@ -8,16 +8,13 @@ axios.defaults.params = {
   api_key: API_KEY,
   language: "en-US",
 };
-
-async function getPopularMovies(page) {
+////////////////////////Top_Rated
+async function getPopularMovies() {
   try {
     const config = {
-      url: `trending/movie/day`,
-      params: {
-        page,
-      },
+      url: `/movie/popular`,
     };
-    const { data } = await axios(config, page);
+    const { data } = await axios(config);
 
     return data;
   } catch (error) {
@@ -25,7 +22,21 @@ async function getPopularMovies(page) {
     return null;
   }
 }
+//////////////////// Trending
+async function getTrendingMovies() {
+  try {
+    const config = {
+      url: `trending/movie/day`,
+    };
+    const { data } = await axios(config);
 
+    return data;
+  } catch (error) {
+    console.log("error", { error });
+    return null;
+  }
+}
+////////////////////// Upcoming
 async function getUpcomingMovies() {
   try {
     const config = {
@@ -39,7 +50,7 @@ async function getUpcomingMovies() {
     return null;
   }
 }
-
+///////////////////////// SearchQuery
 async function getMoviesByQuery(query, page) {
   try {
     const config = {
@@ -57,7 +68,7 @@ async function getMoviesByQuery(query, page) {
     return null;
   }
 }
-
+////////////////////// Single Movie
 async function getMovieById(id) {
   try {
     const config = {
@@ -71,7 +82,7 @@ async function getMovieById(id) {
     return null;
   }
 }
-
+//////////////////////////// Cast
 async function getCastInfo(id) {
   try {
     const config = {
@@ -85,7 +96,7 @@ async function getCastInfo(id) {
     return null;
   }
 }
-
+////////////////////////////// Trailers
 async function getMovieVideo(id) {
   try {
     const config = {
@@ -99,7 +110,7 @@ async function getMovieVideo(id) {
     return null;
   }
 }
-
+//////////////////////////// Images
 async function getMovieImages(id) {
   try {
     const config = {
@@ -116,6 +127,7 @@ async function getMovieImages(id) {
 
 const api = {
   getPopularMovies,
+  getTrendingMovies,
   getUpcomingMovies,
   getMoviesByQuery,
   getMovieById,

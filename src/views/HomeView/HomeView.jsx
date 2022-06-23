@@ -4,18 +4,17 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Status from "../../services/status";
 import api from "../../services/api/movies-api";
 
-import SearchBar from "../../components/SearchBar/SearchBar2";
 import Container from "../../components/Container/Container";
 import Loader from "../../components/Loader/Loader";
 import LoadBtn from "../../components/LoadBtn/LoadBtn";
 import MovieData from "../../components/MovieData/MovieData";
-
-import s from "./HomeView.module.scss";
 import ErrorWrapper from "../../components/ErrorWrapper/ErrorWrapper";
+import Navigation from "../../components/Navigation/Navigation";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 function HomePage() {
   const history = useNavigate();
-  const location = useLocation();
+  const { search } = useLocation();
 
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState(null);
@@ -40,23 +39,6 @@ function HomePage() {
       });
   }, [error]);
 
-  useEffect(() => {
-    setStatus(Status.PENDING);
-
-    api
-      .getUpcomingMovies()
-      .then(({ results }) => {
-        setMovies(results);
-
-        setStatus(Status.RESOLVED);
-      })
-      .catch((error) => {
-        console.log(error);
-        setError(error);
-        setStatus(Status.REJECTED);
-      });
-  }, []);
-
   //////////Search Query
 
   const handleFormSubmit = (newQuery) => {
@@ -66,17 +48,17 @@ function HomePage() {
     setMovies(null);
     setStatus(Status.IDLE);
 
-    history.push({ ...location, search: `query=${newQuery}` });
+    history.push({ search: `query=${newQuery}` });
   };
 
   useEffect(() => {
-    if (location.search === "") {
+    if (search === "") {
       return;
     }
 
-    const newSearch = new URLSearchParams(location.search).get("query");
+    const newSearch = new URLSearchParams(search).get("query");
     setQuery(newSearch);
-  }, [location.search]);
+  }, [search]);
 
   useEffect(() => {
     if (!query) return;
@@ -104,15 +86,8 @@ function HomePage() {
   return (
     <main>
       <Container>
-        <div className={s.linkContainer}>
-          <a href="/" className={s.link}>
-            Trending Movies Today
-          </a>
-          <SearchBar onSubmit={handleFormSubmit} />
-          <a href="/" className={s.link}>
-            Upcoming Movies
-          </a>
-        </div>
+        <Navigation />
+        <SearchBar onSubmit={handleFormSubmit} />
 
         {status === Status.PENDING && <Loader />}
 

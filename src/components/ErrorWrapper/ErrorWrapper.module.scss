@@ -1,16 +1,32 @@
 @import "../../styles/colors.scss";
 @import "../../styles/variables.scss";
 
+.wrapper {
+  position: relative;
+  width: 560px;
+  height: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  background: url("../../icons/notfound.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
 .title {
-  font-size: 144px;
-  margin: 0px;
+  position: absolute;
+  top: 5%;
+  left: 30%;
+  font-size: 72px;
+
   font-weight: 700;
   color: $main-text;
   text-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
 }
-
 .text {
-  font-size: 44px;
+  position: absolute;
+  bottom: 8%;
+  left: 15%;
+  font-size: 22px;
   margin: 0px;
   font-weight: 400;
   color: $main-text;

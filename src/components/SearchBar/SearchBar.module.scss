@@ -1,49 +1,68 @@
-@import "../../styles/colors.scss";
-@import "../../styles/variables.scss";
-
-.searchForm {
-  display: flex;
-  align-items: center;
-  width: 230px;
-  background-color: $white;
-  border-radius: 3px;
-  overflow: hidden;
-  margin-right: 60px;
-
-  box-shadow: $main-text 0px 2px 8px;
+.positionBox {
+  position: fixed;
+  top: 15%;
+  left: 49%;
 }
 
-.searchFormButton {
-  display: inline-block;
-  width: 35px;
-  height: 35px;
+.searchBox {
+  position: relative;
+}
+.search {
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
   border: 0;
-
-  opacity: 0.6;
-  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 50%;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
   cursor: pointer;
+  color: #fff;
   outline: none;
-  &:hover {
-    opacity: 1;
-  }
+  padding: 5px;
+  position: relative;
+  transition: all 150ms cubic-bezier(0.2, 0.6, 0.252, 1.2);
 }
-
-.searchFormButtonLabel {
+.search ~ .bar {
+  height: 4px;
+  width: 15px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
   position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  clip-path: inset(50%);
-  border: 0;
+  display: block;
+  opacity: 1;
+  right: -9px;
+  top: 24px;
+  transform: rotate(45deg);
+  transition: opacity 150ms ease;
 }
-
-.searchFormInput {
-  display: inline-block;
-  width: 100%;
-  border: none;
-  outline: none;
-  padding-left: 4px;
+.search::-moz-placeholder {
+  color: #fff;
+}
+.search:-ms-input-placeholder {
+  color: #fff;
+}
+.search::placeholder {
+  color: #fff;
+}
+.search:focus {
+  height: 25px;
+  width: 200px;
+  border-radius: 3px;
+  color: #26547c;
+  cursor: initial;
+}
+.search:focus::-moz-placeholder {
+  color: #a1a1a1;
+}
+.search:focus:-ms-input-placeholder {
+  color: #a1a1a1;
+}
+.search:focus::placeholder {
+  color: #a1a1a1;
+}
+.search:focus ~ .bar {
+  box-shadow: none;
+  opacity: 0;
+  right: 0;
+  top: 5px;
 }
