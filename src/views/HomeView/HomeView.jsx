@@ -86,8 +86,8 @@ function HomePage() {
   return (
     <main>
       <Container>
-        <Navigation />
         <SearchBar onSubmit={handleFormSubmit} />
+        <Navigation />
 
         {status === Status.PENDING && <Loader />}
 

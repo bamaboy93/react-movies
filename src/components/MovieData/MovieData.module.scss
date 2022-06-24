@@ -2,20 +2,24 @@
 @import "../../styles/variables.scss";
 
 .moviesList {
-  display: flex;
-  flex-wrap: wrap;
-  margin: -15px;
   list-style: none;
-  padding: 0;
+
+  @media (min-width: 1280px) {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -15px;
+  }
 }
 
 .moviesItem {
   position: relative;
-  display: flex;
   overflow: hidden;
-  width: calc((100% - 10 * 15px) / 5);
-  margin: 15px;
   cursor: pointer;
+  margin-bottom: 15px;
+  @media (min-width: 1280px) {
+    width: calc((100% - 10 * 15px) / 5);
+    margin: 15px;
+  }
 
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;

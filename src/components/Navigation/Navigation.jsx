@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 import s from "./Navigation.module.scss";
 
-export default function Navigation({ onSubmit }) {
+export default function Navigation() {
   return (
     <div className={s.linkContainer}>
       <span className={s.item}>
@@ -10,7 +10,7 @@ export default function Navigation({ onSubmit }) {
           className={({ isActive }) => (isActive ? s.active : s.link)}
           to="/trending"
         >
-          Trending Movies Today
+          Trending Movies
         </NavLink>
       </span>
 

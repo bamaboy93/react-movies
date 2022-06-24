@@ -2,20 +2,19 @@
 @import "../../styles/variables.scss";
 
 .header {
-  display: flex;
-
-  align-items: center;
-  height: 80px;
+  margin-top: 10px;
   margin-bottom: 40px;
+  text-align: center;
 }
 .block {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .loginBlock {
-  display: flex;
+  @media (min-width: 1280px) {
+    display: flex;
+  }
 }
 
 .button {
@@ -28,29 +27,40 @@
 .logo {
   font-family: $logo-font;
   font-style: normal;
-  font-size: 32px;
+  font-size: 26px;
   line-height: 1.5;
   letter-spacing: 1px;
   color: $main-text;
   text-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  @media (min-width: 1280px) {
+    font-size: 32px;
+  }
 }
 
 .login {
-  font-family: $main-font;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1.5;
-  letter-spacing: 1px;
-  color: $main-text;
+  display: none;
+  @media (min-width: 1280px) {
+    display: block;
+    font-family: $main-font;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    color: $main-text;
 
-  text-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  }
 }
 
 .line {
-  font-family: $main-font;
-  font-style: normal;
-  font-size: 24px;
-  color: $main-text;
-  margin-right: 10px;
-  margin-left: 10px;
+  display: none;
+  @media (min-width: 1280px) {
+    dsiplay: block;
+    font-family: $main-font;
+    font-style: normal;
+    font-size: 24px;
+    color: $main-text;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
 }

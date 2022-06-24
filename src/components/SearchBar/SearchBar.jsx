@@ -23,8 +23,8 @@ export default function Searchbar({ onSubmit }) {
   };
 
   return (
-    <div className={s.positionBox}>
-      <div className={s.searchBox}>
+    <div className={s.wrapper}>
+      <div className={s.form}>
         <form onSubmit={handleSubmit}>
           <input
             className={s.search}
@@ -35,6 +35,7 @@ export default function Searchbar({ onSubmit }) {
             onChange={handelQueryChange}
           />
           <span className={s.bar}></span>
+          <div className={s.serach}></div>
         </form>
       </div>
     </div>

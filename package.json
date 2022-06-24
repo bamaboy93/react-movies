@@ -1,5 +1,6 @@
 {
   "name": "react-movies",
+  "homepage": "https://bamaboy93.github.io/react-movies/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,6 +15,7 @@
     "react-dom": "^18.1.0",
     "react-hot-toast": "^2.2.0",
     "react-multi-carousel": "^2.8.0",
+    "react-responsive": "^9.0.0-beta.10",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.12.0",

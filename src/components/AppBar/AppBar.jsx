@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import Container from "../Container/Container";
 import LoginPopUp from "../LoginPopUp/LoginPopUp";
 import { ReactComponent as LoginIcon } from "../../icons/login.svg";
@@ -14,9 +15,9 @@ export default function AppBar() {
     <header className={s.header}>
       <Container>
         <div className={s.block}>
-          <a href="/">
+          <NavLink to="/">
             <p className={s.logo}>MovieDB</p>
-          </a>
+          </NavLink>
           <div className={s.loginBlock}>
             <p className={s.login}>Login</p>
             <span className={s.line}>|</span>

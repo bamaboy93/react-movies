@@ -1,4 +1,8 @@
 .iframe {
-  width: 960px;
-  height: 540px;
+  width: 310px;
+  height: 240px;
+  @media (min-width: 1280px) {
+    width: 960px;
+    height: 540px;
+  }
 }

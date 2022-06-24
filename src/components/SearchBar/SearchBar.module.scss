@@ -1,15 +1,14 @@
-.positionBox {
-  position: fixed;
-  top: 15%;
-  left: 49%;
+.wrapper {
+  display: flex;
+  margin-bottom: 30px;
 }
 
-.searchBox {
+.form {
   position: relative;
 }
-.search {
-  height: 15px;
-  width: 15px;
+.form .search {
+  height: 10px;
+  width: 10px;
   background-color: #fff;
   border: 0;
   border-radius: 50%;
@@ -21,46 +20,46 @@
   position: relative;
   transition: all 150ms cubic-bezier(0.2, 0.6, 0.252, 1.2);
 }
-.search ~ .bar {
-  height: 4px;
-  width: 15px;
+.form .search ~ .bar {
+  height: 2px;
+  width: 10px;
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
   position: absolute;
   display: block;
   opacity: 1;
-  right: -9px;
-  top: 24px;
+  right: -5px;
+  top: 22px;
   transform: rotate(45deg);
   transition: opacity 150ms ease;
 }
-.search::-moz-placeholder {
+.form .search::-moz-placeholder {
   color: #fff;
 }
-.search:-ms-input-placeholder {
+.form .search:-ms-input-placeholder {
   color: #fff;
 }
-.search::placeholder {
+.form .search::placeholder {
   color: #fff;
 }
-.search:focus {
-  height: 25px;
+.form .search:focus {
+  height: 20px;
   width: 200px;
   border-radius: 3px;
   color: #26547c;
   cursor: initial;
 }
-.search:focus::-moz-placeholder {
+.form .search:focus::-moz-placeholder {
   color: #a1a1a1;
 }
-.search:focus:-ms-input-placeholder {
+.form .search:focus:-ms-input-placeholder {
   color: #a1a1a1;
 }
-.search:focus::placeholder {
+.form .search:focus::placeholder {
   color: #a1a1a1;
 }
-.search:focus ~ .bar {
+.form .search:focus ~ .bar {
   box-shadow: none;
   opacity: 0;
   right: 0;
