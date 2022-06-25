@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Container from "../Container/Container";
 import LoginPopUp from "../LoginPopUp/LoginPopUp";
-import { ReactComponent as LoginIcon } from "../../icons/login.svg";
+import { ReactComponent as LoginIcon } from "../../styles/icons/login.svg";
 import { ReactComponent as LogoIcon } from "../../styles/icons/tmdb.svg";
 
 import s from "./Layout.module.scss";

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { ReactComponent as IconSearch } from "../../icons/search.svg";
+import { ReactComponent as IconSearch } from "../../styles/icons/search.svg";
 import PropTypes from "prop-types";
 
 import s from "./SearchBar.module.scss";

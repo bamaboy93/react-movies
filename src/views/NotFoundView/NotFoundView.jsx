@@ -1,5 +1,5 @@
 import Container from "../../components/Container/Container";
-import { ReactComponent as Error404 } from "../../icons/404.svg";
+import { ReactComponent as Error404 } from "../../styles/icons/404.svg";
 
 import s from "./NotFoundView.module.scss";
 
