@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Container from "../Container/Container";
 import LoginPopUp from "../LoginPopUp/LoginPopUp";
 import { ReactComponent as LoginIcon } from "../../icons/login.svg";
+import { ReactComponent as LogoIcon } from "../../styles/icons/tmdb.svg";
 
 import s from "./Layout.module.scss";
 
@@ -18,9 +19,9 @@ export default function AppBar() {
       <header className={s.header}>
         <Container>
           <div className={s.block}>
-            <Link to="/">
+            <a href="/react-movies/">
               <p className={s.logo}>MovieDB</p>
-            </Link>
+            </a>
             <div className={s.loginBlock}>
               <p className={s.login}>Login</p>
               <span className={s.line}>|</span>
@@ -33,6 +34,12 @@ export default function AppBar() {
         </Container>
       </header>
       <Outlet />
+      <footer className={s.footer}>
+        <p className={s.footerText}>© MovieDB, 2022 based on</p>
+        <a href="https://www.themoviedb.org/">
+          <LogoIcon width={80} />
+        </a>
+      </footer>
       <ToastContainer
         autoClose={2000}
         closeOnClick

@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 // import PropTypes from "prop-types";
-import noImageFound from "../../icons/noimage.jpg";
+import noImageFound from "../../styles/images/noimage.jpg";
 
 import s from "./MovieData.module.scss";
 

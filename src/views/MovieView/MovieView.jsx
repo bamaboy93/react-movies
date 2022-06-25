@@ -4,7 +4,7 @@ import { useMediaQuery } from "react-responsive";
 
 import Status from "../../services/status";
 import api from "../../services/api/movies-api";
-import noImageFound from "../../icons/noimage.jpg";
+import noImageFound from "../../styles/images/noimage.jpg";
 
 import Container from "../../components/Container/Container";
 import PopUp from "../../components/PopUp/PopUp";

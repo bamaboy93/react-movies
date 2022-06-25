@@ -1,4 +1,4 @@
-import errorImage from "../../icons/YouTube.jpg";
+import errorImage from "../../styles/images/YouTube.jpg";
 
 export default function VideoError() {
   return (
