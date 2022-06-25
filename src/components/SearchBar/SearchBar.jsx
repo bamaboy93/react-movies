@@ -27,7 +27,7 @@ export default function Searchbar({ onSubmit }) {
     <form className={s.searchForm} onSubmit={handleSubmit}>
       <input
         className={s.searchFormInput}
-        type="text"
+        type="search"
         value={query}
         autoComplete="off"
         autoFocus
