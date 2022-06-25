@@ -1,9 +1,7 @@
 import { lazy, Suspense } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Routes, Route } from "react-router-dom";
 
-import AppBar from "./components/AppBar/AppBar";
+const Layout = lazy(() => import("./components/Layout/Layout"));
 
 const HomeView = lazy(() => import("./views/HomeView/HomeView"));
 
@@ -18,33 +16,22 @@ const NotFoundView = lazy(() => import("./views/NotFoundView/NotFoundView"));
 function App() {
   return (
     <>
-      <AppBar />
-
       <Suspense fallback={null}>
         <Routes>
-          <Route path="/" element={<Navigate to="/movies" />} />
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomeView />} />
+            <Route path=":movieId" element={<MovieView />} />
 
-          <Route path="/movies" element={<HomeView />} />
-          <Route path="/movies/:movieId" element={<MovieView />} />
+            <Route path="trending" element={<TrendingView />} />
+            <Route path="trending/:movieId" element={<MovieView />} />
 
-          <Route path="/trending" element={<TrendingView />} />
-          <Route path="/trending/:movieId" element={<MovieView />} />
+            <Route path="upcoming" element={<UpcomingView />} />
+            <Route path="upcoming/:movieId" element={<MovieView />} />
 
-          <Route path="/upcoming" element={<UpcomingView />} />
-          <Route path="/upcoming/:movieId" element={<MovieView />} />
-
-          <Route path="*" element={<NotFoundView />} />
+            <Route path="*" element={<NotFoundView />} />
+          </Route>
         </Routes>
       </Suspense>
-
-      <ToastContainer
-        autoClose={2000}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </>
   );
 }

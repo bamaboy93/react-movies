@@ -6,8 +6,6 @@ import s from "./MovieData.module.scss";
 
 export default function MovieData({ movies }) {
   const url = useLocation();
-  console.log(url);
-  console.log(movies);
 
   function getColor(vote) {
     const num = vote.toFixed();
