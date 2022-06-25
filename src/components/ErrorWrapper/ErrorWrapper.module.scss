@@ -3,32 +3,43 @@
 
 .wrapper {
   position: relative;
-  width: 560px;
-  height: 480px;
+  width: 280px;
+  height: 320px;
   margin-left: auto;
   margin-right: auto;
   background: url("../../icons/notfound.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+  @media (min-width: 1280px) {
+    width: 560px;
+    height: 480px;
+  }
 }
 .title {
   position: absolute;
-  top: 5%;
-  left: 30%;
+  top: 0;
+  left: 10%;
   font-size: 72px;
-
   font-weight: 700;
   color: $main-text;
   text-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  @media (min-width: 1280px) {
+    top: 5%;
+    left: 30%;
+  }
 }
 .text {
   position: absolute;
-  bottom: 8%;
-  left: 15%;
+  bottom: -2%;
+  left: 5%;
   font-size: 22px;
   margin: 0px;
   font-weight: 400;
   color: $main-text;
   text-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  @media (min-width: 1280px) {
+    bottom: 8%;
+    left: 15%;
+  }
 }

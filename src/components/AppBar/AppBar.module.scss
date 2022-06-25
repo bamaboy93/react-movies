@@ -2,9 +2,13 @@
 @import "../../styles/variables.scss";
 
 .header {
-  margin-top: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   margin-bottom: 40px;
   text-align: center;
+
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 .block {
   display: flex;
@@ -14,6 +18,7 @@
 .loginBlock {
   @media (min-width: 1280px) {
     display: flex;
+    align-items: center;
   }
 }
 
@@ -55,7 +60,7 @@
 .line {
   display: none;
   @media (min-width: 1280px) {
-    dsiplay: block;
+    display: block;
     font-family: $main-font;
     font-style: normal;
     font-size: 24px;
