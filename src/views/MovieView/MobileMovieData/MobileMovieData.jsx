@@ -1,5 +1,5 @@
 import Cast from "../../../components/Cast/Cast";
-import { ReactComponent as IconPlay } from "../../../icons/youtube.svg";
+import { ReactComponent as IconPlay } from "../../../styles/icons/youtube.svg";
 import BackButton from "../BackButton/BackButton";
 
 import s from "./MobileMovieData.module.scss";
