@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/react-movies/static/css/main.d83c52d1.css",
-    "main.js": "/react-movies/static/js/main.577b979f.js",
+    "main.js": "/react-movies/static/js/main.f835dd4c.js",
     "static/css/393.6ac82d1d.chunk.css": "/react-movies/static/css/393.6ac82d1d.chunk.css",
     "static/js/393.f7abef5a.chunk.js": "/react-movies/static/js/393.f7abef5a.chunk.js",
     "static/css/135.a171a0fe.chunk.css": "/react-movies/static/css/135.a171a0fe.chunk.css",
-    "static/js/135.11654242.chunk.js": "/react-movies/static/js/135.11654242.chunk.js",
+    "static/js/135.0c1ad7f3.chunk.js": "/react-movies/static/js/135.0c1ad7f3.chunk.js",
     "static/css/823.413d82f4.chunk.css": "/react-movies/static/css/823.413d82f4.chunk.css",
     "static/js/823.9a97a0a1.chunk.js": "/react-movies/static/js/823.9a97a0a1.chunk.js",
     "static/css/699.413d82f4.chunk.css": "/react-movies/static/css/699.413d82f4.chunk.css",
@@ -28,11 +28,11 @@
     "index.html": "/react-movies/index.html",
     "static/media/youtube.svg": "/react-movies/static/media/youtube.7ff0152133f76513c7c1e0acf7d2a18a.svg",
     "main.d83c52d1.css.map": "/react-movies/static/css/main.d83c52d1.css.map",
-    "main.577b979f.js.map": "/react-movies/static/js/main.577b979f.js.map",
+    "main.f835dd4c.js.map": "/react-movies/static/js/main.f835dd4c.js.map",
     "393.6ac82d1d.chunk.css.map": "/react-movies/static/css/393.6ac82d1d.chunk.css.map",
     "393.f7abef5a.chunk.js.map": "/react-movies/static/js/393.f7abef5a.chunk.js.map",
     "135.a171a0fe.chunk.css.map": "/react-movies/static/css/135.a171a0fe.chunk.css.map",
-    "135.11654242.chunk.js.map": "/react-movies/static/js/135.11654242.chunk.js.map",
+    "135.0c1ad7f3.chunk.js.map": "/react-movies/static/js/135.0c1ad7f3.chunk.js.map",
     "823.413d82f4.chunk.css.map": "/react-movies/static/css/823.413d82f4.chunk.css.map",
     "823.9a97a0a1.chunk.js.map": "/react-movies/static/js/823.9a97a0a1.chunk.js.map",
     "699.413d82f4.chunk.css.map": "/react-movies/static/css/699.413d82f4.chunk.css.map",
@@ -48,6 +48,6 @@
   },
   "entrypoints": [
     "static/css/main.d83c52d1.css",
-    "static/js/main.577b979f.js"
+    "static/js/main.f835dd4c.js"
   ]
 }
