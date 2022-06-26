@@ -30,7 +30,6 @@ export default function Searchbar({ onSubmit }) {
         type="text"
         value={query}
         autoComplete="off"
-        autoFocus
         placeholder="Search ..."
         onChange={handelQueryChange}
       />
