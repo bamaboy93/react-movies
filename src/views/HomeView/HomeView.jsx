@@ -6,11 +6,13 @@ import api from "../../services/api/movies-api";
 
 import Container from "../../components/Container/Container";
 import Loader from "../../components/Loader/Loader";
-import LoadBtn from "../../components/LoadBtn/LoadBtn";
 import MovieData from "../../components/MovieData/MovieData";
 import ErrorWrapper from "../../components/ErrorWrapper/ErrorWrapper";
 import Navigation from "../../components/Navigation/Navigation";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import Pagination from "@mui/material/Pagination";
+
+import usePagination from "../../hooks/Pagination";
 
 function HomePage() {
   const history = useNavigate();
@@ -18,18 +20,27 @@ function HomePage() {
 
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalpages, setTotalPages] = useState(null);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
+  const PER_PAGE = 20;
+  const _DATA = usePagination(totalpages, PER_PAGE);
 
+  const handleChange = (e, p) => {
+    setCurrentPage(p);
+    _DATA.jump(p);
+  };
   /////Popular Movies
   useEffect(() => {
     setStatus(Status.PENDING);
 
     api
-      .getPopularMovies()
-      .then(({ results }) => {
+      .getPopularMovies(currentPage)
+      .then(({ results, page, total_pages }) => {
         setMovies(results);
-
+        setCurrentPage(page);
+        setTotalPages(total_pages);
         setStatus(Status.RESOLVED);
       })
       .catch((error) => {
@@ -37,7 +48,7 @@ function HomePage() {
         setError(error);
         setStatus(Status.REJECTED);
       });
-  }, [error]);
+  }, [error, currentPage]);
 
   //////////Search Query
 
@@ -96,7 +107,13 @@ function HomePage() {
         {status === Status.RESOLVED && (
           <>
             <MovieData movies={movies} />
-            <LoadBtn />
+            {totalpages > 1 && (
+              <Pagination
+                count={totalpages}
+                page={currentPage}
+                onChange={handleChange}
+              />
+            )}
           </>
         )}
       </Container>

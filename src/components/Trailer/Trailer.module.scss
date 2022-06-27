@@ -1,7 +1,13 @@
+@import "../../styles/variables.scss";
+
 .iframe {
   width: 310px;
   height: 240px;
-  @media (min-width: 1280px) {
+  @media (min-width: $min-tablet) and (max-width: $max-tablet) {
+    width: 760px;
+    height: 576px;
+  }
+  @media (min-width: $min-desktop) {
     width: 960px;
     height: 540px;
   }

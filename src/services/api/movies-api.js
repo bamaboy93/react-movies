@@ -9,10 +9,11 @@ axios.defaults.params = {
   language: "en-US",
 };
 ////////////////////////Top_Rated
-async function getPopularMovies() {
+async function getPopularMovies(page) {
   try {
     const config = {
       url: `/movie/popular`,
+      params: { page },
     };
     const { data } = await axios(config);
 
@@ -23,10 +24,11 @@ async function getPopularMovies() {
   }
 }
 //////////////////// Trending
-async function getTrendingMovies() {
+async function getTrendingMovies(page) {
   try {
     const config = {
       url: `trending/movie/day`,
+      params: { page },
     };
     const { data } = await axios(config);
 
@@ -37,10 +39,11 @@ async function getTrendingMovies() {
   }
 }
 ////////////////////// Upcoming
-async function getUpcomingMovies() {
+async function getUpcomingMovies(page) {
   try {
     const config = {
       url: `/movie/upcoming`,
+      params: { page },
     };
     const { data } = await axios(config);
 
@@ -60,7 +63,7 @@ async function getMoviesByQuery(query, page) {
         page,
       },
     };
-    const { data } = await axios(config, query, page);
+    const { data } = await axios(config);
 
     return data.results;
   } catch (error) {

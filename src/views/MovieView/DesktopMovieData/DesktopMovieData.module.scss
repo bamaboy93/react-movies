@@ -16,12 +16,19 @@
   background-position: 100% -5%;
   background-repeat: no-repeat;
   background-size: 25%;
+  @media (min-width: $min-tablet) and (max-width: $max-tablet) {
+    background: none;
+  }
 }
 .image {
   max-width: 400px;
   height: 550px;
   border-radius: 2px;
   object-fit: cover;
+  @media (min-width: $min-tablet) and (max-width: $max-tablet) {
+    max-width: 400px;
+    height: 700px;
+  }
 }
 .infoWrapper {
   margin-left: 10px;
@@ -40,6 +47,9 @@
   letter-spacing: 0.03em;
   text-align: left;
   color: $main-text;
+  @media (min-width: $min-tablet) and (max-width: $max-tablet) {
+    font-size: 24px;
+  }
 }
 .infoYear {
   margin-top: 0;
@@ -47,6 +57,9 @@
   font-family: $numbers-font;
   font-size: 20px;
   color: $add-text;
+  @media (min-width: $min-tablet) and (max-width: $max-tablet) {
+    margin-bottom: 10px;
+  }
 }
 .infoScore {
   font-family: $numbers-font;

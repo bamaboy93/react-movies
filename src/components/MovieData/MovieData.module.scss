@@ -3,8 +3,12 @@
 
 .moviesList {
   list-style: none;
-
-  @media (min-width: 1280px) {
+  @media (min-width: $min-tablet) and (max-width: $max-tablet) {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -15px;
+  }
+  @media screen and (min-width: $min-desktop) {
     display: flex;
     flex-wrap: wrap;
     margin: -15px;
@@ -16,7 +20,11 @@
   overflow: hidden;
   cursor: pointer;
   margin-bottom: 20px;
-  @media (min-width: 1280px) {
+  @media (min-width: $min-tablet) and (max-width: $max-tablet) {
+    width: calc((100% - 4 * 15px) / 2);
+    margin: 15px;
+  }
+  @media (min-width: $min-desktop) {
     width: calc((100% - 10 * 15px) / 5);
     margin: 15px;
   }

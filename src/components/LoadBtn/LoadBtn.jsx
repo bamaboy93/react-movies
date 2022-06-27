@@ -1,8 +1,8 @@
 import s from "./LoadBtn.module.scss";
 
-export default function LoadBtn({ onBtnClick }) {
+export default function LoadBtn({ onClick }) {
   return (
-    <button onClick={onBtnClick} className={s.button} type="button">
+    <button onClick={onClick} className={s.button} type="button">
       <span></span>
       <span></span>
       <span></span>
