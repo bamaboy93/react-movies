@@ -8,9 +8,9 @@ export default function Navigation() {
       <span className={s.item}>
         <NavLink
           className={({ isActive }) => (isActive ? s.active : s.link)}
-          to="/trending"
+          to="/top_rated"
         >
-          Trending Movies
+          Top Rated Movies
         </NavLink>
       </span>
 

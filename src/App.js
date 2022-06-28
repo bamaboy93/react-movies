@@ -6,7 +6,7 @@ const Layout = lazy(() => import("./components/Layout/Layout"));
 
 const HomeView = lazy(() => import("./views/HomeView/HomeView"));
 
-const TrendingView = lazy(() => import("./views/TrendingView/TrendingView"));
+const TopRatedView = lazy(() => import("./views/TopRatedView/TopRatedView"));
 
 const UpcomingView = lazy(() => import("./views/UpcomingView/UpcomingView"));
 
@@ -23,8 +23,8 @@ function App() {
             <Route index element={<HomeView />} />
             <Route path=":movieId" element={<MovieView />} />
 
-            <Route path="trending" element={<TrendingView />} />
-            <Route path="trending/:movieId" element={<MovieView />} />
+            <Route path="top_rated" element={<TopRatedView />} />
+            <Route path="top_rated/:movieId" element={<MovieView />} />
 
             <Route path="upcoming" element={<UpcomingView />} />
             <Route path="upcoming/:movieId" element={<MovieView />} />

@@ -5,12 +5,12 @@ import Status from "../../services/status";
 import api from "../../services/api/movies-api";
 
 import Container from "../../components/Container/Container";
-import Loader from "../../components/Loader/Loader";
+
 import MovieData from "../../components/MovieData/MovieData";
 import ErrorWrapper from "../../components/ErrorWrapper/ErrorWrapper";
 import Navigation from "../../components/Navigation/Navigation";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import Pagination from "@mui/material/Pagination";
+import Pagination from "../../components/Pagination/Pagination";
 
 import usePagination from "../../hooks/Pagination";
 
@@ -44,11 +44,11 @@ function HomePage() {
         setStatus(Status.RESOLVED);
       })
       .catch((error) => {
-        console.log(error);
         setError(error);
+        console.log(error);
         setStatus(Status.REJECTED);
       });
-  }, [error, currentPage]);
+  }, [currentPage]);
 
   //////////Search Query
 
@@ -100,13 +100,14 @@ function HomePage() {
         <SearchBar onSubmit={handleFormSubmit} />
         <Navigation />
 
-        {status === Status.PENDING && <Loader />}
+        {status === Status.PENDING}
 
         {status === Status.REJECTED && <ErrorWrapper query={query} />}
 
         {status === Status.RESOLVED && (
           <>
             <MovieData movies={movies} />
+
             {totalpages > 1 && (
               <Pagination
                 count={totalpages}

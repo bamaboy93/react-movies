@@ -1,14 +1,18 @@
-import { Pagination } from "@mui/material";
+import Pagination from "@mui/material/Pagination";
 
-export default function MoviePagination({ page, count, onChange }) {
+import PropTypes from "prop-types";
+
+import s from "./Pagination.module.scss";
+
+export default function MoviePagination({ page, onChange }) {
   return (
-    <Pagination
-      count={count}
-      size="medium"
-      page={page}
-      variant="outlined"
-      shape="rounded"
-      onChange={onChange}
-    />
+    <div className={s.wrapper}>
+      <Pagination count={500} size="small" page={page} onChange={onChange} />
+    </div>
   );
 }
+
+MoviePagination.propTypes = {
+  page: PropTypes.number,
+  onChange: PropTypes.func,
+};

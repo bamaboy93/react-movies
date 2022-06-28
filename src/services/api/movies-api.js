@@ -8,7 +8,7 @@ axios.defaults.params = {
   api_key: API_KEY,
   language: "en-US",
 };
-////////////////////////Top_Rated
+////////////////////////Popular
 async function getPopularMovies(page) {
   try {
     const config = {
@@ -19,15 +19,14 @@ async function getPopularMovies(page) {
 
     return data;
   } catch (error) {
-    console.log("error", { error });
-    return null;
+    return;
   }
 }
-//////////////////// Trending
-async function getTrendingMovies(page) {
+//////////////////// Top_Rated
+async function getTopRatedMovies(page) {
   try {
     const config = {
-      url: `trending/movie/day`,
+      url: `/movie/top_rated`,
       params: { page },
     };
     const { data } = await axios(config);
@@ -49,7 +48,6 @@ async function getUpcomingMovies(page) {
 
     return data;
   } catch (error) {
-    console.log("error", { error });
     return null;
   }
 }
@@ -130,7 +128,7 @@ async function getMovieImages(id) {
 
 const api = {
   getPopularMovies,
-  getTrendingMovies,
+  getTopRatedMovies,
   getUpcomingMovies,
   getMoviesByQuery,
   getMovieById,
