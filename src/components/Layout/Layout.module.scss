@@ -74,9 +74,8 @@
 }
 
 .footer {
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
+  width: 100%;
+  position: absolute;
   padding-top: 10px;
   padding-bottom: 15px;
   margin-top: 20px;
@@ -88,6 +87,11 @@
   @media (min-width: 1280px) {
     margin-top: 40px;
   }
+}
+.footerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
 }
 
 .footerText {

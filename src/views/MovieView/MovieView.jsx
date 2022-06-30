@@ -6,11 +6,11 @@ import Status from "../../services/status";
 import api from "../../services/api/movies-api";
 import noImageFound from "../../styles/images/noimage.jpg";
 
-import Container from "../../components/Container/Container";
-import PopUp from "../../components/PopUp/PopUp";
-import Trailer from "../../components/Trailer/Trailer";
-import DesktopMovieData from "./DesktopMovieData/DesktopMovieData";
-import MobileMovieData from "./MobileMovieData/MobileMovieData";
+import Container from "../../components/Container";
+import PopUp from "../../components/PopUp";
+import Trailer from "../../components/Trailer";
+import DesktopMovieData from "./DesktopMovieData";
+import MobileMovieData from "./MobileMovieData";
 
 function MovieView() {
   const { movieId } = useParams();

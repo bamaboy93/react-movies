@@ -1,21 +1,21 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import Status from "../../services/status";
 import api from "../../services/api/movies-api";
 
-import Container from "../../components/Container/Container";
+import Container from "../../components/Container";
 
-import MovieData from "../../components/MovieData/MovieData";
-import ErrorWrapper from "../../components/ErrorWrapper/ErrorWrapper";
-import Navigation from "../../components/Navigation/Navigation";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import Pagination from "../../components/Pagination/Pagination";
+import MovieData from "../../components/MovieData";
+import ErrorWrapper from "../../components/ErrorWrapper";
+import Navigation from "../../components/Navigation";
+import SearchBar from "../../components/SearchBar";
+import Pagination from "../../components/Pagination";
 
 import usePagination from "../../hooks/Pagination";
 
 function HomePage() {
-  const history = useNavigate();
+  // const history = useNavigate();
   const { search } = useLocation();
 
   const [query, setQuery] = useState("");
@@ -57,9 +57,11 @@ function HomePage() {
 
     setQuery(newQuery);
     setMovies(null);
+    setCurrentPage(1);
+    setTotalPages(null);
     setStatus(Status.IDLE);
 
-    history.push({ search: `query=${newQuery}` });
+    // history.push({ search: `query=${newQuery}` });
   };
 
   useEffect(() => {
@@ -77,8 +79,8 @@ function HomePage() {
     setStatus(Status.PENDING);
 
     api
-      .getMoviesByQuery(query)
-      .then((results) => {
+      .getMoviesByQuery(query, currentPage)
+      .then(({ results, page, total_pages }) => {
         if (results.length === 0) {
           setStatus(Status.REJECTED);
           return;
@@ -86,13 +88,15 @@ function HomePage() {
 
         setMovies(results);
         setStatus(Status.RESOLVED);
+        setCurrentPage(page);
+        setTotalPages(total_pages);
       })
       .catch((error) => {
         console.log(error);
         setError(error);
         setStatus(Status.REJECTED);
       });
-  }, [query, error]);
+  }, [query, currentPage, error]);
 
   return (
     <main>
@@ -110,8 +114,8 @@ function HomePage() {
 
             {totalpages > 1 && (
               <Pagination
-                count={totalpages}
                 page={currentPage}
+                totalpages={totalpages}
                 onChange={handleChange}
               />
             )}

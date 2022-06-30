@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 import Status from "../../services/status";
 import api from "../../services/api/movies-api";
 
-import Container from "../../components/Container/Container";
+import Container from "../../components/Container";
 
-import MovieData from "../../components/MovieData/MovieData";
-import Navigation from "../../components/Navigation/Navigation";
-import Pagination from "../../components/Pagination/Pagination";
+import MovieData from "../../components/MovieData";
+import Navigation from "../../components/Navigation";
+import Pagination from "../../components/Pagination";
 
 import usePagination from "../../hooks/Pagination";
 

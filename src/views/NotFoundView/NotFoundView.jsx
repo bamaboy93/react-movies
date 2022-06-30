@@ -1,4 +1,4 @@
-import Container from "../../components/Container/Container";
+import Container from "../../components/Container";
 import { ReactComponent as Error404 } from "../../styles/icons/404.svg";
 
 import s from "./NotFoundView.module.scss";

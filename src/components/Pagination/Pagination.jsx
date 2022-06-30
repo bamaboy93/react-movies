@@ -4,10 +4,11 @@ import PropTypes from "prop-types";
 
 import s from "./Pagination.module.scss";
 
-export default function MoviePagination({ page, onChange }) {
+export default function MoviePagination({ page, totalpages, onChange }) {
+  const pages = totalpages > 500 ? 500 : totalpages;
   return (
     <div className={s.wrapper}>
-      <Pagination count={500} size="small" page={page} onChange={onChange} />
+      <Pagination count={pages} page={page} onChange={onChange} />
     </div>
   );
 }

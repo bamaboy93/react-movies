@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Container from "../Container/Container";
+import Container from "../Container";
 import LoginPopUp from "../LoginPopUp/LoginPopUp";
 import { ReactComponent as LoginIcon } from "../../styles/icons/login.svg";
 import { ReactComponent as LogoIcon } from "../../styles/icons/tmdb.svg";
@@ -23,6 +23,9 @@ export default function AppBar() {
               <p className={s.logo}>MovieDB</p>
             </a>
             <div className={s.loginBlock}>
+              <a className={s.login} href="/react-movies/userlist">
+                U
+              </a>
               <p className={s.login}>Login</p>
               <span className={s.line}>|</span>
               <button type="button" className={s.button} onClick={togglePopUp}>
@@ -35,10 +38,14 @@ export default function AppBar() {
       </header>
       <Outlet />
       <footer className={s.footer}>
-        <p className={s.footerText}>© MovieDB, 2022 based on</p>
-        <a href="https://www.themoviedb.org/">
-          <LogoIcon width={80} />
-        </a>
+        <Container>
+          <div className={s.footerWrapper}>
+            <p className={s.footerText}>© MovieDB, 2022 based on</p>
+            <a href="https://www.themoviedb.org/">
+              <LogoIcon width={80} />
+            </a>
+          </div>
+        </Container>
       </footer>
       <ToastContainer
         autoClose={2000}
