@@ -1,39 +1,31 @@
-import { useState } from "react";
 import { Outlet } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../services/firebase";
 import { ToastContainer } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 import Container from "../Container";
-import LoginPopUp from "../LoginPopUp/LoginPopUp";
-import { ReactComponent as LoginIcon } from "../../styles/icons/login.svg";
+import Login from "../Login/Login";
+import UserInfo from "../UserInfo/UserInfo";
+
 import { ReactComponent as LogoIcon } from "../../styles/icons/tmdb.svg";
 
 import s from "./Layout.module.scss";
 
 export default function AppBar() {
-  const [showPopUp, setPopUp] = useState(false);
-  const togglePopUp = () => {
-    setPopUp(!showPopUp);
-  };
+  const [user] = useAuthState(auth);
   return (
     <>
       <header className={s.header}>
         <Container>
-          <div className={s.block}>
+          <div className={s.navbar}>
             <a href="/react-movies/">
               <p className={s.logo}>MovieDB</p>
             </a>
             <div className={s.loginBlock}>
-              <a className={s.login} href="/react-movies/userlist">
-                U
-              </a>
-              <p className={s.login}>Login</p>
-              <span className={s.line}>|</span>
-              <button type="button" className={s.button} onClick={togglePopUp}>
-                <LoginIcon width={30} height={30} />
-              </button>
+              {user ? <UserInfo /> : <Login />}
             </div>
           </div>
-          {showPopUp && <LoginPopUp onClose={togglePopUp}></LoginPopUp>}
         </Container>
       </header>
       <Outlet />

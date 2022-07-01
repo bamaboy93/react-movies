@@ -1,0 +1,109 @@
+@import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
+
+.menu {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuButton {
+  width: 32px;
+  height: 32px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: #484a4d;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 300ms;
+  color: $main-text;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: 58px;
+  width: 200px;
+  transform: translate(-45%);
+  padding: 20px;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: #484a4d;
+}
+
+.dropdownItem {
+  height: 25px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  transition: background 500ms;
+  padding: 10px;
+
+  font-family: $main-font;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  color: $main-text;
+
+  text-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+
+  @media (min-width: $max-mobile) {
+    font-size: 16px;
+    letter-spacing: 2px;
+  }
+
+  &:hover {
+    background-color: #525357;
+  }
+}
+
+.greet {
+  font-family: $main-font;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  color: $add-text;
+  margin-bottom: 10px;
+  text-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+
+  @media (min-width: $max-mobile) {
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+}
+
+.button {
+  padding: 0;
+  font-family: $main-font;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  color: $main-text;
+
+  text-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+
+  @media (min-width: $max-mobile) {
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}

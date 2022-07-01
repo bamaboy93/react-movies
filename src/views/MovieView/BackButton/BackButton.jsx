@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import s from "./BackButton.module.scss";
+import { FiChevronsLeft } from "react-icons/fi";
 
 export default function BackButton() {
   const navigate = useNavigate();
@@ -7,7 +8,7 @@ export default function BackButton() {
 
   return (
     <button onClick={goBack} type="button" className={s.button}>
-      &#171;
+      <FiChevronsLeft />
     </button>
   );
 }

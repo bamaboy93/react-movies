@@ -3,7 +3,7 @@
 
 .button {
   margin-bottom: 20px;
-  padding: 3px 10px;
+  padding: 5px 15px;
   text-align: center;
   transition: 0.5s;
   background-size: 200% auto;
@@ -17,6 +17,9 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .button:hover {
