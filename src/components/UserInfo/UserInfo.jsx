@@ -27,13 +27,14 @@ function Dashboard() {
     if (!user) return;
     fetchUserName();
   });
+
+  const toggleMenu = () => {
+    setOpen(!open);
+  };
+
   return (
     <div className={s.menu}>
-      <button
-        type="button"
-        className={s.menuButton}
-        onClick={() => setOpen(!open)}
-      >
+      <button type="button" className={s.menuButton} onClick={toggleMenu}>
         <FiAlignJustify />
       </button>
       {open && (
