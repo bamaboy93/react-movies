@@ -4,7 +4,7 @@ import BackButton from "../BackButton";
 
 import s from "./DesktopMovieData.module.scss";
 
-export default function DesktopMovieData({ movie, onClick }) {
+export default function DesktopMovieData({ movie, onClick, add }) {
   function getColor(vote) {
     const num = vote.toFixed();
     if (num >= 8) {
@@ -31,6 +31,9 @@ export default function DesktopMovieData({ movie, onClick }) {
           <h2 className={s.movieTitle}>{movie.title}</h2>
           <button type="button" onClick={onClick} className={s.youBtn}>
             <IconPlay />
+          </button>
+          <button type="button" onClick={add}>
+            Add
           </button>
           <div className={s.infoWrapper}>
             <h3 className={s.title}>Year</h3>

@@ -10,6 +10,7 @@ import s from "./UserInfo.module.scss";
 
 function Dashboard() {
   const [user] = useAuthState(auth);
+
   const [name, setName] = useState("");
   const [open, setOpen] = useState(false);
 
@@ -34,9 +35,9 @@ function Dashboard() {
 
   return (
     <div className={s.menu}>
-      <button type="button" className={s.menuButton} onClick={toggleMenu}>
+      <div type="button" className={s.menuButton} onClick={toggleMenu}>
         <FiAlignJustify />
-      </button>
+      </div>
       {open && (
         <ul className={s.dropdown}>
           <div className={s.greet}>Hello {name}!</div>
@@ -47,7 +48,7 @@ function Dashboard() {
           </li>
           <li className={s.dropdownItem}>
             <button type="button" className={s.button} onClick={logout}>
-              LogOut
+              Logout
             </button>
           </li>
         </ul>

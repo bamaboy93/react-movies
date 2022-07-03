@@ -1,23 +1,17 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 
 import Status from "../../services/status";
 import api from "../../services/api/movies-api";
+import usePagination from "../../hooks/Pagination";
 
 import Container from "../../components/Container";
-
 import MovieData from "../../components/MovieData";
 import ErrorWrapper from "../../components/ErrorWrapper";
 import Navigation from "../../components/Navigation";
 import SearchBar from "../../components/SearchBar";
 import Pagination from "../../components/Pagination";
 
-import usePagination from "../../hooks/Pagination";
-
 function HomePage() {
-  // const history = useNavigate();
-  const { search } = useLocation();
-
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -60,18 +54,7 @@ function HomePage() {
     setCurrentPage(1);
     setTotalPages(null);
     setStatus(Status.IDLE);
-
-    // history.push({ search: `query=${newQuery}` });
   };
-
-  useEffect(() => {
-    if (search === "") {
-      return;
-    }
-
-    const newSearch = new URLSearchParams(search).get("query");
-    setQuery(newSearch);
-  }, [search]);
 
   useEffect(() => {
     if (!query) return;

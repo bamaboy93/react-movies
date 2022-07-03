@@ -11,9 +11,15 @@ import UserInfo from "../UserInfo/UserInfo";
 import { ReactComponent as LogoIcon } from "../../styles/icons/tmdb.svg";
 
 import s from "./Layout.module.scss";
+import { LinearProgress } from "@mui/material";
 
-export default function AppBar() {
-  const [user] = useAuthState(auth);
+export default function Layout() {
+  const [user, loading] = useAuthState(auth);
+
+  if (loading) {
+    return <LinearProgress color="secondary" />;
+  }
+
   return (
     <>
       <header className={s.header}>
@@ -28,7 +34,9 @@ export default function AppBar() {
           </div>
         </Container>
       </header>
+
       <Outlet />
+
       <footer className={s.footer}>
         <Container>
           <div className={s.footerWrapper}>
@@ -39,6 +47,7 @@ export default function AppBar() {
           </div>
         </Container>
       </footer>
+
       <ToastContainer
         autoClose={2000}
         closeOnClick

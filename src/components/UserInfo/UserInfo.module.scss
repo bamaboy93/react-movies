@@ -2,11 +2,14 @@
 @import "../../styles/variables.scss";
 
 .menu {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+  &:hover .dropdown {
+    display: block;
+  }
 }
 
 .menuButton {
@@ -34,14 +37,16 @@
 }
 
 .dropdown {
+  display: none;
   position: absolute;
-  top: 58px;
+  top: 52px;
   width: 200px;
   transform: translate(-45%);
   padding: 20px;
   overflow: hidden;
   border-radius: 5px;
   background-color: #484a4d;
+  z-index: 99;
 }
 
 .dropdownItem {
@@ -68,6 +73,7 @@
 
   &:hover {
     background-color: #525357;
+    visibility: visible;
   }
 }
 
