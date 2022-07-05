@@ -3,12 +3,7 @@
 body {
   background: rgb(0, 26, 36);
   background: rgb(2, 57, 78);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 57, 78, 1) 0%,
-    rgba(7, 116, 93, 1) 60%,
-    rgba(31, 186, 114, 1) 100%
-  );
+  background: $main-bg;
 }
 
 ul {

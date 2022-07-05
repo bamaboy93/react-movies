@@ -1,0 +1,51 @@
+@import "../../styles/colors.scss";
+
+.swiper {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 100%;
+  height: 480px;
+
+  :global(.swiper-pagination-bullet) {
+    background: $main-text;
+    opacity: 1;
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    background-color: $add-text;
+  }
+
+  :global(.swiper-button-next) {
+    color: $main-text;
+  }
+  :global(.swiper-button-prev) {
+    color: $main-text;
+  }
+}
+
+.slide {
+  text-align: center;
+  background: #484a4d83;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.swiper-pagination-bullet-active {
+  background-color: #000 !important;
+}

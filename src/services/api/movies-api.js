@@ -7,6 +7,7 @@ axios.defaults.baseURL = BASE_URL;
 axios.defaults.params = {
   api_key: API_KEY,
   language: "en-US",
+  include_image_language: "en,null",
 };
 ////////////////////////Popular
 async function getPopularMovies(page) {
@@ -119,7 +120,7 @@ async function getMovieImages(id) {
     };
     const { data } = await axios(config, id);
 
-    return data;
+    return data.backdrops;
   } catch (error) {
     console.log("error", { error });
     return null;

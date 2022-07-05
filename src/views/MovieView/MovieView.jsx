@@ -11,6 +11,7 @@ import PopUp from "../../components/PopUp";
 import Trailer from "../../components/Trailer";
 import DesktopMovieData from "./DesktopMovieData";
 import MobileMovieData from "./MobileMovieData";
+import ImagesSwiper from "../../components/ImagesSwiper";
 
 function MovieView() {
   const { movieId } = useParams();
@@ -68,17 +69,18 @@ function MovieView() {
 
       {status === Status.RESOLVED && (
         <>
+          {showPopUp && (
+            <PopUp onClose={togglePopUp}>
+              <Trailer />
+            </PopUp>
+          )}
           {isMobile && <MobileMovieData movie={movie} onClick={togglePopUp} />}
 
           {!isMobile && (
             <DesktopMovieData movie={movie} onClick={togglePopUp} />
           )}
 
-          {showPopUp && (
-            <PopUp onClose={togglePopUp}>
-              <Trailer />
-            </PopUp>
-          )}
+          <ImagesSwiper />
         </>
       )}
     </Container>

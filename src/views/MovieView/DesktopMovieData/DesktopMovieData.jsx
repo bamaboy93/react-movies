@@ -32,9 +32,7 @@ export default function DesktopMovieData({ movie, onClick, add }) {
           <button type="button" onClick={onClick} className={s.youBtn}>
             <IconPlay />
           </button>
-          <button type="button" onClick={add}>
-            Add
-          </button>
+
           <div className={s.infoWrapper}>
             <h3 className={s.title}>Year</h3>
             <p className={s.infoYear}>
