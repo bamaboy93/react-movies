@@ -5,13 +5,14 @@ import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 import Container from "../Container";
-import Login from "../Login/Login";
-import UserInfo from "../UserInfo/UserInfo";
+import Login from "../Login";
+import UserInfo from "../UserInfo";
 
 import { ReactComponent as LogoIcon } from "../../styles/icons/tmdb.svg";
 
 import s from "./Layout.module.scss";
 import { LinearProgress } from "@mui/material";
+import SearchLink from "../SearchLink/SearchLink";
 
 export default function Layout() {
   const [user, loading] = useAuthState(auth);
@@ -28,7 +29,9 @@ export default function Layout() {
             <a href="/react-movies/">
               <p className={s.logo}>MovieDB</p>
             </a>
+
             <div className={s.loginBlock}>
+              <SearchLink />
               {user ? <UserInfo /> : <Login />}
             </div>
           </div>

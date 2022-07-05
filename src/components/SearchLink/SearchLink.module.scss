@@ -1,0 +1,37 @@
+@import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
+
+.overlay {
+  width: 50px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover .dropdown {
+    display: block;
+  }
+}
+
+.link {
+  width: 32px;
+  height: 32px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: #484a4d;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 300ms;
+  color: $main-text;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}

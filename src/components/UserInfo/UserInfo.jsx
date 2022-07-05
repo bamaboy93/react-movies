@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, logout } from "../../services/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
@@ -10,9 +11,7 @@ import s from "./UserInfo.module.scss";
 
 function Dashboard() {
   const [user] = useAuthState(auth);
-
   const [name, setName] = useState("");
-  const [open, setOpen] = useState(false);
 
   const fetchUserName = async () => {
     try {
@@ -29,30 +28,25 @@ function Dashboard() {
     fetchUserName();
   });
 
-  const toggleMenu = () => {
-    setOpen(!open);
-  };
-
   return (
     <div className={s.menu}>
-      <div type="button" className={s.menuButton} onClick={toggleMenu}>
+      <div className={s.menuButton}>
         <FiAlignJustify />
       </div>
-      {open && (
-        <ul className={s.dropdown}>
-          <div className={s.greet}>Hello {name}!</div>
-          <li className={s.dropdownItem}>
-            <NavLink className={s.link} to="/userlist">
-              Library
-            </NavLink>
-          </li>
-          <li className={s.dropdownItem}>
-            <button type="button" className={s.button} onClick={logout}>
-              Logout
-            </button>
-          </li>
-        </ul>
-      )}
+
+      <ul className={s.dropdown}>
+        <div className={s.dropdownGreet}>Hello {name}!</div>
+        <li className={s.dropdownItem}>
+          <NavLink className={s.dropdownLink} to="/userlist">
+            Library
+          </NavLink>
+        </li>
+        <li className={s.dropdownItem}>
+          <button type="button" className={s.dropdownButton} onClick={logout}>
+            Logout
+          </button>
+        </li>
+      </ul>
     </div>
   );
 }

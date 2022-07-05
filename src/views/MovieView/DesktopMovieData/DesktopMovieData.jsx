@@ -1,6 +1,6 @@
 import Cast from "../../../components/Cast";
 import { ReactComponent as IconPlay } from "../../../styles/icons/youtube.svg";
-import BackButton from "../BackButton";
+import BackButton from "../../../components/BackButton";
 
 import s from "./DesktopMovieData.module.scss";
 

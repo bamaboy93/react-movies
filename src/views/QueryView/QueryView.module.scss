@@ -1,0 +1,57 @@
+@import "../../styles/variables.scss";
+@import "../../styles/colors.scss";
+
+.container {
+  min-height: calc(100vh - 120px);
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: 480px) {
+    padding: 0 20px;
+  }
+
+  @media (min-width: 480px) and (max-width: 768px) {
+    padding: 0px 30px;
+  }
+  @media (min-width: 768px) and (max-width: 1279px) {
+    padding: 0px 40px;
+  }
+  @media (min-width: 1280px) {
+    padding: 0px 85px;
+    min-height: calc(100vh - 190px);
+  }
+}
+.wrapper {
+  width: 310px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background: url("../../styles/icons/cinema.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  @media (min-width: 480px) and (max-width: 767px) {
+    width: 420px;
+    height: 380px;
+  }
+  @media (min-width: 768px) {
+    width: 690px;
+    height: 500px;
+  }
+}
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: $main-text;
+  text-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  @media (min-width: 480px) and (max-width: 767px) {
+    font-size: 22px;
+  }
+  @media (min-width: 768px) and (max-width: 1279px) {
+    font-size: 36px;
+  }
+  @media (min-width: 1280px) {
+    font-size: 42px;
+  }
+}

@@ -1,10 +1,12 @@
 import { lazy, Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { LinearProgress } from "@mui/material";
 
 const Layout = lazy(() => import("./components/Layout"));
 
 const HomeView = lazy(() => import("./views/HomeView"));
+
+const QueryView = lazy(() => import("./views/QueryView"));
 
 const TopRatedView = lazy(() => import("./views/TopRatedView"));
 
@@ -22,8 +24,13 @@ function App() {
       <Suspense fallback={<LinearProgress color="secondary" />}>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<HomeView />} />
-            <Route path=":movieId" element={<MovieView />} />
+            <Route index element={<Navigate to="/movies" />} />
+
+            <Route path="/movies" element={<HomeView />} />
+            <Route path="movies/:movieId" element={<MovieView />} />
+
+            <Route path="search" element={<QueryView />} />
+            <Route path="search/:movieId" element={<MovieView />} />
 
             <Route path="top_rated" element={<TopRatedView />} />
             <Route path="top_rated/:movieId" element={<MovieView />} />

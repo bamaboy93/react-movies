@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import api from "../../services/api/movies-api";
-
 import Status from "../../services/status";
 
 import s from "./Cast.module.scss";

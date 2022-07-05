@@ -9,7 +9,7 @@ import MovieData from "../../components/MovieData";
 import Navigation from "../../components/Navigation";
 import Pagination from "../../components/Pagination";
 
-import usePagination from "../../hooks/Pagination";
+import usePagination from "../../hooks/usePagination";
 
 export default function UpcomingView() {
   const [movies, setMovies] = useState(null);
@@ -20,11 +20,11 @@ export default function UpcomingView() {
 
   //////////////////////////Pagination
   const PER_PAGE = 20;
-  const _DATA = usePagination(totalpages, PER_PAGE);
+  const pages = usePagination(totalpages, PER_PAGE);
 
   const handleChange = (e, p) => {
     setCurrentPage(p);
-    _DATA.jump(p);
+    pages.jump(p);
   };
 
   useEffect(() => {

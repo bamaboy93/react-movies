@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import Status from "../../services/status";
 import api from "../../services/api/movies-api";
-import usePagination from "../../hooks/Pagination";
+import usePagination from "../../hooks/usePagination";
 
 import Container from "../../components/Container";
 
@@ -19,10 +19,10 @@ export default function UpcomingView() {
 
   /////////////////////////Pagination
   const PER_PAGE = 20;
-  const _DATA = usePagination(totalpages, PER_PAGE);
+  const pages = usePagination(totalpages, PER_PAGE);
   const handleChange = (e, p) => {
     setCurrentPage(p);
-    _DATA.jump(p);
+    pages.jump(p);
   };
 
   /////Upcoming Movies

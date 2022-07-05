@@ -119,7 +119,7 @@ async function getMovieImages(id) {
     };
     const { data } = await axios(config, id);
 
-    return data.results;
+    return data;
   } catch (error) {
     console.log("error", { error });
     return null;

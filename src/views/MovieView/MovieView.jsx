@@ -14,7 +14,6 @@ import MobileMovieData from "./MobileMovieData";
 
 function MovieView() {
   const { movieId } = useParams();
-  const [items, setItems] = useState([]);
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
@@ -23,10 +22,6 @@ function MovieView() {
   const isMobile = useMediaQuery({
     query: "(max-width: 767px)",
   });
-
-  useEffect(() => {
-    localStorage.setItem("items", JSON.stringify(items));
-  }, [items]);
 
   useEffect(() => {
     setStatus(Status.PENDING);
@@ -61,9 +56,6 @@ function MovieView() {
       });
   }, [movieId, error]);
 
-  function add() {
-    setItems([movie, ...items]);
-  }
   const togglePopUp = () => {
     setPopUp(!showPopUp);
   };
@@ -79,7 +71,7 @@ function MovieView() {
           {isMobile && <MobileMovieData movie={movie} onClick={togglePopUp} />}
 
           {!isMobile && (
-            <DesktopMovieData movie={movie} onClick={togglePopUp} add={add} />
+            <DesktopMovieData movie={movie} onClick={togglePopUp} />
           )}
 
           {showPopUp && (

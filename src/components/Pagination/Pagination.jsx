@@ -14,6 +14,7 @@ export default function MoviePagination({ page, totalpages, onChange }) {
 }
 
 MoviePagination.propTypes = {
+  totalpages: PropTypes.number,
   page: PropTypes.number,
   onChange: PropTypes.func,
 };
