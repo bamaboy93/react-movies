@@ -1,6 +1,5 @@
 import Cast from "../../../components/Cast";
 import { ReactComponent as IconPlay } from "../../../styles/icons/youtube.svg";
-import BackButton from "../../../components/BackButton";
 
 import s from "./MobileMovieData.module.scss";
 
@@ -17,7 +16,6 @@ export default function DesktopMovieData({ movie, onClick }) {
   }
   return (
     <>
-      <BackButton />
       <div className={s.wrapper}>
         <div className={s.posterWrapper}>
           <img className={s.image} src={movie.src} alt={movie.title} />

@@ -57,11 +57,8 @@ export default function HomePage() {
       <Container>
         <div className={s.banner}></div>
         <Navigation />
-
         {status === Status.PENDING}
-
         {status === Status.REJECTED && <ErrorWrapper />}
-
         {status === Status.RESOLVED && (
           <>
             <MovieData movies={movies} />

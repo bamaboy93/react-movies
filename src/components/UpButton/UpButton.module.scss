@@ -2,8 +2,10 @@
 @import "../../styles/variables.scss";
 
 .button {
-  margin-bottom: 20px;
-  padding: 5px 15px;
+  position: absolute;
+  bottom: 70px;
+  right: 40px;
+  padding: 10px 15px;
   text-align: center;
   transition: 0.5s;
   background-size: 200% auto;
