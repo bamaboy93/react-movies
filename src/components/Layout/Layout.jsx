@@ -22,7 +22,7 @@ export default function Layout() {
   }
 
   return (
-    <>
+    <div className={s.wrapper}>
       <header className={s.header}>
         <Container>
           <div className={s.navbar}>
@@ -37,9 +37,9 @@ export default function Layout() {
           </div>
         </Container>
       </header>
-
-      <Outlet />
-
+      <main>
+        <Outlet />
+      </main>
       <footer className={s.footer}>
         <Container>
           <div className={s.footerWrapper}>
@@ -59,6 +59,6 @@ export default function Layout() {
         draggable
         pauseOnHover
       />
-    </>
+    </div>
   );
 }

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
+import { Pagination, Mousewheel, Keyboard } from "swiper";
 
 import noImageFound from "../../styles/images/no-image.jpg";
 import s from "./ImagesSwiper.module.scss";
@@ -33,7 +33,7 @@ export default function ImagesSwiper() {
         setStatus(Status.REJECTED);
       });
   }, [movieId, error]);
-  console.log(images);
+
   return (
     <>
       {status === Status.PENDING}
@@ -47,10 +47,9 @@ export default function ImagesSwiper() {
             pagination={{
               clickable: true,
             }}
-            navigation={true}
             mousewheel={true}
             keyboard={true}
-            modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+            modules={[Pagination, Mousewheel, Keyboard]}
             className={s.swiper}
           >
             {images.slice(0, 8).map(({ vote_average, file_path }) => (

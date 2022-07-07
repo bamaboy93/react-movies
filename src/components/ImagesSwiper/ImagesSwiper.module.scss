@@ -4,8 +4,10 @@
   margin-top: 50px;
   margin-bottom: 50px;
   width: 100%;
-  height: 480px;
-
+  height: 200px;
+  @media (min-width: 768px) {
+    height: 480px;
+  }
   :global(.swiper-pagination-bullet) {
     background: $main-text;
     opacity: 1;
@@ -15,12 +17,12 @@
     background-color: $add-text;
   }
 
-  :global(.swiper-button-next) {
-    color: $main-text;
-  }
-  :global(.swiper-button-prev) {
-    color: $main-text;
-  }
+  // :global(.swiper-button-next) {
+  //   color: $main-text;
+  // }
+  // :global(.swiper-button-prev) {
+  //   color: $main-text;
+  // }
 }
 
 .slide {

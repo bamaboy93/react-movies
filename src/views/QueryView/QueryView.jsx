@@ -11,11 +11,12 @@ import SearchBar from "../../components/SearchBar";
 import Pagination from "../../components/Pagination";
 
 import s from "./QueryView.module.scss";
+import Container from "../../components/Container";
 
 export default function QueryPage() {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState(null);
-  const [currentQueryPage, setCurrentQueryPage] = useState(1);
+  const [currentQueryPage, setCurrentQueryPage] = useState(null);
   const [totalpages, setTotalPages] = useState(null);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
@@ -23,6 +24,7 @@ export default function QueryPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  console.log(location);
   ////////////////Pagination
   const PER_PAGE = 20;
   const pages = usePagination(totalpages, PER_PAGE);
@@ -40,11 +42,13 @@ export default function QueryPage() {
 
     setQuery(newQuery);
     setMovies(null);
-    setCurrentQueryPage(1);
+    setCurrentQueryPage(null);
     setTotalPages(null);
 
     setStatus(Status.IDLE);
-    navigate({ search: `query=${newQuery}` });
+    navigate({
+      search: `query=${newQuery}`,
+    });
   };
   useEffect(() => {
     if (location.search === "") {
@@ -52,8 +56,11 @@ export default function QueryPage() {
     }
 
     const newSearch = new URLSearchParams(location.search).get("query");
+
     setQuery(newSearch);
-    navigate({ search: `query=${newSearch}` });
+    navigate({
+      search: `query=${newSearch}`,
+    });
   }, [location.search, navigate]);
 
   useEffect(() => {
@@ -82,32 +89,30 @@ export default function QueryPage() {
   }, [query, currentQueryPage, error]);
 
   return (
-    <main>
-      <div className={s.container}>
-        <SearchBar onSubmit={handleFormSubmit} />
+    <Container>
+      <SearchBar onSubmit={handleFormSubmit} />
 
-        {status === Status.IDLE && (
-          <div className={s.wrapper}>
-            <h2 className={s.title}>
-              Millions of movies, series and actors. Explore now!
-            </h2>
-          </div>
-        )}
+      {status === Status.IDLE && (
+        <div className={s.wrapper}>
+          <h2 className={s.title}>
+            Millions of movies, series and actors. Explore now!
+          </h2>
+        </div>
+      )}
 
-        {status === Status.REJECTED && <ErrorWrapper query={query} />}
+      {status === Status.REJECTED && <ErrorWrapper query={query} />}
 
-        {status === Status.RESOLVED && (
-          <>
-            <MovieData movies={movies} />
+      {status === Status.RESOLVED && (
+        <>
+          <MovieData movies={movies} />
 
-            <Pagination
-              page={currentQueryPage}
-              totalpages={totalpages}
-              onChange={handleChange}
-            />
-          </>
-        )}
-      </div>
-    </main>
+          <Pagination
+            page={currentQueryPage}
+            totalpages={totalpages}
+            onChange={handleChange}
+          />
+        </>
+      )}
+    </Container>
   );
 }

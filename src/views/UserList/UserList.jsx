@@ -1,8 +1,9 @@
+import Container from "../../components/Container";
 import s from "./UserList.module.scss";
 export default function UserList() {
   return (
-    <div className={s.container}>
+    <Container>
       <h2 className={s.title}>Favourites</h2>
-    </div>
+    </Container>
   );
 }

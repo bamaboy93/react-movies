@@ -1,9 +1,23 @@
 @import "./colors.scss";
 @import "./variables.scss";
+
+html,
 body {
-  background: rgb(0, 26, 36);
-  background: rgb(2, 57, 78);
+  height: 100vh;
+}
+body {
   background: $main-bg;
+  margin: 0;
+  padding: 0;
+  font-family: $main-font;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+main {
+  min-height: calc(100vh - 120px);
 }
 
 ul {
@@ -26,24 +40,6 @@ h6,
 p {
   margin: 0;
   padding: 0;
-}
-
-body {
-  position: relative;
-  min-height: 100vh;
-  box-sizing: border-box;
-
-  margin: 0;
-  padding: 0;
-  font-family: $main-font;
-  font-style: normal;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-}
-
-main {
-  width: 100%;
 }
 
 img {
