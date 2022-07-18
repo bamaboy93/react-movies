@@ -14,7 +14,7 @@ const UpcomingView = lazy(() => import("./views/UpcomingView"));
 
 const MovieView = lazy(() => import("./views/MovieView"));
 
-const UserList = lazy(() => import("./views/UserList"));
+const FavList = lazy(() => import("./views/FavList"));
 
 const NotFoundView = lazy(() => import("./views/NotFoundView"));
 
@@ -38,8 +38,8 @@ function App() {
             <Route path="upcoming" element={<UpcomingView />} />
             <Route path="upcoming/:movieId" element={<MovieView />} />
 
-            <Route path="userlist" element={<UserList />} />
-            <Route path="userlist/:movieId" element={<UserList />} />
+            <Route path="favourites" element={<FavList />} />
+            <Route path="favourites/:movieId" element={<MovieView />} />
 
             <Route path="*" element={<NotFoundView />} />
           </Route>

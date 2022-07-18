@@ -35,7 +35,6 @@ export default function MovieData({ movies }) {
                     : `${noImageFound}`
                 }
                 alt={title}
-                className={s.poster}
               />
 
               <div className={s.movieCard}>

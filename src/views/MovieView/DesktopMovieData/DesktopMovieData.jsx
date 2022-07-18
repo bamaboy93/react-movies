@@ -1,9 +1,28 @@
 import Cast from "../../../components/Cast";
-import { ReactComponent as IconPlay } from "../../../styles/icons/youtube.svg";
-
+import { useState, useEffect } from "react";
+import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import {
+  addFavourite,
+  deleteFavourite,
+  inFavourites,
+} from "../../../services/localStorage";
 import s from "./DesktopMovieData.module.scss";
 
-export default function DesktopMovieData({ movie, onClick, add }) {
+export default function DesktopMovieData({ movie, onToggle }) {
+  const [fav, setFav] = useState(false);
+
+  const onFavourite = () => {
+    if (fav) {
+      deleteFavourite(movie.id);
+    } else {
+      addFavourite(movie);
+    }
+    setFav(!fav);
+  };
+  useEffect(() => {
+    setFav(inFavourites(movie.id));
+  }, [movie.id]);
+
   function getColor(vote) {
     const num = vote.toFixed();
     if (num >= 8) {
@@ -27,9 +46,14 @@ export default function DesktopMovieData({ movie, onClick, add }) {
         </div>
         <div className={s.description}>
           <h2 className={s.movieTitle}>{movie.title}</h2>
-          <button type="button" onClick={onClick} className={s.youBtn}>
-            <IconPlay />
-          </button>
+          <div className={s.btnBox}>
+            <button type="button" onClick={onToggle} className={s.youBtn}>
+              Trailer
+            </button>
+            <button type="button" className={s.favBtn} onClick={onFavourite}>
+              {fav ? <MdFavorite /> : <MdFavoriteBorder />}
+            </button>
+          </div>
 
           <div className={s.infoWrapper}>
             <h3 className={s.title}>Year</h3>

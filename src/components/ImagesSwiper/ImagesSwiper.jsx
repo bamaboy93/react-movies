@@ -42,29 +42,31 @@ export default function ImagesSwiper() {
 
       {status === Status.RESOLVED && (
         <>
-          <Swiper
-            spaceBetween={30}
-            pagination={{
-              clickable: true,
-            }}
-            mousewheel={true}
-            keyboard={true}
-            modules={[Pagination, Mousewheel, Keyboard]}
-            className={s.swiper}
-          >
-            {images.slice(0, 8).map(({ vote_average, file_path }) => (
-              <SwiperSlide key={file_path} className={s.slide}>
-                <img
-                  src={
-                    file_path
-                      ? `https://image.tmdb.org/t/p/original${file_path}`
-                      : `${noImageFound}`
-                  }
-                  alt="movie backdrop"
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          {images && (
+            <Swiper
+              spaceBetween={30}
+              pagination={{
+                clickable: true,
+              }}
+              mousewheel={true}
+              keyboard={true}
+              modules={[Pagination, Mousewheel, Keyboard]}
+              className={s.swiper}
+            >
+              {images.slice(0, 8).map(({ vote_average, file_path }) => (
+                <SwiperSlide key={file_path} className={s.slide}>
+                  <img
+                    src={
+                      file_path
+                        ? `https://image.tmdb.org/t/p/original${file_path}`
+                        : `${noImageFound}`
+                    }
+                    alt="movie backdrop"
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          )}
         </>
       )}
     </>

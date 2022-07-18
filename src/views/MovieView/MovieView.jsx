@@ -4,6 +4,7 @@ import { useMediaQuery } from "react-responsive";
 
 import Status from "../../services/status";
 import api from "../../services/api/movies-api";
+
 import noImageFound from "../../styles/images/noimage.jpg";
 
 import Container from "../../components/Container";
@@ -36,8 +37,10 @@ function MovieView() {
           overview,
           release_date,
           genres,
+          id,
         }) => {
           setMovie({
+            id: id,
             src: poster_path
               ? `https://image.tmdb.org/t/p/w500${poster_path}`
               : `${noImageFound}`,
@@ -47,6 +50,7 @@ function MovieView() {
             overview,
             genres,
           });
+
           setStatus(Status.RESOLVED);
         }
       )
@@ -74,10 +78,10 @@ function MovieView() {
               <Trailer />
             </PopUp>
           )}
-          {isMobile && <MobileMovieData movie={movie} onClick={togglePopUp} />}
+          {isMobile && <MobileMovieData movie={movie} onToggle={togglePopUp} />}
 
           {!isMobile && (
-            <DesktopMovieData movie={movie} onClick={togglePopUp} />
+            <DesktopMovieData movie={movie} onToggle={togglePopUp} />
           )}
 
           <ImagesSwiper />

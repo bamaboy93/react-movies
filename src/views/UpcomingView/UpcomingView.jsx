@@ -45,28 +45,26 @@ export default function UpcomingView() {
   }, [error, currentPage]);
 
   return (
-    <main>
-      <Container>
-        <Navigation />
+    <Container>
+      <Navigation />
 
-        {status === Status.PENDING}
+      {status === Status.PENDING}
 
-        {status === Status.REJECTED}
+      {status === Status.REJECTED}
 
-        {status === Status.RESOLVED && (
-          <>
-            <MovieData movies={movies} />
+      {status === Status.RESOLVED && (
+        <>
+          <MovieData movies={movies} />
 
-            {totalpages > 1 && (
-              <Pagination
-                page={currentPage}
-                totalpages={totalpages}
-                onChange={handleChange}
-              />
-            )}
-          </>
-        )}
-      </Container>
-    </main>
+          {totalpages > 1 && (
+            <Pagination
+              page={currentPage}
+              totalpages={totalpages}
+              onChange={handleChange}
+            />
+          )}
+        </>
+      )}
+    </Container>
   );
 }

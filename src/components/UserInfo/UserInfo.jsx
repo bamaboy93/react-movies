@@ -37,7 +37,7 @@ function Dashboard() {
       <ul className={s.dropdown}>
         <div className={s.dropdownGreet}>Hello {name}!</div>
         <li className={s.dropdownItem}>
-          <NavLink className={s.dropdownLink} to="/userlist">
+          <NavLink className={s.dropdownLink} to="/favourites">
             Library
           </NavLink>
         </li>
