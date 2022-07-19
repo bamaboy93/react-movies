@@ -10,9 +10,10 @@ import noImageFound from "../../styles/images/noimage.jpg";
 import Container from "../../components/Container";
 import PopUp from "../../components/PopUp";
 import Trailer from "../../components/Trailer";
-import DesktopMovieData from "./DesktopMovieData";
+
 import MobileMovieData from "./MobileMovieData";
 import ImagesSwiper from "../../components/ImagesSwiper";
+import Dmv from "./DMV/DMV";
 
 function MovieView() {
   const { movieId } = useParams();
@@ -31,6 +32,7 @@ function MovieView() {
       .getMovieById(movieId)
       .then(
         ({
+          backdrop_path,
           poster_path,
           original_title,
           vote_average,
@@ -38,9 +40,12 @@ function MovieView() {
           release_date,
           genres,
           id,
+          runtime,
+          tagline,
         }) => {
           setMovie({
             id: id,
+            backdrop: `https://image.tmdb.org/t/p/original${backdrop_path}`,
             src: poster_path
               ? `https://image.tmdb.org/t/p/w500${poster_path}`
               : `${noImageFound}`,
@@ -49,6 +54,8 @@ function MovieView() {
             score: vote_average,
             overview,
             genres,
+            runtime,
+            tagline,
           });
 
           setStatus(Status.RESOLVED);
@@ -66,7 +73,7 @@ function MovieView() {
   };
 
   return (
-    <Container>
+    <>
       {status === Status.PENDING}
 
       {status === Status.REJECTED}
@@ -80,14 +87,13 @@ function MovieView() {
           )}
           {isMobile && <MobileMovieData movie={movie} onToggle={togglePopUp} />}
 
-          {!isMobile && (
-            <DesktopMovieData movie={movie} onToggle={togglePopUp} />
-          )}
-
-          <ImagesSwiper />
+          {!isMobile && <Dmv movie={movie} onToggle={togglePopUp} />}
+          <Container>
+            <ImagesSwiper />
+          </Container>
         </>
       )}
-    </Container>
+    </>
   );
 }
 

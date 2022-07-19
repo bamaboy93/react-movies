@@ -23,7 +23,20 @@ function App() {
     <>
       <Suspense fallback={<LinearProgress color="secondary" />}>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route
+            path="/"
+            element={
+              <Layout
+                showHeader={[
+                  "/movies",
+                  "/search",
+                  "/top_rated",
+                  "/upcoming",
+                  "/favourites",
+                ]}
+              />
+            }
+          >
             <Route index element={<Navigate to="/movies" />} />
 
             <Route path="/movies" element={<HomeView />} />

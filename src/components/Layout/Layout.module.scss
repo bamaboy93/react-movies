@@ -20,9 +20,7 @@
 
 .loginBlock {
   display: flex;
-  @media (min-width: 1280px) {
-    align-items: center;
-  }
+  align-items: center;
 }
 
 .logo {

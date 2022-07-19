@@ -21,7 +21,7 @@
   text-align: center;
   margin-bottom: 20px;
   @media (min-width: $min-tablet) and (max-width: $max-tablet) {
-    width: calc((100% - 4 * 15px) / 2);
+    width: calc((100% - 8 * 15px) / 4);
     margin: 15px;
   }
   @media (min-width: $min-desktop) {
