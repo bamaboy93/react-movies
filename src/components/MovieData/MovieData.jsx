@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import getColor from "../../services/getColor";
 // import PropTypes from "prop-types";
 import noImageFound from "../../styles/images/noimage.jpg";
 
@@ -7,16 +8,6 @@ import s from "./MovieData.module.scss";
 export default function MovieData({ movies }) {
   const url = useLocation();
 
-  function getColor(vote) {
-    const num = vote.toFixed();
-    if (num >= 8) {
-      return "#7dd87d";
-    } else if (num < 8 && num >= 5) {
-      return "#eec60a";
-    } else {
-      return "#eb2632";
-    }
-  }
   return (
     <div>
       <ul className={s.moviesList}>

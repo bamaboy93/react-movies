@@ -7,7 +7,10 @@ export default function Navigation() {
     <div className={s.linkContainer}>
       <span className={s.item}>
         <NavLink
-          className={({ isActive }) => (isActive ? s.active : s.link)}
+          className={s.link}
+          style={({ isActive }) => ({
+            borderBottom: isActive ? "2px solid #ded09f" : "none",
+          })}
           to="/top_rated"
         >
           Top Rated Movies
@@ -16,7 +19,10 @@ export default function Navigation() {
 
       <span className={s.item}>
         <NavLink
-          className={({ isActive }) => (isActive ? s.active : s.link)}
+          className={s.link}
+          style={({ isActive }) => ({
+            borderBottom: isActive ? "2px solid #ded09f" : "none",
+          })}
           to="/upcoming"
         >
           Upcoming

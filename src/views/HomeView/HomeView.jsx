@@ -14,7 +14,7 @@ import s from "./HomeView.module.scss";
 
 export default function HomePage() {
   const [movies, setMovies] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(null);
   const [totalpages, setTotalPages] = useState(null);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);

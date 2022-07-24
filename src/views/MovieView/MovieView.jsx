@@ -4,16 +4,15 @@ import { useMediaQuery } from "react-responsive";
 
 import Status from "../../services/status";
 import api from "../../services/api/movies-api";
-
 import noImageFound from "../../styles/images/noimage.jpg";
 
 import Container from "../../components/Container";
 import PopUp from "../../components/PopUp";
 import Trailer from "../../components/Trailer";
-
-import MobileMovieData from "./MobileMovieData";
 import ImagesSwiper from "../../components/ImagesSwiper";
-import Dmv from "./DMV/DMV";
+
+import MobileMovieView from "./MobileMovieView";
+import DesktopMovieView from "./DesktopMovieView";
 
 function MovieView() {
   const { movieId } = useParams();
@@ -85,9 +84,11 @@ function MovieView() {
               <Trailer />
             </PopUp>
           )}
-          {isMobile && <MobileMovieData movie={movie} onToggle={togglePopUp} />}
+          {isMobile && <MobileMovieView movie={movie} onToggle={togglePopUp} />}
 
-          {!isMobile && <Dmv movie={movie} onToggle={togglePopUp} />}
+          {!isMobile && (
+            <DesktopMovieView movie={movie} onToggle={togglePopUp} />
+          )}
           <Container>
             <ImagesSwiper />
           </Container>

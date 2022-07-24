@@ -1,4 +1,4 @@
-import s from "./DMV.module.scss";
+import s from "./DesktopMovieView.module.scss";
 
 export default function Navigation({ onChange }) {
   const nav = ["Overview", "Details"];

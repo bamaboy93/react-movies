@@ -24,7 +24,6 @@ export default function QueryPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  console.log(location);
   ////////////////Pagination
   const PER_PAGE = 20;
   const pages = usePagination(totalpages, PER_PAGE);
