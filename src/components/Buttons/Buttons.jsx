@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import {
   addFavourite,
@@ -33,3 +34,8 @@ export default function Buttons({ movie, onToggle }) {
     </div>
   );
 }
+
+Buttons.propTypes = {
+  movie: PropTypes.object.isRequired,
+  onToggle: PropTypes.func.isRequired,
+};
