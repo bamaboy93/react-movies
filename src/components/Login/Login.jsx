@@ -1,13 +1,12 @@
 import { signInWithGoogle } from "../../services/firebase";
 
-import { ReactComponent as GoogleIcon } from "../../styles/icons/google.svg";
-
 import s from "./Login.module.scss";
+import { FaRegUser } from "react-icons/fa";
 
 const Login = () => {
   return (
     <button className={s.button} onClick={signInWithGoogle}>
-      <GoogleIcon />
+      <FaRegUser />
     </button>
   );
 };

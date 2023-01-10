@@ -1,8 +1,8 @@
 @import "../../styles/colors.scss";
 @import "../../styles/variables.scss";
 .button {
-  width: 32px;
-  height: 32px;
+  width: 42px;
+  height: 42px;
   outline: none;
   border: none;
   cursor: pointer;
@@ -13,13 +13,19 @@
   justify-content: center;
   transition: filter 300ms;
   color: $main-text;
+  transition: filter 250ms $cubic;
 
   &:hover {
-    filter: brightness(1.2);
+    filter: brightness(1.3);
+  }
+
+  &:hover svg {
+    color: $hover-color;
   }
 
   svg {
-    width: 100%;
-    height: 100%;
+    width: 21px;
+    height: 21px;
+    transition: color 250ms $cubic;
   }
 }

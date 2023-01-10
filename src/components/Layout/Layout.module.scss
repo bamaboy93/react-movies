@@ -2,38 +2,54 @@
 @import "../../styles/variables.scss";
 
 .header {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-  text-align: center;
-
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  @media (min-width: 1280px) {
-    margin-bottom: 40px;
-  }
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 16px 0;
+  transition: all 0.3s ease;
+  background-color: $header-bg-color;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
-.navbar {
+.nav {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+}
+
+.logo {
+  font-family: $logo-font;
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 1;
+
+  color: $red;
+}
+
+.navList {
+  display: flex;
+}
+
+.navItem:not(:last-child) {
+  margin-right: 56px;
+}
+
+.navLink {
+  padding: 20px 0;
+  font-size: 18px;
+  font-weight: 600;
+
+  transition: color 250ms $cubic;
+  &:focus,
+  &:hover {
+    color: $hover-color;
+  }
 }
 
 .loginBlock {
   display: flex;
   align-items: center;
-}
-
-.logo {
-  font-family: $logo-font;
-  font-style: normal;
-  font-size: 26px;
-  line-height: 1.5;
-  letter-spacing: 1px;
-  color: $main-text;
-  text-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-  @media (min-width: 1280px) {
-    font-size: 32px;
-  }
 }
 
 .login {
@@ -51,23 +67,93 @@
   }
 }
 
-.footer {
-  height: 40px;
+// Footer
 
-  color: $main-text;
-  display: flex;
-  align-items: center;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+.footer {
+  padding: 40px 0;
+  background-color: $footer-bg-color;
 }
+
 .footerWrapper {
   display: flex;
-  justify-content: center;
 }
 
-.footerText {
-  margin-right: 10px;
+.footerLinks {
+  width: 500px;
+}
 
+.footerLinksList {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.footerLinksLink {
+  font-size: 16px;
+  transition: color 250ms $cubic;
+  &:hover {
+    color: $hover-color;
+  }
+}
+
+.rights {
   font-size: 14px;
-  letter-spacing: 1px;
+}
+
+.title {
+  margin-bottom: 30px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.footerSocials {
+  margin-left: 150px;
+}
+
+.footerSocialsList {
+  display: flex;
+}
+
+.footerSocialsItem {
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
+}
+
+.footerSocialsLink {
+  width: 42px;
+  height: 42px;
+  background-color: rgba(41, 41, 41, 0.76);
+  border-radius: 50%;
+  box-shadow: $secondary-box-shadow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 250ms $cubic;
+  color: $main-text;
+
+  &:hover {
+    box-shadow: 0 0 0.625em $hover-color;
+  }
+
+  &:hover .icon {
+    color: $hover-color;
+  }
+}
+
+.icon {
+  fill: currentColor;
+  transition: color 250ms $cubic;
+}
+
+.footerStore {
+  margin-left: auto;
+}
+
+.footerStoreList {
+  display: flex;
+}
+
+.footerStoreItem:not(:last-child) {
+  margin-right: 10px;
 }

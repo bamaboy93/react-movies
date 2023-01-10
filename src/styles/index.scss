@@ -1,14 +1,8 @@
 @import "./colors.scss";
 @import "./variables.scss";
 
-html,
-body {
-  height: 100vh;
-}
 body {
   background: $main-bg;
-  margin: 0;
-  padding: 0;
   color: $white;
   font-family: $main-font;
   font-style: normal;
@@ -17,16 +11,12 @@ body {
   line-height: 1.5;
 }
 
-main {
-  min-height: calc(100vh - 120px);
-}
-
 ul {
   list-style: none;
 }
 
 a {
-  color: $main-text;
+  color: inherit;
   text-decoration: none;
 }
 
@@ -58,4 +48,15 @@ img {
   height: 1px !important;
   width: 1px !important;
   overflow: hidden;
+}
+
+// Swiper Styles
+.swiper-pagination-bullet-active {
+  background-color: red !important;
+}
+
+.swiper-pagination-bullet {
+  background-color: red !important;
+  width: 15px !important;
+  height: 15px !important;
 }

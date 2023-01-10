@@ -1,0 +1,15 @@
+@import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
+
+.wrapper {
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+
+.title {
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.2;
+  text-shadow: $title-text-shadow;
+}

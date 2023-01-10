@@ -9,12 +9,26 @@ axios.defaults.params = {
   language: "en-US",
   include_image_language: "en,null",
 };
+
 ////////////////////////Popular
 async function getPopularMovies(page) {
   try {
     const config = {
       url: `/movie/popular`,
       params: { page },
+    };
+    const { data } = await axios(config);
+
+    return data;
+  } catch (error) {
+    return;
+  }
+}
+// Now_Playing
+async function getNowPlaying() {
+  try {
+    const config = {
+      url: `/movie/popular`,
     };
     const { data } = await axios(config);
 
@@ -129,6 +143,7 @@ async function getMovieImages(id) {
 
 const api = {
   getPopularMovies,
+  getNowPlaying,
   getTopRatedMovies,
   getUpcomingMovies,
   getMoviesByQuery,

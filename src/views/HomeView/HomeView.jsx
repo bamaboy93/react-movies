@@ -2,47 +2,35 @@ import { useState, useEffect } from "react";
 
 import Status from "../../services/status";
 import api from "../../services/api/movies-api";
-import usePagination from "../../hooks/usePagination";
 
 import Container from "../../components/Container";
-import MovieData from "../../components/MovieData";
-import ErrorWrapper from "../../components/ErrorWrapper";
-import Navigation from "../../components/Navigation";
-import Pagination from "../../components/Pagination";
 
-import s from "./HomeView.module.scss";
+import MainMovie from "../../components/MainMovie";
+import ErrorWrapper from "../../components/ErrorWrapper";
+import Popular from "../../components/Popular";
+import Upcoming from "../../components/Upcoming";
+import TopRated from "../../components/TopRated";
+import NowPlaying from "../../components/NowPlaying";
 
 export default function HomePage() {
-  const [movies, setMovies] = useState(null);
-  const [currentPage, setCurrentPage] = useState(null);
-  const [totalpages, setTotalPages] = useState(null);
+  const [popular, setPopular] = useState(null);
+  const [upcoming, setUpcoming] = useState(null);
+  const [topRated, setTopRated] = useState(null);
+  const [nowPlaying, setNowPlaying] = useState(null);
+  const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
-
-  ////////////////Pagination
-  const PER_PAGE = 20;
-  const pages = usePagination(totalpages, PER_PAGE);
-
-  const handleChange = (e, p) => {
-    setCurrentPage(p);
-
-    window.scrollTo({
-      top: 100,
-      behavior: "smooth",
-    });
-    pages.jump(p);
-  };
 
   /////Popular Movies
   useEffect(() => {
     setStatus(Status.PENDING);
 
     api
-      .getPopularMovies(currentPage)
-      .then(({ results, page, total_pages }) => {
-        setMovies(results);
-        setCurrentPage(page);
-        setTotalPages(total_pages);
+      .getPopularMovies()
+      .then(({ results }) => {
+        setPopular(results);
+        setMovie(results[7]);
+
         setStatus(Status.RESOLVED);
       })
       .catch((error) => {
@@ -50,27 +38,73 @@ export default function HomePage() {
         console.log(error);
         setStatus(Status.REJECTED);
       });
-  }, [currentPage, error]);
+  }, [error]);
+  // Upcoming
+  useEffect(() => {
+    setStatus(Status.PENDING);
 
+    api
+      .getUpcomingMovies()
+      .then(({ results }) => {
+        setUpcoming(results);
+
+        setStatus(Status.RESOLVED);
+      })
+      .catch((error) => {
+        setError(error);
+        console.log(error);
+        setStatus(Status.REJECTED);
+      });
+  }, [error]);
+  // Top Rated
+  useEffect(() => {
+    setStatus(Status.PENDING);
+
+    api
+      .getTopRatedMovies()
+      .then(({ results }) => {
+        setTopRated(results);
+
+        setStatus(Status.RESOLVED);
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error);
+        setStatus(Status.REJECTED);
+      });
+  }, [error]);
+  // Now_Playing
+  useEffect(() => {
+    setStatus(Status.PENDING);
+
+    api
+      .getNowPlaying()
+      .then(({ results }) => {
+        setNowPlaying(results[3]);
+
+        setStatus(Status.RESOLVED);
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error);
+        setStatus(Status.REJECTED);
+      });
+  }, [error]);
   return (
-    <main>
+    <>
+      {movie ? <MainMovie movie={movie} /> : null}
       <Container>
-        <div className={s.banner}></div>
-        <Navigation />
         {status === Status.PENDING}
         {status === Status.REJECTED && <ErrorWrapper />}
         {status === Status.RESOLVED && (
           <>
-            <MovieData movies={movies} />
-
-            <Pagination
-              page={currentPage}
-              totalpages={totalpages}
-              onChange={handleChange}
-            />
+            {popular && <Popular movies={popular} />}
+            {topRated && <TopRated movies={topRated} />}
+            {upcoming && <Upcoming movies={upcoming} />}
+            {nowPlaying && <NowPlaying movie={nowPlaying} />}
           </>
         )}
       </Container>
-    </main>
+    </>
   );
 }

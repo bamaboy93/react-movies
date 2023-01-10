@@ -16,7 +16,7 @@
   display: inline-block;
 }
 
-.cast li:not(:last-child)::after {
+.item:not(:last-child)::after {
   content: ",";
   margin-right: 5px;
 }

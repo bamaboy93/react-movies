@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Fascinate&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap");
 
 $main-font: "Nunito", sans-serif;
-$logo-font: "Fascinate", cursive;
+$logo-font: "Kalam", cursive;
 $numbers-font: "Kdam Thmor Pro", sans-serif;
 
 $mobile: 320px;
@@ -15,3 +15,15 @@ $max-mobile: 767px;
 $min-tablet: 768px;
 $max-tablet: 1279px;
 $min-desktop: 1280px;
+
+// Transition Prop
+$cubic: cubic-bezier(0.4, 0, 0.2, 1);
+
+// Text-Box Shadows
+$title-text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
+  0px -4px 10px rgba(255, 255, 255, 0.3);
+
+$main-box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+  rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+$secondary-box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+  rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
