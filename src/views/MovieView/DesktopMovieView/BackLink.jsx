@@ -16,7 +16,7 @@ export default function BackLink() {
         fill="none"
       >
         <g
-          stroke="#2175FF"
+          stroke="#bf000a"
           strokeWidth="1.5"
           strokeLinejoin="round"
           strokeMiterlimit="10"

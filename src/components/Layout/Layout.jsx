@@ -5,15 +5,13 @@ import { useLocation } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 import Header from "./Header";
-
-import s from "./Layout.module.scss";
 import Footer from "./Footer";
 
 export default function Layout({ showHeader = [] }) {
   const { pathname } = useLocation();
 
   return (
-    <div className={s.wrapper}>
+    <>
       {showHeader.includes(pathname) && <Header />}
       <main>
         <Outlet />
@@ -28,6 +26,6 @@ export default function Layout({ showHeader = [] }) {
         draggable
         pauseOnHover
       />
-    </div>
+    </>
   );
 }

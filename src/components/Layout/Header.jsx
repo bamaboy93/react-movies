@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../services/firebase";
 
@@ -7,6 +8,7 @@ import UserInfo from "../UserInfo";
 import SearchLink from "../SearchLink/SearchLink";
 
 import { LinearProgress } from "@mui/material";
+import { FaCaretDown } from "react-icons/fa";
 import s from "./Layout.module.scss";
 
 export default function Header() {
@@ -20,24 +22,58 @@ export default function Header() {
     <header className={s.header}>
       <Container>
         <nav className={s.nav}>
-          <a className={s.logo} href="/">
+          <NavLink className={s.logo} to="/">
             MB
-          </a>
+          </NavLink>
 
           <ul className={s.navList}>
             <li className={s.navItem}>
-              <a className={s.navLink} href="/">
-                Home
-              </a>
+              <div className={s.dropdownWrapper}>
+                <a className={s.navLink} href="/">
+                  Home
+                  <FaCaretDown />
+                </a>
+                <div className={s.dropdown}>
+                  <ul className={s.dropdownList}>
+                    <li className={s.dropdownItem}>
+                      <a className={s.dropdownLink} href="/">
+                        Home
+                      </a>
+                    </li>
+                    <li className={s.dropdownItem}>
+                      <a className={s.dropdownLink} href="/">
+                        Popular
+                      </a>
+                    </li>
+                    <li className={s.dropdownItem}>
+                      <a className={s.dropdownLink} href="/">
+                        Top Rated
+                      </a>
+                    </li>
+                    <li className={s.dropdownItem}>
+                      <a className={s.dropdownLink} href="/">
+                        Upcoming
+                      </a>
+                    </li>
+                    <li className={s.dropdownItem}>
+                      <a className={s.dropdownLink} href="/">
+                        Favourites
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </li>
             <li className={s.navItem}>
               <a className={s.navLink} href="/">
                 Features
+                <FaCaretDown />
               </a>
             </li>
             <li className={s.navItem}>
               <a className={s.navLink} href="/">
                 Blog
+                <FaCaretDown />
               </a>
             </li>
           </ul>

@@ -1,12 +1,28 @@
 @import "../../styles/colors.scss";
 @import "../../styles/variables.scss";
 
-.title {
+.upperNav {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 20px;
+}
+
+.title {
   font-weight: 700;
   font-size: 24px;
   line-height: 1.2;
   text-shadow: $title-text-shadow;
+}
+
+.link {
+  font-weight: 700;
+  font-size: 18px;
+  color: $red;
+  transition: letter-spacing 250ms $cubic;
+
+  &:hover {
+    letter-spacing: 1.5px;
+  }
 }
 
 .swiper {

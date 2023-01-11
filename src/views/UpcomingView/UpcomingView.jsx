@@ -4,10 +4,7 @@ import Status from "../../services/status";
 import api from "../../services/api/movies-api";
 import usePagination from "../../hooks/usePagination";
 
-import Container from "../../components/Container";
-
 import MovieData from "../../components/MovieData";
-import Navigation from "../../components/Navigation";
 import Pagination from "../../components/Pagination";
 
 export default function UpcomingView() {
@@ -45,9 +42,7 @@ export default function UpcomingView() {
   }, [error, currentPage]);
 
   return (
-    <Container>
-      <Navigation />
-
+    <>
       {status === Status.PENDING}
 
       {status === Status.REJECTED}
@@ -65,6 +60,6 @@ export default function UpcomingView() {
           )}
         </>
       )}
-    </Container>
+    </>
   );
 }

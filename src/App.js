@@ -30,6 +30,7 @@ function App() {
                 showHeader={[
                   "/movies",
                   "/search",
+                  "/popular",
                   "/top_rated",
                   "/upcoming",
                   "/favourites",
@@ -44,6 +45,9 @@ function App() {
 
             <Route path="search" element={<QueryView />} />
             <Route path="search/:movieId" element={<MovieView />} />
+
+            <Route path="popular" element={<TopRatedView />} />
+            <Route path="popular/:movieId" element={<MovieView />} />
 
             <Route path="top_rated" element={<TopRatedView />} />
             <Route path="top_rated/:movieId" element={<MovieView />} />

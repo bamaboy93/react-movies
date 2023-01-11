@@ -2,7 +2,6 @@
 @import "../../styles/variables.scss";
 
 .mainWrapper {
-  width: 100vw;
   height: 100vh;
   padding-top: 150px;
   background-repeat: no-repeat !important;
@@ -64,7 +63,9 @@
 
 .overview {
   margin-bottom: 30px;
-  color: $main-text;
+  text-shadow: $title-text-shadow;
+
+  opacity: 0.8;
 }
 
 .block {
@@ -102,16 +103,21 @@
   font-size: 24px;
   text-transform: uppercase;
   letter-spacing: 3px;
+  transition: all 250ms $cubic;
 
   svg {
     width: 80px;
     height: 80px;
     margin-right: 20px;
     fill: currentColor;
-    transition: color 250ms $cubic;
+    opacity: 0.5;
+    transition: all 500ms $cubic;
   }
-
+  &:hover {
+    letter-spacing: 4px;
+  }
   &:hover svg {
     color: $hover-color;
+    opacity: 0.8;
   }
 }

@@ -51,12 +51,14 @@ img {
 }
 
 // Swiper Styles
-.swiper-pagination-bullet-active {
-  background-color: red !important;
-}
 
 .swiper-pagination-bullet {
   background-color: red !important;
   width: 15px !important;
   height: 15px !important;
+  opacity: 0.4 !important;
+}
+.swiper-pagination-bullet-active {
+  background-color: red !important;
+  opacity: 1 !important;
 }

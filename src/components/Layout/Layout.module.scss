@@ -5,14 +5,16 @@
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 999;
   width: 100%;
-  padding: 16px 0;
+  height: 75px;
   transition: all 0.3s ease;
   background-color: $header-bg-color;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 .nav {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,7 +38,9 @@
 }
 
 .navLink {
-  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  padding: 24px 0;
   font-size: 18px;
   font-weight: 600;
 
@@ -45,6 +49,59 @@
   &:hover {
     color: $hover-color;
   }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.dropdownWrapper {
+  position: relative;
+  height: 100%;
+  &:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-35%, 0);
+  }
+}
+
+.dropdown {
+  position: absolute;
+  width: 1100px;
+  background-color: #0f0f0ff0;
+
+  z-index: 777;
+  top: 100%;
+  left: 50%;
+  transform: translate(-35%, 15px);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 350ms ease-in;
+
+  box-shadow: $main-box-shadow;
+}
+
+.dropdownList {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px 0;
+}
+
+.dropdownItem {
+  width: 180px;
+  height: 240px;
+  background-color: aquamarine;
+  cursor: pointer;
+  transition: all 250ms ease-in;
+
+  &:hover {
+    transform: translateY(-1rem);
+  }
+}
+.dropdownLink {
+  width: 100%;
+  height: 100%;
 }
 
 .loginBlock {

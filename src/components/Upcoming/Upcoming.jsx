@@ -1,5 +1,7 @@
-import { Link, useLocation } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
+
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import s from "./Upcoming.module.scss";
 // Import Swiper styles
 import "swiper/css";
@@ -13,7 +15,12 @@ export default function Upcoming({ movies }) {
   const url = useLocation();
   return (
     <div className={s.swiper}>
-      <h2 className={s.title}>Top 20 Upcoming Movies</h2>
+      <div className={s.upperNav}>
+        <h2 className={s.title}>Top 20 Upcoming Movies</h2>
+        <NavLink className={s.link} to="/upcoming">
+          View All
+        </NavLink>
+      </div>
       <Swiper
         slidesPerView={4}
         grid={{
@@ -31,8 +38,12 @@ export default function Upcoming({ movies }) {
             <div className={s.slide}>
               <Link to={`${url.pathname}/${id}`}>
                 <img
-                  src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
-                  alt=""
+                  className={s.image}
+                  src={
+                    backdrop_path &&
+                    `https://image.tmdb.org/t/p/original${backdrop_path}`
+                  }
+                  alt="movie backdrop"
                 />
               </Link>
             </div>

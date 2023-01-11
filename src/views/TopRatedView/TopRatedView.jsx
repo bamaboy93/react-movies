@@ -3,10 +3,7 @@ import { useState, useEffect } from "react";
 import Status from "../../services/status";
 import api from "../../services/api/movies-api";
 
-import Container from "../../components/Container";
-
 import MovieData from "../../components/MovieData";
-import Navigation from "../../components/Navigation";
 import Pagination from "../../components/Pagination";
 
 import usePagination from "../../hooks/usePagination";
@@ -46,28 +43,24 @@ export default function UpcomingView() {
   }, [error, currentPage]);
 
   return (
-    <main>
-      <Container>
-        <Navigation />
+    <>
+      {status === Status.PENDING}
 
-        {status === Status.PENDING}
+      {status === Status.REJECTED}
 
-        {status === Status.REJECTED}
+      {status === Status.RESOLVED && (
+        <>
+          <MovieData movies={movies} />
 
-        {status === Status.RESOLVED && (
-          <>
-            <MovieData movies={movies} />
-
-            {totalpages > 1 && (
-              <Pagination
-                page={currentPage}
-                totalpages={totalpages}
-                onChange={handleChange}
-              />
-            )}
-          </>
-        )}
-      </Container>
-    </main>
+          {totalpages > 1 && (
+            <Pagination
+              page={currentPage}
+              totalpages={totalpages}
+              onChange={handleChange}
+            />
+          )}
+        </>
+      )}
+    </>
   );
 }

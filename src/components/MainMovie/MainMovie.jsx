@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-
-import { BsCaretRightSquare } from "react-icons/bs";
+import { Link, useLocation } from "react-router-dom";
+import { BsPlayCircle } from "react-icons/bs";
 
 import Status from "../../services/status";
 import api from "../../services/api/movies-api";
@@ -13,7 +13,16 @@ export default function MainMovie({ movie }) {
   const [actors, setActors] = useState(null);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
-  const { id } = movie;
+  const {
+    id,
+    backdrop_path,
+    title,
+    release_date,
+    vote_average,
+    adult,
+    overview,
+  } = movie;
+  const url = useLocation();
   // Cast
   useEffect(() => {
     api
@@ -32,7 +41,7 @@ export default function MainMovie({ movie }) {
     <div
       className={s.mainWrapper}
       style={{
-        background: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
+        background: `url(https://image.tmdb.org/t/p/original${backdrop_path})`,
       }}
     >
       <Container>
@@ -43,29 +52,27 @@ export default function MainMovie({ movie }) {
         </div>
         <div className={s.movieWrapper}>
           <div className={s.infoWrapper}>
-            <h1 className={s.title}>{movie.title}</h1>
+            <h1 className={s.title}>{title}</h1>
             <div className={s.info}>
               <div className={s.options}>
-                {movie.release_date && (
+                {release_date && (
                   <span className={s.year}>
-                    {movie.release_date.split("").slice(0, 4).join("")}
+                    {release_date.split("").slice(0, 4).join("")}
                   </span>
                 )}
 
-                {movie.vote_average && (
+                {vote_average && (
                   <span
-                    style={{ color: getColor(movie.vote_average) }}
+                    style={{ color: getColor(vote_average) }}
                     className={s.rating}
                   >
-                    {movie.vote_average}
+                    {vote_average}
                   </span>
                 )}
-                {movie.adult === true && (
-                  <span className={s.ageLimit}>18+</span>
-                )}
+                {adult === true && <span className={s.ageLimit}>18+</span>}
               </div>
 
-              {movie.overview && <p className={s.overview}>{movie.overview}</p>}
+              {overview && <p className={s.overview}>{overview}</p>}
             </div>
             {status === Status.RESOLVED && (
               <div className={s.block}>
@@ -81,10 +88,10 @@ export default function MainMovie({ movie }) {
             )}
           </div>
           <div className={s.linkWrapper}>
-            <a className={s.link} href="/">
-              <BsCaretRightSquare />
+            <Link to={`${url.pathname}/${id}`} className={s.link}>
+              <BsPlayCircle />
               <span>View Details</span>
-            </a>
+            </Link>
           </div>
         </div>
       </Container>

@@ -80,7 +80,7 @@ export default function HomePage() {
     api
       .getNowPlaying()
       .then(({ results }) => {
-        setNowPlaying(results[3]);
+        setNowPlaying(results[0]);
 
         setStatus(Status.RESOLVED);
       })
