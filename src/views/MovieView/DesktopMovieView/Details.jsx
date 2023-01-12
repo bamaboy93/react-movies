@@ -2,11 +2,11 @@ import { useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import getColor from "../../../services/getColor";
 
-import Cast from "../../../components/Cast";
 import s from "./DesktopMovieView.module.scss";
 
-export default function Overview({ movie, showInfo }) {
+export default function Overview({ cast, movie, showInfo }) {
   const nodeRef = useRef(null);
+  const { year, genres, runtime, score, overview } = movie;
 
   return (
     <CSSTransition
@@ -19,35 +19,42 @@ export default function Overview({ movie, showInfo }) {
     >
       <div className={s.info}>
         <div className={s.options}>
-          {movie.year && (
+          {year && (
             <span className={s.year}>
-              {movie.year.split("").slice(0, 4).join("")}
+              {year.split("").slice(0, 4).join("")}
             </span>
           )}
-          {movie.genres && (
+          {genres && (
             <span className={s.genre}>
-              {movie.genres.slice(0, 1).map((genre) => (
+              {genres.slice(0, 1).map((genre) => (
                 <span key={genre.id} className={s.item}>
                   {genre.name}
                 </span>
               ))}
             </span>
           )}
-          {movie.runtime && (
-            <span className={s.runtime}>{movie.runtime}min</span>
-          )}
+          {runtime && <span className={s.runtime}>{runtime}min</span>}
 
-          {movie.score && (
-            <span style={{ color: getColor(movie.score) }} className={s.rating}>
-              {movie.score.toFixed()}
-            </span>
+          {score && (
+            <p style={{ color: getColor(score) }} className={s.rating}>
+              {score.toFixed(2)} <span className={s.ratingAccent}>/10</span>
+            </p>
           )}
         </div>
 
-        {movie.overview && <p className={s.description}>{movie.overview}</p>}
+        {overview && <p className={s.description}>{overview}</p>}
 
         <div className={s.block}>
-          <Cast />
+          <h3 className={s.subtitle}>Starring</h3>
+          {cast && (
+            <ul className={s.cast}>
+              {cast.slice(0, 6).map(({ id, original_name }) => (
+                <li key={id} className={s.item}>
+                  {original_name}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </CSSTransition>

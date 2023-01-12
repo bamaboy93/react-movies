@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import Status from "../../services/status";
 import api from "../../services/api/movies-api";
@@ -11,8 +12,13 @@ import Popular from "../../components/Popular";
 import Upcoming from "../../components/Upcoming";
 import TopRated from "../../components/TopRated";
 import NowPlaying from "../../components/NowPlaying";
+import SearchBar from "../../components/SearchBar";
 
 export default function HomePage() {
+  const [query, setQuery] = useState("");
+  const [movies, setMovies] = useState(null);
+  const [currentQueryPage, setCurrentQueryPage] = useState(null);
+  const [totalpages, setTotalPages] = useState(null);
   const [popular, setPopular] = useState(null);
   const [upcoming, setUpcoming] = useState(null);
   const [topRated, setTopRated] = useState(null);
@@ -20,6 +26,62 @@ export default function HomePage() {
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  //////////Search Query
+
+  const handleFormSubmit = (newQuery) => {
+    if (newQuery === query) return;
+
+    setQuery(newQuery);
+    setMovies(null);
+    setCurrentQueryPage(null);
+    setTotalPages(null);
+
+    setStatus(Status.IDLE);
+    navigate({
+      search: `query=${newQuery}`,
+    });
+  };
+  useEffect(() => {
+    if (location.search === "") {
+      return;
+    }
+
+    const newSearch = new URLSearchParams(location.search).get("query");
+
+    setQuery(newSearch);
+    navigate({
+      search: `query=${newSearch}`,
+    });
+  }, [location.search, navigate]);
+
+  useEffect(() => {
+    if (!query) return;
+
+    setStatus(Status.PENDING);
+
+    api
+      .getMoviesByQuery(query, currentQueryPage)
+      .then(({ results, page, total_pages }) => {
+        if (results.length === 0) {
+          setStatus(Status.REJECTED);
+          return;
+        }
+
+        setMovies(results);
+        setStatus(Status.RESOLVED);
+        setCurrentQueryPage(page);
+        setTotalPages(total_pages);
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error);
+        setStatus(Status.REJECTED);
+      });
+  }, [query, currentQueryPage, error]);
 
   /////Popular Movies
   useEffect(() => {
@@ -93,6 +155,7 @@ export default function HomePage() {
   return (
     <>
       {movie ? <MainMovie movie={movie} /> : null}
+      <SearchBar onSubmit={handleFormSubmit} />
       <Container>
         {status === Status.PENDING}
         {status === Status.REJECTED && <ErrorWrapper />}

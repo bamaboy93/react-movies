@@ -12,6 +12,8 @@ const TopRatedView = lazy(() => import("./views/TopRatedView"));
 
 const UpcomingView = lazy(() => import("./views/UpcomingView"));
 
+const PopularView = lazy(() => import("./views/PopularView"));
+
 const MovieView = lazy(() => import("./views/MovieView"));
 
 const FavList = lazy(() => import("./views/FavList"));
@@ -46,7 +48,7 @@ function App() {
             <Route path="search" element={<QueryView />} />
             <Route path="search/:movieId" element={<MovieView />} />
 
-            <Route path="popular" element={<TopRatedView />} />
+            <Route path="popular" element={<PopularView />} />
             <Route path="popular/:movieId" element={<MovieView />} />
 
             <Route path="top_rated" element={<TopRatedView />} />

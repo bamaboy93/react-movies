@@ -2,11 +2,25 @@
 @import "../../styles/variables.scss";
 
 .mainWrapper {
+  position: relative;
   height: 100vh;
   padding-top: 150px;
   background-repeat: no-repeat !important;
   background-size: cover !important;
   background-position: center !important;
+  z-index: 1;
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    background: linear-gradient(90deg, rgba(#000, 0.2) 20%, transparent 80%);
+    z-index: -1;
+  }
 }
 
 .logoWrapper {
@@ -64,8 +78,6 @@
 .overview {
   margin-bottom: 30px;
   text-shadow: $title-text-shadow;
-
-  opacity: 0.8;
 }
 
 .block {
@@ -108,16 +120,15 @@
   svg {
     width: 80px;
     height: 80px;
-    margin-right: 20px;
+    margin-right: 40px;
     fill: currentColor;
     opacity: 0.5;
     transition: all 500ms $cubic;
   }
-  &:hover {
-    letter-spacing: 4px;
-  }
+
   &:hover svg {
     color: $hover-color;
     opacity: 0.8;
+    scale: 1.5;
   }
 }

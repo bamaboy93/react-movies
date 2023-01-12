@@ -1,7 +1,6 @@
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../services/firebase";
 
-import Cast from "../../../components/Cast";
 import SearchLink from "../../../components/SearchLink/SearchLink";
 import UserInfo from "../../../components/UserInfo";
 import Login from "../../../components/Login";
@@ -67,7 +66,6 @@ export default function DesktopMovieData({ movie, onToggle }) {
         <div className={s.infoWrapper}>
           <h2 className={s.movieTitle}>{movie.title}</h2>
 
-          <Cast />
           <h3 className={s.title}>About</h3>
           <p className={s.info}>{movie.overview}</p>
         </div>

@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Mousewheel, Keyboard } from "swiper";
+import { Pagination, EffectFade } from "swiper";
 
 import noImageFound from "../../styles/images/no-image.jpg";
 import s from "./ImagesSwiper.module.scss";
 
 import "swiper/scss";
-import "swiper/scss/navigation";
+import "swiper/scss/effect-fade";
 import "swiper/scss/pagination";
 
 import api from "../../services/api/movies-api";
@@ -44,13 +44,13 @@ export default function ImagesSwiper() {
         <>
           {images && (
             <Swiper
+              direction={"vertical"}
+              effect={"fade"}
               spaceBetween={30}
               pagination={{
                 clickable: true,
               }}
-              mousewheel={true}
-              keyboard={true}
-              modules={[Pagination, Mousewheel, Keyboard]}
+              modules={[Pagination, EffectFade]}
               className={s.swiper}
             >
               {images.slice(0, 8).map(({ vote_average, file_path }) => (

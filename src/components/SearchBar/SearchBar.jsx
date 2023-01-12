@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { ReactComponent as IconSearch } from "../../styles/icons/search.svg";
-import PropTypes from "prop-types";
+import { HiOutlineSearch } from "react-icons/hi";
+// import PropTypes from "prop-types";
 
 import s from "./SearchBar.module.scss";
 
-export default function Searchbar({ onSubmit }) {
+export default function SearchBar({ onSubmit }) {
   const [query, setQuery] = useState("");
 
   const handelQueryChange = (e) => {
@@ -24,23 +24,24 @@ export default function Searchbar({ onSubmit }) {
   };
 
   return (
-    <form className={s.searchForm} onSubmit={handleSubmit}>
-      <input
-        className={s.searchFormInput}
-        type="text"
-        value={query}
-        autoComplete="off"
-        placeholder="Search ..."
-        onChange={handelQueryChange}
-      />
-      <button type="submit" className={s.searchFormButton}>
-        <IconSearch />
-        <span className={s.searchFormButtonLabel}>Search</span>
-      </button>
-    </form>
+    <div className={s.searchBar}>
+      <form className={s.searchForm} onSubmit={handleSubmit}>
+        <button type="button" className={s.searchFormButton}>
+          <HiOutlineSearch />
+        </button>
+        <input
+          className={s.searchFormInput}
+          type="text"
+          value={query}
+          autoComplete="off"
+          placeholder="Search ..."
+          onChange={handelQueryChange}
+        />
+      </form>
+    </div>
   );
 }
 
-Searchbar.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
+// Searchbar.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+// };

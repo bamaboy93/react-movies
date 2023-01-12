@@ -7,7 +7,7 @@ export default function Loader() {
     <Container>
       <TailSpin
         ariaLabel="loading-indicator"
-        width="100"
+        width="240"
         strokeColor="#9896f1"
       />
     </Container>

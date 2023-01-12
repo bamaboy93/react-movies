@@ -5,7 +5,6 @@ import { auth } from "../../services/firebase";
 import Container from "../Container";
 import Login from "../Login";
 import UserInfo from "../UserInfo";
-import SearchLink from "../SearchLink/SearchLink";
 
 import { LinearProgress } from "@mui/material";
 import { FaCaretDown } from "react-icons/fa";
@@ -36,29 +35,29 @@ export default function Header() {
                 <div className={s.dropdown}>
                   <ul className={s.dropdownList}>
                     <li className={s.dropdownItem}>
-                      <a className={s.dropdownLink} href="/">
+                      <NavLink className={s.dropdownLink} to="/">
                         Home
-                      </a>
+                      </NavLink>
                     </li>
                     <li className={s.dropdownItem}>
-                      <a className={s.dropdownLink} href="/">
+                      <NavLink className={s.dropdownLink} to="/popular">
                         Popular
-                      </a>
+                      </NavLink>
                     </li>
                     <li className={s.dropdownItem}>
-                      <a className={s.dropdownLink} href="/">
+                      <NavLink className={s.dropdownLink} to="/top_rated">
                         Top Rated
-                      </a>
+                      </NavLink>
                     </li>
                     <li className={s.dropdownItem}>
-                      <a className={s.dropdownLink} href="/">
+                      <NavLink className={s.dropdownLink} to="/upcoming">
                         Upcoming
-                      </a>
+                      </NavLink>
                     </li>
                     <li className={s.dropdownItem}>
-                      <a className={s.dropdownLink} href="/">
+                      <NavLink className={s.dropdownLink} to="/favourites">
                         Favourites
-                      </a>
+                      </NavLink>
                     </li>
                   </ul>
                 </div>
@@ -77,61 +76,9 @@ export default function Header() {
               </a>
             </li>
           </ul>
-          <div className={s.loginBlock}>
-            <SearchLink />
-            {user ? <UserInfo /> : <Login />}
-          </div>
+          <div className={s.loginBlock}>{user ? <UserInfo /> : <Login />}</div>
         </nav>
       </Container>
     </header>
   );
 }
-
-<div class="nav-menu fixed-top">
-  <div class="container">
-    <nav class="nav">
-      <a class="logo" href="/">
-        <img
-          class="logo--img"
-          src="./images/logo-name.png"
-          alt="logotype"
-          width="143"
-          height="42"
-        />
-      </a>
-
-      <ul class="nav__list">
-        <li class="nav__item">
-          <a class="nav__link" href="#about">
-            About
-          </a>
-        </li>
-        <li class="nav__item">
-          <a class="nav__link" href="#news">
-            News
-          </a>
-        </li>
-        <li class="nav__item">
-          <a class="nav__link" href="#music">
-            Music
-          </a>
-        </li>
-        <li class="nav__item">
-          <a class="nav__link" href="#media">
-            Media
-          </a>
-        </li>
-        <li class="nav__item">
-          <a class="nav__link" href="#tours">
-            Tours
-          </a>
-        </li>
-        <li class="nav__item">
-          <a class="nav__link" href="#contacts">
-            Contacts
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</div>;

@@ -7,7 +7,7 @@ import s from "./DesktopMovieView.module.scss";
 
 export default function Overview({ movie, onToggle, showInfo }) {
   const nodeRef = useRef(null);
-
+  const { year, genres, runtime, score, adult, tagline } = movie;
   return (
     <CSSTransition
       in={showInfo}
@@ -19,33 +19,31 @@ export default function Overview({ movie, onToggle, showInfo }) {
     >
       <div className={s.info}>
         <div className={s.options}>
-          {movie.year && (
+          {year && (
             <span className={s.year}>
-              {movie.year.split("").slice(0, 4).join("")}
+              {year.split("").slice(0, 4).join("")}
             </span>
           )}
-          {movie.genres && (
+          {genres && (
             <span className={s.genre}>
-              {movie.genres.slice(0, 1).map((genre) => (
+              {genres.slice(0, 1).map((genre) => (
                 <span key={genre.id} className={s.item}>
                   {genre.name}
                 </span>
               ))}
             </span>
           )}
-          {movie.runtime && (
-            <span className={s.runtime}>{movie.runtime}min</span>
-          )}
+          {runtime && <span className={s.runtime}>{runtime}min</span>}
 
-          {movie.score && (
-            <span style={{ color: getColor(movie.score) }} className={s.rating}>
-              {movie.score.toFixed()}
-            </span>
+          {score && (
+            <p style={{ color: getColor(score) }} className={s.rating}>
+              {score.toFixed(2)} <span className={s.ratingAccent}>/10</span>
+            </p>
           )}
-          {movie.adult === true && <span className={s.ageLimit}>18+</span>}
+          {adult === true && <span className={s.ageLimit}>18+</span>}
         </div>
 
-        {movie.tagline && <p className={s.shortDesc}>{movie.tagline}</p>}
+        {tagline && <p className={s.shortDesc}>{tagline}</p>}
         <Buttons movie={movie} onToggle={onToggle} />
       </div>
     </CSSTransition>

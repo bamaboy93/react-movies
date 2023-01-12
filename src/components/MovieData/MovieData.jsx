@@ -18,6 +18,9 @@ export default function MovieData({ movies }) {
           {movies.map(({ id, poster_path, title, vote_average }) => (
             <li key={id} className={s.moviesItem}>
               <Link to={`${url.pathname}/${id}`}>
+                <div className={s.overlay}>
+                  <p className={s.overlayTitle}>{title}</p>
+                </div>
                 <div className={s.voteOverlay}>
                   <p
                     style={{ color: getColor(vote_average) }}

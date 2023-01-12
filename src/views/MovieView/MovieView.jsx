@@ -6,6 +6,7 @@ import Status from "../../services/status";
 import api from "../../services/api/movies-api";
 import noImageFound from "../../styles/images/noimage.jpg";
 
+import Loader from "../../components/Loader";
 import Container from "../../components/Container";
 import PopUp from "../../components/PopUp";
 import Trailer from "../../components/Trailer";
@@ -17,6 +18,7 @@ import DesktopMovieView from "./DesktopMovieView";
 function MovieView() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
+  const [actors, setActors] = useState(null);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
   const [showPopUp, setPopUp] = useState(false);
@@ -67,13 +69,27 @@ function MovieView() {
       });
   }, [movieId, error]);
 
+  useEffect(() => {
+    api
+      .getCastInfo(movieId)
+      .then((cast) => {
+        setActors(cast);
+        setStatus(Status.RESOLVED);
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error);
+        setStatus(Status.REJECTED);
+      });
+  }, [movieId, error]);
+
   const togglePopUp = () => {
     setPopUp(!showPopUp);
   };
 
   return (
     <>
-      {status === Status.PENDING}
+      {status === Status.PENDING && <Loader />}
 
       {status === Status.REJECTED}
 
@@ -87,7 +103,11 @@ function MovieView() {
           {isMobile && <MobileMovieView movie={movie} onToggle={togglePopUp} />}
 
           {!isMobile && (
-            <DesktopMovieView movie={movie} onToggle={togglePopUp} />
+            <DesktopMovieView
+              cast={actors}
+              movie={movie}
+              onToggle={togglePopUp}
+            />
           )}
           <Container>
             <ImagesSwiper />
