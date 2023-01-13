@@ -24,6 +24,8 @@ export default function QueryPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  console.log(navigate);
+
   ////////////////Pagination
   const PER_PAGE = 20;
   const pages = usePagination(totalpages, PER_PAGE);
@@ -89,15 +91,7 @@ export default function QueryPage() {
 
   return (
     <Container>
-      <SearchBar onSubmit={handleFormSubmit} />
-
-      {status === Status.IDLE && (
-        <div className={s.wrapper}>
-          <h2 className={s.title}>
-            Millions of movies, series and actors. Explore now!
-          </h2>
-        </div>
-      )}
+      {status === Status.IDLE}
 
       {status === Status.REJECTED && <ErrorWrapper query={query} />}
 

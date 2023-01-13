@@ -90,7 +90,7 @@ export default function MainMovie({ movie }) {
           <div className={s.linkWrapper}>
             <Link to={`${url.pathname}/${id}`} className={s.link}>
               <BsPlayCircle />
-              <span>View Details</span>
+              <span>Watch Now</span>
             </Link>
           </div>
         </div>

@@ -28,10 +28,10 @@ export default function Header() {
           <ul className={s.navList}>
             <li className={s.navItem}>
               <div className={s.dropdownWrapper}>
-                <a className={s.navLink} href="/">
+                <p className={s.navLink}>
                   Home
                   <FaCaretDown />
-                </a>
+                </p>
                 <div className={s.dropdown}>
                   <ul className={s.dropdownList}>
                     <li className={s.dropdownItem}>
