@@ -13,6 +13,14 @@
   background-size: cover;
   background-attachment: fixed;
 
+  @media screen and (min-width: $tablet) {
+    height: 500px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    height: 650px;
+  }
+
   &::before {
     content: "";
     position: absolute;
@@ -36,16 +44,32 @@
 
 .title {
   display: inline-block;
-  max-width: 650px;
+  max-width: 320px;
   margin-bottom: 60px;
   font-weight: 700;
-  font-size: 56px;
+  font-size: 36px;
   line-height: 1;
   text-shadow: $title-text-shadow;
+  @media screen and (min-width: $tablet) {
+    max-width: 400px;
+    font-size: 42px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    max-width: 650px;
+    font-size: 56px;
+  }
 }
 
 .info {
-  max-width: 650px;
+  max-width: 320px;
+  @media screen and (min-width: $tablet) {
+    max-width: 400px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    max-width: 650px;
+  }
 }
 .options {
   display: flex;
@@ -57,19 +81,34 @@
   margin-right: 20px;
   font-family: $numbers-font;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 18px;
   text-shadow: $title-text-shadow;
+
+  @media screen and (min-width: $desktop) {
+    font-size: 24px;
+  }
 }
 
 .rating {
   font-family: $numbers-font;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
   text-shadow: $title-text-shadow;
+
+  @media screen and (min-width: $desktop) {
+    font-size: 20px;
+  }
 }
 
 .overview {
   text-shadow: $title-text-shadow;
+}
+
+.posterWrapper {
+  display: none;
+  @media screen and (min-width: $desktop) {
+    display: block;
+  }
 }
 
 .link {

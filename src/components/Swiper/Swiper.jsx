@@ -16,9 +16,21 @@ export default function SwiperCarousel({ movies }) {
   return (
     <Swiper
       style={{ "--swiper-navigation-color": "#e50914" }}
-      slidesPerView={6}
+      slidesPerView={1}
       spaceBetween={15}
       loop={true}
+      breakpoints={{
+        // when window width is >= 768px
+        768: {
+          width: 768,
+          slidesPerView: 4,
+        },
+        // when window width is >= 1280px
+        1280: {
+          width: 1280,
+          slidesPerView: 6,
+        },
+      }}
       autoplay={{
         delay: 2500,
         disableOnInteraction: false,

@@ -4,10 +4,10 @@
 .mainWrapper {
   position: relative;
   min-height: 100vh;
-  padding-top: 150px;
+  padding-top: 120px;
   background-repeat: no-repeat !important;
   background-size: cover !important;
-  background-position: center !important;
+
   z-index: 1;
   &:before {
     content: "";
@@ -21,40 +21,67 @@
     background: linear-gradient(90deg, rgba(#000, 0.2) 20%, transparent 80%);
     z-index: -1;
   }
+
+  @media screen and (min-width: $tablet) {
+    padding-top: 150px;
+  }
 }
 
 .logoWrapper {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   padding: 10px 10px 10px 15px;
   width: 260px;
   border-left: 5px solid $red;
   background: transparent
     linear-gradient(270deg, rgba(11, 1, 2, 0) 0%, rgba(255, 55, 65, 0.3) 100%);
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 30px;
+  }
 }
 .logoLink {
   font-weight: 700;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1;
   color: $red;
+  @media screen and (min-width: $tablet) {
+    font-size: 24px;
+  }
 }
 .movieWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @media screen and (min-width: $tablet) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 .title {
   display: inline-block;
-  max-width: 650px;
-  margin-bottom: 20px;
+  max-width: 320px;
+  margin-bottom: 30px;
   font-weight: 700;
   font-size: 72px;
   line-height: 1;
   text-shadow: $title-text-shadow;
+
+  @media screen and (min-width: $tablet) {
+    max-width: 450px;
+    font-size: 56px;
+  }
+  @media screen and (min-width: $desktop) {
+    max-width: 650px;
+    font-size: 72px;
+  }
 }
 
 .info {
-  max-width: 650px;
+  max-width: 320px;
+  @media screen and (min-width: $tablet) {
+    max-width: 400px;
+  }
+  @media screen and (min-width: $desktop) {
+    max-width: 650px;
+  }
 }
 .options {
   display: flex;
@@ -65,14 +92,22 @@
 .year {
   font-family: $numbers-font;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 18px;
   margin-right: 20px;
+
+  @media screen and (min-width: $desktop) {
+    font-size: 24px;
+  }
 }
 
 .rating {
   font-family: $numbers-font;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
+
+  @media screen and (min-width: $desktop) {
+    font-size: 20px;
+  }
 }
 
 .overview {
@@ -81,8 +116,17 @@
 }
 
 .block {
-  max-width: 650px;
-  display: flex;
+  max-width: 320px;
+
+  @media screen and (max-width: $max-mobile) {
+    margin-bottom: 20px;
+  }
+  @media screen and (min-width: $tablet) {
+    max-width: 400px;
+  }
+  @media screen and (min-width: $desktop) {
+    max-width: 650px;
+  }
 }
 
 .subtitle {
@@ -95,6 +139,9 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
+    font-size: 16px;
+  }
 }
 
 .item {
@@ -117,6 +164,15 @@
   letter-spacing: 3px;
   transition: all 250ms $cubic;
 
+  @media screen and (max-width: $max-mobile) {
+    display: none;
+  }
+
+  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
+    margin-right: 0;
+    font-size: 20px;
+  }
+
   svg {
     width: 80px;
     height: 80px;
@@ -124,11 +180,43 @@
     fill: currentColor;
     opacity: 0.5;
     transition: all 500ms $cubic;
+    @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
+      width: 60px;
+      height: 60px;
+      margin-right: 20px;
+    }
   }
 
   &:hover svg {
     color: $hover-color;
     opacity: 0.8;
     scale: 1.5;
+  }
+}
+
+.mobileLinkView {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+
+  transition: all 250ms $cubic;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    fill: currentColor;
+
+    transition: all 500ms $cubic;
+  }
+  &:hover svg {
+    color: $hover-color;
+    scale: 1.1;
+  }
+  @media screen and (min-width: $tablet) {
+    display: none;
   }
 }

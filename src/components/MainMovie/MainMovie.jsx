@@ -70,6 +70,10 @@ export default function MainMovie({ movie }) {
                   </span>
                 )}
                 {adult === true && <span className={s.ageLimit}>18+</span>}
+                <Link to={`${url.pathname}/${id}`} className={s.mobileLinkView}>
+                  <BsPlayCircle />
+                  <span>Watch Now</span>
+                </Link>
               </div>
 
               {overview && <p className={s.overview}>{overview}</p>}

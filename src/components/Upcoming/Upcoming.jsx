@@ -14,7 +14,7 @@ import { Grid, Pagination } from "swiper";
 export default function Upcoming({ movies }) {
   const url = useLocation();
   return (
-    <div className={s.swiper}>
+    <div className={s.swiperContainer}>
       <div className={s.upperNav}>
         <h2 className={s.title}>Top 20 Upcoming Movies</h2>
         <NavLink className={s.link} to="/upcoming">
@@ -22,7 +22,7 @@ export default function Upcoming({ movies }) {
         </NavLink>
       </div>
       <Swiper
-        slidesPerView={4}
+        slidesPerView={3}
         grid={{
           rows: 2,
           fill: "row",
@@ -33,15 +33,16 @@ export default function Upcoming({ movies }) {
         }}
         modules={[Grid, Pagination]}
       >
-        {movies.map(({ id, backdrop_path, title }) => (
-          <SwiperSlide key={id}>
-            <div className={s.slide}>
+        {movies.map(({ id, poster_path, backdrop_path, title }) => (
+          <SwiperSlide key={id} className={s.swiperSlides}>
+            <div className={s.slideSwiper}>
               <Link to={`${url.pathname}/${id}`}>
                 <img
                   className={s.image}
                   src={
-                    backdrop_path &&
-                    `https://image.tmdb.org/t/p/original${backdrop_path}`
+                    backdrop_path
+                      ? `https://image.tmdb.org/t/p/original${backdrop_path}`
+                      : `https://image.tmdb.org/t/p/original/84XcRwKHAw4VXdKOYTSW5ARxFEt.jpg`
                   }
                   alt="movie backdrop"
                 />

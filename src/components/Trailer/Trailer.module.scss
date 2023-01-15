@@ -3,11 +3,11 @@
 .iframe {
   width: 310px;
   height: 240px;
-  @media (min-width: $min-tablet) and (max-width: $max-tablet) {
+  @media (min-width: $tablet) and (max-width: $max-tablet) {
     width: 760px;
     height: 576px;
   }
-  @media (min-width: $min-desktop) {
+  @media (min-width: $desktop) {
     width: 960px;
     height: 540px;
   }

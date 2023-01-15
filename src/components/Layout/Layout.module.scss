@@ -25,12 +25,18 @@
   font-weight: 700;
   font-size: 42px;
   line-height: 1;
-
   color: $red;
+
+  @media screen and (max-width: $max-mobile) {
+    padding: 15px 0;
+  }
 }
 
 .navList {
-  display: flex;
+  display: none;
+  @media screen and (min-width: $tablet) {
+    display: flex;
+  }
 }
 
 .navItem:not(:last-child) {
@@ -59,7 +65,8 @@
 .dropdownWrapper {
   position: relative;
   height: 100%;
-  &:hover .dropdown {
+  &:hover .dropdown,
+  &:focus .dropdown {
     opacity: 1;
     visibility: visible;
     transform: translate(-35%, 0);
@@ -68,18 +75,25 @@
 
 .dropdown {
   position: absolute;
-  width: 1100px;
+  width: 600px;
   background-color: #0f0f0ff0;
 
   z-index: 777;
   top: 100%;
-  left: 50%;
+  left: 100%;
   transform: translate(-35%, 15px);
   visibility: hidden;
   opacity: 0;
   transition: all 350ms ease-in;
 
   box-shadow: $main-box-shadow;
+
+  @media screen and (min-width: $desktop) {
+    width: 1100px;
+    top: 100%;
+    left: 50%;
+    transform: translate(-35%, 15px);
+  }
 }
 
 .dropdownList {
@@ -89,11 +103,16 @@
 }
 
 .dropdownItem {
-  width: 180px;
-  height: 240px;
+  width: 100px;
+  height: 160px;
   background-color: grey;
   cursor: pointer;
   transition: all 250ms ease-in;
+
+  @media screen and (min-width: $desktop) {
+    width: 180px;
+    height: 240px;
+  }
 
   &:hover {
     transform: translateY(-1rem);
@@ -130,25 +149,58 @@
 .footer {
   padding: 40px 0;
   background-color: $footer-bg-color;
+  @media screen and (max-width: $max-mobile) {
+    text-align: center;
+  }
 }
 
 .footerWrapper {
-  display: flex;
+  @media screen and (min-width: $tablet) {
+    display: flex;
+  }
+}
+
+.footerWrapperColumn {
+  @media screen and (min-width: $tablet) {
+    display: flex;
+  }
+  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
+    flex-direction: column;
+  }
 }
 
 .footerLinks {
-  width: 500px;
+  @media screen and (min-width: $tablet) {
+    width: 100%;
+  }
+  @media screen and (min-width: $desktop) {
+    width: 500px;
+  }
 }
 
 .footerLinksList {
-  display: flex;
-  justify-content: space-between;
   margin-bottom: 30px;
+  @media screen and (min-width: $desktop) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.footerLinksItem:not(:last-child) {
+  @media screen and (max-width: $max-mobile) {
+    margin-bottom: 20px;
+  }
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 10px;
+  }
 }
 
 .footerLinksLink {
   font-size: 16px;
   transition: color 250ms $cubic;
+  @media screen and (min-width: $tablet) {
+    font-size: 14px;
+  }
   &:hover {
     color: $hover-color;
   }
@@ -165,11 +217,22 @@
 }
 
 .footerSocials {
-  margin-left: 150px;
+  @media screen and (max-width: $max-mobile) {
+    margin-top: 20px;
+  }
+  @media screen and (min-width: $desktop) {
+    margin-left: 150px;
+  }
 }
 
 .footerSocialsList {
   display: flex;
+  @media screen and (max-width: $max-mobile) {
+    justify-content: center;
+  }
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 40px;
+  }
 }
 
 .footerSocialsItem {
@@ -205,11 +268,19 @@
 }
 
 .footerStore {
-  margin-left: auto;
+  @media screen and (max-width: $max-mobile) {
+    margin-top: 20px;
+  }
+  @media screen and (min-width: $desktop) {
+    margin-left: 150px;
+  }
 }
 
 .footerStoreList {
   display: flex;
+  @media screen and (max-width: $max-mobile) {
+    justify-content: center;
+  }
 }
 
 .footerStoreItem:not(:last-child) {
