@@ -6,11 +6,10 @@ import api from "../../services/api/movies-api";
 import usePagination from "../../hooks/usePagination";
 
 import MovieData from "../../components/MovieData";
-import ErrorWrapper from "../../components/ErrorWrapper";
-import SearchBar from "../../components/SearchBar";
+
 import Pagination from "../../components/Pagination";
 
-import s from "./QueryView.module.scss";
+// import s from "./QueryView.module.scss";
 import Container from "../../components/Container";
 
 export default function QueryPage() {
@@ -38,19 +37,19 @@ export default function QueryPage() {
 
   //////////Search Query
 
-  const handleFormSubmit = (newQuery) => {
-    if (newQuery === query) return;
+  // const handleFormSubmit = (newQuery) => {
+  //   if (newQuery === query) return;
 
-    setQuery(newQuery);
-    setMovies(null);
-    setCurrentQueryPage(null);
-    setTotalPages(null);
+  //   setQuery(newQuery);
+  //   setMovies(null);
+  //   setCurrentQueryPage(null);
+  //   setTotalPages(null);
 
-    setStatus(Status.IDLE);
-    navigate({
-      search: `query=${newQuery}`,
-    });
-  };
+  //   setStatus(Status.IDLE);
+  //   navigate({
+  //     search: `query=${newQuery}`,
+  //   });
+  // };
   useEffect(() => {
     if (location.search === "") {
       return;
@@ -93,7 +92,7 @@ export default function QueryPage() {
     <Container>
       {status === Status.IDLE}
 
-      {status === Status.REJECTED && <ErrorWrapper query={query} />}
+      {status === Status.REJECTED}
 
       {status === Status.RESOLVED && (
         <>

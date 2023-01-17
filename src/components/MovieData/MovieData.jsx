@@ -1,34 +1,37 @@
 import { Link, useLocation } from "react-router-dom";
-import getColor from "../../services/getColor";
+
 // import PropTypes from "prop-types";
 import noImageFound from "../../styles/images/noimage.jpg";
 import Container from "../Container";
 import MainMovie from "../MainMovie";
-
-import s from "./MovieData.module.scss";
+import {
+  MovieCard,
+  MoviesList,
+  MoviesListItem,
+  MovieTitle,
+  Overlay,
+  OverlayTitle,
+  OverlayVote,
+  Rating,
+} from "./MovieData.styled";
 
 export default function MovieData({ movies }) {
   const url = useLocation();
 
   return (
     <>
-      <MainMovie movie={movies[0]} />
+      {movies && <MainMovie movie={movies[0]} />}
       <Container>
-        <ul className={s.moviesList}>
+        <MoviesList>
           {movies.map(({ id, poster_path, title, vote_average }) => (
-            <li key={id} className={s.moviesItem}>
+            <MoviesListItem key={id}>
               <Link to={`${url.pathname}/${id}`}>
-                <div className={s.overlay}>
-                  <p className={s.overlayTitle}>{title}</p>
-                </div>
-                <div className={s.voteOverlay}>
-                  <p
-                    style={{ color: getColor(vote_average) }}
-                    className={s.vote}
-                  >
-                    {vote_average.toFixed()}
-                  </p>
-                </div>
+                <Overlay>
+                  <OverlayTitle>{title}</OverlayTitle>
+                </Overlay>
+                <OverlayVote>
+                  <Rating>{vote_average.toFixed()}</Rating>
+                </OverlayVote>
                 <img
                   src={
                     poster_path
@@ -37,14 +40,13 @@ export default function MovieData({ movies }) {
                   }
                   alt={title}
                 />
-
-                <div className={s.movieCard}>
-                  <p className={s.movieTitle}>{title}</p>
-                </div>
+                <MovieCard>
+                  <MovieTitle>{title}</MovieTitle>
+                </MovieCard>
               </Link>
-            </li>
+            </MoviesListItem>
           ))}
-        </ul>
+        </MoviesList>
       </Container>
     </>
   );

@@ -6,7 +6,24 @@ import Status from "../../services/status";
 import api from "../../services/api/movies-api";
 
 import Container from "../Container";
-import getColor from "../../services/getColor";
+import {
+  MainWrapper,
+  LogoWrapper,
+  LogoLink,
+  MovieWrapper,
+  InfoWrapper,
+  MainTitle,
+  Info,
+  Options,
+  OptionsItem,
+  Rating,
+  Overview,
+  Block,
+  Subtitle,
+  CastList,
+  CastListItem,
+  LinkWrapper,
+} from "./MainMovie.styled";
 import s from "./MainMovie.module.scss";
 
 export default function MainMovie({ movie }) {
@@ -38,67 +55,57 @@ export default function MainMovie({ movie }) {
       });
   }, [id, error]);
   return (
-    <div
-      className={s.mainWrapper}
-      style={{
-        background: `url(https://image.tmdb.org/t/p/original${backdrop_path})`,
-      }}
-    >
+    <MainWrapper backdrop={backdrop_path}>
       <Container>
-        <div className={s.logoWrapper}>
-          <a className={s.logoLink} href="/">
-            Movie Base
-          </a>
-        </div>
-        <div className={s.movieWrapper}>
-          <div className={s.infoWrapper}>
-            <h1 className={s.title}>{title}</h1>
-            <div className={s.info}>
-              <div className={s.options}>
+        <LogoWrapper>
+          <LogoLink href="/">Movie Base</LogoLink>
+        </LogoWrapper>
+        <MovieWrapper>
+          <InfoWrapper>
+            <MainTitle>{title}</MainTitle>
+            <Info>
+              <Options>
                 {release_date && (
-                  <span className={s.year}>
+                  <OptionsItem>
                     {release_date.split("").slice(0, 4).join("")}
-                  </span>
+                  </OptionsItem>
                 )}
-
                 {vote_average && (
-                  <span
-                    style={{ color: getColor(vote_average) }}
-                    className={s.rating}
-                  >
-                    {vote_average}
-                  </span>
+                  <Rating vote={vote_average}>{vote_average}</Rating>
                 )}
-                {adult === true && <span className={s.ageLimit}>18+</span>}
+                {adult === true && (
+                  <OptionsItem className={s.ageLimit}>18+</OptionsItem>
+                )}
                 <Link to={`${url.pathname}/${id}`} className={s.mobileLinkView}>
                   <BsPlayCircle />
                   <span>Watch Now</span>
                 </Link>
-              </div>
+              </Options>
 
-              {overview && <p className={s.overview}>{overview}</p>}
-            </div>
-            {status === Status.RESOLVED && (
-              <div className={s.block}>
-                <h2 className={s.subtitle}>Starring:</h2>
-                <ul className={s.cast}>
+              {overview && <Overview>{overview}</Overview>}
+            </Info>
+
+            {status === status.RESOLVED && (
+              <Block>
+                <Subtitle>Starring:</Subtitle>
+                <CastList>
                   {actors.slice(0, 4).map((actor) => (
-                    <li key={actor.id} className={s.item}>
+                    <CastListItem key={actor.id}>
                       {actor.original_name}
-                    </li>
+                    </CastListItem>
                   ))}
-                </ul>
-              </div>
+                </CastList>
+              </Block>
             )}
-          </div>
-          <div className={s.linkWrapper}>
+          </InfoWrapper>
+          <LinkWrapper>
             <Link to={`${url.pathname}/${id}`} className={s.link}>
               <BsPlayCircle />
               <span>Watch Now</span>
             </Link>
-          </div>
-        </div>
+          </LinkWrapper>
+        </MovieWrapper>
       </Container>
-    </div>
+    </MainWrapper>
   );
 }

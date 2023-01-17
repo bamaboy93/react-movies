@@ -1,57 +1,45 @@
 import { NavLink, Link, useLocation } from "react-router-dom";
 
-import { Swiper, SwiperSlide } from "swiper/react";
+import Container from "../Container";
+import noImage from "../../styles/images/no-image.jpg";
 
-import s from "./Upcoming.module.scss";
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/grid";
-import "swiper/css/pagination";
+import {
+  Section,
+  Nav,
+  Title,
+  MovieList,
+  MovieListItem,
+  MovieTitle,
+} from "./Upcoming.styled";
 
-// import required modules
-import { Grid, Pagination } from "swiper";
-
-export default function Upcoming({ movies }) {
+export default function Upcoming({ movies, title }) {
   const url = useLocation();
   return (
-    <div className={s.swiperContainer}>
-      <div className={s.upperNav}>
-        <h2 className={s.title}>Top 20 Upcoming Movies</h2>
-        <NavLink className={s.link} to="/upcoming">
-          View All
-        </NavLink>
-      </div>
-      <Swiper
-        slidesPerView={3}
-        grid={{
-          rows: 2,
-          fill: "row",
-        }}
-        spaceBetween={15}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Grid, Pagination]}
-      >
-        {movies.map(({ id, poster_path, backdrop_path, title }) => (
-          <SwiperSlide key={id} className={s.swiperSlides}>
-            <div className={s.slideSwiper}>
+    <Section>
+      <Container>
+        <Nav>
+          <Title>{title}</Title>
+          <NavLink to="/popular">View All</NavLink>
+        </Nav>
+        <MovieList>
+          {movies.slice(0, 10).map(({ id, backdrop_path, title }) => (
+            <MovieListItem key={id}>
               <Link to={`${url.pathname}/${id}`}>
                 <img
-                  className={s.image}
                   src={
                     backdrop_path
                       ? `https://image.tmdb.org/t/p/original${backdrop_path}`
-                      : `https://image.tmdb.org/t/p/original/84XcRwKHAw4VXdKOYTSW5ARxFEt.jpg`
+                      : `${noImage}`
                   }
                   alt="movie backdrop"
                 />
               </Link>
-            </div>
-            <p className={s.slideTitle}>{title}</p>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
+
+              <MovieTitle>{title}</MovieTitle>
+            </MovieListItem>
+          ))}
+        </MovieList>
+      </Container>
+    </Section>
   );
 }

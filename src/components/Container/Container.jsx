@@ -1,7 +1,5 @@
-import s from "./Container.module.scss";
+import { MainContainer } from "./Container.styled";
 
-const Container = ({ children }) => (
-  <div className={s.container}>{children}</div>
-);
-
-export default Container;
+export default function Containerr({ children }) {
+  return <MainContainer>{children}</MainContainer>;
+}

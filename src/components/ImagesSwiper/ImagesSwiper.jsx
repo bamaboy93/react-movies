@@ -53,7 +53,7 @@ export default function ImagesSwiper() {
               modules={[Pagination, EffectFade]}
               className={s.swiper}
             >
-              {images.slice(0, 8).map(({ vote_average, file_path }) => (
+              {images.slice(0, 8).map(({ file_path }) => (
                 <SwiperSlide key={file_path} className={s.slide}>
                   <img
                     src={

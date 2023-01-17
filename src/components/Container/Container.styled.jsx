@@ -1,14 +1,16 @@
-.container {
+import styled from "@emotion/styled";
+
+export const MainContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   padding: 0px 15px;
 
-  @media screen and (min-width: 375px) {
+  @media (min-width: 375px) {
     width: 375px;
     padding: 0px 15px;
   }
 
-  @media screen and (min-width: 768px) {
+  @media (min-width: 768px) {
     width: 768px;
     padding: 0px 30px;
   }
@@ -16,4 +18,4 @@
     width: 1280px;
     padding: 0px 15px;
   }
-}
+`;

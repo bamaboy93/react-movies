@@ -1,59 +1,72 @@
-import noImageFound from "../../styles/images/noimage.jpg";
-import getColor from "../../services/getColor";
-import s from "./NowPlaying.module.scss";
 import { BsFillPlayFill } from "react-icons/bs";
+import noImageFound from "../../styles/images/noimage.jpg";
+import Container from "../Container";
+import {
+  InfoWrapper,
+  LinkPlay,
+  MovieInfo,
+  MovieTitle,
+  MovieWrapper,
+  Option,
+  Options,
+  Overview,
+  PosterWrapper,
+  Rating,
+  Section,
+  Wrapper,
+} from "./NowPlaying.styled";
 
 export default function NowPlaying({ movie }) {
-  const { poster_path, backdrop_path, title, overview, vote_average, adult } =
-    movie;
+  const {
+    poster_path,
+    backdrop_path,
+    title,
+    overview,
+    release_date,
+    vote_average,
+    adult,
+  } = movie;
   return (
-    <div
-      className={s.wrapper}
-      style={{
-        backgroundImage: `url(https://image.tmdb.org/t/p/original${backdrop_path})`,
-      }}
-    >
-      <div className={s.movieWrapper}>
-        <div className={s.infoWrapper}>
-          <h1 className={s.title}>{title}</h1>
-          <div className={s.info}>
-            <div className={s.options}>
-              {movie.release_date && (
-                <span className={s.year}>
-                  {movie.release_date.split("").slice(0, 4).join("")}
-                </span>
-              )}
+    <Section>
+      <Container>
+        <Wrapper backdrop={backdrop_path}>
+          <MovieWrapper>
+            <InfoWrapper>
+              <MovieTitle>{title}</MovieTitle>
+              <MovieInfo>
+                <Options>
+                  {release_date && (
+                    <Option>
+                      {release_date.split("").slice(0, 4).join("")}
+                    </Option>
+                  )}
+                  {vote_average && (
+                    <Rating vote={vote_average}>{vote_average}</Rating>
+                  )}
+                  {adult === true && <Option>18+</Option>}
+                </Options>
 
-              {movie.vote_average && (
-                <span
-                  style={{ color: getColor(vote_average) }}
-                  className={s.rating}
-                >
-                  {movie.vote_average}
-                </span>
-              )}
-              {adult === true && <span className={s.ageLimit}>18+</span>}
-            </div>
+                {overview && <Overview>{overview}</Overview>}
 
-            {movie.overview && <p className={s.overview}>{overview}</p>}
-
-            <a className={s.link} href="/">
-              <BsFillPlayFill /> <span className={s.linkText}>Watch Now</span>
-            </a>
-          </div>
-        </div>
-        <div className={s.posterWrapper}>
-          <img
-            src={
-              poster_path
-                ? `https://image.tmdb.org/t/p/w500${poster_path}`
-                : `${noImageFound}`
-            }
-            alt={title}
-            width={350}
-          />
-        </div>
-      </div>
-    </div>
+                <LinkPlay href="/">
+                  <BsFillPlayFill /> Watch Now
+                </LinkPlay>
+              </MovieInfo>
+            </InfoWrapper>
+            <PosterWrapper>
+              <img
+                src={
+                  poster_path
+                    ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                    : `${noImageFound}`
+                }
+                alt={title}
+                width={350}
+              />
+            </PosterWrapper>
+          </MovieWrapper>
+        </Wrapper>
+      </Container>
+    </Section>
   );
 }

@@ -6,32 +6,32 @@ import {
   deleteFavourite,
   inFavourites,
 } from "../../services/localStorage";
-
-import s from "./Buttons.module.scss";
+import { Box, ButtonTrailer, ButtonFav } from "./Buttons.styled";
 
 export default function Buttons({ movie, onToggle }) {
+  const { id } = movie;
   const [fav, setFav] = useState(false);
 
   const onFavourite = () => {
     if (fav) {
-      deleteFavourite(movie.id);
+      deleteFavourite(id);
     } else {
       addFavourite(movie);
     }
     setFav(!fav);
   };
   useEffect(() => {
-    setFav(inFavourites(movie.id));
-  }, [movie.id]);
+    setFav(inFavourites(id));
+  }, [id]);
   return (
-    <div className={s.btnBox}>
-      <button type="button" onClick={onToggle} className={s.youBtn}>
+    <Box>
+      <ButtonTrailer type="button" onClick={onToggle}>
         Trailer
-      </button>
-      <button type="button" className={s.favBtn} onClick={onFavourite}>
+      </ButtonTrailer>
+      <ButtonFav type="button" onClick={onFavourite}>
         {fav ? <MdFavorite /> : <MdFavoriteBorder />}
-      </button>
-    </div>
+      </ButtonFav>
+    </Box>
   );
 }
 

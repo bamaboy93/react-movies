@@ -1,12 +1,13 @@
-@import "../../styles/colors.scss";
-@import "../../styles/variables.scss";
+import styled from "@emotion/styled";
 
-.btnBox {
+export const Box = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 30px;
-}
-.youBtn {
+  }
+`;
+
+export const ButtonTrailer = styled.button`
   width: max-content;
   max-width: 100%;
   font-size: 18px;
@@ -19,15 +20,15 @@
   border-radius: 5%;
   display: flex;
   align-items: center;
-  transition: filter 300ms;
-  color: $white;
+  transition: filter 250ms;
+  color: ${(props) => props.theme.colors.white};
   margin-right: 15px;
   &:hover {
     filter: brightness(1.2);
   }
-}
+`;
 
-.favBtn {
+export const ButtonFav = styled.button`
   width: 38px;
   height: 38px;
   outline: none;
@@ -39,7 +40,7 @@
   align-items: center;
 
   transition: filter 300ms;
-  color: #c63636;
+  color: ${(props) => props.theme.colors.red};
 
   &:hover {
     filter: brightness(1.2);
@@ -49,4 +50,4 @@
     width: 100%;
     height: 100%;
   }
-}
+`;

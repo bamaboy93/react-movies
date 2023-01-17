@@ -1,24 +1,20 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+// import { useNavigate, useLocation } from "react-router-dom";
 
 import Status from "../../services/status";
 import api from "../../services/api/movies-api";
 
-import Container from "../../components/Container";
-
 import MainMovie from "../../components/MainMovie";
-import ErrorWrapper from "../../components/ErrorWrapper";
-import Popular from "../../components/Popular";
+import Section from "../../components/Section";
 import Upcoming from "../../components/Upcoming";
-import TopRated from "../../components/TopRated";
 import NowPlaying from "../../components/NowPlaying";
-import SearchBar from "../../components/SearchBar";
+// import SearchBar from "../../components/SearchBar";
 
 export default function HomePage() {
-  const [query, setQuery] = useState("");
-  const [movies, setMovies] = useState(null);
-  const [currentQueryPage, setCurrentQueryPage] = useState(null);
-  const [totalpages, setTotalPages] = useState(null);
+  // const [query, setQuery] = useState("");
+  // const [movies, setMovies] = useState(null);
+  // const [currentQueryPage, setCurrentQueryPage] = useState(null);
+  // const [totalpages, setTotalPages] = useState(null);
   const [popular, setPopular] = useState(null);
   const [upcoming, setUpcoming] = useState(null);
   const [topRated, setTopRated] = useState(null);
@@ -27,61 +23,61 @@ export default function HomePage() {
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
 
-  const navigate = useNavigate();
-  const location = useLocation();
+  // const navigate = useNavigate();
+  // const location = useLocation();
 
   //////////Search Query
 
-  const handleFormSubmit = (newQuery) => {
-    if (newQuery === query) return;
+  // const handleFormSubmit = (newQuery) => {
+  //   if (newQuery === query) return;
 
-    setQuery(newQuery);
-    setMovies(null);
-    setCurrentQueryPage(null);
-    setTotalPages(null);
+  //   setQuery(newQuery);
+  //   setMovies(null);
+  //   setCurrentQueryPage(null);
+  //   setTotalPages(null);
 
-    setStatus(Status.IDLE);
-    navigate({
-      search: `query=${newQuery}`,
-    });
-  };
-  useEffect(() => {
-    if (location.search === "") {
-      return;
-    }
+  //   setStatus(Status.IDLE);
+  //   navigate({
+  //     search: `query=${newQuery}`,
+  //   });
+  // };
+  // useEffect(() => {
+  //   if (location.search === "") {
+  //     return;
+  //   }
 
-    const newSearch = new URLSearchParams(location.search).get("query");
+  //   const newSearch = new URLSearchParams(location.search).get("query");
 
-    setQuery(newSearch);
-    navigate({
-      search: `query=${newSearch}`,
-    });
-  }, [location.search, navigate]);
+  //   setQuery(newSearch);
+  //   navigate({
+  //     search: `query=${newSearch}`,
+  //   });
+  // }, [location.search, navigate]);
 
-  useEffect(() => {
-    if (!query) return;
+  // useEffect(() => {
+  //   if (!query) return;
 
-    setStatus(Status.PENDING);
+  //   setStatus(Status.PENDING);
 
-    api
-      .getMoviesByQuery(query, currentQueryPage)
-      .then(({ results, page, total_pages }) => {
-        if (results.length === 0) {
-          setStatus(Status.REJECTED);
-          return;
-        }
+  //   api
+  //     .getMoviesByQuery(query, currentQueryPage)
+  //     .then(({ results, page, total_pages }) => {
+  //       if (results.length === 0) {
+  //         setStatus(Status.REJECTED);
+  //         return;
+  //       }
 
-        setMovies(results);
-        setStatus(Status.RESOLVED);
-        setCurrentQueryPage(page);
-        setTotalPages(total_pages);
-      })
-      .catch((error) => {
-        console.log(error);
-        setError(error);
-        setStatus(Status.REJECTED);
-      });
-  }, [query, currentQueryPage, error]);
+  //       setMovies(results);
+  //       setStatus(Status.RESOLVED);
+  //       setCurrentQueryPage(page);
+  //       setTotalPages(total_pages);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       setError(error);
+  //       setStatus(Status.REJECTED);
+  //     });
+  // }, [query, currentQueryPage, error]);
 
   /////Popular Movies
   useEffect(() => {
@@ -155,19 +151,20 @@ export default function HomePage() {
   return (
     <>
       {movie ? <MainMovie movie={movie} /> : null}
-      <SearchBar onSubmit={handleFormSubmit} />
-      <Container>
-        {status === Status.PENDING}
-        {status === Status.REJECTED && <ErrorWrapper />}
-        {status === Status.RESOLVED && (
-          <>
-            {popular && <Popular movies={popular} />}
-            {topRated && <TopRated movies={topRated} />}
-            {upcoming && <Upcoming movies={upcoming} />}
-            {nowPlaying && <NowPlaying movie={nowPlaying} />}
-          </>
-        )}
-      </Container>
+      {/* <SearchBar onSubmit={handleFormSubmit} /> */}
+
+      {status === Status.PENDING}
+      {status === Status.REJECTED}
+      {status === Status.RESOLVED && (
+        <>
+          {popular && <Section movies={popular} title={"Popular"} />}
+          {topRated && <Section movies={topRated} title={"Top Rated"} />}
+          {upcoming && (
+            <Upcoming movies={upcoming} title={"Top 10 Upcoming Movies"} />
+          )}
+          {nowPlaying && <NowPlaying movie={nowPlaying} />}
+        </>
+      )}
     </>
   );
 }

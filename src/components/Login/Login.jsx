@@ -1,14 +1,12 @@
 import { signInWithGoogle } from "../../services/firebase";
 
-import s from "./Login.module.scss";
+import { Button } from "./Login.styled";
 import { FaRegUser } from "react-icons/fa";
 
-const Login = () => {
+export default function Login() {
   return (
-    <button className={s.button} onClick={signInWithGoogle}>
+    <Button onClick={signInWithGoogle}>
       <FaRegUser />
-    </button>
+    </Button>
   );
-};
-
-export default Login;
+}

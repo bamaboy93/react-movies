@@ -1,7 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import { LinearProgress } from "@mui/material";
+// import { LinearProgress } from "@mui/material";
 
 const Layout = lazy(() => import("./components/Layout"));
 
@@ -24,7 +24,7 @@ const NotFoundView = lazy(() => import("./views/NotFoundView"));
 function App() {
   return (
     <>
-      <Suspense fallback={<LinearProgress color="secondary" />}>
+      <Suspense fallback={"Loading"}>
         <Routes>
           <Route
             path="/"
