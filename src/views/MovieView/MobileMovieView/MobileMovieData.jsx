@@ -1,12 +1,10 @@
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../services/firebase";
 
-import SearchLink from "../../../components/SearchLink/SearchLink";
 import UserInfo from "../../../components/UserInfo";
 import Login from "../../../components/Login";
 import Container from "../../../components/Container";
 
-import { LinearProgress } from "@mui/material";
 import s from "./MobileMovieData.module.scss";
 import Buttons from "../../../components/Buttons/Buttons";
 
@@ -14,36 +12,19 @@ export default function DesktopMovieData({ movie, onToggle }) {
   const [user, loading] = useAuthState(auth);
 
   if (loading) {
-    return <LinearProgress color="secondary" />;
+    return "Loading";
   }
-  function getColor(vote) {
-    const num = vote.toFixed();
-    if (num >= 8) {
-      return "#7dd87d";
-    } else if (num < 8 && num >= 5) {
-      return "#eec60a";
-    } else {
-      return "#eb2632";
-    }
-  }
+
   return (
     <>
-      <div className={s.navWrapper}>
-        <SearchLink />
-        {user ? <UserInfo /> : <Login />}
-      </div>
+      <div className={s.navWrapper}>{user ? <UserInfo /> : <Login />}</div>
 
       <Container>
         <div className={s.wrapper}>
           <div className={s.posterWrapper}>
             <img className={s.image} src={movie.src} alt={movie.title} />
             <div className={s.overlayScore}>
-              <p
-                style={{ color: getColor(movie.score) }}
-                className={s.infoScore}
-              >
-                {movie.score.toFixed()}
-              </p>
+              <p className={s.infoScore}>{movie.score.toFixed()}</p>
             </div>
           </div>
           <div className={s.sideWrapper}>

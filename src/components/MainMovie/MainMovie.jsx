@@ -24,7 +24,6 @@ import {
   CastListItem,
   LinkWrapper,
 } from "./MainMovie.styled";
-import s from "./MainMovie.module.scss";
 
 export default function MainMovie({ movie }) {
   const [actors, setActors] = useState(null);
@@ -73,10 +72,8 @@ export default function MainMovie({ movie }) {
                 {vote_average && (
                   <Rating vote={vote_average}>{vote_average}</Rating>
                 )}
-                {adult === true && (
-                  <OptionsItem className={s.ageLimit}>18+</OptionsItem>
-                )}
-                <Link to={`${url.pathname}/${id}`} className={s.mobileLinkView}>
+                {adult === true && <OptionsItem>18+</OptionsItem>}
+                <Link to={`${url.pathname}/${id}`}>
                   <BsPlayCircle />
                   <span>Watch Now</span>
                 </Link>
@@ -99,7 +96,7 @@ export default function MainMovie({ movie }) {
             )}
           </InfoWrapper>
           <LinkWrapper>
-            <Link to={`${url.pathname}/${id}`} className={s.link}>
+            <Link to={`${url.pathname}/${id}`}>
               <BsPlayCircle />
               <span>Watch Now</span>
             </Link>

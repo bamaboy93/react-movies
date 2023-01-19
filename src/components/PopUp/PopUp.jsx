@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 
-import s from "./PopUp.module.scss";
+import { Modal, Overlay } from "./PopUp.styled";
 
 const modalRoot = document.querySelector("#modal-root");
 const PopUp = ({ onClose, children }) => {
@@ -24,9 +24,9 @@ const PopUp = ({ onClose, children }) => {
     }
   };
   return createPortal(
-    <div className={s.modaloverlay} onClick={handleBackdropClick}>
-      <div className={s.modal}>{children}</div>
-    </div>,
+    <Overlay onClick={handleBackdropClick}>
+      <Modal>{children}</Modal>
+    </Overlay>,
     modalRoot
   );
 };

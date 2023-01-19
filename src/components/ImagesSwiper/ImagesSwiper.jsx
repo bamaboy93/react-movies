@@ -54,7 +54,7 @@ export default function ImagesSwiper() {
               className={s.swiper}
             >
               {images.slice(0, 8).map(({ file_path }) => (
-                <SwiperSlide key={file_path} className={s.slide}>
+                <SwiperSlide key={file_path}>
                   <img
                     src={
                       file_path

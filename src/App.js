@@ -19,8 +19,6 @@ const MovieView = lazy(() => import("./views/MovieView"));
 
 const FavList = lazy(() => import("./views/FavList"));
 
-const NotFoundView = lazy(() => import("./views/NotFoundView"));
-
 function App() {
   return (
     <>
@@ -60,8 +58,6 @@ function App() {
 
             <Route path="favourites" element={<FavList />} />
             <Route path="favourites/:movieId" element={<MovieView />} />
-
-            <Route path="*" element={<NotFoundView />} />
           </Route>
         </Routes>
       </Suspense>

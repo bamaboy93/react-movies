@@ -31,7 +31,7 @@ export const MovieListItem = styled.li`
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   transition: all 500ms ease-in;
 
-  ::before {
+  :before {
     content: "";
     position: absolute;
     top: 0;
@@ -39,9 +39,9 @@ export const MovieListItem = styled.li`
     width: 100%;
     height: 100%;
     opacity: 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
     border-left: 4px solid ${(props) => props.theme.colors.hoverColor};
-    transition: opacity 500ms ease-in;
+    transition: opacity 300ms ease-in;
   }
 
   &:hover,
@@ -49,8 +49,8 @@ export const MovieListItem = styled.li`
     transform: scale3d(1.05, 1.05, 1) translate3d(0, 0, 0) perspective(31.25em);
     transform-origin: 50% 50%;
   }
-  &:hover $::before,
-  &:focus ::before {
+  &:hover:before,
+  &:focus:before {
     opacity: 1;
   }
 `;

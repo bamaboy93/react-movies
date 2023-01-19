@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 
 import api from "../../services/api/movies-api";
 import Status from "../../services/status";
-import s from "./Trailer.module.scss";
 
 import VideoError from "../VideoError/VideoError";
+import { Video } from "./Trailer.styled";
 
 export default function Trailer() {
   const { movieId } = useParams();
@@ -36,21 +36,19 @@ export default function Trailer() {
   return (
     <>
       {status === Status.RESOLVED && (
-        <ul>
+        <>
           {trailer.slice(0, 1).map((tr) => (
-            <li key={tr.id}>
-              <iframe
-                className={s.iframe}
-                src={`https://www.youtube.com/embed/${tr.key}`}
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </li>
+            <Video
+              key={tr.id}
+              src={`https://www.youtube.com/embed/${tr.key}`}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></Video>
           ))}
-          <li>{trailer.length === 0 && <VideoError />}</li>
-        </ul>
+          {trailer.length === 0 && <VideoError />}
+        </>
       )}
 
       {status === Status.REJECTED && <p>{error.message}</p>}

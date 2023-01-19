@@ -2,7 +2,7 @@ import Pagination from "@mui/material/Pagination";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import PropTypes from "prop-types";
 
-import s from "./Pagination.module.scss";
+import { Wrapper } from "./Pagination.styled";
 
 const theme = createTheme({
   components: {
@@ -20,7 +20,7 @@ const theme = createTheme({
 export default function MoviePagination({ page, totalpages, onChange }) {
   const pages = totalpages > 500 ? 500 : totalpages;
   return (
-    <div className={s.wrapper}>
+    <Wrapper>
       <ThemeProvider theme={theme}>
         <Pagination
           count={pages}
@@ -29,7 +29,7 @@ export default function MoviePagination({ page, totalpages, onChange }) {
           size="large"
         />
       </ThemeProvider>
-    </div>
+    </Wrapper>
   );
 }
 
