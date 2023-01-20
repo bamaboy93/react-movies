@@ -18,3 +18,9 @@ export const Title = styled.h2`
   text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
     0px -4px 10px rgba(255, 255, 255, 0.3);
 `;
+
+export const Link = styled.a`
+  font-weight: 700;
+  font-size: 18px;
+  color: ${(props) => props.theme.colors.red};
+`;

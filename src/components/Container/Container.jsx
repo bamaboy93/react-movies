@@ -1,5 +1,5 @@
 import { MainContainer } from "./Container.styled";
 
-export default function Containerr({ children }) {
+export default function Container({ children }) {
   return <MainContainer>{children}</MainContainer>;
 }

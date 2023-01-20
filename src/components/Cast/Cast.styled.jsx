@@ -5,6 +5,10 @@ export const CastList = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 15px;
+  @media (min-width: 768px) and (max-width: 1279px) {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+  }
 `;
 
 export const CastListItem = styled.li`

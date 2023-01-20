@@ -7,13 +7,11 @@ import api from "../../services/api/movies-api";
 import noImageFound from "../../styles/images/noimage.jpg";
 
 import Loader from "../../components/Loader";
-import Container from "../../components/Container";
 import PopUp from "../../components/PopUp";
 import Trailer from "../../components/Trailer";
-import ImagesSwiper from "../../components/ImagesSwiper";
 
-import MobileMovieView from "./MobileMovieView";
-import DesktopMovieView from "./DesktopMovieView";
+import SingleMovie from "../../components/SingleMovie";
+import SingleMovieMobile from "../../components/SingleMovieMobile";
 
 function MovieView() {
   const { movieId } = useParams();
@@ -100,18 +98,17 @@ function MovieView() {
               <Trailer />
             </PopUp>
           )}
-          {isMobile && <MobileMovieView movie={movie} onToggle={togglePopUp} />}
-
-          {!isMobile && (
-            <DesktopMovieView
-              cast={actors}
+          {isMobile && (
+            <SingleMovieMobile
               movie={movie}
+              cast={actors}
               onToggle={togglePopUp}
             />
           )}
-          <Container>
-            <ImagesSwiper />
-          </Container>
+
+          {!isMobile && (
+            <SingleMovie cast={actors} movie={movie} onToggle={togglePopUp} />
+          )}
         </>
       )}
     </>

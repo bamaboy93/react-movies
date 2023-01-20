@@ -4,8 +4,7 @@ import getColor from "../../services/getColor";
 export const MainWrapper = styled.div`
   position: relative;
   min-height: 100vh;
-  padding-top: 120px;
-
+  width: 100%;
   background-image: ${(props) =>
     `url(https://image.tmdb.org/t/p/original${props.backdrop})`};
   background-repeat: no-repeat !important;
@@ -21,13 +20,24 @@ export const MainWrapper = styled.div`
     left: 0;
     top: 0;
 
-    background: linear-gradient(90deg, rgba(#000, 0.2) 20%, transparent 80%);
-    z-index: -1;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  @media screen and (max-width: 767px) {
+    background-position: center !important;
   }
 
   @media screen and (min-width: 768px) {
     padding-top: 150px;
   }
+`;
+
+export const Wrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
 `;
 
 export const LogoWrapper = styled.div`
@@ -67,7 +77,7 @@ export const MainTitle = styled.h1`
   max-width: 320px;
   margin-bottom: 30px;
   font-weight: 700;
-  font-size: 72px;
+  font-size: 42px;
   line-height: 1;
   text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
     0px -4px 10px rgba(255, 255, 255, 0.3);

@@ -9,10 +9,13 @@ export const NavigationWrapper = styled.div`
 `;
 
 export const NavigationItem = styled.button`
-  position: relative;
+  border: none;
+  outline: transparent;
+  background-color: transparent;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.4em;
+  color: ${(props) => props.theme.colors.white};
 
   cursor: pointer;
   &:not(:last-child) {

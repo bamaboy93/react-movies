@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../services/firebase";
 import { FaCaretDown } from "react-icons/fa";
@@ -20,9 +21,14 @@ import {
 } from "./Header.styled";
 
 import s from "./Layout.module.scss";
+import MobileMenu from "../MobileMenu/MobileMenu";
 
 export default function Header() {
   const [user, loading] = useAuthState(auth);
+
+  const isMobile = useMediaQuery({
+    query: "(max-width: 767px)",
+  });
 
   if (loading) {
     return "Loading";
@@ -87,7 +93,11 @@ export default function Header() {
               </LinkTo>
             </NavListItem>
           </NavList>
-          <LoginBlock>{user ? <UserInfo /> : <Login />}</LoginBlock>
+          {isMobile ? (
+            <MobileMenu />
+          ) : (
+            <LoginBlock>{user ? <UserInfo /> : <Login />}</LoginBlock>
+          )}
         </Nav>
       </Container>
     </HeaderLine>

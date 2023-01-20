@@ -87,7 +87,7 @@ export default function HomePage() {
       .getPopularMovies()
       .then(({ results }) => {
         setPopular(results);
-        setMovie(results[7]);
+        setMovie(results[2]);
 
         setStatus(Status.RESOLVED);
       })

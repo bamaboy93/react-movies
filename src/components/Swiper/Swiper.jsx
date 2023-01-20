@@ -9,6 +9,7 @@ import "swiper/scss/navigation";
 
 import { Navigation, Autoplay } from "swiper";
 import {
+  Image,
   MovieTitle,
   MovieTitleOverlay,
   Overlay,
@@ -54,7 +55,7 @@ export default function SwiperCarousel({ movies }) {
                 </OverlayVote>
                 <OverlayTitle>{title}</OverlayTitle>
               </Overlay>
-              <img
+              <Image
                 src={
                   poster_path
                     ? `https://image.tmdb.org/t/p/w300${poster_path}`

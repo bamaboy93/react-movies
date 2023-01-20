@@ -23,6 +23,7 @@ import {
   CastList,
   CastListItem,
   LinkWrapper,
+  Wrapper,
 } from "./MainMovie.styled";
 
 export default function MainMovie({ movie }) {
@@ -55,54 +56,56 @@ export default function MainMovie({ movie }) {
   }, [id, error]);
   return (
     <MainWrapper backdrop={backdrop_path}>
-      <Container>
-        <LogoWrapper>
-          <LogoLink href="/">Movie Base</LogoLink>
-        </LogoWrapper>
-        <MovieWrapper>
-          <InfoWrapper>
-            <MainTitle>{title}</MainTitle>
-            <Info>
-              <Options>
-                {release_date && (
-                  <OptionsItem>
-                    {release_date.split("").slice(0, 4).join("")}
-                  </OptionsItem>
-                )}
-                {vote_average && (
-                  <Rating vote={vote_average}>{vote_average}</Rating>
-                )}
-                {adult === true && <OptionsItem>18+</OptionsItem>}
-                <Link to={`${url.pathname}/${id}`}>
-                  <BsPlayCircle />
-                  <span>Watch Now</span>
-                </Link>
-              </Options>
+      <Wrapper>
+        <Container>
+          <LogoWrapper>
+            <LogoLink href="/">Movie Base</LogoLink>
+          </LogoWrapper>
+          <MovieWrapper>
+            <InfoWrapper>
+              <MainTitle>{title}</MainTitle>
+              <Info>
+                <Options>
+                  {release_date && (
+                    <OptionsItem>
+                      {release_date.split("").slice(0, 4).join("")}
+                    </OptionsItem>
+                  )}
+                  {vote_average && (
+                    <Rating vote={vote_average}>{vote_average}</Rating>
+                  )}
+                  {adult === true && <OptionsItem>18+</OptionsItem>}
+                  <Link to={`${url.pathname}/${id}`}>
+                    <BsPlayCircle />
+                    <span>Watch Now</span>
+                  </Link>
+                </Options>
 
-              {overview && <Overview>{overview}</Overview>}
-            </Info>
+                {overview && <Overview>{overview}</Overview>}
+              </Info>
 
-            {status === status.RESOLVED && (
-              <Block>
-                <Subtitle>Starring:</Subtitle>
-                <CastList>
-                  {actors.slice(0, 4).map((actor) => (
-                    <CastListItem key={actor.id}>
-                      {actor.original_name}
-                    </CastListItem>
-                  ))}
-                </CastList>
-              </Block>
-            )}
-          </InfoWrapper>
-          <LinkWrapper>
-            <Link to={`${url.pathname}/${id}`}>
-              <BsPlayCircle />
-              <span>Watch Now</span>
-            </Link>
-          </LinkWrapper>
-        </MovieWrapper>
-      </Container>
+              {status === status.RESOLVED && (
+                <Block>
+                  <Subtitle>Starring:</Subtitle>
+                  <CastList>
+                    {actors.slice(0, 4).map((actor) => (
+                      <CastListItem key={actor.id}>
+                        {actor.original_name}
+                      </CastListItem>
+                    ))}
+                  </CastList>
+                </Block>
+              )}
+            </InfoWrapper>
+            <LinkWrapper>
+              <Link to={`${url.pathname}/${id}`}>
+                <BsPlayCircle />
+                <span>Watch Now</span>
+              </Link>
+            </LinkWrapper>
+          </MovieWrapper>
+        </Container>
+      </Wrapper>
     </MainWrapper>
   );
 }

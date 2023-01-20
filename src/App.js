@@ -1,8 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-// import { LinearProgress } from "@mui/material";
-
 const Layout = lazy(() => import("./components/Layout"));
 
 const HomeView = lazy(() => import("./views/HomeView"));

@@ -67,6 +67,10 @@ export const OverlayVote = styled.p`
   color: ${(props) => getColor(props.vote)};
 `;
 
+export const Image = styled.img`
+  width: 100%;
+`;
+
 export const OverlayTitle = styled.p`
   position: absolute;
   top: 50%;
