@@ -4,7 +4,7 @@ import getColor from "../../services/getColor";
 export const MovieScreen = styled.div`
   position: relative;
   min-height: 100vh;
-  padding: 90px 70px 70px 90px;
+  padding: 50px;
   background-image: ${(props) =>
     `url(https://image.tmdb.org/t/p/original${props.backdrop})`};
   background-repeat: no-repeat !important;
@@ -12,7 +12,7 @@ export const MovieScreen = styled.div`
 
   z-index: 1;
   @media (min-width: 768px) and (max-width: 1279px) {
-    padding: 60px 50px;
+    padding: 30px;
   }
   @media (min-width: 1280px) {
     background-position: center !important;
@@ -31,12 +31,15 @@ export const MovieScreen = styled.div`
   }
 `;
 
-export const TitleWrapper = styled.div`
-  position: relative;
-  margin-bottom: 30px;
+export const MovieWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export const Title = styled.h1`
+  margin-bottom: 50px;
   max-width: 500px;
   font-size: 60px;
   font-weight: 700;
@@ -44,6 +47,9 @@ export const Title = styled.h1`
 
   text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
     0px -4px 10px rgba(255, 255, 255, 0.3);
+  @media (min-width: 768px) and (max-width: 1279px) {
+    font-size: 42px;
+  }
 `;
 
 export const Options = styled.div`
@@ -54,6 +60,8 @@ export const Options = styled.div`
 
 export const Year = styled.p`
   font-family: ${(props) => props.theme.fonts.numbers};
+  font-weight: 700;
+  font-size: 22px;
   margin-right: 20px;
   text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
     0px -4px 10px rgba(255, 255, 255, 0.3);
@@ -62,6 +70,7 @@ export const Year = styled.p`
 export const Genre = styled.p`
   margin-right: 20px;
   font-weight: 700;
+  font-size: 20px;
   text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
     0px -4px 10px rgba(255, 255, 255, 0.3);
 `;

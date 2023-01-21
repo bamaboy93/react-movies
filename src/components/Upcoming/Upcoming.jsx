@@ -1,4 +1,4 @@
-import { NavLink, Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import Container from "../Container";
 import noImage from "../../styles/images/no-image.jpg";
@@ -10,6 +10,7 @@ import {
   MovieList,
   MovieListItem,
   MovieTitle,
+  LinkTo,
 } from "./Upcoming.styled";
 
 export default function Upcoming({ movies, title }) {
@@ -19,7 +20,7 @@ export default function Upcoming({ movies, title }) {
       <Container>
         <Nav>
           <Title>{title}</Title>
-          <NavLink to="/popular">View All</NavLink>
+          <LinkTo to="/popular">View All</LinkTo>
         </Nav>
         <MovieList>
           {movies.slice(0, 10).map(({ id, backdrop_path, title }) => (

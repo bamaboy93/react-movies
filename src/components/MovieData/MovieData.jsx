@@ -30,7 +30,11 @@ export default function MovieData({ movies }) {
                   <OverlayTitle>{title}</OverlayTitle>
                 </Overlay>
                 <OverlayVote>
-                  <Rating>{vote_average.toFixed()}</Rating>
+                  {vote_average && (
+                    <Rating vote={vote_average}>
+                      {vote_average.toFixed()}
+                    </Rating>
+                  )}
                 </OverlayVote>
                 <img
                   src={

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 import getColor from "../../services/getColor";
 
 export const MainWrapper = styled.div`
@@ -75,7 +76,7 @@ export const InfoWrapper = styled.div``;
 export const MainTitle = styled.h1`
   display: inline-block;
   max-width: 320px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   font-weight: 700;
   font-size: 42px;
   line-height: 1;
@@ -177,7 +178,7 @@ export const CastListItem = styled.li`
 
 export const LinkWrapper = styled.div``;
 
-export const Link = styled.a`
+export const WatchLink = styled(Link)`
   display: flex;
   align-items: center;
   margin-right: 80px;
@@ -185,7 +186,7 @@ export const Link = styled.a`
   font-size: 24px;
   text-transform: uppercase;
   letter-spacing: 3px;
-  transition: ${(props) => props.transition.main};
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media screen and (max-width: 767px) {
     display: none;
@@ -202,7 +203,7 @@ export const Link = styled.a`
     margin-right: 40px;
     fill: currentColor;
     opacity: 0.5;
-    transition: ${(props) => props.transition.main};
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
     @media screen and (min-width: 768px) and (max-width: 1279px) {
       width: 60px;
       height: 60px;
@@ -214,5 +215,33 @@ export const Link = styled.a`
     color: ${(props) => props.theme.colors.hoverColor}
     opacity: 0.8;
     scale: 1.5;
+  }
+`;
+
+export const MobileWatchLink = styled(Link)`
+  display: flex;
+  align-items: center;
+
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+
+  svg {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    fill: ${(props) => props.theme.colors.hoverColor};
+
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &:hover svg {
+    scale: 1.2;
   }
 `;

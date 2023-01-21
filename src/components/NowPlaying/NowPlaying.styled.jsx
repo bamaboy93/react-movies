@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 import getColor from "../../services/getColor";
 
 export const Section = styled.section`
@@ -116,7 +117,7 @@ export const Overview = styled.p`
     0px -4px 10px rgba(255, 255, 255, 0.3);
 `;
 
-export const LinkPlay = styled.a`
+export const LinkWatch = styled(Link)`
   display: inline-flex;
   align-items: center;
   margin-top: 30px;

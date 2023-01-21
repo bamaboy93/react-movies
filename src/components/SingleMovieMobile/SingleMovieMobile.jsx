@@ -1,6 +1,8 @@
 import BackLink from "../BackLink";
+import Buttons from "../Buttons";
 import CastMobile from "../CastMobile";
 import Container from "../Container";
+import ImagesSwiper from "../ImagesSwiper";
 import {
   InfoWrapper,
   MovieWrapper,
@@ -14,12 +16,13 @@ import {
   PosterWrapper,
   Subtitle,
   Runtime,
+  PageWrapper,
 } from "./SingleMovieMobile.styled";
 
 export default function SingleMovieMobile({ movie, cast, onToggle }) {
   const { src, title, score, year, overview, runtime } = movie;
   return (
-    <>
+    <PageWrapper>
       <Container>
         <BackLink />
         <MovieWrapper>
@@ -41,10 +44,11 @@ export default function SingleMovieMobile({ movie, cast, onToggle }) {
             <Runtime>{runtime}min</Runtime>
           </InfoWrapper>
         </MovieWrapper>
-
+        <Buttons movie={movie} onToggle={onToggle} />
         <Overview>{overview}</Overview>
       </Container>
       <CastMobile cast={cast} />
-    </>
+      <ImagesSwiper />
+    </PageWrapper>
   );
 }

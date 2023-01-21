@@ -1,3 +1,4 @@
+import { LinearProgress } from "@mui/material";
 import { lazy, Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
@@ -20,7 +21,7 @@ const FavList = lazy(() => import("./views/FavList"));
 function App() {
   return (
     <>
-      <Suspense fallback={"Loading"}>
+      <Suspense fallback={<LinearProgress />}>
         <Routes>
           <Route
             path="/"

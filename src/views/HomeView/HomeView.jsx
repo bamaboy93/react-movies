@@ -8,6 +8,7 @@ import MainMovie from "../../components/MainMovie";
 import Section from "../../components/Section";
 import Upcoming from "../../components/Upcoming";
 import NowPlaying from "../../components/NowPlaying";
+
 // import SearchBar from "../../components/SearchBar";
 
 export default function HomePage() {

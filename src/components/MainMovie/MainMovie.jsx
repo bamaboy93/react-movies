@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { BsPlayCircle } from "react-icons/bs";
 
 import Status from "../../services/status";
@@ -24,6 +24,8 @@ import {
   CastListItem,
   LinkWrapper,
   Wrapper,
+  WatchLink,
+  MobileWatchLink,
 } from "./MainMovie.styled";
 
 export default function MainMovie({ movie }) {
@@ -75,10 +77,10 @@ export default function MainMovie({ movie }) {
                     <Rating vote={vote_average}>{vote_average}</Rating>
                   )}
                   {adult === true && <OptionsItem>18+</OptionsItem>}
-                  <Link to={`${url.pathname}/${id}`}>
+                  <MobileWatchLink to={`${url.pathname}/${id}`}>
                     <BsPlayCircle />
-                    <span>Watch Now</span>
-                  </Link>
+                    Watch Now
+                  </MobileWatchLink>
                 </Options>
 
                 {overview && <Overview>{overview}</Overview>}
@@ -98,10 +100,10 @@ export default function MainMovie({ movie }) {
               )}
             </InfoWrapper>
             <LinkWrapper>
-              <Link to={`${url.pathname}/${id}`}>
+              <WatchLink to={`${url.pathname}/${id}`}>
                 <BsPlayCircle />
-                <span>Watch Now</span>
-              </Link>
+                Watch Now
+              </WatchLink>
             </LinkWrapper>
           </MovieWrapper>
         </Container>

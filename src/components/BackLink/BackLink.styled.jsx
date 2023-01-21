@@ -5,8 +5,7 @@ export const Button = styled.button`
   border: none;
   outline: none;
   background: transparent;
-  margin-top: 20px;
-  margin-bottom: 30px;
+
   cursor: pointer;
   transform: rotate(180deg);
 
@@ -19,8 +18,8 @@ export const Button = styled.button`
   &:hover circle {
     stroke-dashoffset: 0;
   }
-
-  @media (min-width: 768px) {
-    margin-bottom: 50px;
+  @media (max-width: 767px) {
+    margin-top: 10px;
+    margin-bottom: 30px;
   }
 `;

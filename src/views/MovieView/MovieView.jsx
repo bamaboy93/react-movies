@@ -6,7 +6,6 @@ import Status from "../../services/status";
 import api from "../../services/api/movies-api";
 import noImageFound from "../../styles/images/noimage.jpg";
 
-import Loader from "../../components/Loader";
 import PopUp from "../../components/PopUp";
 import Trailer from "../../components/Trailer";
 
@@ -87,7 +86,7 @@ function MovieView() {
 
   return (
     <>
-      {status === Status.PENDING && <Loader />}
+      {status === Status.PENDING}
 
       {status === Status.REJECTED}
 

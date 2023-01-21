@@ -1,4 +1,5 @@
 import styled from "@emotion/styled/macro";
+import { NavLink } from "react-router-dom";
 
 export const Section = styled.section`
   padding-top: 80px;
@@ -9,6 +10,12 @@ export const Nav = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+`;
+
+export const LinkTo = styled(NavLink)`
+  font-weight: 700;
+  font-size: 18px;
+  color: ${(props) => props.theme.colors.red};
 `;
 
 export const Title = styled.h2`
@@ -23,6 +30,10 @@ export const MovieList = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 10px;
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
 `;
 
 export const MovieListItem = styled.li`

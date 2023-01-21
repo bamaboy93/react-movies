@@ -1,14 +1,20 @@
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import { TailSpin } from "react-loader-spinner";
+import { MutatingDots } from "react-loader-spinner";
 import Container from "../Container";
 
 export default function Loader() {
   return (
     <Container>
-      <TailSpin
-        ariaLabel="loading-indicator"
-        width="240"
-        strokeColor="#9896f1"
+      <MutatingDots
+        height="300"
+        width="300"
+        color="#e50914"
+        secondaryColor="#e50914"
+        radius="12.5"
+        ariaLabel="mutating-dots-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
       />
     </Container>
   );

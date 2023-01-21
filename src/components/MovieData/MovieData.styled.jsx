@@ -1,10 +1,15 @@
 import styled from "@emotion/styled";
+import getColor from "../../services/getColor";
 
 export const MoviesList = styled.ul`
   margin-top: 80px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 15px;
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
 `;
 
 export const MoviesListItem = styled.li`
@@ -82,6 +87,7 @@ export const OverlayVote = styled.div`
 export const Rating = styled.p`
   font-family: ${(props) => props.theme.fonts.numbers};
   font-size: 18px;
+  color: ${(props) => getColor(props.vote)};
 `;
 
 export const MovieCard = styled.div`

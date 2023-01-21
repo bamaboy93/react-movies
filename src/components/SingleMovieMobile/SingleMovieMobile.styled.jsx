@@ -1,10 +1,8 @@
 import styled from "@emotion/styled";
 import getColor from "../../services/getColor";
 
-export const w = styled.div`
-  @media screen and (min-width: 768px) {
-    padding-top: 150px;
-  }
+export const PageWrapper = styled.div`
+  padding-bottom: 50px;
 `;
 
 export const MovieWrapper = styled.div`
@@ -16,8 +14,6 @@ export const MovieWrapper = styled.div`
 export const PosterWrapper = styled.div`
   position: relative;
   margin-right: 20px;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 `;
 
 export const Poster = styled.img`

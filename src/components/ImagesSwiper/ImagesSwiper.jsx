@@ -13,6 +13,7 @@ import "swiper/scss/pagination";
 
 import api from "../../services/api/movies-api";
 import Status from "../../services/status";
+import Container from "../Container";
 
 export default function ImagesSwiper() {
   const { movieId } = useParams();
@@ -41,7 +42,7 @@ export default function ImagesSwiper() {
       {status === Status.REJECTED}
 
       {status === Status.RESOLVED && (
-        <>
+        <Container>
           {images && (
             <ImageSwiper>
               <Swiper
@@ -67,7 +68,7 @@ export default function ImagesSwiper() {
               </Swiper>
             </ImageSwiper>
           )}
-        </>
+        </Container>
       )}
     </>
   );

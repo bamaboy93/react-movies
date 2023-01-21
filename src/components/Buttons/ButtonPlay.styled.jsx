@@ -3,9 +3,9 @@ import styled from "@emotion/styled";
 export const Button = styled.button`
   position: absolute;
   z-index: 44;
-  top: 50%;
+  top: 30%;
   right: 15%;
-  transform: translate(-50%);
+
   border: none;
   outline: transparent;
   background-color: transparent;

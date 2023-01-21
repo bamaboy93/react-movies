@@ -1,9 +1,10 @@
+import { useLocation } from "react-router-dom";
 import { BsFillPlayFill } from "react-icons/bs";
 import noImageFound from "../../styles/images/noimage.jpg";
 import Container from "../Container";
 import {
   InfoWrapper,
-  LinkPlay,
+  LinkWatch,
   MovieInfo,
   MovieTitle,
   MovieWrapper,
@@ -17,7 +18,9 @@ import {
 } from "./NowPlaying.styled";
 
 export default function NowPlaying({ movie }) {
+  const url = useLocation();
   const {
+    id,
     poster_path,
     backdrop_path,
     title,
@@ -48,9 +51,9 @@ export default function NowPlaying({ movie }) {
 
                 {overview && <Overview>{overview}</Overview>}
 
-                <LinkPlay href="/">
+                <LinkWatch to={`${url.pathname}/${id}`}>
                   <BsFillPlayFill /> Watch Now
-                </LinkPlay>
+                </LinkWatch>
               </MovieInfo>
             </InfoWrapper>
             <PosterWrapper>
