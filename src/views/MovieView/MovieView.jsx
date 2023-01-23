@@ -106,7 +106,15 @@ function MovieView() {
           )}
 
           {!isMobile && (
-            <SingleMovie cast={actors} movie={movie} onToggle={togglePopUp} />
+            <>
+              {movie && (
+                <SingleMovie
+                  cast={actors}
+                  movie={movie}
+                  onToggle={togglePopUp}
+                />
+              )}
+            </>
           )}
         </>
       )}

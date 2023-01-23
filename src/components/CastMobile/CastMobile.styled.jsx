@@ -16,6 +16,8 @@ export const DropdownTitle = styled.p`
   color: ${(props) => props.theme.colors.black};
 `;
 
+export const Image = styled.img``;
+
 export const ActorName = styled.p`
   padding: 10px;
   font-weight: 700;

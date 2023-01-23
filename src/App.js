@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { LinearProgress } from "@mui/material";
 import { lazy, Suspense } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
 const Layout = lazy(() => import("./components/Layout"));
 
@@ -19,6 +20,29 @@ const MovieView = lazy(() => import("./views/MovieView"));
 const FavList = lazy(() => import("./views/FavList"));
 
 function App() {
+  const [movieName, setMovieName] = useState("");
+  const navigate = useNavigate();
+
+  const handleFormSubmit = (query) => {
+    if (query === movieName) return;
+    setMovieName(query);
+
+    navigate("/search");
+  };
+
+  // useEffect(() => {
+  //   if (location.search === "") {
+  //     return;
+  //   }
+
+  //   const newSearch = new URLSearchParams(location.search).get("query");
+
+  //   setMovieName(newSearch);
+  //   navigate({
+  //     search: `query=${newSearch}`,
+  //   });
+  // }, [location.search, navigate]);
+
   return (
     <>
       <Suspense fallback={<LinearProgress />}>
@@ -27,6 +51,7 @@ function App() {
             path="/"
             element={
               <Layout
+                onSubmit={handleFormSubmit}
                 showHeader={[
                   "/movies",
                   "/search",
@@ -43,7 +68,7 @@ function App() {
             <Route path="/movies" element={<HomeView />} />
             <Route path="movies/:movieId" element={<MovieView />} />
 
-            <Route path="search" element={<QueryView />} />
+            <Route path="search" element={<QueryView name={movieName} />} />
             <Route path="search/:movieId" element={<MovieView />} />
 
             <Route path="popular" element={<PopularView />} />

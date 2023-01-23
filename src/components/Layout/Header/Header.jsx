@@ -1,11 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../services/firebase";
 import { FaCaretDown } from "react-icons/fa";
-import Container from "../Container";
+// import { useAuthState } from "react-firebase-hooks/auth";
+// import { auth } from "../../../services/firebase";
+
+import Container from "../../Container";
 import Login from "../Login";
-import UserInfo from "../UserInfo";
+import SearchForm from "../SearchForm";
+import MobileMenu from "../../MobileMenu";
 import {
   Dropdown,
   DropdownList,
@@ -13,34 +15,31 @@ import {
   DropdownWrapper,
   HeaderLine,
   HomeLink,
+  Logo,
   LinkTo,
   LoginBlock,
   Nav,
   NavList,
   NavListItem,
+  ActiveButtons,
 } from "./Header.styled";
 
-import s from "./Layout.module.scss";
-import MobileMenu from "../MobileMenu/MobileMenu";
-
-export default function Header() {
-  const [user, loading] = useAuthState(auth);
+export default function Header({ onSubmit }) {
+  // const [user, loading] = useAuthState(auth);
 
   const isMobile = useMediaQuery({
-    query: "(max-width: 767px)",
+    query: "(max-width: 1279px)",
   });
 
-  if (loading) {
-    return "Loading";
-  }
+  // if (loading) {
+  //   return "Loading";
+  // }
 
   return (
     <HeaderLine>
       <Container>
         <Nav>
-          <NavLink className={s.logo} to="/">
-            MB
-          </NavLink>
+          <Logo to="/movies">MB</Logo>
 
           <NavList>
             <NavListItem>
@@ -52,29 +51,19 @@ export default function Header() {
                 <Dropdown>
                   <DropdownList>
                     <DropdownListItem>
-                      <NavLink className={s.dropdownLink} to="/">
-                        Home
-                      </NavLink>
+                      <NavLink to="/"></NavLink>
                     </DropdownListItem>
                     <DropdownListItem>
-                      <NavLink className={s.dropdownLink} to="/popular">
-                        Popular
-                      </NavLink>
+                      <NavLink to="/popular">Popular</NavLink>
                     </DropdownListItem>
                     <DropdownListItem>
-                      <NavLink className={s.dropdownLink} to="/top_rated">
-                        Top Rated
-                      </NavLink>
+                      <NavLink to="/top_rated">Top Rated</NavLink>
                     </DropdownListItem>
                     <DropdownListItem>
-                      <NavLink className={s.dropdownLink} to="/upcoming">
-                        Upcoming
-                      </NavLink>
+                      <NavLink to="/upcoming">Upcoming</NavLink>
                     </DropdownListItem>
                     <DropdownListItem>
-                      <NavLink className={s.dropdownLink} to="/favourites">
-                        Favourites
-                      </NavLink>
+                      <NavLink to="/favourites">Favourites</NavLink>
                     </DropdownListItem>
                   </DropdownList>
                 </Dropdown>
@@ -93,11 +82,10 @@ export default function Header() {
               </LinkTo>
             </NavListItem>
           </NavList>
-          {isMobile ? (
-            <MobileMenu />
-          ) : (
-            <LoginBlock>{user ? <UserInfo /> : <Login />}</LoginBlock>
-          )}
+          <ActiveButtons>
+            <SearchForm onSubmit={onSubmit} />
+            {isMobile ? <MobileMenu /> : <LoginBlock>{<Login />}</LoginBlock>}
+          </ActiveButtons>
         </Nav>
       </Container>
     </HeaderLine>

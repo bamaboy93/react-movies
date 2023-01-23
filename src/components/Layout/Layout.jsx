@@ -7,12 +7,12 @@ import "react-toastify/dist/ReactToastify.css";
 import Header from "./Header";
 import Footer from "./Footer";
 
-export default function Layout({ showHeader = [] }) {
+export default function Layout({ showHeader = [], onSubmit }) {
   const { pathname } = useLocation();
 
   return (
     <>
-      {showHeader.includes(pathname) && <Header />}
+      {showHeader.includes(pathname) && <Header onSubmit={onSubmit} />}
       <main>
         <Outlet />
       </main>

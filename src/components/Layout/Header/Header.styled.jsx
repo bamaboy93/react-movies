@@ -1,4 +1,6 @@
 import styled from "@emotion/styled/macro";
+import { NavLink } from "react-router-dom";
+import homePage from "../../../styles/images/pages/home.png";
 
 export const HeaderLine = styled.header`
   position: absolute;
@@ -18,10 +20,23 @@ export const Nav = styled.nav`
   align-items: center;
   justify-content: space-between;
 `;
-
+export const Logo = styled(NavLink)`
+  padding: 19.5px 0;
+  font-family: ${(props) => props.theme.fonts.logo};
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1;
+  color: ${(props) => props.theme.colors.red};
+  @media screen and (min-width: 768px) {
+    font-size: 42px;
+  }
+  @media screen and (min-width: 1280px) {
+    padding: 0;
+  }
+`;
 export const NavList = styled.ul`
   display: none;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1280px) {
     display: flex;
   }
 `;
@@ -30,6 +45,10 @@ export const NavListItem = styled.li`
   :not(:last-child) {
     margin-right: 56px;
   }
+`;
+
+export const ActiveButtons = styled.div`
+  display: flex;
 `;
 
 export const HomeLink = styled.p`
@@ -42,7 +61,7 @@ export const HomeLink = styled.p`
   transition: ${(props) => props.theme.transition.main};
   &:focus,
   &:hover {
-    color: ${(props) => props.theme.colors.hoverColor};
+    color: ${(props) => props.theme.colors.hover};
   }
 
   svg {
@@ -61,7 +80,7 @@ export const LinkTo = styled.a`
   transition: ${(props) => props.theme.transition.main};
   &:focus,
   &:hover {
-    color: ${(props) => props.theme.colors.hoverColor};
+    color: ${(props) => props.theme.colors.hover};
   }
 
   svg {
@@ -113,6 +132,7 @@ export const DropdownList = styled.ul`
 export const DropdownListItem = styled.li`
   width: 100px;
   height: 160px;
+  background-image: url(${homePage});
   background-color: grey;
   cursor: pointer;
   transition: ${(props) => props.theme.transition.main};

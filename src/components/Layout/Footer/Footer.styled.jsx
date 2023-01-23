@@ -101,14 +101,15 @@ export const FooterSocialsLink = styled.a`
   width: 42px;
   height: 42px;
   background-color: rgba(41, 41, 41, 0.76);
+  color: ${(props) => props.theme.colors.mainText};
+  border: 2px solid transparent;
   border-radius: 50%;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: box-shadow 250ms ${(props) => props.theme.transition.cubic};
-  color: ${(props) => props.theme.colors.mainText};
+  transition: 250ms;
 
   svg {
     fill: currentColor;
@@ -116,11 +117,12 @@ export const FooterSocialsLink = styled.a`
   }
 
   &:hover {
-    box-shadow: 0 0 0.625em ${(props) => props.theme.colors.hoverColor};
+    border-color: ${(props) => props.theme.colors.hover};
+    box-shadow: 0 0 10px #ff4040;
   }
 
   &:hover svg {
-    color: ${(props) => props.theme.colors.hoverColor};
+    color: ${(props) => props.theme.colors.hover};
   }
 `;
 

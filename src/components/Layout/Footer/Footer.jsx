@@ -1,5 +1,5 @@
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
-import Container from "../Container";
+import Container from "../../Container";
 
 import {
   FooterInfo,
@@ -101,7 +101,7 @@ export default function Footer() {
                     rel="noreferrer"
                   >
                     <img
-                      src={require("../../styles/images/google-play.png")}
+                      src={require("../../../styles/images/google-play.png")}
                       alt={"google play shortcut"}
                       width={120}
                     />
@@ -114,7 +114,7 @@ export default function Footer() {
                     rel="noreferrer"
                   >
                     <img
-                      src={require("../../styles/images/app-store.png")}
+                      src={require("../../../styles/images/app-store.png")}
                       alt={"app store shortcut"}
                       width={120}
                     />

@@ -19,8 +19,7 @@ export const theme = {
     white: "#ffffff",
     black: "#000000",
     red: "#e50914",
-
-    hoverColor: "#bf000a",
+    hover: "#ff1717",
   },
   transition: {
     cubic: "cubic-bezier(0.4, 0, 0.2, 1)",

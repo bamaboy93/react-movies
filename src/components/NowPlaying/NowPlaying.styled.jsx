@@ -125,14 +125,14 @@ export const LinkWatch = styled(Link)`
   font-weight: 700;
   font-size: 14px;
   text-transform: uppercase;
-  background-color: ${(props) => props.theme.colors.hoverColor};
+  background-color: ${(props) => props.theme.colors.red};
   transition: ${(props) => props.theme.transition.main};
 
   &:hover {
     letter-spacing: 2px;
-    border-left: 3px solid ${(props) => props.theme.colors.hoverColor};
+    border-left: 3px solid ${(props) => props.theme.colors.hover};
     background-color: transparent;
-    color: ${(props) => props.theme.colors.hoverColor};
+    color: ${(props) => props.theme.colors.hover};
   }
 
   svg {
