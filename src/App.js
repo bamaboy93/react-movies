@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { LinearProgress } from "@mui/material";
 import { lazy, Suspense } from "react";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Navigate,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 
 const Layout = lazy(() => import("./components/Layout"));
 
@@ -19,8 +25,11 @@ const MovieView = lazy(() => import("./views/MovieView"));
 
 const FavList = lazy(() => import("./views/FavList"));
 
+const ErrorView = lazy(() => import("./components/NotFound"));
+
 function App() {
   const [movieName, setMovieName] = useState("");
+  const location = useLocation();
   const navigate = useNavigate();
 
   const handleFormSubmit = (query) => {
@@ -65,7 +74,7 @@ function App() {
           >
             <Route index element={<Navigate to="/movies" />} />
 
-            <Route path="/movies" element={<HomeView />} />
+            <Route path="movies" element={<HomeView />} />
             <Route path="movies/:movieId" element={<MovieView />} />
 
             <Route path="search" element={<QueryView name={movieName} />} />
@@ -83,6 +92,7 @@ function App() {
             <Route path="favourites" element={<FavList />} />
             <Route path="favourites/:movieId" element={<MovieView />} />
           </Route>
+          <Route path="*" element={<ErrorView />} />
         </Routes>
       </Suspense>
     </>

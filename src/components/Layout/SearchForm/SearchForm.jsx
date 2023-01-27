@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import { HiOutlineSearch } from "react-icons/hi";
@@ -19,6 +20,7 @@ export default function SearchForm({ onSubmit }) {
       return;
     }
     onSubmit(query);
+
     setQuery("");
   };
 

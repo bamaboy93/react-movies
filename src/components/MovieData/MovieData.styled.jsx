@@ -1,6 +1,10 @@
 import styled from "@emotion/styled";
 import getColor from "../../services/getColor";
 
+export const MoviesSection = styled.section`
+  padding-top: 80px;
+`;
+
 export const MoviesList = styled.ul`
   margin-top: 80px;
   display: grid;

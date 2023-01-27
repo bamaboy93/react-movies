@@ -11,7 +11,7 @@ export const ButtonTrailer = styled.button`
   width: max-content;
   max-width: 100%;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
   padding: 9px 20px;
   border: none;
   outline: none;

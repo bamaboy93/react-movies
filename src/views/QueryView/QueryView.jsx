@@ -1,30 +1,25 @@
 import { useState, useEffect } from "react";
-// import { useNavigate, useLocation } from "react-router-dom";
-
 import Status from "../../services/status";
 import api from "../../services/api/movies-api";
 import usePagination from "../../hooks/usePagination";
-
+import { useLocation } from "react-router-dom";
 import MovieData from "../../components/MovieData";
 import Pagination from "../../components/Pagination";
 
 export default function QueryPage({ name }) {
-  // const [query, setQuery] = useState("");
   const [movies, setMovies] = useState(null);
-  const [currentQueryPage, setCurrentQueryPage] = useState(null);
+  const [currentPage, setCurrentPage] = useState(null);
   const [totalpages, setTotalPages] = useState(null);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
-
-  // const navigate = useNavigate();
-  // const location = useLocation();
+  const location = useLocation();
 
   ////////////////Pagination
   const PER_PAGE = 20;
   const pages = usePagination(totalpages, PER_PAGE);
 
   const handleChange = (e, p) => {
-    setCurrentQueryPage(p);
+    setCurrentPage(p);
 
     pages.jump(p);
   };
@@ -37,7 +32,7 @@ export default function QueryPage({ name }) {
     setStatus(Status.PENDING);
 
     api
-      .getMoviesByQuery(name, currentQueryPage)
+      .getMoviesByQuery(name, currentPage)
       .then(({ results, page, total_pages }) => {
         if (results.length === 0) {
           setStatus(Status.REJECTED);
@@ -46,7 +41,7 @@ export default function QueryPage({ name }) {
 
         setMovies(results);
         setStatus(Status.RESOLVED);
-        setCurrentQueryPage(page);
+        setCurrentPage(page);
         setTotalPages(total_pages);
       })
       .catch((error) => {
@@ -54,7 +49,7 @@ export default function QueryPage({ name }) {
         setError(error);
         setStatus(Status.REJECTED);
       });
-  }, [name, currentQueryPage, error]);
+  }, [name, currentPage, error]);
 
   return (
     <>
@@ -67,7 +62,7 @@ export default function QueryPage({ name }) {
           <MovieData movies={movies} />
 
           <Pagination
-            page={currentQueryPage}
+            page={currentPage}
             totalpages={totalpages}
             onChange={handleChange}
           />

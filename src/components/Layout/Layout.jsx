@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom";
-
 import { ToastContainer } from "react-toastify";
 import { useLocation } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";

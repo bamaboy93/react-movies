@@ -3,11 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 // import PropTypes from "prop-types";
 import noImageFound from "../../styles/images/noimage.jpg";
 import Container from "../Container";
-import MainMovie from "../MainMovie";
+
 import {
   MovieCard,
   MoviesList,
   MoviesListItem,
+  MoviesSection,
   MovieTitle,
   Overlay,
   OverlayTitle,
@@ -19,8 +20,7 @@ export default function MovieData({ movies }) {
   const url = useLocation();
 
   return (
-    <>
-      {movies && <MainMovie movie={movies[0]} />}
+    <MoviesSection>
       <Container>
         <MoviesList>
           {movies.map(({ id, poster_path, title, vote_average }) => (
@@ -52,7 +52,7 @@ export default function MovieData({ movies }) {
           ))}
         </MoviesList>
       </Container>
-    </>
+    </MoviesSection>
   );
 }
 
