@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const FooterLine = styled.footer`
   padding: 40px 0;
-  background-color: ${(props) => props.theme.colors.footerBg};
+  background-color: ${(props) => props.theme.colors.footer};
   @media screen and (max-width: 767px) {
     text-align: center;
   }
@@ -33,7 +33,7 @@ export const FooterLinksWrapper = styled.div`
 `;
 
 export const FooterLinksList = styled.ul`
-  margin-bottom: 30px;
+  margin-bottom: ${(props) => props.theme.space[5]}px;
   @media screen and (min-width: 1280px) {
     display: flex;
     justify-content: space-between;
@@ -42,43 +42,40 @@ export const FooterLinksList = styled.ul`
 
 export const FooterLinksItem = styled.li`
   :not(:last-child) {
-    @media screen and (max-width: 767px) {
-      margin-bottom: 20px;
-    }
+    margin-bottom: ${(props) => props.theme.space[4]}px;
+
     @media screen and (min-width: 768px) {
-      margin-bottom: 10px;
+      margin-bottom: ${(props) => props.theme.space[1]}px;
     }
   }
 `;
 
 export const FooterLinksLink = styled.a`
-  font-size: 16px;
-  transition: ${(props) => props.theme.transition.color};
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
-  }
+  font-size: ${(props) => props.theme.fontSizes.ms};
+  transition: ${(props) => props.theme.animation.color};
+
   &:hover {
-    color: ${(props) => props.theme.colors.hoverColor};
+    color: ${(props) => props.theme.colors.hover};
   }
 `;
 
 export const FooterInfo = styled.p`
-  font-size: 14px;
+  font-size: ${(props) => props.theme.fontSizes.xs};
 `;
 
 export const FooterSocials = styled.div`
   @media screen and (max-width: 767px) {
-    margin-top: 20px;
+    margin-top: ${(props) => props.theme.space[4]}px;
   }
   @media screen and (min-width: 1280px) {
-    margin-left: 150px;
+    margin-left: ${(props) => props.theme.space[10]}px;
   }
 `;
 
 export const FooterSubtitle = styled.h3`
-  margin-bottom: 30px;
-  font-weight: 700;
-  font-size: 18px;
+  margin-bottom: ${(props) => props.theme.space[5]}px;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.ms};
 `;
 
 export const FooterSocialsList = styled.ul`
@@ -87,13 +84,13 @@ export const FooterSocialsList = styled.ul`
     justify-content: center;
   }
   @media screen and (min-width: 768px) {
-    margin-bottom: 40px;
+    margin-bottom: ${(props) => props.theme.space[6]}px;
   }
 `;
 
 export const FooterSocialsItem = styled.li`
   &:not(:last-child) {
-    margin-right: 20px;
+    margin-right: ${(props) => props.theme.space[4]}px;
   }
 `;
 
@@ -101,9 +98,9 @@ export const FooterSocialsLink = styled.a`
   width: 42px;
   height: 42px;
   background-color: rgba(41, 41, 41, 0.76);
-  color: ${(props) => props.theme.colors.mainText};
+  color: ${(props) => props.theme.colors.text};
   border: 2px solid transparent;
-  border-radius: 50%;
+  border-radius: ${(props) => props.theme.radii.round};
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   display: flex;
@@ -113,7 +110,7 @@ export const FooterSocialsLink = styled.a`
 
   svg {
     fill: currentColor;
-    transition: ${(props) => props.theme.transition.color};
+    transition: ${(props) => props.theme.animation.color};
   }
 
   &:hover {
@@ -128,10 +125,10 @@ export const FooterSocialsLink = styled.a`
 
 export const FooterStore = styled.div`
   @media screen and (max-width: 767px) {
-    margin-top: 20px;
+    margin-top: ${(props) => props.theme.space[4]}px;
   }
   @media screen and (min-width: 1280px) {
-    margin-left: 150px;
+    margin-left: ${(props) => props.theme.space[10]}px;
   }
 `;
 
@@ -144,6 +141,6 @@ export const FooterStoreList = styled.ul`
 
 export const FooterStoreItem = styled.li`
   :not(:last-child) {
-    margin-right: 10px;
+    margin-right: ${(props) => props.theme.space[1]}px;
   }
 `;

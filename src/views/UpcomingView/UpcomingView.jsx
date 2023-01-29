@@ -6,6 +6,7 @@ import usePagination from "../../hooks/usePagination";
 
 import MovieData from "../../components/MovieData";
 import Pagination from "../../components/Pagination";
+import PageTitle from "../../components/PageTitle";
 
 export default function UpcomingView() {
   const [movies, setMovies] = useState(null);
@@ -49,6 +50,7 @@ export default function UpcomingView() {
 
       {status === Status.RESOLVED && (
         <>
+          <PageTitle title="Upcoming movies" />
           <MovieData movies={movies} />
 
           {totalpages > 1 && (

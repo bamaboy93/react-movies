@@ -9,9 +9,9 @@ export const Form = styled.form`
 export const Input = styled.input`
   height: 48px;
   width: 48px;
-  padding: 8px;
+  padding: ${(props) => props.theme.space[1]}px;
   border-style: none;
-  font-size: 18px;
+  font-size: ${(props) => props.theme.fontSizes.s};
   letter-spacing: 2px;
   outline: none;
   border-radius: 25px;
@@ -25,7 +25,7 @@ export const Input = styled.input`
 
   ::placeholder {
     color: rgba(255, 255, 255, 0.5);
-    font-size: 18px;
+    font-size: ${(props) => props.theme.fontSizes.s};
     letter-spacing: 2px;
 
     @media screen and (max-width: 767px) {
@@ -59,7 +59,7 @@ export const Button = styled.button`
   pointer-events: painted;
 
   @media screen and (min-width: 768px) {
-    color: ${(props) => props.theme.colors.mainText};
+    color: ${(props) => props.theme.colors.text};
   }
 
   :focus + ${Input} {

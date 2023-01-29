@@ -19,7 +19,7 @@ export const Button = styled.button`
     stroke-dashoffset: 0;
   }
   @media (max-width: 767px) {
-    margin-top: 10px;
-    margin-bottom: 30px;
+    margin-top: ${(props) => props.theme.space[2]}px;
+    margin-bottom: ${(props) => props.theme.space[5]}px;
   }
 `;

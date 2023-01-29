@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const CastList = styled.ul`
-  margin-top: 80px;
+  margin-top: ${(props) => props.theme.space[9]}px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 15px;
@@ -30,6 +30,6 @@ export const CastInfo = styled.div`
 `;
 
 export const CastName = styled.p`
-  font-weight: 700;
-  font-size: 18px;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.s};
 `;

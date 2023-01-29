@@ -8,7 +8,7 @@ import { theme, muiTheme } from "./constants";
 
 import App from "./App";
 
-import "./styles/index.scss";
+import "./styles/index.css";
 
 const root = createRoot(document.getElementById("root"));
 root.render(

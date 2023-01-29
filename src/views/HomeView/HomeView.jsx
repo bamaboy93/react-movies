@@ -7,6 +7,7 @@ import MainMovie from "../../components/MainMovie";
 import Section from "../../components/Section";
 import Upcoming from "../../components/Upcoming";
 import NowPlaying from "../../components/NowPlaying";
+import SwiperCarousel from "../../components/Swiper/Swiper";
 
 export default function HomePage() {
   const [popular, setPopular] = useState(null);
@@ -93,10 +94,20 @@ export default function HomePage() {
       {status === Status.RESOLVED && (
         <>
           {movie && <MainMovie movie={movie} />}
-          {popular && <Section movies={popular} title={"Popular"} />}
-          {topRated && <Section movies={topRated} title={"Top Rated"} />}
+          {popular && (
+            <Section title="Popular" linkTo="/popular">
+              <SwiperCarousel movies={popular} />
+            </Section>
+          )}
+          {topRated && (
+            <Section title="Top Rated" linkTo="/top_rated">
+              <SwiperCarousel movies={topRated} />
+            </Section>
+          )}
           {upcoming && (
-            <Upcoming movies={upcoming} title={"Top 10 Upcoming Movies"} />
+            <Section title="Top 10 Upcoming Movies" linkTo="/upcoming">
+              <Upcoming movies={upcoming} />
+            </Section>
           )}
           {nowPlaying && <NowPlaying movie={nowPlaying} />}
         </>

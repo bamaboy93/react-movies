@@ -8,8 +8,7 @@ export const HeaderLine = styled.header`
   left: 0;
   z-index: 999;
   width: 100%;
-  height: 75px;
-  background-color: ${(props) => props.theme.colors.headerBg};
+  background-color: ${(props) => props.theme.colors.header};
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 `;
@@ -23,15 +22,15 @@ export const Nav = styled.nav`
 export const Logo = styled(NavLink)`
   padding: 19.5px 0;
   font-family: ${(props) => props.theme.fonts.logo};
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 1;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.ml};
+  line-height: ${(props) => props.theme.lineHeights.heading};
   color: ${(props) => props.theme.colors.red};
   @media screen and (min-width: 768px) {
-    font-size: 42px;
+    font-size: ${(props) => props.theme.fontSizes.l};
   }
   @media screen and (min-width: 1280px) {
-    padding: 0;
+    padding: ${(props) => props.theme.space[0]};
   }
 `;
 export const NavList = styled.ul`
@@ -43,7 +42,7 @@ export const NavList = styled.ul`
 
 export const NavListItem = styled.li`
   :not(:last-child) {
-    margin-right: 56px;
+    margin-right: ${(props) => props.theme.space[6]}px;
   }
 `;
 
@@ -55,10 +54,10 @@ export const HomeLink = styled.p`
   display: flex;
   align-items: center;
   padding: 24px 0;
-  font-size: 18px;
-  font-weight: 700;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.ms};
   cursor: pointer;
-  transition: ${(props) => props.theme.transition.main};
+  transition: ${(props) => props.theme.animation.main};
   &:focus,
   &:hover {
     color: ${(props) => props.theme.colors.hover};
@@ -74,10 +73,10 @@ export const LinkTo = styled.a`
   display: flex;
   align-items: center;
   padding: 24px 0;
-  font-size: 18px;
-  font-weight: 700;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.ms};
   cursor: pointer;
-  transition: ${(props) => props.theme.transition.main};
+  transition: ${(props) => props.theme.animation.main};
   &:focus,
   &:hover {
     color: ${(props) => props.theme.colors.hover};
@@ -132,10 +131,13 @@ export const DropdownList = styled.ul`
 export const DropdownListItem = styled.li`
   width: 100px;
   height: 160px;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.s};
+  text-align: center;
   background-image: url(${homePage});
   background-color: grey;
   cursor: pointer;
-  transition: ${(props) => props.theme.transition.main};
+  transition: ${(props) => props.theme.animation.main};
 
   @media screen and (min-width: 1280px) {
     width: 180px;
@@ -145,6 +147,13 @@ export const DropdownListItem = styled.li`
   &:hover {
     transform: translateY(-1rem);
   }
+`;
+
+export const DropdownListLink = styled(NavLink)`
+  display: block;
+  margin-bottom: ${(props) => props.theme.space[1]}px;
+  width: 100%;
+  height: 100%;
 `;
 
 export const LoginBlock = styled.div`

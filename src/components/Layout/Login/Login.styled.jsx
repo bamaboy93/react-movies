@@ -12,8 +12,8 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${(props) => props.theme.colors.mainText};
-  transition: filter 500ms ${(props) => props.theme.transition.cubic};
+  color: ${(props) => props.theme.colors.text};
+  transition: filter 500ms ${(props) => props.theme.animation.cubic};
 
   &:hover {
     filter: brightness(1.3);
@@ -24,6 +24,6 @@ export const Button = styled.button`
   }
 
   svg {
-    transition: color 500ms ${(props) => props.theme.transition.cubic};
+    transition: color 500ms ${(props) => props.theme.animation.cubic};
   }
 `;

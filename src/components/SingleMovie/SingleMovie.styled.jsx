@@ -4,7 +4,7 @@ import getColor from "../../services/getColor";
 export const MovieScreen = styled.div`
   position: relative;
   min-height: 100vh;
-  padding: 50px;
+  padding: ${(props) => props.theme.space[7]}px;
   background-image: ${(props) =>
     `url(https://image.tmdb.org/t/p/original${props.backdrop})`};
   background-repeat: no-repeat !important;
@@ -12,7 +12,7 @@ export const MovieScreen = styled.div`
 
   z-index: 1;
   @media (min-width: 768px) and (max-width: 1279px) {
-    padding: 30px;
+    padding: ${(props) => props.theme.space[5]}px;
   }
   @media (min-width: 1280px) {
     background-position: center !important;
@@ -27,7 +27,6 @@ export const MovieScreen = styled.div`
     position: absolute;
     background: rgba(0, 0, 0, 0.2);
     z-index: -1;
-    transition: 0.2s;
   }
 `;
 
@@ -39,16 +38,16 @@ export const MovieWrapper = styled.div`
 `;
 
 export const Title = styled.h1`
-  margin-bottom: 50px;
+  margin-bottom: ${(props) => props.theme.space[7]}px;
   max-width: 500px;
-  font-size: 60px;
-  font-weight: 700;
-  line-height: 1.1em;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.lxl};
+  line-height: ${(props) => props.theme.lineHeights.heading};
 
   text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
     0px -4px 10px rgba(255, 255, 255, 0.3);
   @media (min-width: 768px) and (max-width: 1279px) {
-    font-size: 42px;
+    font-size: ${(props) => props.theme.fontSizes.l};
   }
 `;
 
@@ -59,18 +58,18 @@ export const Options = styled.div`
 `;
 
 export const Year = styled.p`
+  margin-right: ${(props) => props.theme.space[4]}px;
   font-family: ${(props) => props.theme.fonts.numbers};
-  font-weight: 700;
-  font-size: 22px;
-  margin-right: 20px;
-  text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
-    0px -4px 10px rgba(255, 255, 255, 0.3);
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.ms};
+  color: ${(props) => props.theme.colors.red};
 `;
 
 export const Genre = styled.p`
-  margin-right: 20px;
-  font-weight: 700;
-  font-size: 20px;
+  margin-right: ${(props) => props.theme.space[4]}px;
+  ont-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.ms};
+  color: ${(props) => props.theme.colors.peach};
   text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
     0px -4px 10px rgba(255, 255, 255, 0.3);
 `;
@@ -78,34 +77,32 @@ export const Genre = styled.p`
 export const Runtime = styled.p`
   color: ${(props) => props.theme.colors.addText};
   font-family: ${(props) => props.theme.fonts.numbers};
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 1em;
-  border: 1px solid ${(props) => props.theme.colors.addText};
-  padding: 5px;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.ms};
+  color: ${(props) => props.theme.colors.lightviolet};
+  border: 2px solid ${(props) => props.theme.colors.lightviolet};
+  padding: ${(props) => props.theme.space[1]}px;
   border-radius: 5px;
-  margin-right: 20px;
+  margin-right: ${(props) => props.theme.space[4]}px;
 `;
 
 export const Rating = styled.p`
   display: flex;
   font-family: ${(props) => props.theme.fonts.numbers};
-  font-weight: 700;
-  font-size: 24px;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.m};
   color: ${(props) => getColor(props.vote)};
 `;
 export const RatingFull = styled.span`
-  font-weight: 400;
-  font-size: 16px;
+  font-size: ${(props) => props.theme.fontSizes.s};
   align-items: flex-start;
-  margin-left: 5px;
+  margin-left: ${(props) => props.theme.space[1]}px;
   color: ${(props) => props.theme.colors.white};
 `;
 
 export const FadeBlock = styled.div`
   position: relative;
-  margin-bottom: 30px;
-  transition: 0.3s;
+  margin-bottom: ${(props) => props.theme.space[5]}px;
 `;
 
 export const NavigationWrapper = styled.div`
@@ -118,12 +115,11 @@ export const NavigationWrapper = styled.div`
 
 export const NavigationItem = styled.button`
   position: relative;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.4em;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.ms};
 
   cursor: pointer;
   &:not(:last-child) {
-    margin-right: 45px;
+    margin-right: ${(props) => props.theme.space[7]}px;
   }
 `;

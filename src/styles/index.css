@@ -1,14 +1,53 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap");
+
 html {
   height: 100%;
 }
 
 body {
   height: 100%;
-  background: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0) -50% 3.8461538462%, #191919 0 7.6923076923%, rgba(0, 0, 0, 0) 0 11.5384615385%, #191919 0 15.3846153846%, rgba(0, 0, 0, 0) 0 19.2307692308%, #191919 0 23.0769230769%), repeating-linear-gradient(45deg, rgba(0, 0, 0, 0) -50% 3.8461538462%, #191919 0 7.6923076923%, rgba(0, 0, 0, 0) 0 11.5384615385%, #191919 0 15.3846153846%, rgba(0, 0, 0, 0) 0 19.2307692308%, #191919 0 23.0769230769%) 17px 17px, repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0) -50% 3.8461538462%, #191919 0 7.6923076923%, rgba(0, 0, 0, 0) 0 11.5384615385%, #191919 0 15.3846153846%, rgba(0, 0, 0, 0) 0 19.2307692308%, #191919 0 23.0769230769%), repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0) -50% 3.8461538462%, #191919 0 7.6923076923%, rgba(0, 0, 0, 0) 0 11.5384615385%, #191919 0 15.3846153846%, rgba(0, 0, 0, 0) 0 19.2307692308%, #191919 0 23.0769230769%) 17px 17px #1f1f1f;
+  background: repeating-linear-gradient(
+      45deg,
+      #0000 calc(-650% / 13) calc(50% / 13),
+      #191919 0 calc(100% / 13),
+      #0000 0 calc(150% / 13),
+      #191919 0 calc(200% / 13),
+      #0000 0 calc(250% / 13),
+      #191919 0 calc(300% / 13)
+    ),
+    repeating-linear-gradient(
+        45deg,
+        #0000 calc(-650% / 13) calc(50% / 13),
+        #191919 0 calc(100% / 13),
+        #0000 0 calc(150% / 13),
+        #191919 0 calc(200% / 13),
+        #0000 0 calc(250% / 13),
+        #191919 0 calc(300% / 13)
+      )
+      17px 17px,
+    repeating-linear-gradient(
+      -45deg,
+      #0000 calc(-650% / 13) calc(50% / 13),
+      #191919 0 calc(100% / 13),
+      #0000 0 calc(150% / 13),
+      #191919 0 calc(200% / 13),
+      #0000 0 calc(250% / 13),
+      #191919 0 calc(300% / 13)
+    ),
+    repeating-linear-gradient(
+        -45deg,
+        #0000 calc(-650% / 13) calc(50% / 13),
+        #191919 0 calc(100% / 13),
+        #0000 0 calc(150% / 13),
+        #191919 0 calc(200% / 13),
+        #0000 0 calc(250% / 13),
+        #191919 0 calc(300% / 13)
+      )
+      17px 17px #1f1f1f;
   background-size: 34px 34px;
+
   color: #ffffff;
   font-family: "Nunito", sans-serif;
   font-style: normal;
@@ -87,8 +126,7 @@ img {
   height: 15px !important;
   opacity: 0.4 !important;
 }
-
 .swiper-pagination-bullet-active {
   background-color: red !important;
   opacity: 1 !important;
-}/*# sourceMappingURL=index.css.map */
+}

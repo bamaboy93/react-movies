@@ -6,7 +6,7 @@ import noImageFound from "../../styles/images/noimage.jpg";
 import Status from "../../services/status";
 import { getFavourites } from "../../services/localStorage";
 import Container from "../../components/Container";
-import s from "./FavList.module.scss";
+
 export default function UserList() {
   const [movies, setMovies] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
@@ -20,27 +20,23 @@ export default function UserList() {
   }, []);
   return (
     <Container>
-      <h2 className={s.title}>Favourites</h2>
+      <h2>Favourites</h2>
       {status === Status.PENDING}
 
       {status === Status.REJECTED}
 
       {status === Status.RESOLVED && (
         <>
-          <ul className={s.moviesList}>
+          <ul>
             {movies.map(({ id, src, title }) => (
-              <li key={id} className={s.moviesItem}>
+              <li key={id}>
                 <Link to={`${url.pathname}/${id}`}>
-                  <div className={s.image}>
-                    <img
-                      src={src ? `${src}` : `${noImageFound}`}
-                      alt={title}
-                      className={s.poster}
-                    />
+                  <div>
+                    <img src={src ? `${src}` : `${noImageFound}`} alt={title} />
                   </div>
 
-                  <div className={s.movieCard}>
-                    <p className={s.movieTitle}>{title}</p>
+                  <div>
+                    <p c>{title}</p>
                   </div>
                 </Link>
               </li>

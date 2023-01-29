@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { FaCaretDown } from "react-icons/fa";
 // import { useAuthState } from "react-firebase-hooks/auth";
@@ -7,11 +6,12 @@ import { FaCaretDown } from "react-icons/fa";
 import Container from "../../Container";
 import Login from "../Login";
 import SearchForm from "../SearchForm";
-import MobileMenu from "../../MobileMenu";
+import MobileMenu from "../MobileMenu";
 import {
   Dropdown,
   DropdownList,
   DropdownListItem,
+  DropdownListLink,
   DropdownWrapper,
   HeaderLine,
   HomeLink,
@@ -51,19 +51,24 @@ export default function Header({ onSubmit }) {
                 <Dropdown>
                   <DropdownList>
                     <DropdownListItem>
-                      <NavLink to="/"></NavLink>
+                      <DropdownListLink to="/movies" />
+                      Home
                     </DropdownListItem>
                     <DropdownListItem>
-                      <NavLink to="/popular">Popular</NavLink>
+                      <DropdownListLink to="/popular" />
+                      Popular
                     </DropdownListItem>
                     <DropdownListItem>
-                      <NavLink to="/top_rated">Top Rated</NavLink>
+                      <DropdownListLink to="/top_rated" />
+                      Top Rated
                     </DropdownListItem>
                     <DropdownListItem>
-                      <NavLink to="/upcoming">Upcoming</NavLink>
+                      <DropdownListLink to="/upcoming" />
+                      Upcoming
                     </DropdownListItem>
                     <DropdownListItem>
-                      <NavLink to="/favourites">Favourites</NavLink>
+                      <DropdownListLink to="/favourites" />
+                      Favourites
                     </DropdownListItem>
                   </DropdownList>
                 </Dropdown>

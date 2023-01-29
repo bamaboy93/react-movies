@@ -11,15 +11,15 @@ export const Item = muiStyled(Paper)(({ theme }) => ({
 }));
 
 export const DropdownTitle = styled.p`
-  font-weight: 700;
-  font-size: 18px;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.s};
   color: ${(props) => props.theme.colors.black};
 `;
 
 export const Image = styled.img``;
 
 export const ActorName = styled.p`
-  padding: 10px;
-  font-weight: 700;
-  font-size: 12px;
+  padding: ${(props) => props.theme.space[1]}px;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.xxs};
 `;

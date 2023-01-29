@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { BsPlayCircle } from "react-icons/bs";
 
-import Status from "../../services/status";
 import api from "../../services/api/movies-api";
 
 import Container from "../Container";
@@ -26,12 +25,13 @@ import {
   Wrapper,
   WatchLink,
   MobileWatchLink,
+  CastError,
 } from "./MainMovie.styled";
 
 export default function MainMovie({ movie }) {
   const [actors, setActors] = useState(null);
   const [error, setError] = useState(null);
-  const [status, setStatus] = useState(Status.IDLE);
+
   const {
     id,
     backdrop_path,
@@ -48,12 +48,10 @@ export default function MainMovie({ movie }) {
       .getCastInfo(id)
       .then((cast) => {
         setActors(cast);
-        setStatus(Status.RESOLVED);
       })
       .catch((error) => {
         console.log(error);
         setError(error);
-        setStatus(Status.REJECTED);
       });
   }, [id, error]);
   return (
@@ -86,9 +84,9 @@ export default function MainMovie({ movie }) {
                 {overview && <Overview>{overview}</Overview>}
               </Info>
 
-              {status === status.RESOLVED && (
-                <Block>
-                  <Subtitle>Starring:</Subtitle>
+              <Block>
+                <Subtitle>Starring:</Subtitle>
+                {actors ? (
                   <CastList>
                     {actors.slice(0, 4).map((actor) => (
                       <CastListItem key={actor.id}>
@@ -96,8 +94,10 @@ export default function MainMovie({ movie }) {
                       </CastListItem>
                     ))}
                   </CastList>
-                </Block>
-              )}
+                ) : (
+                  <CastError>...</CastError>
+                )}
+              </Block>
             </InfoWrapper>
             <LinkWrapper>
               <WatchLink to={`${url.pathname}/${id}`}>

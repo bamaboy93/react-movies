@@ -3,20 +3,18 @@ import styled from "@emotion/styled";
 export const Box = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: ${(props) => props.theme.space[5]}px;
   }
 `;
 
 export const ButtonTrailer = styled.button`
-  width: max-content;
-  max-width: 100%;
-  font-size: 18px;
-  font-weight: 700;
-  padding: 9px 20px;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.s};
+  padding: 10px 20px;
   border: none;
   outline: none;
   cursor: pointer;
-  background-color: #c63636;
+  background-color: ${(props) => props.theme.colors.red};
   border-radius: 5%;
   display: flex;
   align-items: center;
@@ -38,9 +36,8 @@ export const ButtonFav = styled.button`
   border-radius: 5%;
   display: flex;
   align-items: center;
-
-  transition: filter 300ms;
   color: ${(props) => props.theme.colors.red};
+  transition: filter 300ms;
 
   &:hover {
     filter: brightness(1.2);

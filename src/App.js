@@ -1,13 +1,7 @@
 import { useState } from "react";
 import { LinearProgress } from "@mui/material";
 import { lazy, Suspense } from "react";
-import {
-  Routes,
-  Route,
-  Navigate,
-  useNavigate,
-  useLocation,
-} from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
 const Layout = lazy(() => import("./components/Layout"));
 
@@ -29,7 +23,7 @@ const ErrorView = lazy(() => import("./components/NotFound"));
 
 function App() {
   const [movieName, setMovieName] = useState("");
-  const location = useLocation();
+
   const navigate = useNavigate();
 
   const handleFormSubmit = (query) => {

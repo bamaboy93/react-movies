@@ -25,11 +25,7 @@ export const MainWrapper = styled.div`
   }
 
   @media screen and (max-width: 767px) {
-    background-position: center !important;
-  }
-
-  @media screen and (min-width: 768px) {
-    padding-top: 150px;
+    background-position: center;
   }
 `;
 
@@ -42,24 +38,24 @@ export const Wrapper = styled.div`
 `;
 
 export const LogoWrapper = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: ${(props) => props.theme.space[4]}px;
   padding: 10px 10px 10px 15px;
   width: 260px;
   border-left: 5px solid ${(props) => props.theme.colors.red};
   background: transparent
     linear-gradient(270deg, rgba(11, 1, 2, 0) 0%, rgba(255, 55, 65, 0.3) 100%);
   @media (min-width: 768px) {
-    margin-bottom: 30px;
+    margin-bottom: ${(props) => props.theme.space[5]}px;
   }
 `;
 
 export const LogoLink = styled.a`
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 1;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.s};
+  line-height: ${(props) => props.theme.lineHeights.heading};
   color: ${(props) => props.theme.colors.red};
-  @media screen and (min-width: $tablet) {
-    font-size: 24px;
+  @media screen and (min-width: 768px) {
+    font-size: ${(props) => props.theme.fontSizes.m};
   }
 `;
 
@@ -77,19 +73,19 @@ export const MainTitle = styled.h1`
   display: inline-block;
   max-width: 320px;
   margin-bottom: 50px;
-  font-weight: 700;
-  font-size: 42px;
-  line-height: 1;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.l};
+  line-height: ${(props) => props.theme.lineHeights.heading};
   text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
     0px -4px 10px rgba(255, 255, 255, 0.3);
 
   @media (min-width: 768px) {
     max-width: 450px;
-    font-size: 56px;
+    font-size: ${(props) => props.theme.fontSizes.lxl};
   }
   @media (min-width: 1280px) {
     max-width: 650px;
-    font-size: 72px;
+    font-size: ${(props) => props.theme.fontSizes.xxl};
   }
 `;
 
@@ -111,69 +107,66 @@ export const Options = styled.div`
 
 export const OptionsItem = styled.p`
   font-family: ${(props) => props.theme.fonts.numbers};
-  font-weight: 700;
-  font-size: 18px;
-  margin-right: 20px;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.s};
+  margin-right: ${(props) => props.theme.space[4]}px;
 
   @media screen and (min-width: 1280px) {
-    font-size: 24px;
+    font-size: ${(props) => props.theme.fontSizes.m};
   }
 `;
 
 export const Rating = styled.p`
   font-family: ${(props) => props.theme.fonts.numbers};
-  font-weight: 700;
-  font-size: 18px;
-  margin-right: 20px;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.s};
+  margin-right: ${(props) => props.theme.space[4]}px;
   color: ${(props) => getColor(props.vote)};
   @media screen and (min-width: 1280px) {
-    font-size: 24px;
+    font-size: ${(props) => props.theme.fontSizes.m};
   }
 `;
 
 export const Overview = styled.p`
-  margin-bottom: 30px;
+  margin-bottom: ${(props) => props.theme.space[5]}px;
   text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
     0px -4px 10px rgba(255, 255, 255, 0.3);
 `;
 
 export const Block = styled.div`
-  max-width: 320px;
+  display: none;
 
-  @media screen and (max-width: 767px) {
-    margin-bottom: 20px;
-  }
-  @media screen and (min-width: 768px) {
-    max-width: 400px;
-  }
   @media screen and (min-width: 1280px) {
+    display: block;
     max-width: 650px;
   }
 `;
 
 export const Subtitle = styled.h2`
-  margin-right: 15px;
+  margin-right: ${(props) => props.theme.space[3]}px;
   color: ${(props) => props.theme.colors.red};
-  font-size: 18px;
+  font-size: ${(props) => props.theme.fontSizes.ms};
 `;
 
 export const CastList = styled.ul`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
-    font-size: 16px;
-  }
 `;
 
 export const CastListItem = styled.li`
   display: inline-block;
-  font-weight: 700;
-  font-size: 18px;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.s};
   &:not(:last-child)::after {
     content: ",";
-    margin-right: 5px;
+    margin-right: ${(props) => props.theme.space[1]}px;
   }
+`;
+
+export const CastError = styled.p`
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.s};
 `;
 
 export const LinkWrapper = styled.div``;
@@ -181,9 +174,9 @@ export const LinkWrapper = styled.div``;
 export const WatchLink = styled(Link)`
   display: flex;
   align-items: center;
-  margin-right: 80px;
-  font-weight: 700;
-  font-size: 24px;
+  margin-right: ${(props) => props.theme.space[9]}px;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.m};
   text-transform: uppercase;
   letter-spacing: 3px;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -194,25 +187,25 @@ export const WatchLink = styled(Link)`
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     margin-right: 0;
-    font-size: 20px;
+    font-size: ${(props) => props.theme.fontSizes.ms};
   }
 
   svg {
     width: 80px;
     height: 80px;
-    margin-right: 40px;
+    margin-right: ${(props) => props.theme.space[6]}px;
     fill: currentColor;
     opacity: 0.5;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
     @media screen and (min-width: 768px) and (max-width: 1279px) {
       width: 60px;
       height: 60px;
-      margin-right: 20px;
+      margin-right: ${(props) => props.theme.space[4]}px;
     }
   }
 
   &:hover svg {
-    color: ${(props) => props.theme.colors.hoverColor}
+    color: ${(props) => props.theme.colors.hover}
     opacity: 0.8;
     scale: 1.5;
   }
@@ -222,8 +215,8 @@ export const MobileWatchLink = styled(Link)`
   display: flex;
   align-items: center;
 
-  font-weight: 700;
-  font-size: 16px;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.s};
   text-transform: uppercase;
 
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -235,8 +228,8 @@ export const MobileWatchLink = styled(Link)`
   svg {
     width: 30px;
     height: 30px;
-    margin-right: 10px;
-    fill: ${(props) => props.theme.colors.hoverColor};
+    margin-right: ${(props) => props.theme.space[1]}px;
+    fill: ${(props) => props.theme.colors.hover};
 
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }

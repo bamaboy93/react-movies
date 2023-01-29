@@ -1,30 +1,4 @@
 import styled from "@emotion/styled/macro";
-import { NavLink } from "react-router-dom";
-
-export const Section = styled.section`
-  padding-top: 80px;
-  padding-bottom: 40px;
-`;
-
-export const Nav = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-`;
-
-export const LinkTo = styled(NavLink)`
-  font-weight: 700;
-  font-size: 18px;
-  color: ${(props) => props.theme.colors.red};
-`;
-
-export const Title = styled.h2`
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 1.2;
-  text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
-    0px -4px 10px rgba(255, 255, 255, 0.3);
-`;
 
 export const MovieList = styled.ul`
   display: grid;
@@ -51,7 +25,7 @@ export const MovieListItem = styled.li`
     height: 100%;
     opacity: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    border-left: 4px solid ${(props) => props.theme.colors.hoverColor};
+    border-left: 4px solid ${(props) => props.theme.colors.hover};
     transition: opacity 300ms ease-in;
   }
 
@@ -70,6 +44,6 @@ export const MovieTitle = styled.p`
   position: absolute;
   bottom: 10px;
   left: 10px;
-  font-weight: 700;
-  font-size: 14px;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.xs};
 `;

@@ -8,7 +8,6 @@ import {
   MovieCard,
   MoviesList,
   MoviesListItem,
-  MoviesSection,
   MovieTitle,
   Overlay,
   OverlayTitle,
@@ -20,39 +19,35 @@ export default function MovieData({ movies }) {
   const url = useLocation();
 
   return (
-    <MoviesSection>
-      <Container>
-        <MoviesList>
-          {movies.map(({ id, poster_path, title, vote_average }) => (
-            <MoviesListItem key={id}>
-              <Link to={`${url.pathname}/${id}`}>
-                <Overlay>
-                  <OverlayTitle>{title}</OverlayTitle>
-                </Overlay>
-                <OverlayVote>
-                  {vote_average && (
-                    <Rating vote={vote_average}>
-                      {vote_average.toFixed()}
-                    </Rating>
-                  )}
-                </OverlayVote>
-                <img
-                  src={
-                    poster_path
-                      ? `https://image.tmdb.org/t/p/w500${poster_path}`
-                      : `${noImageFound}`
-                  }
-                  alt={title}
-                />
-                <MovieCard>
-                  <MovieTitle>{title}</MovieTitle>
-                </MovieCard>
-              </Link>
-            </MoviesListItem>
-          ))}
-        </MoviesList>
-      </Container>
-    </MoviesSection>
+    <Container>
+      <MoviesList>
+        {movies.map(({ id, poster_path, title, vote_average }) => (
+          <MoviesListItem key={id}>
+            <Link to={`${url.pathname}/${id}`}>
+              <Overlay>
+                <OverlayTitle>{title}</OverlayTitle>
+              </Overlay>
+              <OverlayVote>
+                {vote_average && (
+                  <Rating vote={vote_average}>{vote_average.toFixed()}</Rating>
+                )}
+              </OverlayVote>
+              <img
+                src={
+                  poster_path
+                    ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                    : `${noImageFound}`
+                }
+                alt={title}
+              />
+              <MovieCard>
+                <MovieTitle>{title}</MovieTitle>
+              </MovieCard>
+            </Link>
+          </MoviesListItem>
+        ))}
+      </MoviesList>
+    </Container>
   );
 }
 
