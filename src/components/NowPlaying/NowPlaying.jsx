@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
 import { BsFillPlayFill } from "react-icons/bs";
 import noImageFound from "../../styles/images/noimage.jpg";
@@ -73,3 +74,16 @@ export default function NowPlaying({ movie }) {
     </Section>
   );
 }
+
+NowPlaying.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number,
+    backdrop_path: PropTypes.string,
+    poster_path: PropTypes.string,
+    title: PropTypes.string,
+    release_date: PropTypes.string,
+    vote_average: PropTypes.number,
+    adult: PropTypes.bool,
+    overview: PropTypes.string,
+  }),
+};

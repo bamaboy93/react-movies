@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import BackLink from "../BackLink";
 import Buttons from "../Buttons";
 import CastMobile from "../CastMobile";
@@ -52,3 +53,16 @@ export default function SingleMovieMobile({ movie, cast, onToggle }) {
     </PageWrapper>
   );
 }
+
+SingleMovieMobile.propTypes = {
+  movie: PropTypes.shape({
+    src: PropTypes.string,
+    title: PropTypes.string,
+    year: PropTypes.string,
+    runtime: PropTypes.number,
+    score: PropTypes.number,
+    overview: PropTypes.string,
+  }),
+  cast: PropTypes.arrayOf(PropTypes.shape),
+  onToggle: PropTypes.func,
+};

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import {
   Genre,
   Options,
@@ -23,3 +24,12 @@ export default function MovieInfo({ movie }) {
     </Options>
   );
 }
+
+MovieInfo.propTypes = {
+  movie: PropTypes.shape({
+    genres: PropTypes.arrayOf(PropTypes.shape),
+    year: PropTypes.string,
+    runtime: PropTypes.number,
+    score: PropTypes.number,
+  }),
+};

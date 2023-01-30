@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-
+import PropTypes from "prop-types";
 import noImage from "../../styles/images/no-image.jpg";
 
 import { MovieList, MovieListItem, MovieTitle } from "./Upcoming.styled";
@@ -27,3 +27,13 @@ export default function Upcoming({ movies }) {
     </MovieList>
   );
 }
+
+Upcoming.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      backdrop_path: PropTypes.string,
+      title: PropTypes.string,
+    })
+  ),
+};

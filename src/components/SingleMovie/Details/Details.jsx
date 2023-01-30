@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState, Fragment } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -94,3 +95,16 @@ export default function Details({ cast, movie }) {
     </>
   );
 }
+
+Details.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number,
+    src: PropTypes.string,
+    title: PropTypes.string,
+    year: PropTypes.string,
+    runtime: PropTypes.number,
+    score: PropTypes.number,
+    overview: PropTypes.string,
+  }),
+  cast: PropTypes.arrayOf(PropTypes.shape),
+};

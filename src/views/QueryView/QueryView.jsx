@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import Status from "../../services/status";
 import api from "../../services/api/movies-api";
 import usePagination from "../../hooks/usePagination";
-import { useLocation } from "react-router-dom";
+
 import MovieData from "../../components/MovieData";
 import Pagination from "../../components/Pagination";
+import Loader from "../../components/Loader";
+import PageTitle from "../../components/PageTitle/PageTitle";
 
 export default function QueryPage({ name }) {
   const [movies, setMovies] = useState(null);
@@ -12,7 +14,6 @@ export default function QueryPage({ name }) {
   const [totalpages, setTotalPages] = useState(null);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
-  const location = useLocation();
 
   ////////////////Pagination
   const PER_PAGE = 20;
@@ -55,10 +56,13 @@ export default function QueryPage({ name }) {
     <>
       {status === Status.IDLE}
 
+      {status === Status.PENDING && <Loader />}
+
       {status === Status.REJECTED}
 
       {status === Status.RESOLVED && (
         <>
+          <PageTitle title={`Results for "${name}"`} />
           <MovieData movies={movies} />
 
           <Pagination

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import BackLink from "../BackLink";
 import Overview from "./Overview/Overview";
 import ButtonPlay from "../Buttons/ButtonPlay";
@@ -37,3 +38,12 @@ export default function SingleMovie({ movie, onToggle, cast }) {
     </>
   );
 }
+
+SingleMovie.propTypes = {
+  movie: PropTypes.shape({
+    backdrop: PropTypes.string,
+    title: PropTypes.string,
+  }),
+  cast: PropTypes.arrayOf(PropTypes.shape),
+  onToggle: PropTypes.func,
+};

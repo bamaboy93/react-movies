@@ -1,8 +1,9 @@
+import PropTypes from "prop-types";
 import Buttons from "../../Buttons";
 
 import { OverviewWrapper, ShortDesc } from "./Overview.styled";
 
-export default function Overview({ movie, onToggle, show }) {
+export default function Overview({ movie, onToggle }) {
   const { tagline } = movie;
 
   return (
@@ -12,3 +13,10 @@ export default function Overview({ movie, onToggle, show }) {
     </OverviewWrapper>
   );
 }
+
+Overview.propTypes = {
+  movie: PropTypes.shape({
+    tagline: PropTypes.string,
+  }),
+  onToggle: PropTypes.func,
+};

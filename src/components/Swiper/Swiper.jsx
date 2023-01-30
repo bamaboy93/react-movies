@@ -1,7 +1,7 @@
+import PropTypes from "prop-types";
 import { Link, useLocation } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// import PropTypes from "prop-types";
 import noImageFound from "../../styles/images/noimage.jpg";
 
 import "swiper/scss";
@@ -74,3 +74,14 @@ export default function SwiperCarousel({ movies }) {
     </Swiper>
   );
 }
+
+Swiper.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      poster_path: PropTypes.string,
+      title: PropTypes.string,
+      vote_average: PropTypes.number,
+    })
+  ),
+};
