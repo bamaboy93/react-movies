@@ -1,6 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import noImageFound from "../../styles/images/noimage.jpg";
 import Container from "../Container";
 
@@ -51,6 +50,13 @@ export default function MovieData({ movies }) {
   );
 }
 
-// MovieData.propTypes = {
-//   movies: PropTypes.shape,
-// };
+MovieData.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      poster_path: PropTypes.string,
+      title: PropTypes.string,
+      vote_average: PropTypes.number,
+    })
+  ),
+};

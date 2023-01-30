@@ -63,8 +63,8 @@ export const OverlayTitle = styled.p`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-weight: 700;
-  font-size: 24px;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.m};
   text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
     0px -4px 10px rgba(255, 255, 255, 0.3);
 `;
@@ -86,7 +86,7 @@ export const OverlayVote = styled.div`
 
 export const Rating = styled.p`
   font-family: ${(props) => props.theme.fonts.numbers};
-  font-size: 18px;
+  font-size: ${(props) => props.theme.fontSizes.s};
   color: ${(props) => getColor(props.vote)};
 `;
 
@@ -98,7 +98,7 @@ export const MovieCard = styled.div`
   width: 100%;
   min-height: 60px;
   bottom: 0;
-  padding: 5px;
+  padding: ${(props) => props.theme.space[1]}px;
 
   background-color: rgba(49, 50, 60, 0.647);
   cursor: pointer;

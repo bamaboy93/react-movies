@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import Paper from "@mui/material/Paper";
-
 import { styled as muiStyled } from "@mui/material/styles";
 
 export const Item = muiStyled(Paper)(({ theme }) => ({

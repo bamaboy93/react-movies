@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { useLocation } from "react-router-dom";
@@ -28,3 +29,8 @@ export default function Layout({ showHeader = [], onSubmit }) {
     </>
   );
 }
+
+Layout.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  showHeader: PropTypes.arrayOf(PropTypes.string).isRequired,
+};

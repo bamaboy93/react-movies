@@ -10,7 +10,6 @@ export const theme = {
     footer: "#191919",
     button: "#484a4d",
     modal: "rgba(0, 0, 0, 0.25)",
-
     text: "#d1d0cf",
     peach: "#ffcab0",
     lightviolet: "#9896f1",

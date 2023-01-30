@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import Container from "../../components/Container";
 import noImageFound from "../../styles/images/noimage.jpg";
 import { CastInfo, CastList, CastListItem, CastName } from "./Cast.styled";
@@ -26,3 +27,7 @@ export default function Cast({ cast }) {
     </Container>
   );
 }
+
+Cast.propTypes = {
+  cast: PropTypes.arrayOf(PropTypes.shape),
+};

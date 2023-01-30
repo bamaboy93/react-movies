@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { BsPlayCircle } from "react-icons/bs";
@@ -111,3 +112,15 @@ export default function MainMovie({ movie }) {
     </MainWrapper>
   );
 }
+
+MainMovie.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number,
+    backdrop_path: PropTypes.string,
+    title: PropTypes.string,
+    release_date: PropTypes.string,
+    vote_average: PropTypes.number,
+    adult: PropTypes.bool,
+    overview: PropTypes.string,
+  }),
+};

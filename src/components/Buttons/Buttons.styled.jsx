@@ -20,7 +20,7 @@ export const ButtonTrailer = styled.button`
   align-items: center;
   transition: filter 250ms;
   color: ${(props) => props.theme.colors.white};
-  margin-right: 15px;
+  margin-right: ${(props) => props.theme.space[3]}px;
   &:hover {
     filter: brightness(1.2);
   }

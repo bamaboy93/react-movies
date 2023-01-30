@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useMediaQuery } from "react-responsive";
 import { FaCaretDown } from "react-icons/fa";
 // import { useAuthState } from "react-firebase-hooks/auth";
@@ -6,7 +7,7 @@ import { FaCaretDown } from "react-icons/fa";
 import Container from "../../Container";
 import Login from "../Login";
 import SearchForm from "../SearchForm";
-import MobileMenu from "../MobileMenu";
+import Menu from "../Menu";
 import {
   Dropdown,
   DropdownList,
@@ -27,6 +28,14 @@ import {
 export default function Header({ onSubmit }) {
   // const [user, loading] = useAuthState(auth);
 
+  const navItems = [
+    { href: "movies", text: "Home" },
+    { href: "popular", text: "Popular" },
+    { href: "top_rated", text: "Top Rated" },
+    { href: "upcoming", text: "Upcoming" },
+    { href: "favourites", text: "Favourites" },
+  ];
+
   const isMobile = useMediaQuery({
     query: "(max-width: 1279px)",
   });
@@ -40,7 +49,6 @@ export default function Header({ onSubmit }) {
       <Container>
         <Nav>
           <Logo to="/movies">MB</Logo>
-
           <NavList>
             <NavListItem>
               <DropdownWrapper>
@@ -50,26 +58,12 @@ export default function Header({ onSubmit }) {
                 </HomeLink>
                 <Dropdown>
                   <DropdownList>
-                    <DropdownListItem>
-                      <DropdownListLink to="/movies" />
-                      Home
-                    </DropdownListItem>
-                    <DropdownListItem>
-                      <DropdownListLink to="/popular" />
-                      Popular
-                    </DropdownListItem>
-                    <DropdownListItem>
-                      <DropdownListLink to="/top_rated" />
-                      Top Rated
-                    </DropdownListItem>
-                    <DropdownListItem>
-                      <DropdownListLink to="/upcoming" />
-                      Upcoming
-                    </DropdownListItem>
-                    <DropdownListItem>
-                      <DropdownListLink to="/favourites" />
-                      Favourites
-                    </DropdownListItem>
+                    {navItems.map((item) => (
+                      <DropdownListItem key={item.text}>
+                        <DropdownListLink to={item.href} />
+                        {item.text}
+                      </DropdownListItem>
+                    ))}
                   </DropdownList>
                 </Dropdown>
               </DropdownWrapper>
@@ -89,10 +83,14 @@ export default function Header({ onSubmit }) {
           </NavList>
           <ActiveButtons>
             <SearchForm onSubmit={onSubmit} />
-            {isMobile ? <MobileMenu /> : <LoginBlock>{<Login />}</LoginBlock>}
+            {isMobile ? <Menu /> : <LoginBlock>{<Login />}</LoginBlock>}
           </ActiveButtons>
         </Nav>
       </Container>
     </HeaderLine>
   );
 }
+
+Header.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

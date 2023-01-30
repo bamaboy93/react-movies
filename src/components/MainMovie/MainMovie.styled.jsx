@@ -10,7 +10,7 @@ export const MainWrapper = styled.div`
     `url(https://image.tmdb.org/t/p/original${props.backdrop})`};
   background-repeat: no-repeat !important;
   background-size: cover !important;
-
+  background-position: center;
   z-index: 1;
   &:before {
     content: "";
@@ -22,10 +22,6 @@ export const MainWrapper = styled.div`
     top: 0;
 
     background: rgba(0, 0, 0, 0.2);
-  }
-
-  @media screen and (max-width: 767px) {
-    background-position: center;
   }
 `;
 
