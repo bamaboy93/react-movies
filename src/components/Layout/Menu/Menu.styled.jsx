@@ -24,5 +24,5 @@ export const Link = styled(NavLink)`
   font-weight: ${(props) => props.theme.fontWeights.bold};
   font-size: ${(props) => props.theme.fontSizes.m};
   line-height: ${(props) => props.theme.lineHeights.heading};
-  color: ${(props) => props.theme.colors.black};
+  color: ${(props) => props.theme.colors.white};
 `;

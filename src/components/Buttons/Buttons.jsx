@@ -6,11 +6,14 @@ import {
   deleteFavourite,
   inFavourites,
 } from "../../services/localStorage";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../services/firebase";
 import { Box, ButtonTrailer, ButtonFav } from "./Buttons.styled";
 
 export default function Buttons({ movie, onToggle }) {
   const { id } = movie;
   const [fav, setFav] = useState(false);
+  const user = useAuthState(auth);
 
   const onFavourite = () => {
     if (fav) {
@@ -28,7 +31,12 @@ export default function Buttons({ movie, onToggle }) {
       <ButtonTrailer type="button" onClick={onToggle}>
         Trailer
       </ButtonTrailer>
-      <ButtonFav type="button" onClick={onFavourite}>
+      <ButtonFav
+        title="You need to be logged in"
+        type="button"
+        onClick={onFavourite}
+        disabled={user ? false : true}
+      >
         {fav ? <MdFavorite /> : <MdFavoriteBorder />}
       </ButtonFav>
     </Box>

@@ -1,6 +1,5 @@
 import styled from "@emotion/styled/macro";
 import { NavLink } from "react-router-dom";
-import homePage from "../../../styles/images/pages/home.png";
 
 export const HeaderLine = styled.header`
   position: absolute;
@@ -69,7 +68,7 @@ export const HomeLink = styled.p`
   }
 `;
 
-export const LinkTo = styled.a`
+export const LinkTo = styled(NavLink)`
   display: flex;
   align-items: center;
   padding: 24px 0;
@@ -105,7 +104,7 @@ export const Dropdown = styled.div`
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
   @media screen and (min-width: 1280px) {
-    width: 1100px;
+    width: 850px;
     top: 100%;
     left: 50%;
     transform: translate(-35%, 15px);
@@ -134,7 +133,7 @@ export const DropdownListItem = styled.li`
   font-weight: ${(props) => props.theme.fontWeights.bold};
   font-size: ${(props) => props.theme.fontSizes.s};
   text-align: center;
-  background-image: url(${homePage});
+  background-image: url(${(props) => props.img});
   background-color: grey;
   cursor: pointer;
   transition: ${(props) => props.theme.animation.main};

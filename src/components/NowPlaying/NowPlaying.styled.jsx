@@ -9,14 +9,11 @@ export const Section = styled.section`
 export const Wrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 650px;
+  height: 600px;
   padding-top: ${(props) => props.theme.space[7]}px;
   background-image: ${(props) =>
     `url(https://image.tmdb.org/t/p/original${props.backdrop})`};
-  background-position: center center;
-  background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     height: 500px;
@@ -24,6 +21,7 @@ export const Wrapper = styled.div`
 
   @media screen and (min-width: 1280px) {
     height: 650px;
+    background-attachment: fixed;
   }
 
   &::before {
@@ -57,13 +55,14 @@ export const InfoWrapper = styled.div``;
 export const MovieTitle = styled.h2`
   display: inline-block;
   max-width: 320px;
-  margin-bottom: ${(props) => props.theme.space[9]}px;
+  margin-bottom: ${(props) => props.theme.space[7]}px;
   font-weight: ${(props) => props.theme.fontWeights.bold};
   font-size: ${(props) => props.theme.fontSizes.ml};
   line-height: ${(props) => props.theme.lineHeights.heading};
   text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
     0px -4px 10px rgba(255, 255, 255, 0.3);
   @media screen and (min-width: 768px) {
+    margin-bottom: ${(props) => props.theme.space[9]}px;
     max-width: 400px;
     font-size: ${(props) => props.theme.fontSizes.l};
   }
@@ -125,7 +124,7 @@ export const Overview = styled.p`
 export const LinkWatch = styled(Link)`
   display: inline-flex;
   align-items: center;
-  margin-top: ${(props) => props.theme.space[5]}px;
+  margin-top: ${(props) => props.theme.space[7]}px;
   padding: 10px 15px;
   font-weight: ${(props) => props.theme.fontWeights.bold};
   font-size: ${(props) => props.theme.fontSizes.xs};

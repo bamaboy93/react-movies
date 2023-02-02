@@ -1,13 +1,18 @@
 import PropTypes from "prop-types";
 import { useMediaQuery } from "react-responsive";
 import { FaCaretDown } from "react-icons/fa";
-// import { useAuthState } from "react-firebase-hooks/auth";
-// import { auth } from "../../../services/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../../services/firebase";
 
 import Container from "../../Container";
 import Login from "../Login";
+import User from "../User";
 import SearchForm from "../SearchForm";
 import Menu from "../Menu";
+import uImage from "../../../styles/images/pages/upcoming.png";
+import hImage from "../../../styles/images/pages/home.png";
+import pImage from "../../../styles/images/pages/popular.png";
+import tImage from "../../../styles/images/pages/toprated.png";
 import {
   Dropdown,
   DropdownList,
@@ -24,25 +29,25 @@ import {
   NavListItem,
   ActiveButtons,
 } from "./Header.styled";
+import { LinearProgress } from "@mui/material";
 
 export default function Header({ onSubmit }) {
-  // const [user, loading] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
 
   const navItems = [
-    { href: "movies", text: "Home" },
-    { href: "popular", text: "Popular" },
-    { href: "top_rated", text: "Top Rated" },
-    { href: "upcoming", text: "Upcoming" },
-    { href: "favourites", text: "Favourites" },
+    { href: "movies", text: "Home", image: hImage },
+    { href: "popular", text: "Popular", image: pImage },
+    { href: "top_rated", text: "Top Rated", image: tImage },
+    { href: "upcoming", text: "Upcoming", image: uImage },
   ];
 
   const isMobile = useMediaQuery({
     query: "(max-width: 1279px)",
   });
 
-  // if (loading) {
-  //   return "Loading";
-  // }
+  if (loading) {
+    return <LinearProgress />;
+  }
 
   return (
     <HeaderLine>
@@ -59,7 +64,7 @@ export default function Header({ onSubmit }) {
                 <Dropdown>
                   <DropdownList>
                     {navItems.map((item) => (
-                      <DropdownListItem key={item.text}>
+                      <DropdownListItem key={item.text} img={item.image}>
                         <DropdownListLink to={item.href} />
                         {item.text}
                       </DropdownListItem>
@@ -69,13 +74,13 @@ export default function Header({ onSubmit }) {
               </DropdownWrapper>
             </NavListItem>
             <NavListItem>
-              <LinkTo href="/">
+              <LinkTo to="/movies">
                 Features
                 <FaCaretDown />
               </LinkTo>
             </NavListItem>
             <NavListItem>
-              <LinkTo href="/">
+              <LinkTo to="/movies">
                 Blog
                 <FaCaretDown />
               </LinkTo>
@@ -83,7 +88,11 @@ export default function Header({ onSubmit }) {
           </NavList>
           <ActiveButtons>
             <SearchForm onSubmit={onSubmit} />
-            {isMobile ? <Menu /> : <LoginBlock>{<Login />}</LoginBlock>}
+            {isMobile ? (
+              <Menu />
+            ) : (
+              <LoginBlock>{user ? <User /> : <Login />}</LoginBlock>
+            )}
           </ActiveButtons>
         </Nav>
       </Container>
