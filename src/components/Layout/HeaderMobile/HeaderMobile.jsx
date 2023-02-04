@@ -29,7 +29,7 @@ export default function HeaderMobile({ onSubmit }) {
   }
 
   const navItems = [
-    { href: "movies", text: "Home" },
+    { href: "/", text: "Home" },
     { href: "popular", text: "Popular" },
     { href: "top_rated", text: "Top Rated" },
     { href: "upcoming", text: "Upcoming" },
@@ -80,8 +80,10 @@ export default function HeaderMobile({ onSubmit }) {
             onClose={handleCloseNavMenu}
           >
             {navItems.map(({ text, href }) => (
-              <MenuItem key={text} onClick={handleCloseNavMenu} sx={{ p: 1 }}>
-                <Link to={href}>{text}</Link>
+              <MenuItem key={text} sx={{ p: 1 }}>
+                <Link to={href} onClick={handleCloseNavMenu}>
+                  {text}
+                </Link>
               </MenuItem>
             ))}
           </Menu>
@@ -98,7 +100,7 @@ export default function HeaderMobile({ onSubmit }) {
                   </IconButton>
                 </Tooltip>
                 <Menu
-                  sx={{ mt: "45px" }}
+                  sx={{ mt: "40px" }}
                   id="menu-appbar"
                   anchorEl={anchorElUser}
                   anchorOrigin={{
@@ -118,7 +120,7 @@ export default function HeaderMobile({ onSubmit }) {
                       Favourites
                     </Link>
                   </MenuItem>
-                  <MenuItem>
+                  <MenuItem onClick={handleCloseUserMenu}>
                     <Button onClick={logout}>Logout</Button>
                   </MenuItem>
                 </Menu>

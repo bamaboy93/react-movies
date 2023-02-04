@@ -23,34 +23,38 @@ import {
 export default function SingleMovieMobile({ movie, cast, onToggle }) {
   const { src, title, score, year, overview, runtime } = movie;
   return (
-    <PageWrapper>
-      <Container>
-        <BackLink />
-        <MovieWrapper>
-          <PosterWrapper>
-            <Poster src={src} alt={title} />
-            <Rating vote={score}>{score.toFixed()}</Rating>
-          </PosterWrapper>
+    <>
+      {movie && (
+        <PageWrapper>
+          <Container>
+            <BackLink />
+            <MovieWrapper>
+              <PosterWrapper>
+                <Poster src={src} alt={title} />
+                <Rating vote={score}>{score.toFixed()}</Rating>
+              </PosterWrapper>
 
-          <InfoWrapper>
-            <Title>{title}</Title>{" "}
-            <Year>{year.split("").slice(0, 4).join("")}</Year>
-            <Subtitle>Genres:</Subtitle>
-            <Genres>
-              {movie.genres.slice(0, 2).map((genre) => (
-                <Genre key={genre.id}>{genre.name}</Genre>
-              ))}
-            </Genres>
-            <Subtitle>Runtime:</Subtitle>
-            <Runtime>{runtime}min</Runtime>
-          </InfoWrapper>
-        </MovieWrapper>
-        <Buttons movie={movie} onToggle={onToggle} />
-        <Overview>{overview}</Overview>
-      </Container>
-      <CastMobile cast={cast} />
-      <ImagesSwiper />
-    </PageWrapper>
+              <InfoWrapper>
+                <Title>{title}</Title>{" "}
+                <Year>{year.split("").slice(0, 4).join("")}</Year>
+                <Subtitle>Genres:</Subtitle>
+                <Genres>
+                  {movie.genres.slice(0, 2).map((genre) => (
+                    <Genre key={genre.id}>{genre.name}</Genre>
+                  ))}
+                </Genres>
+                <Subtitle>Runtime:</Subtitle>
+                <Runtime>{runtime}min</Runtime>
+              </InfoWrapper>
+            </MovieWrapper>
+            <Buttons movie={movie} onToggle={onToggle} />
+            <Overview>{overview}</Overview>
+          </Container>
+          <CastMobile cast={cast} />
+          <ImagesSwiper />
+        </PageWrapper>
+      )}
+    </>
   );
 }
 

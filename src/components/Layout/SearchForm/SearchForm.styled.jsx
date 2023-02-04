@@ -90,6 +90,7 @@ export const MobileInput = styled.input`
   border: none;
   background-color: transparent;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0;
   font-size: ${(props) => props.theme.fontSizes.s};
   letter-spacing: 2px;
 
