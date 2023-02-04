@@ -37,7 +37,7 @@ export default function Buttons({ movie, onToggle }) {
         onClick={onFavourite}
         disabled={user ? false : true}
       >
-        {fav ? <MdFavorite /> : <MdFavoriteBorder />}
+        {fav ? <MdFavorite size={30} /> : <MdFavoriteBorder size={30} />}
       </ButtonFav>
     </Box>
   );

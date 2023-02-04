@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import Container from "../../Container";
 import { Link } from "./HeaderMobile.styled";
-import { auth, logout } from "../../../services/firebase";
+import { auth, signInWithGoogle, logout } from "../../../services/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import SearchForm from "../SearchForm/SearchForm";
 
@@ -124,7 +124,7 @@ export default function HeaderMobile({ onSubmit }) {
                 </Menu>
               </>
             ) : (
-              <IconButton color="inherit">
+              <IconButton color="inherit" onClick={signInWithGoogle}>
                 <GoogleIcon />
               </IconButton>
             )}

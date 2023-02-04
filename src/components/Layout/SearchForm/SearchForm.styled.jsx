@@ -31,6 +31,7 @@ export const Input = styled.input`
     @media screen and (max-width: 767px) {
       font-size: 14px;
     }
+    -webkit-appearance: none;
   }
 
   :focus {
@@ -99,6 +100,7 @@ export const MobileInput = styled.input`
     font-size: ${(props) => props.theme.fontSizes.xs};
     letter-spacing: 2px;
   }
+  -webkit-appearance: none;
 `;
 
 export const FormButton = styled.button`

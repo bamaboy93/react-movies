@@ -27,7 +27,6 @@ export const ButtonTrailer = styled.button`
 `;
 
 export const ButtonFav = styled.button`
-  width: 38px;
   height: 38px;
   outline: none;
   border: none;
@@ -41,10 +40,5 @@ export const ButtonFav = styled.button`
 
   &:hover {
     filter: brightness(1.2);
-  }
-
-  svg {
-    width: 100%;
-    height: 100%;
   }
 `;
