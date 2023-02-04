@@ -56,7 +56,7 @@ function App() {
               <Layout
                 onSubmit={handleFormSubmit}
                 showHeader={[
-                  "/movies",
+                  "/",
                   "/search",
                   "/popular",
                   "/top_rated",
@@ -66,10 +66,8 @@ function App() {
               />
             }
           >
-            <Route index element={<Navigate to="/movies" />} />
-
-            <Route path="movies" element={<HomeView />} />
-            <Route path="movies/:movieId" element={<MovieView />} />
+            <Route path="/" element={<HomeView />} />
+            <Route path=":movieId" element={<MovieView />} />
 
             <Route path="search" element={<QueryView name={movieName} />} />
             <Route path="search/:movieId" element={<MovieView />} />

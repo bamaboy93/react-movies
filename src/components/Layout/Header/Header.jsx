@@ -35,7 +35,7 @@ export default function Header({ onSubmit }) {
   const [user, loading] = useAuthState(auth);
 
   const navItems = [
-    { href: "movies", text: "Home", image: hImage },
+    { href: "/", text: "Home", image: hImage },
     { href: "popular", text: "Popular", image: pImage },
     { href: "top_rated", text: "Top Rated", image: tImage },
     { href: "upcoming", text: "Upcoming", image: uImage },
@@ -53,7 +53,7 @@ export default function Header({ onSubmit }) {
     <HeaderLine>
       <Container>
         <Nav>
-          <Logo to="/movies">MB</Logo>
+          <Logo to="/">MB</Logo>
           <NavList>
             <NavListItem>
               <DropdownWrapper>
@@ -74,13 +74,13 @@ export default function Header({ onSubmit }) {
               </DropdownWrapper>
             </NavListItem>
             <NavListItem>
-              <LinkTo to="/movies">
+              <LinkTo to="/">
                 Features
                 <FaCaretDown />
               </LinkTo>
             </NavListItem>
             <NavListItem>
-              <LinkTo to="/movies">
+              <LinkTo to="/">
                 Blog
                 <FaCaretDown />
               </LinkTo>

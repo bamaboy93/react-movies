@@ -13,7 +13,7 @@ import "./styles/index.css";
 const root = createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename="/react-movies/">
+    <BrowserRouter basename="/movies/">
       <MuiThemeProvider theme={muiTheme}>
         <ThemeProvider theme={theme}>
           <App />
