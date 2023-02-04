@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { LinearProgress } from "@mui/material";
 import { lazy, Suspense } from "react";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 const Layout = lazy(() => import("./components/Layout"));
 
