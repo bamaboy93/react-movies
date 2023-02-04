@@ -47,6 +47,7 @@ export const NavListItem = styled.li`
 
 export const ActiveButtons = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 export const HomeLink = styled.p`

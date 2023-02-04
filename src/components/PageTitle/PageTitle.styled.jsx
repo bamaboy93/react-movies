@@ -1,7 +1,10 @@
 import styled from "@emotion/styled";
 
 export const TitleWrapper = styled.div`
-  margin-top: 120px;
+  margin-top: ${(props) => props.theme.space[6]}px;
+  @media (min-width: 1280px) {
+    margin-top: ${(props) => props.theme.space[10]}px;
+  }
 `;
 
 export const Title = styled.h1`
