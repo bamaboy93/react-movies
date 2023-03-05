@@ -8,7 +8,6 @@ import Section from "../../components/Section";
 import Upcoming from "../../components/Upcoming";
 import NowPlaying from "../../components/NowPlaying";
 import SwiperCarousel from "../../components/Swiper/Swiper";
-import Loader from "../../components/Loader";
 
 export default function HomePage() {
   const [popular, setPopular] = useState(null);
@@ -90,7 +89,7 @@ export default function HomePage() {
   }, [error]);
   return (
     <>
-      {status === Status.PENDING && <Loader />}
+      {status === Status.PENDING}
       {status === Status.REJECTED}
       {status === Status.RESOLVED && (
         <>

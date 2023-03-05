@@ -1,9 +1,22 @@
-import styled from "@emotion/styled/macro";
-import { NavLink } from "react-router-dom";
+import { Box } from "@mui/material";
+import { styled } from "@mui/system";
 
-export const Link = styled(NavLink)`
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.s};
-  line-height: ${(props) => props.theme.lineHeights.heading};
-  color: ${(props) => props.theme.colors.black};
-`;
+export const Wrapper = styled(Box)(({ visible }) => ({
+  display: "flex",
+  alignItems: "center",
+  width: "100%",
+  height: "60px",
+  backgroundColor: "#191919",
+
+  position: "fixed",
+  top: visible ? "0" : "-60px",
+  left: "0",
+  zIndex: "99",
+  transition: "top 0.4s ease-out",
+}));
+
+export const NavBar = styled(Box)({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+});

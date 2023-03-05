@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useMediaQuery } from "react-responsive";
 import { HiOutlineSearch } from "react-icons/hi";
@@ -12,8 +12,9 @@ import {
   FormButton,
 } from "./SearchForm.styled";
 
-export default function SearchForm({ onSubmit }) {
+export default function SearchForm() {
   const [query, setQuery] = useState("");
+  const navigate = useNavigate();
   const isMobile = useMediaQuery({
     query: "(max-width: 1279px)",
   });
@@ -29,7 +30,10 @@ export default function SearchForm({ onSubmit }) {
       toast.warn("Please, enter your query !");
       return;
     }
-    onSubmit(query);
+    navigate({
+      pathname: "/search",
+      search: `query=${query}`,
+    });
 
     setQuery("");
   };
@@ -66,7 +70,3 @@ export default function SearchForm({ onSubmit }) {
     </>
   );
 }
-
-SearchForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};

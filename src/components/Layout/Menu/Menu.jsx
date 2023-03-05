@@ -1,68 +1,73 @@
-import { useState, Fragment } from "react";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-
-import { HiMenu } from "react-icons/hi";
-import { ButtonOpen, Link } from "./Menu.styled";
+import { useState } from "react";
+import {
+  Box,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  IconButton,
+} from "@mui/material";
+import {
+  MenuRounded,
+  KeyboardDoubleArrowLeftRounded,
+} from "@mui/icons-material";
+import { ButtonLogout, Link } from "./Menu.styled";
 
 export default function Menu() {
-  const [state, setState] = useState({
-    right: false,
-  });
-
-  const anchor = "right";
+  const [open, setOpen] = useState(false);
 
   const navItems = [
-    { href: "movies", text: "Home" },
-    { href: "popular", text: "Popular" },
-    { href: "top_rated", text: "Top Rated" },
-    { href: "upcoming", text: "Upcoming" },
-    { href: "favourites", text: "Favourites" },
+    { href: "/", text: "Home" },
+    { href: "/popular", text: "Popular" },
+    { href: "/top_rated", text: "Top Rated" },
+    { href: "/upcoming", text: "Upcoming" },
+    { href: "/favourites", text: "Favourites" },
   ];
 
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-
-    setState({ ...state, [anchor]: open });
+  const toggleMenu = () => {
+    setOpen(!open);
   };
 
-  const list = (anchor) => (
-    <Box
-      sx={{ width: 250 }}
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item.text}>
-            <Link to={item.href}>{item.text}</Link>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
   return (
-    <div>
-      <Fragment>
-        <ButtonOpen onClick={toggleDrawer(anchor, true)}>
-          <HiMenu size={35} />
-        </ButtonOpen>
-        <Drawer
-          anchor={anchor}
-          open={state[anchor]}
-          onClose={toggleDrawer(anchor, false)}
-        >
-          {list(anchor)}
-        </Drawer>
-      </Fragment>
-    </div>
+    <>
+      <IconButton sx={{ color: "common.white", p: 0 }} onClick={toggleMenu}>
+        <MenuRounded fontSize="large" />
+      </IconButton>
+      <Drawer
+        variant="temporary"
+        anchor={"left"}
+        open={open}
+        onClose={toggleMenu}
+      >
+        <Box sx={{ p: 4, width: 280, height: 1 }}>
+          <Box sx={{ textAlign: "right" }}>
+            <IconButton
+              sx={{ color: "common.white", p: 0 }}
+              onClick={toggleMenu}
+            >
+              <KeyboardDoubleArrowLeftRounded fontSize="large" />
+            </IconButton>
+          </Box>
+          <List>
+            {navItems.map(({ href, text }) => (
+              <ListItemButton key={text}>
+                <ListItem
+                  component={Link}
+                  sx={{
+                    textDecoration: "none",
+                    color: "white",
+                    fontWeight: "bolder",
+                  }}
+                  to={href}
+                >
+                  {text}
+                </ListItem>
+              </ListItemButton>
+            ))}
+          </List>
+          <ButtonLogout>Log Out</ButtonLogout>
+        </Box>
+      </Drawer>
+    </>
   );
 }

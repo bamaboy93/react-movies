@@ -72,8 +72,8 @@ async function getMoviesByQuery(query, page) {
     const config = {
       url: `search/movie`,
       params: {
-        query,
         page,
+        query,
       },
     };
     const { data } = await axios(config);

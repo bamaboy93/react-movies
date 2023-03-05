@@ -9,7 +9,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import HeaderMobile from "./HeaderMobile/HeaderMobile";
 
-export default function Layout({ showHeader = [], onSubmit }) {
+export default function Layout({ showHeader = [] }) {
   const { pathname } = useLocation();
   const isMobile = useMediaQuery({
     query: "(max-width: 1279px)",
@@ -18,9 +18,9 @@ export default function Layout({ showHeader = [], onSubmit }) {
   return (
     <>
       {isMobile ? (
-        <HeaderMobile onSubmit={onSubmit} />
+        <HeaderMobile />
       ) : (
-        <>{showHeader.includes(pathname) && <Header onSubmit={onSubmit} />}</>
+        <>{showHeader.includes(pathname) && <Header />}</>
       )}
 
       <main>
@@ -41,6 +41,5 @@ export default function Layout({ showHeader = [], onSubmit }) {
 }
 
 Layout.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
   showHeader: PropTypes.arrayOf(PropTypes.string).isRequired,
 };

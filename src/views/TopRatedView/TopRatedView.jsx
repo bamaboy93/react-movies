@@ -8,7 +8,6 @@ import Pagination from "../../components/Pagination";
 
 import usePagination from "../../hooks/usePagination";
 import PageTitle from "../../components/PageTitle";
-import Loader from "../../components/Loader";
 
 export default function UpcomingView() {
   const [movies, setMovies] = useState(null);
@@ -46,7 +45,7 @@ export default function UpcomingView() {
 
   return (
     <>
-      {status === Status.PENDING && <Loader />}
+      {status === Status.PENDING}
 
       {status === Status.REJECTED}
 

@@ -1,6 +1,12 @@
 import styled from "@emotion/styled";
 
-export const LoaderContainer = styled.div`
+export const MainWrapper = styled.div`
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+`;
+
+export const LoaderWrapper = styled.div`
   width: 100vw;
   height: 100vh;
   position: absolute;

@@ -4,9 +4,10 @@ import Status from "../../services/status";
 import { getFavourites } from "../../services/localStorage";
 import PageTitle from "../../components/PageTitle";
 import FavouritesGrid from "../../components/FavouritesGrid";
+import AlertMessage from "./AlertMessage";
 
 export default function UserList() {
-  const [movies, setMovies] = useState(null);
+  const [movies, setMovies] = useState([]);
   const [status, setStatus] = useState(Status.IDLE);
 
   useEffect(() => {
@@ -24,7 +25,11 @@ export default function UserList() {
       {status === Status.RESOLVED && (
         <>
           <PageTitle title="Favourites" />
-          <FavouritesGrid movies={movies} />
+          {movies.length === 0 ? (
+            <AlertMessage />
+          ) : (
+            <FavouritesGrid movies={movies} />
+          )}
         </>
       )}
     </>

@@ -1,28 +1,22 @@
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
 
-export const ButtonOpen = styled.button`
-  width: 48px;
-  height: 48px;
+export const ButtonLogout = styled.button`
+  width: 100%;
+  padding: ${(props) => props.theme.space[3]}px;
+  margin-top: ${(props) => props.theme.space[6]}px;
   border: none;
   outline: none;
-  background-color: transparent;
-  color: ${(props) => props.theme.colors.red};
-
-  @media (min-width: 768px) and (max-width: 1279px) {
-    margin-left: ${(props) => props.theme.space[1]}px;
-    background-color: rgba(41, 41, 41, 0.76);
-    border-radius: ${(props) => props.theme.radii.round};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: ${(props) => props.theme.colors.text};
-  }
+  background-color: ${(props) => props.theme.colors.red};
+  color: ${(props) => props.theme.colors.white};
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.ms};
+  line-height: ${(props) => props.theme.lineHeights.heading};
 `;
 
 export const Link = styled(NavLink)`
   font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.m};
+  font-size: ${(props) => props.theme.fontSizes.ms};
   line-height: ${(props) => props.theme.lineHeights.heading};
   color: ${(props) => props.theme.colors.white};
 `;

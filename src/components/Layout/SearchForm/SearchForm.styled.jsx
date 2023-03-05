@@ -80,6 +80,9 @@ export const MobileForm = styled.form`
   margin-left: ${(props) => props.theme.space[1]}px;
   position: relative;
   background-color: rgba(255, 255, 255, 0.15);
+  @media (min-width: 768px) {
+    width: 380px;
+  }
 `;
 
 export const MobileInput = styled.input`

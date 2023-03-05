@@ -8,7 +8,6 @@ import noImageFound from "../../styles/images/noimage.jpg";
 
 import PopUp from "../../components/PopUp";
 import Trailer from "../../components/Trailer";
-import Loader from "../../components/Loader";
 
 import SingleMovie from "../../components/SingleMovie";
 import SingleMovieMobile from "../../components/SingleMovieMobile";
@@ -87,7 +86,7 @@ function MovieView() {
 
   return (
     <>
-      {status === Status.PENDING && <Loader />}
+      {status === Status.PENDING}
 
       {status === Status.REJECTED}
 

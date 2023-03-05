@@ -9,8 +9,8 @@ export default function Upcoming({ movies }) {
   return (
     <MovieList>
       {movies.slice(0, 10).map(({ id, backdrop_path, title }) => (
-        <MovieListItem key={id}>
-          <Link to={`${url.pathname}/${id}`}>
+        <Link to={`${url.pathname}/${id}`} key={id}>
+          <MovieListItem>
             <img
               src={
                 backdrop_path
@@ -19,10 +19,10 @@ export default function Upcoming({ movies }) {
               }
               alt="movie backdrop"
             />
-          </Link>
 
-          <MovieTitle>{title}</MovieTitle>
-        </MovieListItem>
+            <MovieTitle>{title}</MovieTitle>
+          </MovieListItem>
+        </Link>
       ))}
     </MovieList>
   );

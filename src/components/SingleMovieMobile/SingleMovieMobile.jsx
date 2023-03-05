@@ -21,7 +21,6 @@ import {
 } from "./SingleMovieMobile.styled";
 
 export default function SingleMovieMobile({ movie, cast, onToggle }) {
-  const { src, title, score, year, overview, runtime } = movie;
   return (
     <>
       {movie && (
@@ -30,13 +29,13 @@ export default function SingleMovieMobile({ movie, cast, onToggle }) {
             <BackLink />
             <MovieWrapper>
               <PosterWrapper>
-                <Poster src={src} alt={title} />
-                <Rating vote={score}>{score.toFixed()}</Rating>
+                <Poster src={movie.src} alt={movie.title} />
+                <Rating vote={movie.score}>{movie.score.toFixed()}</Rating>
               </PosterWrapper>
 
               <InfoWrapper>
-                <Title>{title}</Title>{" "}
-                <Year>{year.split("").slice(0, 4).join("")}</Year>
+                <Title>{movie.title}</Title>{" "}
+                <Year>{movie.year.split("").slice(0, 4).join("")}</Year>
                 <Subtitle>Genres:</Subtitle>
                 <Genres>
                   {movie.genres.slice(0, 2).map((genre) => (
@@ -44,11 +43,11 @@ export default function SingleMovieMobile({ movie, cast, onToggle }) {
                   ))}
                 </Genres>
                 <Subtitle>Runtime:</Subtitle>
-                <Runtime>{runtime}min</Runtime>
+                <Runtime>{movie.runtime}min</Runtime>
               </InfoWrapper>
             </MovieWrapper>
             <Buttons movie={movie} onToggle={onToggle} />
-            <Overview>{overview}</Overview>
+            <Overview>{movie.overview}</Overview>
           </Container>
           <CastMobile cast={cast} />
           <ImagesSwiper />

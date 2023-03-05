@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { useMediaQuery } from "react-responsive";
 import { FaCaretDown } from "react-icons/fa";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -31,7 +30,7 @@ import {
 } from "./Header.styled";
 import { LinearProgress } from "@mui/material";
 
-export default function Header({ onSubmit }) {
+export default function Header() {
   const [user, loading] = useAuthState(auth);
 
   const navItems = [
@@ -87,7 +86,7 @@ export default function Header({ onSubmit }) {
             </NavListItem>
           </NavList>
           <ActiveButtons>
-            <SearchForm onSubmit={onSubmit} />
+            <SearchForm />
             {isMobile ? (
               <Menu />
             ) : (
@@ -99,7 +98,3 @@ export default function Header({ onSubmit }) {
     </HeaderLine>
   );
 }
-
-Header.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};

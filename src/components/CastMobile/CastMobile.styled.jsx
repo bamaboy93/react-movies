@@ -15,7 +15,10 @@ export const DropdownTitle = styled.p`
   color: ${(props) => props.theme.colors.black};
 `;
 
-export const Image = styled.img``;
+export const Image = styled.img`
+  width: 100%;
+  height: 100px;
+`;
 
 export const ActorName = styled.p`
   padding: ${(props) => props.theme.space[1]}px;
