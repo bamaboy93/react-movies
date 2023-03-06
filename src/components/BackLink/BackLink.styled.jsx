@@ -22,4 +22,8 @@ export const Button = styled.button`
     margin-top: ${(props) => props.theme.space[2]}px;
     margin-bottom: ${(props) => props.theme.space[5]}px;
   }
+  @media (min-width: 768px) {
+    margin-top: ${(props) => props.theme.space[9]}px;
+    margin-left: ${(props) => props.theme.space[9]}px;
+  }
 `;

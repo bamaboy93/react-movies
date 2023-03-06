@@ -3,16 +3,14 @@ import styled from "@emotion/styled";
 export const MovieScreen = styled.div`
   position: relative;
   min-height: 100vh;
-  padding: ${(props) => props.theme.space[7]}px;
+
   background-image: ${(props) =>
     `url(https://image.tmdb.org/t/p/original${props.backdrop})`};
   background-repeat: no-repeat !important;
   background-size: cover !important;
 
   z-index: 1;
-  @media (min-width: 768px) and (max-width: 1279px) {
-    padding: ${(props) => props.theme.space[5]}px;
-  }
+
   @media (min-width: 1280px) {
     background-position: center !important;
   }

@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
+import { Box, Button, Drawer } from "@mui/material";
 
 import {
   DetailsButton,
@@ -24,7 +23,14 @@ import {
 } from "./Details.styled";
 
 export default function Details({ cast, movie }) {
-  const { overview, title, year, runtime, score, src } = movie;
+  const {
+    overview,
+    original_title,
+    release_date,
+    runtime,
+    vote_average,
+    poster_path,
+  } = movie;
   const [open, setOpen] = useState(false);
 
   const toggleDrawer = () => (event) => {
@@ -39,7 +45,15 @@ export default function Details({ cast, movie }) {
 
   return (
     <>
-      <DetailsButton onClick={toggleDrawer()}>Details</DetailsButton>
+      <Button
+        sx={{ p: "10px 20px" }}
+        variant="contained"
+        color="secondary"
+        onClick={toggleDrawer()}
+      >
+        Details
+      </Button>
+      {/* <DetailsButton onClick={toggleDrawer()}>Details</DetailsButton> */}
       <Drawer anchor={"right"} open={open} onClose={toggleDrawer()}>
         <Box
           sx={{ width: 750 }}
@@ -49,12 +63,15 @@ export default function Details({ cast, movie }) {
           <DetailsWrapper>
             <MovieWrapper>
               <PosterWrapper>
-                <Poster src={src} alt="movie poster" />
-                <Rating vote={score}>{score.toFixed()}</Rating>
+                <Poster
+                  src={`https://image.tmdb.org/t/p/original${poster_path}`}
+                  alt={original_title}
+                />
+                <Rating vote={vote_average}>{vote_average.toFixed()}</Rating>
               </PosterWrapper>
               <InfoWrapper>
-                <Title>{title}</Title>
-                <Year>{year.split("").slice(0, 4).join("")}</Year>
+                <Title>{original_title}</Title>
+                <Year>{release_date.split("").slice(0, 4).join("")}</Year>
                 <Subtitle>Genres:</Subtitle>
                 <Genres>
                   {movie.genres.slice(0, 2).map((genre) => (
@@ -88,11 +105,11 @@ export default function Details({ cast, movie }) {
 Details.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number,
-    src: PropTypes.string,
-    title: PropTypes.string,
-    year: PropTypes.string,
+    poster_path: PropTypes.string,
+    original_title: PropTypes.string,
+    release_date: PropTypes.string,
     runtime: PropTypes.number,
-    score: PropTypes.number,
+    vote_average: PropTypes.number,
     overview: PropTypes.string,
   }),
   cast: PropTypes.arrayOf(PropTypes.shape),

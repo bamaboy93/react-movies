@@ -11,26 +11,22 @@ import { MovieScreen, MovieWrapper, Title } from "./SingleMovie.styled";
 import Details from "./Details/Details";
 
 export default function SingleMovie({ movie, onToggle, cast }) {
-  const { backdrop, title } = movie;
+  const { backdrop_path, original_title } = movie;
 
   return (
     <>
       {movie && (
-        <MovieScreen backdrop={backdrop}>
-          <Container>
-            <BackLink />
+        <MovieScreen backdrop={backdrop_path}>
+          <MovieWrapper>
+            <Container>
+              <Title>{original_title}</Title>
+              <MovieInfo movie={movie} />
+              <Overview movie={movie} onToggle={onToggle} />
 
-            <MovieWrapper>
-              <Container>
-                <Title>{title}</Title>
-                <MovieInfo movie={movie} />
-                <Overview movie={movie} onToggle={onToggle} />
-
-                <ButtonPlay onToggle={onToggle} />
-                <Details movie={movie} cast={cast} />
-              </Container>
-            </MovieWrapper>
-          </Container>
+              <ButtonPlay onToggle={onToggle} />
+              <Details movie={movie} cast={cast} />
+            </Container>
+          </MovieWrapper>
         </MovieScreen>
       )}
       <Cast cast={cast} />

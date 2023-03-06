@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 export const FooterLine = styled.footer`
+  margin-top: ${(props) => props.theme.space[5]}px;
   padding: 40px 0;
   background-color: ${(props) => props.theme.colors.footer};
   @media screen and (max-width: 767px) {

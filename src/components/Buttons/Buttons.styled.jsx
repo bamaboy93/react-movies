@@ -31,7 +31,7 @@ export const ButtonFav = styled.button`
   outline: none;
   border: none;
   cursor: pointer;
-  background-color: #484a4d;
+  background-color: rgba(49, 50, 60, 0.55);
   border-radius: 5%;
   display: flex;
   align-items: center;

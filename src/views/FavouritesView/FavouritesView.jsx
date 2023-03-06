@@ -6,7 +6,7 @@ import PageTitle from "../../components/PageTitle";
 import FavouritesGrid from "../../components/FavouritesGrid";
 import AlertMessage from "./AlertMessage";
 
-export default function UserList() {
+export default function FavouritesView() {
   const [movies, setMovies] = useState([]);
   const [status, setStatus] = useState(Status.IDLE);
 

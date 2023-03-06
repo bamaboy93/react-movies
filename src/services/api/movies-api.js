@@ -24,19 +24,7 @@ async function getPopularMovies(page) {
     return;
   }
 }
-// Now_Playing
-async function getNowPlaying() {
-  try {
-    const config = {
-      url: `/movie/popular`,
-    };
-    const { data } = await axios(config);
 
-    return data;
-  } catch (error) {
-    return;
-  }
-}
 //////////////////// Top_Rated
 async function getTopRatedMovies(page) {
   try {
@@ -142,8 +130,6 @@ async function getMovieImages(id) {
 }
 
 const api = {
-  getPopularMovies,
-  getNowPlaying,
   getTopRatedMovies,
   getUpcomingMovies,
   getMoviesByQuery,
@@ -154,3 +140,12 @@ const api = {
 };
 
 export default api;
+
+export {
+  getPopularMovies,
+  getUpcomingMovies,
+  getTopRatedMovies,
+  getMoviesByQuery,
+  getMovieById,
+  getCastInfo,
+};

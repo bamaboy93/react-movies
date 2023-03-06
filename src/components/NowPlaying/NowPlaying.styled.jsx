@@ -9,18 +9,18 @@ export const Section = styled.section`
 export const Wrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 600px;
+  height: 700px;
   padding-top: ${(props) => props.theme.space[7]}px;
   background-image: ${(props) =>
     `url(https://image.tmdb.org/t/p/original${props.backdrop})`};
   background-size: cover;
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    height: 500px;
+    height: 600px;
   }
 
   @media screen and (min-width: 1280px) {
-    height: 650px;
+    height: 750px;
     background-attachment: fixed;
   }
 

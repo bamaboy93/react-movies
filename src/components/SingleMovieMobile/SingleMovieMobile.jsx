@@ -21,6 +21,15 @@ import {
 } from "./SingleMovieMobile.styled";
 
 export default function SingleMovieMobile({ movie, cast, onToggle }) {
+  const {
+    release_date,
+    poster_path,
+    title,
+    genres,
+    vote_average,
+    overview,
+    runtime,
+  } = movie;
   return (
     <>
       {movie && (
@@ -29,25 +38,28 @@ export default function SingleMovieMobile({ movie, cast, onToggle }) {
             <BackLink />
             <MovieWrapper>
               <PosterWrapper>
-                <Poster src={movie.src} alt={movie.title} />
-                <Rating vote={movie.score}>{movie.score.toFixed()}</Rating>
+                <Poster
+                  src={`https://image.tmdb.org/t/p/original${poster_path}`}
+                  alt={title}
+                />
+                <Rating vote={vote_average}>{vote_average.toFixed()}</Rating>
               </PosterWrapper>
 
               <InfoWrapper>
-                <Title>{movie.title}</Title>{" "}
-                <Year>{movie.year.split("").slice(0, 4).join("")}</Year>
+                <Title>{title}</Title>{" "}
+                <Year>{release_date.split("").slice(0, 4).join("")}</Year>
                 <Subtitle>Genres:</Subtitle>
                 <Genres>
-                  {movie.genres.slice(0, 2).map((genre) => (
+                  {genres.slice(0, 2).map((genre) => (
                     <Genre key={genre.id}>{genre.name}</Genre>
                   ))}
                 </Genres>
                 <Subtitle>Runtime:</Subtitle>
-                <Runtime>{movie.runtime}min</Runtime>
+                <Runtime>{runtime}min</Runtime>
               </InfoWrapper>
             </MovieWrapper>
             <Buttons movie={movie} onToggle={onToggle} />
-            <Overview>{movie.overview}</Overview>
+            <Overview>{overview}</Overview>
           </Container>
           <CastMobile cast={cast} />
           <ImagesSwiper />
@@ -59,11 +71,11 @@ export default function SingleMovieMobile({ movie, cast, onToggle }) {
 
 SingleMovieMobile.propTypes = {
   movie: PropTypes.shape({
-    src: PropTypes.string,
+    poster_path: PropTypes.string,
     title: PropTypes.string,
-    year: PropTypes.string,
+    release_date: PropTypes.string,
     runtime: PropTypes.number,
-    score: PropTypes.number,
+    vote_average: PropTypes.number,
     overview: PropTypes.string,
   }),
   cast: PropTypes.arrayOf(PropTypes.shape),

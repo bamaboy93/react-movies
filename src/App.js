@@ -16,7 +16,7 @@ const PopularView = lazy(() => import("./views/PopularView"));
 
 const MovieView = lazy(() => import("./views/MovieView"));
 
-const FavList = lazy(() => import("./views/FavList"));
+const FavList = lazy(() => import("./views/FavouritesView"));
 
 const ErrorView = lazy(() => import("./components/NotFound"));
 
