@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
-import BackLink from "../BackLink";
+import Navigation from "../SingleMovie/Navigation/Navigation";
 import Buttons from "../Buttons";
 import CastMobile from "../CastMobile";
 import Container from "../Container";
 import ImagesSwiper from "../ImagesSwiper";
 import {
+  NavigationWrapper,
   InfoWrapper,
   MovieWrapper,
   Poster,
@@ -20,7 +21,7 @@ import {
   PageWrapper,
 } from "./SingleMovieMobile.styled";
 
-export default function SingleMovieMobile({ movie, cast, onToggle }) {
+export default function SingleMovieMobile({ movie, cast, images, onToggle }) {
   const {
     release_date,
     poster_path,
@@ -35,7 +36,9 @@ export default function SingleMovieMobile({ movie, cast, onToggle }) {
       {movie && (
         <PageWrapper>
           <Container>
-            <BackLink />
+            <NavigationWrapper>
+              <Navigation title={title} />
+            </NavigationWrapper>
             <MovieWrapper>
               <PosterWrapper>
                 <Poster
@@ -46,7 +49,6 @@ export default function SingleMovieMobile({ movie, cast, onToggle }) {
               </PosterWrapper>
 
               <InfoWrapper>
-                <Title>{title}</Title>{" "}
                 <Year>{release_date.split("").slice(0, 4).join("")}</Year>
                 <Subtitle>Genres:</Subtitle>
                 <Genres>
@@ -58,11 +60,12 @@ export default function SingleMovieMobile({ movie, cast, onToggle }) {
                 <Runtime>{runtime}min</Runtime>
               </InfoWrapper>
             </MovieWrapper>
+            <Title>{title}</Title>
             <Buttons movie={movie} onToggle={onToggle} />
             <Overview>{overview}</Overview>
           </Container>
           <CastMobile cast={cast} />
-          <ImagesSwiper />
+          <ImagesSwiper images={images} />
         </PageWrapper>
       )}
     </>

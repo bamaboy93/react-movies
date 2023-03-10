@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { Box, Button, Drawer } from "@mui/material";
-
+import { Box, Drawer } from "@mui/material";
+import { BsFillPlayFill } from "react-icons/bs";
 import {
   DetailsButton,
   DetailsWrapper,
@@ -45,15 +45,9 @@ export default function Details({ cast, movie }) {
 
   return (
     <>
-      <Button
-        sx={{ p: "10px 20px" }}
-        variant="contained"
-        color="secondary"
-        onClick={toggleDrawer()}
-      >
-        Details
-      </Button>
-      {/* <DetailsButton onClick={toggleDrawer()}>Details</DetailsButton> */}
+      <DetailsButton onClick={toggleDrawer()}>
+        <BsFillPlayFill /> Details
+      </DetailsButton>
       <Drawer anchor={"right"} open={open} onClose={toggleDrawer()}>
         <Box
           sx={{ width: 750 }}

@@ -129,18 +129,6 @@ async function getMovieImages(id) {
   }
 }
 
-const api = {
-  getTopRatedMovies,
-  getUpcomingMovies,
-  getMoviesByQuery,
-  getMovieById,
-  getCastInfo,
-  getMovieVideo,
-  getMovieImages,
-};
-
-export default api;
-
 export {
   getPopularMovies,
   getUpcomingMovies,
@@ -148,4 +136,6 @@ export {
   getMoviesByQuery,
   getMovieById,
   getCastInfo,
+  getMovieImages,
+  getMovieVideo,
 };

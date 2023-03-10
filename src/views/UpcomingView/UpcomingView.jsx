@@ -1,65 +1,27 @@
-import { useState, useEffect } from "react";
-
-import Status from "../../services/status";
-import api from "../../services/api/movies-api";
-import usePagination from "../../hooks/usePagination";
-
+import { useQuery } from "@tanstack/react-query";
+import { getUpcomingMovies } from "../../services/api/movies-api";
 import MovieData from "../../components/MovieData";
-import Pagination from "../../components/Pagination";
+import Loader from "../../components/Loader/Loader";
 import PageTitle from "../../components/PageTitle";
+import AlertMessage from "../../components/AlertMessage";
 
 export default function UpcomingView() {
-  const [movies, setMovies] = useState(null);
-  const [error, setError] = useState(null);
-  const [status, setStatus] = useState(Status.IDLE);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalpages, setTotalPages] = useState(null);
-
-  /////////////////////////Pagination
-  const PER_PAGE = 20;
-  const pages = usePagination(totalpages, PER_PAGE);
-  const handleChange = (e, p) => {
-    setCurrentPage(p);
-    pages.jump(p);
-  };
-
-  /////Upcoming Movies
-  useEffect(() => {
-    setStatus(Status.PENDING);
-
-    api
-      .getUpcomingMovies(currentPage)
-      .then(({ results, page, total_pages }) => {
-        setMovies(results);
-        setCurrentPage(page);
-        setTotalPages(total_pages);
-        setStatus(Status.RESOLVED);
-      })
-      .catch((error) => {
-        console.log(error);
-        setError(error);
-        setStatus(Status.REJECTED);
-      });
-  }, [error, currentPage]);
-
+  const { status, data } = useQuery({
+    queryFn: () => getUpcomingMovies(),
+    queryKey: ["topRated"],
+  });
   return (
     <>
-      {status === Status.PENDING}
+      {status === "loading" && <Loader />}
 
-      {status === Status.REJECTED}
+      {status === "error" && (
+        <AlertMessage message="500 Internal Server Error! Try again later." />
+      )}
 
-      {status === Status.RESOLVED && (
+      {status === "success" && (
         <>
-          <PageTitle title="Upcoming movies" />
-          <MovieData movies={movies} />
-
-          {totalpages > 1 && (
-            <Pagination
-              page={currentPage}
-              totalpages={totalpages}
-              onChange={handleChange}
-            />
-          )}
+          <PageTitle title="Upcoming Movies" />
+          <MovieData movies={data.results} />
         </>
       )}
     </>

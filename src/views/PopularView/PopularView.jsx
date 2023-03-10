@@ -2,8 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { getPopularMovies } from "../../services/api/movies-api";
 import MovieData from "../../components/MovieData";
 import Loader from "../../components/Loader/Loader";
-import Error from "../../components/Error";
 import PageTitle from "../../components/PageTitle";
+import AlertMessage from "../../components/AlertMessage";
 
 export default function PopularView() {
   const { status, data } = useQuery({
@@ -15,7 +15,9 @@ export default function PopularView() {
     <>
       {status === "loading" && <Loader />}
 
-      {status === "error" && <Error />}
+      {status === "error" && (
+        <AlertMessage message="500 Internal Server Error! Try again later." />
+      )}
 
       {status === "success" && (
         <>

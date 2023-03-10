@@ -6,7 +6,7 @@ const Layout = lazy(() => import("./components/Layout"));
 
 const HomeView = lazy(() => import("./views/HomeView"));
 
-const QueryView = lazy(() => import("./views/QueryView"));
+// const QueryView = lazy(() => import("./views/QueryView"));
 
 const TopRatedView = lazy(() => import("./views/TopRatedView"));
 
@@ -43,7 +43,7 @@ function App() {
             <Route path="/" element={<HomeView />} />
             <Route path=":movieId" element={<MovieView />} />
 
-            <Route path="search" element={<QueryView />} />
+            {/* <Route path="search" element={<QueryView />} /> */}
             <Route path="search/:movieId" element={<MovieView />} />
 
             <Route path="popular" element={<PopularView />} />

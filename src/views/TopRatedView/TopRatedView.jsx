@@ -3,7 +3,7 @@ import { getTopRatedMovies } from "../../services/api/movies-api";
 import MovieData from "../../components/MovieData";
 import PageTitle from "../../components/PageTitle";
 import Loader from "../../components/Loader/Loader";
-import Error from "../../components/Error";
+import AlertMessage from "../../components/AlertMessage";
 
 export default function TopRatedView() {
   const { status, data } = useQuery({
@@ -14,7 +14,9 @@ export default function TopRatedView() {
     <>
       {status === "loading" && <Loader />}
 
-      {status === "error" && <Error />}
+      {status === "error" && (
+        <AlertMessage message="500 Internal Server Error! Try again later." />
+      )}
 
       {status === "success" && (
         <>

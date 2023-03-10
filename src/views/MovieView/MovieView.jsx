@@ -2,11 +2,17 @@ import { useQueries } from "@tanstack/react-query";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
-import { getMovieById, getCastInfo } from "../../services/api/movies-api";
+import {
+  getMovieById,
+  getCastInfo,
+  getMovieImages,
+  getMovieVideo,
+} from "../../services/api/movies-api";
 
 import PopUp from "../../components/PopUp";
 import Trailer from "../../components/Trailer";
 import Loader from "../../components/Loader/Loader";
+import VideoError from "../../components/VideoError";
 
 import SingleMovie from "../../components/SingleMovie";
 import SingleMovieMobile from "../../components/SingleMovieMobile";
@@ -19,7 +25,7 @@ function MovieView() {
     query: "(max-width: 767px)",
   });
 
-  const [movieQuery, castQuery] = useQueries({
+  const [movieQuery, castQuery, imagesQuery, trailerQuery] = useQueries({
     queries: [
       {
         queryKey: ["movie"],
@@ -30,6 +36,8 @@ function MovieView() {
         queryKey: ["cast"],
         queryFn: () => getCastInfo(movieId),
       },
+      { queryKey: ["images"], queryFn: () => getMovieImages(movieId) },
+      { queryKey: ["trailer"], queryFn: () => getMovieVideo(movieId) },
     ],
   });
 
@@ -37,7 +45,7 @@ function MovieView() {
     setPopUp(!showPopUp);
   };
 
-  if (movieQuery.isFetching || castQuery.isFetching) {
+  if (movieQuery.isLoading || castQuery.isLoading || imagesQuery.isLoading) {
     return <Loader />;
   }
 
@@ -47,19 +55,25 @@ function MovieView() {
         <SingleMovieMobile
           movie={movieQuery.data}
           cast={castQuery.data}
+          images={imagesQuery.data}
           onToggle={togglePopUp}
         />
       ) : (
         <SingleMovie
           movie={movieQuery.data}
           cast={castQuery.data}
+          images={imagesQuery.data}
           onToggle={togglePopUp}
         />
       )}
 
       {showPopUp && (
         <PopUp onClose={togglePopUp}>
-          <Trailer />
+          {trailerQuery.isSuccess ? (
+            <Trailer videos={trailerQuery.data} />
+          ) : (
+            <VideoError />
+          )}
         </PopUp>
       )}
     </>

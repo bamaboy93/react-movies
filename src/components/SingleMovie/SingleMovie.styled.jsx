@@ -27,6 +27,13 @@ export const MovieScreen = styled.div`
   }
 `;
 
+export const NavigationWrapper = styled.div`
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -10%);
+`;
+
 export const MovieWrapper = styled.div`
   position: absolute;
   top: 50%;

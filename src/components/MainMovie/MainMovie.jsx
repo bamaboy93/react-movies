@@ -1,9 +1,14 @@
 import PropTypes from "prop-types";
-import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getCastInfo } from "../../services/api/movies-api";
 import { useLocation } from "react-router-dom";
-import { BsPlayCircle } from "react-icons/bs";
 
-import api from "../../services/api/movies-api";
+import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
+import {
+  ExpandMore,
+  PlayCircleOutlined,
+  PlayCircleFilledOutlined,
+} from "@mui/icons-material";
 
 import Container from "../Container";
 import {
@@ -27,12 +32,10 @@ import {
   WatchLink,
   MobileWatchLink,
   CastError,
+  OverviewBox,
 } from "./MainMovie.styled";
 
 export default function MainMovie({ movie }) {
-  const [actors, setActors] = useState(null);
-  const [error, setError] = useState(null);
-
   const {
     id,
     backdrop_path,
@@ -43,18 +46,12 @@ export default function MainMovie({ movie }) {
     overview,
   } = movie;
   const url = useLocation();
-  // Cast
-  useEffect(() => {
-    api
-      .getCastInfo(id)
-      .then((cast) => {
-        setActors(cast);
-      })
-      .catch((error) => {
-        console.log(error);
-        setError(error);
-      });
-  }, [id, error]);
+
+  const { data, isSuccess } = useQuery({
+    queryKey: ["cast"],
+    queryFn: () => getCastInfo(id),
+  });
+
   return (
     <MainWrapper backdrop={backdrop_path}>
       <Wrapper>
@@ -77,19 +74,31 @@ export default function MainMovie({ movie }) {
                   )}
                   {adult === true && <OptionsItem>18+</OptionsItem>}
                   <MobileWatchLink to={`${url.pathname}/${id}`}>
-                    <BsPlayCircle />
+                    <PlayCircleOutlined />
                     Watch Now
                   </MobileWatchLink>
                 </Options>
-
-                {overview && <Overview>{overview}</Overview>}
+                <OverviewBox>
+                  <Accordion>
+                    <AccordionSummary
+                      expandIcon={<ExpandMore />}
+                      aria-controls="overview-content"
+                      id="overview-header"
+                    >
+                      <Overview>{overview.slice(0, 40)}...</Overview>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Overview>{overview}</Overview>
+                    </AccordionDetails>
+                  </Accordion>
+                </OverviewBox>
               </Info>
 
               <Block>
                 <Subtitle>Starring:</Subtitle>
-                {actors ? (
+                {isSuccess ? (
                   <CastList>
-                    {actors.slice(0, 4).map((actor) => (
+                    {data.slice(0, 4).map((actor) => (
                       <CastListItem key={actor.id}>
                         {actor.original_name}
                       </CastListItem>
@@ -102,7 +111,7 @@ export default function MainMovie({ movie }) {
             </InfoWrapper>
             <LinkWrapper>
               <WatchLink to={`${url.pathname}/${id}`}>
-                <BsPlayCircle />
+                <PlayCircleFilledOutlined />
                 Watch Now
               </WatchLink>
             </LinkWrapper>

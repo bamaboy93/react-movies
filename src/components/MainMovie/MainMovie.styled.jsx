@@ -1,15 +1,15 @@
 import styled from "@emotion/styled";
+import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import getColor from "../../services/getColor";
 
 export const MainWrapper = styled.div`
   position: relative;
-  min-height: 100vh;
-  width: 100%;
+  min-height: 100svh;
   background-image: ${(props) =>
     `url(https://image.tmdb.org/t/p/original${props.backdrop})`};
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
+  background-repeat: no-repeat;
+  background-size: cover;
   background-position: center;
   z-index: 1;
   &:before {
@@ -124,19 +124,26 @@ export const Rating = styled.p`
 `;
 
 export const Overview = styled.p`
-  margin-bottom: ${(props) => props.theme.space[5]}px;
   text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
     0px -4px 10px rgba(255, 255, 255, 0.3);
 `;
 
-export const Block = styled.div`
-  display: none;
+export const OverviewBox = styled(Box)(({ theme }) => ({
+  marginBottom: theme.spacing(4),
 
-  @media screen and (min-width: 1280px) {
-    display: block;
-    max-width: 650px;
-  }
-`;
+  "& .MuiAccordion-root": {
+    backgroundColor: "rgba(49, 50, 60, 0.55)",
+    color: theme.palette.common.white,
+  },
+  "& .MuiAccordionSummary-root": {
+    paddingLeft: theme.spacing(1),
+  },
+  "& .MuiAccordionSummary-expandIconWrapper": {
+    color: theme.palette.secondary.main,
+  },
+}));
+
+export const Block = styled.div``;
 
 export const Subtitle = styled.h2`
   margin-right: ${(props) => props.theme.space[3]}px;
@@ -190,7 +197,6 @@ export const WatchLink = styled(Link)`
     width: 80px;
     height: 80px;
     margin-right: ${(props) => props.theme.space[6]}px;
-    fill: currentColor;
     opacity: 0.5;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
     @media screen and (min-width: 768px) and (max-width: 1279px) {
@@ -202,7 +208,7 @@ export const WatchLink = styled(Link)`
 
   &:hover svg {
     color: ${(props) => props.theme.colors.hover}
-    opacity: 0.8;
+    opacity: 1;
     scale: 1.5;
   }
 `;

@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { useQueries } from "@tanstack/react-query";
+import { useLocation } from "react-router-dom";
 import {
   getPopularMovies,
   getTopRatedMovies,
@@ -12,6 +14,7 @@ import SwiperCarousel from "../../components/Swiper/Swiper";
 import Loader from "../../components/Loader/Loader";
 
 export default function HomePage() {
+  const { pathname } = useLocation();
   const [popularQuery, topRatedQuery, upcomingQuery] = useQueries({
     queries: [
       {
@@ -27,6 +30,12 @@ export default function HomePage() {
     ],
   });
 
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 0);
+  }, [pathname]);
+
   if (
     popularQuery.isLoading ||
     topRatedQuery.isLoading ||
@@ -39,7 +48,7 @@ export default function HomePage() {
     <>
       {popularQuery.isSuccess && (
         <>
-          <MainMovie movie={popularQuery.data.results[2]} />
+          <MainMovie movie={popularQuery.data.results[0]} />
           <Section title="Popular" linkTo="/popular">
             <SwiperCarousel movies={popularQuery.data.results} />
           </Section>

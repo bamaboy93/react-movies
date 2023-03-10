@@ -16,12 +16,12 @@ export default function FavouritesGrid({ movies }) {
     <Container>
       <Box sx={{ mt: 4, mb: 4 }}>
         <Grid container spacing={2}>
-          {movies.map(({ id, backdrop, title, tagline }) => (
+          {movies.map(({ id, backdrop_path, title, tagline }) => (
             <Grid key={id} item xs={12} sm={6} md={6} lg={3}>
               <Card>
                 <CardMedia
                   sx={{ height: 140 }}
-                  image={backdrop}
+                  image={`https://image.tmdb.org/t/p/original${backdrop_path}`}
                   title={title}
                 />
                 <CardContent sx={{ height: 140 }}>

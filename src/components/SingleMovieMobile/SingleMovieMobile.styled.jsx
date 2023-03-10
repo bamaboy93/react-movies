@@ -10,6 +10,13 @@ export const MovieWrapper = styled.div`
   margin-bottom: ${(props) => props.theme.space[5]}px;
 `;
 
+export const NavigationWrapper = styled.div`
+  margin-top: 80px;
+  margin-bottom: ${(props) => props.theme.space[5]}px;
+  display: flex;
+  justify-content: center;
+`;
+
 export const PosterWrapper = styled.div`
   position: relative;
   margin-right: ${(props) => props.theme.space[4]}px;
@@ -34,7 +41,7 @@ export const Rating = styled.p`
 export const InfoWrapper = styled.div``;
 
 export const Title = styled.h2`
-  margin-bottom: ${(props) => props.theme.space[4]}px;
+  margin-bottom: ${(props) => props.theme.space[5]}px;
   text-align: left;
   font-weight: ${(props) => props.theme.fontWeights.bold};
   font-size: ${(props) => props.theme.fontSizes.m};
@@ -49,6 +56,7 @@ export const Info = styled.div`
 `;
 
 export const Year = styled.p`
+  margin-top: ${(props) => props.theme.space[6]}px;
   margin-bottom: ${(props) => props.theme.space[2]}px;
   font-family: ${(props) => props.theme.fonts.numbers};
   font-weight: ${(props) => props.theme.fontWeights.bold};

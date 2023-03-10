@@ -6,7 +6,7 @@ export default function VideoError() {
       <img
         src={errorImage}
         alt="nothing-found"
-        style={{ height: 540, width: 960 }}
+        style={{ height: "100%", width: "100%" }}
       ></img>
     </div>
   );

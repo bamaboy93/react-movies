@@ -1,22 +1,30 @@
 import PropTypes from "prop-types";
-import BackLink from "../BackLink";
 import Overview from "./Overview/Overview";
 import ButtonPlay from "../Buttons/ButtonPlay";
 import Cast from "../Cast";
 import ImagesSwiper from "../ImagesSwiper";
 import Container from "../Container";
 import MovieInfo from "./MovieInfo";
+import Navigation from "./Navigation/Navigation";
 
-import { MovieScreen, MovieWrapper, Title } from "./SingleMovie.styled";
+import {
+  MovieScreen,
+  NavigationWrapper,
+  MovieWrapper,
+  Title,
+} from "./SingleMovie.styled";
 import Details from "./Details/Details";
 
-export default function SingleMovie({ movie, onToggle, cast }) {
+export default function SingleMovie({ movie, onToggle, cast, images }) {
   const { backdrop_path, original_title } = movie;
 
   return (
     <>
       {movie && (
         <MovieScreen backdrop={backdrop_path}>
+          <NavigationWrapper>
+            <Navigation title={original_title} />
+          </NavigationWrapper>
           <MovieWrapper>
             <Container>
               <Title>{original_title}</Title>
@@ -30,7 +38,7 @@ export default function SingleMovie({ movie, onToggle, cast }) {
         </MovieScreen>
       )}
       <Cast cast={cast} />
-      <ImagesSwiper />
+      <ImagesSwiper images={images} />
     </>
   );
 }

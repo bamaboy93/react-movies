@@ -2,19 +2,32 @@ import styled from "@emotion/styled";
 import getColor from "../../../services/getColor";
 
 export const DetailsButton = styled.button`
-  margin-top: ${(props) => props.theme.space[5]}px;
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.ms};
-  color: ${(props) => props.theme.colors.red};
-  text-transform: uppercase;
-  border: transparent;
+  display: inline-flex;
+  align-items: center;
+  margin-top: ${(props) => props.theme.space[7]}px;
+  padding: 10px 15px;
+  border: none;
   outline: none;
-  background-color: transparent;
+  border-radius: 5%;
+  color: ${(props) => props.theme.colors.white};
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-size: ${(props) => props.theme.fontSizes.xs};
+  text-transform: uppercase;
+  background-color: ${(props) => props.theme.colors.red};
   transition: ${(props) => props.theme.animation.main};
 
   &:hover {
     letter-spacing: 2px;
     border-left: 3px solid ${(props) => props.theme.colors.hover};
+    background-color: transparent;
+    color: ${(props) => props.theme.colors.hover};
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    margin-right: ${(props) => props.theme.space[1]}px;
+    fill: currentColor;
   }
 `;
 
