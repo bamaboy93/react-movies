@@ -1,4 +1,3 @@
-import { useMediaQuery } from "react-responsive";
 import { FaCaretDown } from "react-icons/fa";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../services/firebase";
@@ -7,7 +6,7 @@ import Container from "../../Container";
 import Login from "../Login";
 import User from "../User";
 import SearchForm from "../SearchForm";
-import Menu from "../Menu";
+
 import uImage from "../../../styles/images/pages/upcoming.png";
 import hImage from "../../../styles/images/pages/home.png";
 import pImage from "../../../styles/images/pages/popular.png";
@@ -38,11 +37,8 @@ export default function Header() {
     { href: "popular", text: "Popular", image: pImage },
     { href: "top_rated", text: "Top Rated", image: tImage },
     { href: "upcoming", text: "Upcoming", image: uImage },
+    { href: "favourites", text: "Favourites", image: uImage },
   ];
-
-  const isMobile = useMediaQuery({
-    query: "(max-width: 1279px)",
-  });
 
   if (loading) {
     return <LinearProgress />;
@@ -87,11 +83,7 @@ export default function Header() {
           </NavList>
           <ActiveButtons>
             <SearchForm />
-            {isMobile ? (
-              <Menu />
-            ) : (
-              <LoginBlock>{user ? <User /> : <Login />}</LoginBlock>
-            )}
+            <LoginBlock>{user ? <User /> : <Login />}</LoginBlock>
           </ActiveButtons>
         </Nav>
       </Container>

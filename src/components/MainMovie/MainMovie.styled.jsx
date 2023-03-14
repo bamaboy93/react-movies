@@ -98,6 +98,7 @@ export const Info = styled.div`
 export const Options = styled.div`
   display: flex;
   align-items: center;
+
   margin-bottom: 30px;
 `;
 
@@ -120,6 +121,17 @@ export const Rating = styled.p`
   color: ${(props) => getColor(props.vote)};
   @media screen and (min-width: 1280px) {
     font-size: ${(props) => props.theme.fontSizes.m};
+  }
+`;
+
+export const Imdb = styled.a`
+  width: 40px;
+  height: 40px;
+  color: ${(props) => props.theme.colors.red};
+
+  svg {
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -216,7 +228,7 @@ export const WatchLink = styled(Link)`
 export const MobileWatchLink = styled(Link)`
   display: flex;
   align-items: center;
-
+  margin-left: ${(props) => props.theme.space[3]}px;
   font-weight: ${(props) => props.theme.fontWeights.bold};
   font-size: ${(props) => props.theme.fontSizes.s};
   text-transform: uppercase;

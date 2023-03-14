@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useQuery } from "@tanstack/react-query";
 import { getCastInfo } from "../../services/api/movies-api";
 import { useLocation } from "react-router-dom";
-
+import { FaImdb } from "react-icons/fa";
 import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import {
   ExpandMore,
@@ -33,6 +33,7 @@ import {
   MobileWatchLink,
   CastError,
   OverviewBox,
+  Imdb,
 } from "./MainMovie.styled";
 
 export default function MainMovie({ movie }) {
@@ -42,8 +43,10 @@ export default function MainMovie({ movie }) {
     title,
     release_date,
     vote_average,
-    adult,
+
     overview,
+    tagline,
+    imdb_id,
   } = movie;
   const url = useLocation();
 
@@ -72,7 +75,15 @@ export default function MainMovie({ movie }) {
                   {vote_average && (
                     <Rating vote={vote_average}>{vote_average}</Rating>
                   )}
-                  {adult === true && <OptionsItem>18+</OptionsItem>}
+                  {imdb_id && (
+                    <Imdb
+                      href={`https://www.imdb.com/title/${imdb_id}`}
+                      target="_blank"
+                    >
+                      <FaImdb />
+                    </Imdb>
+                  )}
+
                   <MobileWatchLink to={`${url.pathname}/${id}`}>
                     <PlayCircleOutlined />
                     Watch Now
@@ -85,7 +96,7 @@ export default function MainMovie({ movie }) {
                       aria-controls="overview-content"
                       id="overview-header"
                     >
-                      <Overview>{overview.slice(0, 40)}...</Overview>
+                      <Overview>{tagline}</Overview>
                     </AccordionSummary>
                     <AccordionDetails>
                       <Overview>{overview}</Overview>
@@ -131,5 +142,7 @@ MainMovie.propTypes = {
     vote_average: PropTypes.number,
     adult: PropTypes.bool,
     overview: PropTypes.string,
+    tagline: PropTypes.string,
+    imdb_id: PropTypes.string,
   }),
 };

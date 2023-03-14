@@ -90,26 +90,19 @@ export const LinkTo = styled(NavLink)`
 
 export const Dropdown = styled.div`
   position: absolute;
-  width: 600px;
+  width: 1000px;
   background-color: #0f0f0ff0;
 
   z-index: 777;
   top: 100%;
   left: 100%;
-  transform: translate(-35%, 15px);
+  transform: translate(-40%, 15px);
   visibility: hidden;
   opacity: 0;
   transition: all 350ms ease-in;
 
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-
-  @media screen and (min-width: 1280px) {
-    width: 850px;
-    top: 100%;
-    left: 50%;
-    transform: translate(-35%, 15px);
-  }
 `;
 
 export const DropdownWrapper = styled.div`
@@ -118,7 +111,7 @@ export const DropdownWrapper = styled.div`
   &:hover ${Dropdown}, &:focus ${Dropdown} {
     opacity: 1;
     visibility: visible;
-    transform: translate(-35%, 0);
+    transform: translate(-40%, 0);
   }
 `;
 

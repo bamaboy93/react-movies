@@ -1,12 +1,13 @@
 import { LinearProgress } from "@mui/material";
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
+import PrivateRoute from "./components/Routes/PrivateRoute";
 
 const Layout = lazy(() => import("./components/Layout"));
 
 const HomeView = lazy(() => import("./views/HomeView"));
 
-// const QueryView = lazy(() => import("./views/QueryView"));
+const QueryView = lazy(() => import("./views/QueryView"));
 
 const TopRatedView = lazy(() => import("./views/TopRatedView"));
 
@@ -20,7 +21,7 @@ const FavList = lazy(() => import("./views/FavouritesView"));
 
 const ErrorView = lazy(() => import("./components/NotFound"));
 
-function App() {
+export default function App() {
   return (
     <>
       <Suspense fallback={<LinearProgress />}>
@@ -43,7 +44,7 @@ function App() {
             <Route path="/" element={<HomeView />} />
             <Route path=":movieId" element={<MovieView />} />
 
-            {/* <Route path="search" element={<QueryView />} /> */}
+            <Route path="search" element={<QueryView />} />
             <Route path="search/:movieId" element={<MovieView />} />
 
             <Route path="popular" element={<PopularView />} />
@@ -55,7 +56,12 @@ function App() {
             <Route path="upcoming" element={<UpcomingView />} />
             <Route path="upcoming/:movieId" element={<MovieView />} />
 
-            <Route path="favourites" element={<FavList />} />
+            <Route
+              path="favourites"
+              element={
+                <PrivateRoute component={<FavList />} redirectTo={"/"} />
+              }
+            />
             <Route path="favourites/:movieId" element={<MovieView />} />
           </Route>
           <Route path="*" element={<ErrorView />} />
@@ -64,5 +70,3 @@ function App() {
     </>
   );
 }
-
-export default App;

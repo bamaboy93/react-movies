@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { useLocation } from "react-router-dom";
-import { useMediaQuery } from "react-responsive";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import "react-toastify/dist/ReactToastify.css";
 
 import Header from "./Header";
@@ -11,9 +11,7 @@ import HeaderMobile from "./HeaderMobile/HeaderMobile";
 
 export default function Layout({ showHeader = [] }) {
   const { pathname } = useLocation();
-  const isMobile = useMediaQuery({
-    query: "(max-width: 1279px)",
-  });
+  const isMobile = useMediaQuery("(max-width:1279px)");
 
   return (
     <>

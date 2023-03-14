@@ -1,3 +1,4 @@
+import { Link, useLocation } from "react-router-dom";
 import {
   Box,
   Grid,
@@ -12,6 +13,8 @@ import {
 import Container from "../Container";
 
 export default function FavouritesGrid({ movies }) {
+  const url = useLocation();
+
   return (
     <Container>
       <Box sx={{ mt: 4, mb: 4 }}>
@@ -28,13 +31,23 @@ export default function FavouritesGrid({ movies }) {
                   <Typography gutterBottom variant="h5" component="div">
                     {title}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Divider />
+                  <Typography
+                    sx={{ mt: 1 }}
+                    variant="body2"
+                    color="text.secondary"
+                  >
                     {tagline}
                   </Typography>
-                  <Divider />
                 </CardContent>
                 <CardActions>
-                  <Button size="medium" variant="contained">
+                  <Button
+                    component={Link}
+                    to={`${url.pathname}/${id}`}
+                    size="medium"
+                    color="secondary"
+                    variant="contained"
+                  >
                     Watch
                   </Button>
                 </CardActions>

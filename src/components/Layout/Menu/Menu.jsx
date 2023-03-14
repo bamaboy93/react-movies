@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, logout, signInWithGoogle } from "../../../services/firebase";
 import {
   Box,
   Drawer,
@@ -6,15 +8,21 @@ import {
   ListItem,
   ListItemButton,
   IconButton,
+  LinearProgress,
 } from "@mui/material";
 import {
   MenuRounded,
   KeyboardDoubleArrowLeftRounded,
 } from "@mui/icons-material";
-import { ButtonLogout, Link } from "./Menu.styled";
+import { ButtonLog, Link } from "./Menu.styled";
 
 export default function Menu() {
   const [open, setOpen] = useState(false);
+  const [user, loading] = useAuthState(auth);
+
+  if (loading) {
+    return <LinearProgress />;
+  }
 
   const navItems = [
     { href: "/", text: "Home" },
@@ -65,7 +73,11 @@ export default function Menu() {
               </ListItemButton>
             ))}
           </List>
-          <ButtonLogout>Log Out</ButtonLogout>
+          {user ? (
+            <ButtonLog onClick={logout}>Log Out</ButtonLog>
+          ) : (
+            <ButtonLog onClick={signInWithGoogle}>Login</ButtonLog>
+          )}
         </Box>
       </Drawer>
     </>

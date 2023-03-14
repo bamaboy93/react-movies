@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useQueries } from "@tanstack/react-query";
 import { useLocation } from "react-router-dom";
 import {
+  getMovieById,
   getPopularMovies,
   getTopRatedMovies,
   getUpcomingMovies,
@@ -15,8 +16,12 @@ import Loader from "../../components/Loader/Loader";
 
 export default function HomePage() {
   const { pathname } = useLocation();
-  const [popularQuery, topRatedQuery, upcomingQuery] = useQueries({
+  const [movieQuery, popularQuery, topRatedQuery, upcomingQuery] = useQueries({
     queries: [
+      {
+        queryKey: ["movie"],
+        queryFn: () => getMovieById(315162),
+      },
       {
         queryKey: ["popular"],
         queryFn: getPopularMovies,
@@ -48,7 +53,7 @@ export default function HomePage() {
     <>
       {popularQuery.isSuccess && (
         <>
-          <MainMovie movie={popularQuery.data.results[0]} />
+          <MainMovie movie={movieQuery.data} />
           <Section title="Popular" linkTo="/popular">
             <SwiperCarousel movies={popularQuery.data.results} />
           </Section>

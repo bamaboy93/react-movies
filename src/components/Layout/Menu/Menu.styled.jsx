@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
 
-export const ButtonLogout = styled.button`
+export const ButtonLog = styled.button`
+  cursor: pointer;
   width: 100%;
   padding: ${(props) => props.theme.space[3]}px;
   margin-top: ${(props) => props.theme.space[6]}px;
