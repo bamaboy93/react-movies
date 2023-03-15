@@ -8,7 +8,7 @@ export const Wrapper = styled(Box)(({ direction }) => ({
   height: "60px",
   backgroundColor: "#191919",
 
-  position: "sticky",
+  position: "fixed",
   top: direction === "down" ? "-60px" : "0",
   left: "0",
   zIndex: "99",
