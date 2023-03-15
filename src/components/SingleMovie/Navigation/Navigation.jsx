@@ -22,7 +22,7 @@ export default function Navigation({ title }) {
         onClick={() => navigate(-1)}
       >
         <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-        Home
+        Back
       </Link>
 
       <Typography

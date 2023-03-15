@@ -90,7 +90,7 @@ export const LinkTo = styled(NavLink)`
 
 export const Dropdown = styled.div`
   position: absolute;
-  width: 1000px;
+  width: 800px;
   background-color: #0f0f0ff0;
 
   z-index: 777;

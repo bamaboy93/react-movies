@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const MovieScreen = styled.div`
   position: relative;
-  min-height: 100vh;
+  min-height: 100svh;
 
   background-image: ${(props) =>
     `url(https://image.tmdb.org/t/p/original${props.backdrop})`};

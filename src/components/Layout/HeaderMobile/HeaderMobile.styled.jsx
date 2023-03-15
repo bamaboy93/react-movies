@@ -1,15 +1,15 @@
 import { Box } from "@mui/material";
 import { styled } from "@mui/system";
 
-export const Wrapper = styled(Box)(({ visible }) => ({
+export const Wrapper = styled(Box)(({ direction }) => ({
   display: "flex",
   alignItems: "center",
   width: "100%",
   height: "60px",
   backgroundColor: "#191919",
 
-  position: "fixed",
-  top: visible ? "0" : "-60px",
+  position: "sticky",
+  top: direction === "down" ? "-60px" : "0",
   left: "0",
   zIndex: "99",
   transition: "top 0.4s ease-out",

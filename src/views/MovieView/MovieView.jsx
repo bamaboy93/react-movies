@@ -1,7 +1,7 @@
 import { useQueries } from "@tanstack/react-query";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useMediaQuery } from "react-responsive";
+import { useMediaQuery } from "@mui/material";
 import {
   getMovieById,
   getCastInfo,
@@ -21,9 +21,7 @@ function MovieView() {
   const { movieId } = useParams();
   const [showPopUp, setPopUp] = useState(false);
 
-  const isMobile = useMediaQuery({
-    query: "(max-width: 767px)",
-  });
+  const isMobile = useMediaQuery("(max-width: 767px)");
 
   const [movieQuery, castQuery, imagesQuery, trailerQuery] = useQueries({
     queries: [
@@ -45,7 +43,7 @@ function MovieView() {
     setPopUp(!showPopUp);
   };
 
-  if (movieQuery.isLoading || castQuery.isLoading || imagesQuery.isLoading) {
+  if (movieQuery.isFetching) {
     return <Loader />;
   }
 

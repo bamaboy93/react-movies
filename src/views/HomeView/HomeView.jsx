@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import { useQueries } from "@tanstack/react-query";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import {
   getMovieById,
@@ -12,28 +12,9 @@ import Section from "../../components/Section";
 import Upcoming from "../../components/Upcoming";
 import NowPlaying from "../../components/NowPlaying";
 import SwiperCarousel from "../../components/Swiper/Swiper";
-import Loader from "../../components/Loader/Loader";
 
 export default function HomePage() {
   const { pathname } = useLocation();
-  const [movieQuery, popularQuery, topRatedQuery, upcomingQuery] = useQueries({
-    queries: [
-      {
-        queryKey: ["movie"],
-        queryFn: () => getMovieById(315162),
-      },
-      {
-        queryKey: ["popular"],
-        queryFn: getPopularMovies,
-      },
-
-      {
-        queryKey: ["topRated"],
-        queryFn: getTopRatedMovies,
-      },
-      { queryKey: ["upcoming"], queryFn: getUpcomingMovies },
-    ],
-  });
 
   useEffect(() => {
     setTimeout(() => {
@@ -41,13 +22,24 @@ export default function HomePage() {
     }, 0);
   }, [pathname]);
 
-  if (
-    popularQuery.isLoading ||
-    topRatedQuery.isLoading ||
-    upcomingQuery.isLoading
-  ) {
-    return <Loader />;
-  }
+  const [movieQuery, popularQuery, topRatedQuery, upcomingQuery] = useQueries({
+    queries: [
+      {
+        queryKey: ["mainMovie"],
+        queryFn: () => getMovieById(315162),
+      },
+      {
+        queryKey: ["popularMovies"],
+        queryFn: getPopularMovies,
+      },
+
+      {
+        queryKey: ["topRatedMovies"],
+        queryFn: getTopRatedMovies,
+      },
+      { queryKey: ["upcomingMovies"], queryFn: getUpcomingMovies },
+    ],
+  });
 
   return (
     <>
@@ -71,7 +63,7 @@ export default function HomePage() {
         </Section>
       )}
       {popularQuery.isSuccess && (
-        <NowPlaying movie={popularQuery.data.results[1]} />
+        <NowPlaying movie={popularQuery.data.results[8]} />
       )}
     </>
   );

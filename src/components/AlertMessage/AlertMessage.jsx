@@ -7,7 +7,7 @@ export default function AlertMessage({ message }) {
     <Container>
       <AlertWrapper>
         <Alert variant="filled" severity="info" color="error">
-          <strong>{message}</strong>
+          <b>{message}</b>
         </Alert>
       </AlertWrapper>
     </Container>

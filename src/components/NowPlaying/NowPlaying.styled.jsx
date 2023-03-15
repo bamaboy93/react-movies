@@ -14,6 +14,7 @@ export const Wrapper = styled.div`
   background-image: ${(props) =>
     `url(https://image.tmdb.org/t/p/original${props.backdrop})`};
   background-size: cover;
+  background-position: center;
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     height: 600px;

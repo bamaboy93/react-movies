@@ -1,7 +1,7 @@
 import { FaCaretDown } from "react-icons/fa";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../services/firebase";
-
+import useScrollDirection from "../../../hooks/useScroll";
 import Container from "../../Container";
 import Login from "../Login";
 import User from "../User";
@@ -31,13 +31,13 @@ import { LinearProgress } from "@mui/material";
 
 export default function Header() {
   const [user, loading] = useAuthState(auth);
+  const scrollDirection = useScrollDirection();
 
   const navItems = [
     { href: "/", text: "Home", image: hImage },
     { href: "popular", text: "Popular", image: pImage },
     { href: "top_rated", text: "Top Rated", image: tImage },
     { href: "upcoming", text: "Upcoming", image: uImage },
-    { href: "favourites", text: "Favourites", image: uImage },
   ];
 
   if (loading) {
@@ -45,7 +45,9 @@ export default function Header() {
   }
 
   return (
-    <HeaderLine>
+    <HeaderLine
+      direction={scrollDirection ? scrollDirection.toString() : undefined}
+    >
       <Container>
         <Nav>
           <Logo to="/">MB</Logo>

@@ -13,7 +13,7 @@ import {
 import { logout } from "../../../services/firebase";
 import userIcon from "../../../styles/images/user.png";
 
-export default function ResponsiveAppBar() {
+export default function AppBar() {
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenUserMenu = (event) => {
@@ -38,23 +38,25 @@ export default function ResponsiveAppBar() {
           anchorEl={anchorElUser}
           anchorOrigin={{
             vertical: "top",
-            horizontal: "right",
+            horizontal: "left",
           }}
-          keepMounted
           transformOrigin={{
             vertical: "top",
-            horizontal: "right",
+            horizontal: "left",
           }}
           open={Boolean(anchorElUser)}
           onClose={handleCloseUserMenu}
         >
-          <MenuItem>
-            <NavLink to="/favourites" onClick={handleCloseUserMenu}>
-              Favourites
-            </NavLink>
-          </MenuItem>
+          <MenuItem onClick={handleCloseUserMenu}>Profile</MenuItem>
+
           <MenuItem onClick={handleCloseUserMenu}>
-            <Button onClick={logout}>Logout</Button>
+            <NavLink to="/favourites">Favourites</NavLink>
+          </MenuItem>
+
+          <MenuItem onClick={handleCloseUserMenu}>
+            <Button color="secondary" onClick={logout}>
+              Logout
+            </Button>
           </MenuItem>
         </Menu>
       </Box>

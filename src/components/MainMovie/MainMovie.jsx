@@ -73,7 +73,9 @@ export default function MainMovie({ movie }) {
                     </OptionsItem>
                   )}
                   {vote_average && (
-                    <Rating vote={vote_average}>{vote_average}</Rating>
+                    <Rating vote={vote_average}>
+                      {vote_average.toFixed(1)}
+                    </Rating>
                   )}
                   {imdb_id && (
                     <Imdb
