@@ -5,6 +5,7 @@ import { getFavourites } from "../../services/localStorage";
 import PageTitle from "../../components/PageTitle";
 import FavouritesGrid from "../../components/FavouritesGrid";
 import AlertMessage from "../../components/AlertMessage/AlertMessage";
+import Container from "../../components/Container";
 
 export default function FavouritesView() {
   const [movies, setMovies] = useState([]);
@@ -17,7 +18,7 @@ export default function FavouritesView() {
     setStatus(Status.RESOLVED);
   }, []);
   return (
-    <>
+    <Container>
       {status === Status.PENDING}
 
       {status === Status.REJECTED}
@@ -32,6 +33,6 @@ export default function FavouritesView() {
           )}
         </>
       )}
-    </>
+    </Container>
   );
 }

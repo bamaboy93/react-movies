@@ -17,7 +17,7 @@ export const DropdownTitle = styled.p`
 
 export const Image = styled.img`
   width: 100%;
-  height: 100px;
+  height: 120px;
 `;
 
 export const ActorName = styled.p`
