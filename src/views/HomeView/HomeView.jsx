@@ -63,7 +63,7 @@ export default function HomePage() {
         </Section>
       )}
       {popularQuery.isSuccess && (
-        <NowPlaying movie={popularQuery.data.results[8]} />
+        <NowPlaying movie={popularQuery.data.results[16]} />
       )}
     </>
   );

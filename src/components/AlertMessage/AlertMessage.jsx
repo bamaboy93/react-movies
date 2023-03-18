@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Alert } from "@mui/material";
 import Container from "../Container";
 import { AlertWrapper } from "./AlertMessage.styled";
@@ -13,3 +14,7 @@ export default function AlertMessage({ message }) {
     </Container>
   );
 }
+
+AlertMessage.propTypes = {
+  message: PropTypes.string,
+};

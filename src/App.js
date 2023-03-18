@@ -23,50 +23,46 @@ const ErrorView = lazy(() => import("./components/NotFound"));
 
 export default function App() {
   return (
-    <>
-      <Suspense fallback={<LinearProgress />}>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Layout
-                showHeader={[
-                  "/",
-                  "/search",
-                  "/popular",
-                  "/top_rated",
-                  "/upcoming",
-                  "/favourites",
-                ]}
-              />
-            }
-          >
-            <Route path="/" element={<HomeView />} />
-            <Route path=":movieId" element={<MovieView />} />
-
-            <Route path="search" element={<QueryView />} />
-            <Route path="search/:movieId" element={<MovieView />} />
-
-            <Route path="popular" element={<PopularView />} />
-            <Route path="popular/:movieId" element={<MovieView />} />
-
-            <Route path="top_rated" element={<TopRatedView />} />
-            <Route path="top_rated/:movieId" element={<MovieView />} />
-
-            <Route path="upcoming" element={<UpcomingView />} />
-            <Route path="upcoming/:movieId" element={<MovieView />} />
-
-            <Route
-              path="favourites"
-              element={
-                <PrivateRoute component={<FavList />} redirectTo={"/"} />
-              }
+    <Suspense fallback={<LinearProgress />}>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Layout
+              showHeader={[
+                "/",
+                "/search",
+                "/popular",
+                "/top_rated",
+                "/upcoming",
+                "/favourites",
+              ]}
             />
-            <Route path="favourites/:movieId" element={<MovieView />} />
-          </Route>
-          <Route path="*" element={<ErrorView />} />
-        </Routes>
-      </Suspense>
-    </>
+          }
+        >
+          <Route path="/" element={<HomeView />} />
+          <Route path=":movieId" element={<MovieView />} />
+
+          <Route path="search" element={<QueryView />} />
+          <Route path="search/:movieId" element={<MovieView />} />
+
+          <Route path="popular" element={<PopularView />} />
+          <Route path="popular/:movieId" element={<MovieView />} />
+
+          <Route path="top_rated" element={<TopRatedView />} />
+          <Route path="top_rated/:movieId" element={<MovieView />} />
+
+          <Route path="upcoming" element={<UpcomingView />} />
+          <Route path="upcoming/:movieId" element={<MovieView />} />
+
+          <Route
+            path="favourites"
+            element={<PrivateRoute component={<FavList />} redirectTo={"/"} />}
+          />
+          <Route path="favourites/:movieId" element={<MovieView />} />
+        </Route>
+        <Route path="*" element={<ErrorView />} />
+      </Routes>
+    </Suspense>
   );
 }

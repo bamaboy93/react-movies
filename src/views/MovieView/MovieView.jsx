@@ -17,7 +17,7 @@ import VideoError from "../../components/VideoError";
 import SingleMovie from "../../components/SingleMovie";
 import SingleMovieMobile from "../../components/SingleMovieMobile";
 
-function MovieView() {
+export default function MovieView() {
   const { movieId } = useParams();
   const [showPopUp, setPopUp] = useState(false);
 
@@ -77,5 +77,3 @@ function MovieView() {
     </>
   );
 }
-
-export default MovieView;

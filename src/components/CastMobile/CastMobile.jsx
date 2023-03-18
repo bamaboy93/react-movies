@@ -1,12 +1,11 @@
 import PropTypes from "prop-types";
-
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Grid,
+} from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Grid from "@mui/material/Grid";
-
 import Container from "../../components/Container";
 import noImageFound from "../../styles/images/noimage.jpg";
 import { ActorName, DropdownTitle, Image, Item } from "./CastMobile.styled";
