@@ -26,7 +26,7 @@ export default function PopularView() {
       fetchNextPage();
     }
   }, [inView, fetchNextPage]);
-
+  console.log(data);
   return (
     <>
       <Container>

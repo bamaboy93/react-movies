@@ -1,6 +1,6 @@
 import { useQueries } from "@tanstack/react-query";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, useLocation } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
 import {
   getMovieById,
@@ -20,6 +20,13 @@ import SingleMovieMobile from "../../components/SingleMovieMobile";
 export default function MovieView() {
   const { movieId } = useParams();
   const [showPopUp, setPopUp] = useState(false);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 0);
+  }, [pathname]);
 
   const isMobile = useMediaQuery("(max-width: 767px)");
 

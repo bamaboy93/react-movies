@@ -10,7 +10,7 @@ export default function PaginationNotification({
       {isFetchingNextPage && <CircularProgress color="secondary" />}
 
       {!hasNextPage && (
-        <Typography>You have viewed all available movies</Typography>
+        <Typography>You have viewed all available pictures</Typography>
       )}
     </NotificationWrapper>
   );
