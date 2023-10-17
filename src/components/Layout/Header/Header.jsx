@@ -1,8 +1,11 @@
 import { FaCaretDown } from "react-icons/fa";
 import { useAuthState } from "react-firebase-hooks/auth";
+
+import { AppBar, Container, Toolbar, Typography } from "@mui/material";
+
 import { auth } from "../../../services/firebase";
 import useScrollDirection from "../../../hooks/useScroll";
-import Container from "../../Container";
+// import Container from "../../Container";
 import Login from "../Login";
 import User from "../User";
 import SearchForm from "../SearchForm";
@@ -45,50 +48,73 @@ export default function Header() {
   }
 
   return (
-    <HeaderLine
-      direction={scrollDirection ? scrollDirection.toString() : undefined}
-    >
-      <Container>
-        <Nav>
-          <Logo to="/">MB</Logo>
-          <NavList>
-            <NavListItem>
-              <DropdownWrapper>
-                <HomeLink>
-                  Home
-                  <FaCaretDown />
-                </HomeLink>
-                <Dropdown>
-                  <DropdownList>
-                    {navItems.map((item) => (
-                      <DropdownListItem key={item.text} img={item.image}>
-                        <DropdownListLink to={item.href} />
-                        {item.text}
-                      </DropdownListItem>
-                    ))}
-                  </DropdownList>
-                </Dropdown>
-              </DropdownWrapper>
-            </NavListItem>
-            <NavListItem>
-              <LinkTo to="/">
-                Features
-                <FaCaretDown />
-              </LinkTo>
-            </NavListItem>
-            <NavListItem>
-              <LinkTo to="/">
-                Blog
-                <FaCaretDown />
-              </LinkTo>
-            </NavListItem>
-          </NavList>
-          <ActiveButtons>
-            <SearchForm />
-            <LoginBlock>{user ? <User /> : <Login />}</LoginBlock>
-          </ActiveButtons>
-        </Nav>
+    <AppBar position="static">
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            MB
+          </Typography>
+        </Toolbar>
       </Container>
-    </HeaderLine>
+    </AppBar>
+    // <HeaderLine
+    //   direction={scrollDirection ? scrollDirection.toString() : undefined}
+    // >
+    //   <Container>
+    //     <Nav>
+    //       <Logo to="/">MB</Logo>
+    //       <NavList>
+    //         <NavListItem>
+    //           <DropdownWrapper>
+    //             <HomeLink>
+    //               Home
+    //               <FaCaretDown />
+    //             </HomeLink>
+    //             <Dropdown>
+    //               <DropdownList>
+    //                 {navItems.map((item) => (
+    //                   <DropdownListItem key={item.text} img={item.image}>
+    //                     <DropdownListLink to={item.href} />
+    //                     {item.text}
+    //                   </DropdownListItem>
+    //                 ))}
+    //               </DropdownList>
+    //             </Dropdown>
+    //           </DropdownWrapper>
+    //         </NavListItem>
+    //         <NavListItem>
+    //           <LinkTo to="/">
+    //             Features
+    //             <FaCaretDown />
+    //           </LinkTo>
+    //         </NavListItem>
+    //         <NavListItem>
+    //           <LinkTo to="/">
+    //             Blog
+    //             <FaCaretDown />
+    //           </LinkTo>
+    //         </NavListItem>
+    //       </NavList>
+    //       <ActiveButtons>
+    //         <SearchForm />
+    //         <LoginBlock>{user ? <User /> : <Login />}</LoginBlock>
+    //       </ActiveButtons>
+    //     </Nav>
+    //   </Container>
+    // </HeaderLine>
   );
 }

@@ -3,18 +3,24 @@ import { createTheme } from "@mui/material/styles";
 export const muiTheme = createTheme({
   palette: {
     primary: {
+      light: "#484a4d",
       main: "#191919",
+      dark: "#14141480",
     },
     secondary: {
       main: "#e50914",
+      dark: "#ff1717",
     },
+    accent: { peach: "#ffcab0", lightviolet: "#9896f1" },
     neutral: {
       main: "#d1d0cf",
     },
   },
   typography: {
+    logoFont: '"Kalam", cursive',
+    numsFont: '"Kdam Thmor Pro", sans-serif',
     fontFamily: ["Nunito", "sans-serif"].join(","),
-    fontSize: 11,
+    fontSize: 16,
     h1: {
       fontFamily: ["Nunito", "sans-serif"].join(","),
       fontSize: 48,
@@ -30,6 +36,11 @@ export const muiTheme = createTheme({
     h4: {
       fontFamily: ["Nunito", "sans-serif"].join(","),
       fontSize: 14,
+    },
+  },
+  transitions: {
+    easing: {
+      main: "cubic-bezier(0.4, 0, 0.2, 1)",
     },
   },
 
