@@ -1,20 +1,18 @@
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, logout, signInWithGoogle } from "../../../services/firebase";
-import {
-  Box,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  IconButton,
-  LinearProgress,
-} from "@mui/material";
+import { Drawer, IconButton, LinearProgress, Stack } from "@mui/material";
 import {
   MenuRounded,
   KeyboardDoubleArrowLeftRounded,
 } from "@mui/icons-material";
-import { ButtonLog, Link } from "./Menu.styled";
+import {
+  StyledMenu,
+  DrawerContent,
+  StyledBox,
+  Link,
+  StyledButton,
+} from "./Menu.styled";
 
 export default function Menu() {
   const [open, setOpen] = useState(false);
@@ -37,9 +35,9 @@ export default function Menu() {
   };
 
   return (
-    <>
-      <IconButton sx={{ color: "common.white", p: 0 }} onClick={toggleMenu}>
-        <MenuRounded fontSize="large" />
+    <StyledMenu>
+      <IconButton color="inherit" onClick={toggleMenu}>
+        <MenuRounded />
       </IconButton>
       <Drawer
         variant="temporary"
@@ -47,39 +45,38 @@ export default function Menu() {
         open={open}
         onClose={toggleMenu}
       >
-        <Box sx={{ p: 4, width: 280, height: 1 }}>
-          <Box sx={{ textAlign: "right" }}>
-            <IconButton
-              sx={{ color: "common.white", p: 0 }}
-              onClick={toggleMenu}
-            >
-              <KeyboardDoubleArrowLeftRounded fontSize="large" />
+        <DrawerContent>
+          <StyledBox>
+            <IconButton color="inherit" onClick={toggleMenu}>
+              <KeyboardDoubleArrowLeftRounded />
             </IconButton>
-          </Box>
-          <List>
+          </StyledBox>
+          <Stack spacing={5}>
             {navItems.map(({ href, text }) => (
-              <ListItemButton key={text}>
-                <ListItem
-                  component={Link}
-                  sx={{
-                    textDecoration: "none",
-                    color: "white",
-                    fontWeight: "bolder",
-                  }}
-                  to={href}
-                >
-                  {text}
-                </ListItem>
-              </ListItemButton>
+              <Link key={text} to={href}>
+                {text}
+              </Link>
             ))}
-          </List>
+          </Stack>
           {user ? (
-            <ButtonLog onClick={logout}>Log Out</ButtonLog>
+            <StyledButton
+              variant="contained"
+              color="secondary"
+              onClick={logout}
+            >
+              Log Out
+            </StyledButton>
           ) : (
-            <ButtonLog onClick={signInWithGoogle}>Login</ButtonLog>
+            <StyledButton
+              variant="contained"
+              color="secondary"
+              onClick={signInWithGoogle}
+            >
+              Login
+            </StyledButton>
           )}
-        </Box>
+        </DrawerContent>
       </Drawer>
-    </>
+    </StyledMenu>
   );
 }

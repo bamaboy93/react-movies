@@ -26,7 +26,7 @@ export default function HomePage() {
     queries: [
       {
         queryKey: ["mainMovie"],
-        queryFn: () => getMovieById(315162),
+        queryFn: () => getMovieById(466420),
       },
       {
         queryKey: ["popularMovies"],

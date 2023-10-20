@@ -1,46 +1,30 @@
-import { FaCaretDown } from "react-icons/fa";
+import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-import { AppBar, Container, Toolbar, Typography } from "@mui/material";
+import { Container, LinearProgress } from "@mui/material";
 
 import { auth } from "../../../services/firebase";
-import useScrollDirection from "../../../hooks/useScroll";
-// import Container from "../../Container";
-import Login from "../Login";
-import User from "../User";
-import SearchForm from "../SearchForm";
 
-import uImage from "../../../styles/images/pages/upcoming.png";
-import hImage from "../../../styles/images/pages/home.png";
-import pImage from "../../../styles/images/pages/popular.png";
-import tImage from "../../../styles/images/pages/toprated.png";
+import UserMenu from "./UserMenu/UserMenu";
+import SearchDrawer from "../SearchDrawer/SearchDrawer";
+
 import {
-  Dropdown,
-  DropdownList,
-  DropdownListItem,
-  DropdownListLink,
-  DropdownWrapper,
-  HeaderLine,
-  HomeLink,
+  AppBarLine,
+  StyledToolbar,
   Logo,
-  LinkTo,
-  LoginBlock,
-  Nav,
-  NavList,
-  NavListItem,
-  ActiveButtons,
+  StyledStack,
+  PageLink,
 } from "./Header.styled";
-import { LinearProgress } from "@mui/material";
+import Menu from "../Menu/Menu";
 
 export default function Header() {
   const [user, loading] = useAuthState(auth);
-  const scrollDirection = useScrollDirection();
 
-  const navItems = [
-    { href: "/", text: "Home", image: hImage },
-    { href: "popular", text: "Popular", image: pImage },
-    { href: "top_rated", text: "Top Rated", image: tImage },
-    { href: "upcoming", text: "Upcoming", image: uImage },
+  const navPages = [
+    { href: "/", name: "Home" },
+    { href: "popular", name: "Popular" },
+    { href: "top_rated", name: "Top Rated" },
+    { href: "upcoming", name: "Upcoming" },
   ];
 
   if (loading) {
@@ -48,73 +32,29 @@ export default function Header() {
   }
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            MB
-          </Typography>
-        </Toolbar>
-      </Container>
-    </AppBar>
-    // <HeaderLine
-    //   direction={scrollDirection ? scrollDirection.toString() : undefined}
-    // >
-    //   <Container>
-    //     <Nav>
-    //       <Logo to="/">MB</Logo>
-    //       <NavList>
-    //         <NavListItem>
-    //           <DropdownWrapper>
-    //             <HomeLink>
-    //               Home
-    //               <FaCaretDown />
-    //             </HomeLink>
-    //             <Dropdown>
-    //               <DropdownList>
-    //                 {navItems.map((item) => (
-    //                   <DropdownListItem key={item.text} img={item.image}>
-    //                     <DropdownListLink to={item.href} />
-    //                     {item.text}
-    //                   </DropdownListItem>
-    //                 ))}
-    //               </DropdownList>
-    //             </Dropdown>
-    //           </DropdownWrapper>
-    //         </NavListItem>
-    //         <NavListItem>
-    //           <LinkTo to="/">
-    //             Features
-    //             <FaCaretDown />
-    //           </LinkTo>
-    //         </NavListItem>
-    //         <NavListItem>
-    //           <LinkTo to="/">
-    //             Blog
-    //             <FaCaretDown />
-    //           </LinkTo>
-    //         </NavListItem>
-    //       </NavList>
-    //       <ActiveButtons>
-    //         <SearchForm />
-    //         <LoginBlock>{user ? <User /> : <Login />}</LoginBlock>
-    //       </ActiveButtons>
-    //     </Nav>
-    //   </Container>
-    // </HeaderLine>
+    <>
+      <AppBarLine position="static">
+        <Container maxWidth="lg">
+          <StyledToolbar disableGutters>
+            <Logo to="/">MB</Logo>
+
+            <Menu />
+
+            <StyledStack component="nav" direction="row" spacing={4}>
+              {navPages.map(({ href, name }) => (
+                <PageLink key={href} to={href}>
+                  {name}
+                </PageLink>
+              ))}
+            </StyledStack>
+
+            <UserMenu>
+              <SearchDrawer />
+            </UserMenu>
+          </StyledToolbar>
+        </Container>
+      </AppBarLine>
+    </>
   );
 }
+//  <LoginBlock>{user ? <User /> : <Login />}</LoginBlock>

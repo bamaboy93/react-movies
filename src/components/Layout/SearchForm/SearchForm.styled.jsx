@@ -1,121 +1,59 @@
-import styled from "@emotion/styled/macro";
+import { alpha, styled, InputBase, IconButton } from "@mui/material";
 
-export const Form = styled.form`
-  width: fit-content;
-  height: fit-content;
-  position: relative;
-`;
+export const Search = styled("form")(({ theme }) => ({
+  position: "relative",
 
-export const Input = styled.input`
-  height: 44px;
-  width: 44px;
-  padding: 4px;
-  border-style: none;
-  font-size: ${(props) => props.theme.fontSizes.s};
-  letter-spacing: 2px;
-  outline: none;
-  border-radius: 25px;
-  transition: all 0.5s ease-in-out;
-  background-color: rgba(41, 41, 41, 0.76);
-  padding-right: 40px;
-  color: ${(props) => props.theme.colors.white};
-  @media screen and (max-width: 767px) {
-    background-color: transparent;
-  }
+  marginRight: theme.spacing(2),
+  marginLeft: theme.spacing(2),
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.25),
 
-  ::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: ${(props) => props.theme.fontSizes.s};
-    letter-spacing: 2px;
+  transition: theme.transitions.create(["all"], {
+    duration: theme.transitions.duration.short,
+    easing: theme.transitions.easing.easeIn,
+  }),
 
-    @media screen and (max-width: 767px) {
-      font-size: 14px;
-    }
-    -webkit-appearance: none;
-  }
+  "&:hover": {
+    backgroundColor: alpha(theme.palette.common.white, 0.35),
+  },
+}));
 
-  :focus {
-    width: 300px;
-    border-radius: 0px;
-    background-color: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
-    @media screen and (max-width: 767px) {
-      width: 200px;
-    }
-  }
-`;
+export const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  width: "350px",
+  color: theme.palette.common.white,
+  fontSize: 20,
 
-export const Button = styled.button`
-  position: absolute;
-  right: 0px;
-  width: 44px;
-  height: 44px;
-  border-style: none;
-  outline: none;
-  cursor: pointer;
-  border-radius: 50%;
-  color: ${(props) => props.theme.colors.red};
-  background-color: transparent;
-  pointer-events: painted;
+  [theme.breakpoints.up("md")]: {
+    width: "600px",
+  },
 
-  @media screen and (min-width: 768px) {
-    color: ${(props) => props.theme.colors.text};
-  }
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: theme.spacing(4),
 
-  :focus + ${Input} {
-    width: 300px;
-    border-radius: 0px;
-    background-color: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
-    @media screen and (max-width: 767px) {
-      width: 200px;
-    }
-  }
-`;
+    cursor: "pointer",
 
-export const MobileForm = styled.form`
-  width: 240px;
-  margin-left: ${(props) => props.theme.space[1]}px;
-  position: relative;
-  background-color: rgba(255, 255, 255, 0.15);
-  @media (min-width: 768px) {
-    width: 380px;
-  }
-`;
+    "&:focus": {
+      cursor: "text",
+    },
+  },
+}));
 
-export const MobileInput = styled.input`
-  height: 35px;
-  width: 100%;
-  padding-left: ${(props) => props.theme.space[1]}px;
-  outline: none;
-  border: none;
-  background-color: transparent;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 0;
-  font-size: ${(props) => props.theme.fontSizes.s};
-  letter-spacing: 2px;
+export const SearchButton = styled(IconButton)(({ theme }) => ({
+  height: "100%",
+  position: "absolute",
+  top: 0,
+  right: 0,
+  borderRadius: "4px",
+  color: theme.palette.common.white,
 
-  color: ${(props) => props.theme.colors.white};
+  transition: theme.transitions.create(["all"], {
+    duration: theme.transitions.duration.short,
+    easing: theme.transitions.easing.easeIn,
+  }),
 
-  ::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: ${(props) => props.theme.fontSizes.xs};
-    letter-spacing: 2px;
-  }
-  -webkit-appearance: none;
-`;
-
-export const FormButton = styled.button`
-  position: absolute;
-  right: 0px;
-  height: 100%;
-  border-style: none;
-  outline: none;
-  cursor: pointer;
-
-  color: ${(props) => props.theme.colors.text};
-  background-color: transparent;
-  pointer-events: painted;
-`;
+  "&:hover": {
+    backgroundColor: theme.palette.secondary.main,
+  },
+}));

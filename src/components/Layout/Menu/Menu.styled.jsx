@@ -1,23 +1,38 @@
-import styled from "@emotion/styled";
+import { styled, Box, Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
-export const ButtonLog = styled.button`
-  cursor: pointer;
-  width: 100%;
-  padding: ${(props) => props.theme.space[3]}px;
-  margin-top: ${(props) => props.theme.space[6]}px;
-  border: none;
-  outline: none;
-  background-color: ${(props) => props.theme.colors.red};
-  color: ${(props) => props.theme.colors.white};
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.ms};
-  line-height: ${(props) => props.theme.lineHeights.heading};
-`;
+export const StyledMenu = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.up("md")]: {
+    display: "none",
+  },
+}));
 
-export const Link = styled(NavLink)`
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.ms};
-  line-height: ${(props) => props.theme.lineHeights.heading};
-  color: ${(props) => props.theme.colors.white};
-`;
+export const DrawerContent = styled(Box)(({ theme }) => ({
+  width: 280,
+  height: 1,
+
+  paddingLeft: theme.spacing(4),
+  paddingRight: theme.spacing(4),
+}));
+
+export const StyledBox = styled(Box)(({ theme }) => ({
+  textAlign: "right",
+  marginBottom: theme.spacing(3),
+  marginTop: theme.spacing(1.5),
+  color: theme.palette.common.white,
+}));
+
+export const Link = styled(NavLink)(({ theme }) => ({
+  fontWeight: "bold",
+  fontSize: "24px",
+  lineHeight: "1",
+
+  color: theme.palette.common.white,
+}));
+
+export const StyledButton = styled(Button)(({ theme }) => ({
+  fontWeight: "bold",
+  fontSize: "18px",
+  marginTop: theme.spacing(6),
+  padding: "6px 32px",
+}));
