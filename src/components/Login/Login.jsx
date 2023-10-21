@@ -1,4 +1,4 @@
-import { signInWithGoogle } from "../../../services/firebase";
+import { signInWithGoogle } from "../../services/firebase";
 
 import { Button } from "./Login.styled";
 import { BsGoogle } from "react-icons/bs";

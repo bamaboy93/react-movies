@@ -3,10 +3,11 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 import { Container, LinearProgress } from "@mui/material";
 
-import { auth } from "../../../services/firebase";
+import { auth } from "../../services/firebase";
 
-import UserMenu from "./UserMenu/UserMenu";
-import SearchDrawer from "../SearchDrawer/SearchDrawer";
+import UserMenu from "./UserMenu";
+import SearchDrawer from "../SearchDrawer";
+import Menu from "../Menu";
 
 import {
   AppBarLine,
@@ -15,7 +16,6 @@ import {
   StyledStack,
   PageLink,
 } from "./Header.styled";
-import Menu from "../Menu/Menu";
 
 export default function Header() {
   const [user, loading] = useAuthState(auth);

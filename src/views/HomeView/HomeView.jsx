@@ -7,7 +7,7 @@ import {
   getTopRatedMovies,
   getUpcomingMovies,
 } from "../../services/api/movies-api";
-import MainMovie from "../../components/MainMovie";
+import Hero from "../../components/Hero";
 import Section from "../../components/Section";
 import Upcoming from "../../components/Upcoming";
 import NowPlaying from "../../components/NowPlaying";
@@ -45,7 +45,7 @@ export default function HomePage() {
     <>
       {popularQuery.isSuccess && (
         <>
-          <MainMovie movie={movieQuery.data} />
+          <Hero movie={movieQuery.data} />
           <Section title="Popular" linkTo="/popular">
             <SwiperCarousel movies={popularQuery.data.results} />
           </Section>

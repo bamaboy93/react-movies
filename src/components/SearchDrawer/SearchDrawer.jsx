@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Drawer, IconButton, Typography } from "@mui/material";
+import { Container, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
 import SearchForm from "../SearchForm/SearchForm";

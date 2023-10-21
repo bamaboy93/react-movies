@@ -1,6 +1,6 @@
-import { alpha, styled, Box, Drawer, Typography } from "@mui/material";
+import { styled, Box, Drawer, Typography } from "@mui/material";
 
-import bgImage from "../../../styles/images/movies.jpg";
+import bgImage from "../../styles/images/movies.jpg";
 
 export const StyledDrawer = styled(Drawer)(({ theme }) => ({
   "& .MuiPaper-root": {

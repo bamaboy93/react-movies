@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, logout, signInWithGoogle } from "../../../services/firebase";
+import { auth, logout, signInWithGoogle } from "../../services/firebase";
 import { Drawer, IconButton, LinearProgress, Stack } from "@mui/material";
 import {
   MenuRounded,

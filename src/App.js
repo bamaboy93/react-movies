@@ -3,7 +3,7 @@ import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import PrivateRoute from "./components/Routes/PrivateRoute";
 
-const Layout = lazy(() => import("./components/Layout"));
+const Layout = lazy(() => import("./views/Layout"));
 
 const HomeView = lazy(() => import("./views/HomeView"));
 

@@ -43,12 +43,15 @@ export const muiTheme = createTheme({
       main: "cubic-bezier(0.4, 0, 0.2, 1)",
     },
   },
+  userShadows: {
+    text: "2px 7px 5px rgba(0, 0, 0, 0.3),0px -4px 10px rgba(255, 255, 255, 0.3)",
+  },
 
   components: {
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          backgroundColor: "rgba(49, 50, 60, 0.75)",
+          backgroundColor: "rgba(49, 50, 60, 0.85)",
         },
       },
     },
