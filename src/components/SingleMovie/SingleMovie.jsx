@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import Overview from "./Overview/Overview";
-import ButtonPlay from "../Buttons/ButtonPlay";
+import ButtonPlay from "../Buttons/ButtonPlay/ButtonPlay";
 import Cast from "../Cast";
 import ImagesSwiper from "../ImagesSwiper";
 import Container from "../Container";

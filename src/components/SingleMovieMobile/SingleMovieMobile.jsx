@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import Navigation from "../SingleMovie/Navigation/Navigation";
-import Buttons from "../Buttons";
+
 import CastMobile from "../CastMobile";
 import Container from "../Container";
 import ImagesSwiper from "../ImagesSwiper";
@@ -61,7 +61,7 @@ export default function SingleMovieMobile({ movie, cast, images, onToggle }) {
               </InfoWrapper>
             </MovieWrapper>
             <Title>{title}</Title>
-            <Buttons movie={movie} onToggle={onToggle} />
+            {/* <Buttons movie={movie} onToggle={onToggle} /> */}
             <Overview>{overview}</Overview>
           </Container>
           <CastMobile cast={cast} />

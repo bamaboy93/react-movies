@@ -1,22 +1,22 @@
 import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
-import { BsFillPlayFill } from "react-icons/bs";
-import noImageFound from "../../styles/images/noimage.jpg";
-import Container from "../Container";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+
+import { Box, Container } from "@mui/material";
 import {
-  InfoWrapper,
   LinkWatch,
+  MovieBox,
   MovieInfo,
   MovieTitle,
   MovieWrapper,
   Option,
   Options,
   Overview,
-  PosterWrapper,
   Rating,
   Section,
-  Wrapper,
+  PosterWrapper,
 } from "./NowPlaying.styled";
+import noImageFound from "../../styles/images/noimage.jpg";
 
 export default function NowPlaying({ movie }) {
   const url = useLocation();
@@ -32,10 +32,10 @@ export default function NowPlaying({ movie }) {
   } = movie;
   return (
     <Section>
-      <Container>
-        <Wrapper backdrop={backdrop_path}>
+      <MovieBox backdrop={backdrop_path}>
+        <Container>
           <MovieWrapper>
-            <InfoWrapper>
+            <Box>
               <MovieTitle>{title}</MovieTitle>
               <MovieInfo>
                 <Options>
@@ -53,10 +53,11 @@ export default function NowPlaying({ movie }) {
                 {overview && <Overview>{overview}</Overview>}
 
                 <LinkWatch to={`${url.pathname}/${id}`}>
-                  <BsFillPlayFill /> Watch Now
+                  <PlayArrowIcon /> Watch Now
                 </LinkWatch>
               </MovieInfo>
-            </InfoWrapper>
+            </Box>
+
             <PosterWrapper>
               <img
                 src={
@@ -69,8 +70,8 @@ export default function NowPlaying({ movie }) {
               />
             </PosterWrapper>
           </MovieWrapper>
-        </Wrapper>
-      </Container>
+        </Container>
+      </MovieBox>
     </Section>
   );
 }

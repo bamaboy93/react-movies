@@ -27,19 +27,24 @@ export default function SwiperCarousel({ movies }) {
       spaceBetween={15}
       loop={true}
       breakpoints={{
-        // when window width is >= 768px
-        768: {
-          width: 768,
+        // when window width is >= 600px
+        600: {
+          width: 600,
+          slidesPerView: 3,
+        },
+        // when window width is >= 900px
+        900: {
+          width: 900,
           slidesPerView: 4,
         },
         // when window width is >= 1280px
-        1280: {
-          width: 1280,
+        1200: {
+          width: 1200,
           slidesPerView: 6,
         },
       }}
       autoplay={{
-        delay: 2500,
+        delay: 4500,
         disableOnInteraction: false,
       }}
       navigation={true}
@@ -49,7 +54,7 @@ export default function SwiperCarousel({ movies }) {
         <SwiperSlide key={id}>
           <Slide>
             <Link to={`${url.pathname}/${id}`}>
-              <Overlay>
+              <Overlay id="overlay">
                 <OverlayVote vote={vote_average}>
                   {vote_average.toFixed()}
                 </OverlayVote>
@@ -64,7 +69,7 @@ export default function SwiperCarousel({ movies }) {
                 alt={title}
               />
 
-              <MovieTitleOverlay>
+              <MovieTitleOverlay id="MovieTitleOverlay">
                 <MovieTitle>{title}</MovieTitle>
               </MovieTitleOverlay>
             </Link>

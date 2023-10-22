@@ -1,156 +1,153 @@
-import styled from "@emotion/styled";
-import { Link } from "react-router-dom";
+import { styled, Box, Typography } from "@mui/material";
+import { NavLink } from "react-router-dom";
 import getColor from "../../services/getColor";
 
-export const Section = styled.section`
-  padding: 80px 0;
-`;
+// export const Section = styled.section`
+//   padding: 80px 0;
+// `;
 
-export const Wrapper = styled.div`
-  position: relative;
-  width: 100%;
-  height: 700px;
-  padding-top: ${(props) => props.theme.space[7]}px;
-  background-image: ${(props) =>
-    `url(https://image.tmdb.org/t/p/original${props.backdrop})`};
-  background-size: cover;
-  background-position: center;
+export const Section = styled("section")(({ theme }) => ({
+  padding: theme.spacing(10, 0),
+}));
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
-    height: 600px;
-  }
+export const MovieBox = styled(Box)(({ theme, backdrop }) => ({
+  position: "relative",
+  width: "100%",
+  height: "600px",
 
-  @media screen and (min-width: 1280px) {
-    height: 750px;
-    background-attachment: fixed;
-  }
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 
-  &::before {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: ${(props) => props.theme.colors.black};
-    opacity: 0.3;
-  }
-`;
+  backgroundImage: `url(https://image.tmdb.org/t/p/original${backdrop})`,
+  backgroundSize: "cover",
+  backgroundPosition: "center",
 
-export const MovieWrapper = styled.div`
-  position: relative;
-  z-index: 11;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  "&:before": {
+    content: "''",
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
-    padding-left: ${(props) => props.theme.space[9]}px;
-    justify-content: start;
-  }
-`;
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    left: 0,
+    top: 0,
 
-export const InfoWrapper = styled.div``;
+    background: "rgba(0, 0, 0, 0.2)",
+  },
 
-export const MovieTitle = styled.h2`
-  display: inline-block;
-  max-width: 320px;
-  margin-bottom: ${(props) => props.theme.space[7]}px;
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.ml};
-  line-height: ${(props) => props.theme.lineHeights.heading};
-  text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
-    0px -4px 10px rgba(255, 255, 255, 0.3);
-  @media screen and (min-width: 768px) {
-    margin-bottom: ${(props) => props.theme.space[9]}px;
-    max-width: 400px;
-    font-size: ${(props) => props.theme.fontSizes.l};
-  }
+  [theme.breakpoints.up("lg")]: {
+    height: "900px",
+    backgroundAttachment: "fixed",
+  },
 
-  @media screen and (min-width: 1280px) {
-    max-width: 650px;
-    font-size: ${(props) => props.theme.fontSizes.lxl};
-  }
-`;
+  [theme.breakpoints.down("sm")]: {
+    display: "none",
+  },
+}));
 
-export const MovieInfo = styled.div`
-  max-width: 320px;
-  @media screen and (min-width: 768px) {
-    max-width: 400px;
-  }
+export const MovieWrapper = styled(Box)(({ theme }) => ({
+  position: "relative",
+  zIndex: 111,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
 
-  @media screen and (min-width: 1280px) {
-    max-width: 650px;
-  }
-`;
+  [theme.breakpoints.down("lg")]: {
+    justifyContent: "start",
+    paddingLeft: theme.spacing(8),
+  },
+}));
 
-export const Options = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: ${(props) => props.theme.space[5]}px;
-`;
+export const MovieTitle = styled(Typography)(({ theme }) => ({
+  display: "inline-block",
+  maxWidth: "400px",
+  marginBottom: theme.spacing(8),
+  fontWeight: "bold",
+  fontSize: 32,
+  textShadow: theme.userShadows.text,
 
-export const Option = styled.p`
-  margin-right: ${(props) => props.theme.space[4]}px;
-  font-family: ${(props) => props.theme.fonts.numbers};
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.s};
-  text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
-    0px -4px 10px rgba(255, 255, 255, 0.3);
+  [theme.breakpoints.up("lg")]: {
+    maxWidth: "600px",
+    fontSize: 42,
+  },
+}));
 
-  @media screen and (min-width: 1280px) {
-    font-size: ${(props) => props.theme.fontSizes.m};
-  }
-`;
+export const MovieInfo = styled(Box)(({ theme }) => ({
+  maxWidth: "400px",
 
-export const Rating = styled.p`
-  font-family: ${(props) => props.theme.fonts.numbers};
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.s};
-  text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
-    0px -4px 10px rgba(255, 255, 255, 0.3);
-  color: ${(props) => getColor(props.vote)};
+  [theme.breakpoints.up("lg")]: {
+    maxWidth: "650px",
+  },
+}));
 
-  @media screen and (min-width: 1280px) {
-    font-size: ${(props) => props.theme.fontSizes.m};
-  }
-`;
+export const Options = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  marginBottom: theme.spacing(4),
+}));
 
-export const Overview = styled.p`
-  text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
-    0px -4px 10px rgba(255, 255, 255, 0.3);
-`;
+export const Option = styled(Typography)(({ theme }) => ({
+  marginRight: theme.spacing(2),
 
-export const LinkWatch = styled(Link)`
-  display: inline-flex;
-  align-items: center;
-  margin-top: ${(props) => props.theme.space[7]}px;
-  padding: 10px 15px;
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.xs};
-  text-transform: uppercase;
-  background-color: ${(props) => props.theme.colors.red};
-  transition: ${(props) => props.theme.animation.main};
+  fontFamily: theme.typography.numsFont,
+  fontWeight: "bold",
+  fontSize: 18,
+  textShadow: theme.userShadows.text,
 
-  &:hover {
-    letter-spacing: 2px;
-    border-left: 3px solid ${(props) => props.theme.colors.hover};
-    background-color: transparent;
-    color: ${(props) => props.theme.colors.hover};
-  }
+  [theme.breakpoints.up("lg")]: {
+    fontSize: 22,
+  },
+}));
 
-  svg {
-    width: 20px;
-    height: 20px;
-    margin-right: ${(props) => props.theme.space[1]}px;
-    fill: currentColor;
-  }
-`;
+export const Rating = styled(Typography)(({ theme, vote }) => ({
+  fontFamily: theme.typography.numsFont,
+  fontWeight: "bold",
+  fontSize: 18,
+  textShadow: theme.userShadows.text,
 
-export const PosterWrapper = styled.div`
-  display: none;
-  @media screen and (min-width: 1280px) {
-    display: block;
-  }
-`;
+  color: getColor(vote),
+
+  [theme.breakpoints.up("lg")]: {
+    fontSize: 22,
+  },
+}));
+
+export const Overview = styled(Typography)(({ theme }) => ({
+  textShadow: theme.userShadows.text,
+}));
+
+export const LinkWatch = styled(NavLink)(({ theme }) => ({
+  display: "inline-flex",
+  alignItems: "center",
+  maxWidth: "400px",
+  marginTop: theme.spacing(8),
+  padding: theme.spacing(1, 2),
+  fontWeight: "bold",
+  textTransform: "uppercase",
+  backgroundColor: theme.palette.secondary.main,
+
+  transition: theme.transitions.create(["all"], {
+    duration: theme.transitions.duration.short,
+    easing: theme.transitions.easing.easeIn,
+  }),
+
+  "&:hover": {
+    letterSpacing: "1.5px",
+    borderLeft: `3px solid ${theme.palette.secondary.main}`,
+    background:
+      "transparent linear-gradient(270deg, rgba(11, 1, 2, 0) 0%, rgba(255, 55, 65, 0.3) 100%)",
+    color: theme.palette.secondary.main,
+  },
+
+  svg: {
+    width: "20px",
+    height: "20px",
+    marginRight: theme.spacing(1),
+  },
+}));
+
+export const PosterWrapper = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down("lg")]: {
+    display: "none",
+  },
+}));

@@ -232,31 +232,3 @@ export const ButtonWatchMobile = styled(NavLink)(({ theme }) => ({
     transform: "scale(1.2)",
   },
 }));
-
-// export const MobileWatchLink = styled(Link)`
-//   display: flex;
-//   align-items: center;
-//   margin-left: ${(props) => props.theme.space[3]}px;
-//   font-weight: ${(props) => props.theme.fontWeights.bold};
-//   font-size: ${(props) => props.theme.fontSizes.s};
-//   text-transform: uppercase;
-
-//   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-//   @media screen and (min-width: 768px) {
-//     display: none;
-//   }
-
-//   svg {
-//     width: 30px;
-//     height: 30px;
-//     margin-right: ${(props) => props.theme.space[1]}px;
-//     fill: ${(props) => props.theme.colors.hover};
-
-//     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-//   }
-
-//   &:hover svg {
-//     scale: 1.2;
-//   }
-// `;

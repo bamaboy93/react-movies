@@ -2,29 +2,32 @@ import { Link, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import noImage from "../../styles/images/no-image.jpg";
 
-import { MovieList, MovieListItem, MovieTitle } from "./Upcoming.styled";
+import { Item, MovieTitle } from "./Upcoming.styled";
+import { Grid } from "@mui/material";
 
 export default function Upcoming({ movies }) {
   const url = useLocation();
   return (
-    <MovieList>
+    <Grid container spacing={2} columns={{ xs: 12, sm: 8, md: 10 }}>
       {movies.slice(0, 10).map(({ id, backdrop_path, title }) => (
-        <Link to={`${url.pathname}/${id}`} key={id}>
-          <MovieListItem>
-            <img
-              src={
-                backdrop_path
-                  ? `https://image.tmdb.org/t/p/original${backdrop_path}`
-                  : `${noImage}`
-              }
-              alt="movie backdrop"
-            />
+        <Grid item xs={12} sm={4} md={2} key={id}>
+          <Link to={`${url.pathname}/${id}`}>
+            <Item>
+              <img
+                src={
+                  backdrop_path
+                    ? `https://image.tmdb.org/t/p/original${backdrop_path}`
+                    : `${noImage}`
+                }
+                alt="movie backdrop"
+              />
 
-            <MovieTitle>{title}</MovieTitle>
-          </MovieListItem>
-        </Link>
+              <MovieTitle>{title}</MovieTitle>
+            </Item>
+          </Link>{" "}
+        </Grid>
       ))}
-    </MovieList>
+    </Grid>
   );
 }
 

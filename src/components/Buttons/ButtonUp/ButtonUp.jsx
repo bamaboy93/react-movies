@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Zoom } from "@mui/material";
 import UpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { ButtonToTop } from "./ButtonUp.styled";
+
+import { StyledFab } from "./ButtonUp.styled";
 
 export default function ButtonUp() {
   const [show, setShow] = useState(false);
@@ -20,13 +21,13 @@ export default function ButtonUp() {
     <>
       {show && (
         <Zoom in={show}>
-          <ButtonToTop
+          <StyledFab
             onClick={() => {
               window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
             }}
           >
             <UpIcon color="inherit" />
-          </ButtonToTop>
+          </StyledFab>
         </Zoom>
       )}
     </>

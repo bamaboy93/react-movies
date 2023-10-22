@@ -1,16 +1,22 @@
+import { Box } from "@mui/material";
 import PropTypes from "prop-types";
-import Buttons from "../../Buttons";
 
-import { OverviewWrapper, ShortDesc } from "./Overview.styled";
+import ButtonFav from "../../Buttons/ButtonFav/ButtonFav";
+import ButtonTrailer from "../../Buttons/ButtonTrailer/ButtonTrailer";
+
+import { ButtonsBox, ShortDesc } from "./Overview.styled";
 
 export default function Overview({ movie, onToggle }) {
   const { tagline } = movie;
 
   return (
-    <OverviewWrapper>
+    <Box>
       {tagline && <ShortDesc>{tagline}</ShortDesc>}
-      <Buttons movie={movie} onToggle={onToggle} />
-    </OverviewWrapper>
+      <ButtonsBox>
+        <ButtonTrailer onToggle={onToggle} />
+        <ButtonFav movie={movie} />
+      </ButtonsBox>
+    </Box>
   );
 }
 

@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
-import { BsPlayCircle } from "react-icons/bs";
+import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import { Button } from "./ButtonPlay.styled";
 
 export default function ButtonPlay({ onToggle }) {
   return (
-    <Button type="button" onClick={onToggle}>
-      <BsPlayCircle />
+    <Button aria-label="play" onClick={onToggle}>
+      <PlayCircleOutlineIcon />
     </Button>
   );
 }

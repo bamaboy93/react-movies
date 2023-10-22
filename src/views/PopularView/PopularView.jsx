@@ -8,7 +8,7 @@ import PageTitle from "../../components/PageTitle";
 import DataGrid from "../../components/DataGrid";
 import DataGridItem from "../../components/DataGridItem";
 import PaginationNotification from "../../components/PaginationNotification";
-import ButtonUp from "../../components/Buttons/ButtonUp";
+import ButtonUp from "../../components/Buttons/ButtonUp/ButtonUp";
 
 export default function PopularView() {
   const { ref, inView } = useInView();
