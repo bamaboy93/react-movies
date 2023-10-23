@@ -1,146 +1,136 @@
-import styled from "@emotion/styled";
+import {
+  Box,
+  List,
+  ListItem,
+  Typography,
+  styled,
+  Link,
+  Stack,
+} from "@mui/material";
 
-export const FooterLine = styled.footer`
-  padding: 40px 0;
-  background-color: ${(props) => props.theme.colors.footer};
-  @media screen and (max-width: 767px) {
-    text-align: center;
-  }
-`;
+export const FooterLine = styled("footer")(({ theme }) => ({
+  padding: theme.spacing(5, 0),
+  backgroundColor: theme.palette.primary.main,
 
-export const FooterWrapper = styled.div`
-  @media screen and (min-width: 768px) {
-    display: flex;
-  }
-`;
+  [theme.breakpoints.down("md")]: {
+    textAlign: "center",
+  },
+}));
 
-export const FooterWrapperCol = styled.div`
-  @media screen and (min-width: 768px) {
-    display: flex;
-  }
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
-    flex-direction: column;
-  }
-`;
+export const FooterWrapper = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.up("md")]: {
+    display: "flex",
+    justifyContent: "space-evenly",
+  },
+  [theme.breakpoints.up("lg")]: { justifyContent: "space-between" },
+}));
 
-export const FooterLinksWrapper = styled.div`
-  @media screen and (min-width: 768px) {
-    width: 100%;
-  }
-  @media screen and (min-width: 1280px) {
-    width: 500px;
-  }
-`;
+export const FooterLinksWrapper = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down("md")]: {
+    marginBottom: theme.spacing(5),
+  },
 
-export const FooterLinksList = styled.ul`
-  margin-bottom: ${(props) => props.theme.space[5]}px;
-  @media screen and (min-width: 1280px) {
-    display: flex;
-    justify-content: space-between;
-  }
-`;
+  [theme.breakpoints.up("md")]: {
+    width: "500px",
+  },
+}));
 
-export const FooterLinksItem = styled.li`
-  :not(:last-child) {
-    margin-bottom: ${(props) => props.theme.space[4]}px;
+export const FooterLinksList = styled(List)(({ theme }) => ({
+  marginBottom: theme.spacing(5),
+  display: "flex",
+  [theme.breakpoints.down("md")]: {
+    alignItems: "center",
+  },
+  [theme.breakpoints.down("lg")]: {
+    flexDirection: "column",
+  },
+  [theme.breakpoints.up("lg")]: {
+    justifyContent: "space-between",
+  },
+}));
 
-    @media screen and (min-width: 768px) {
-      margin-bottom: ${(props) => props.theme.space[1]}px;
-    }
-  }
-`;
+export const FooterLinksItem = styled(ListItem)(({ theme }) => ({
+  padding: 0,
+  width: "fit-content",
+  transition: theme.transitions.create(["color"], {
+    duration: theme.transitions.duration.short,
+    easing: theme.transitions.easing.easeIn,
+  }),
 
-export const FooterLinksLink = styled.a`
-  font-size: ${(props) => props.theme.fontSizes.ms};
-  transition: ${(props) => props.theme.animation.color};
+  "&:hover": {
+    color: theme.palette.secondary.main,
+  },
+}));
 
-  &:hover {
-    color: ${(props) => props.theme.colors.hover};
-  }
-`;
+export const FooterInfo = styled(Typography)(({ theme }) => ({
+  fontSize: 14,
+}));
 
-export const FooterInfo = styled.p`
-  font-size: ${(props) => props.theme.fontSizes.xs};
-`;
+export const FooterSocialsWrapper = styled(Box)(({ theme }) => ({
+  display: "flex",
 
-export const FooterSocials = styled.div`
-  @media screen and (max-width: 767px) {
-    margin-top: ${(props) => props.theme.space[4]}px;
-  }
-  @media screen and (min-width: 1280px) {
-    margin-left: ${(props) => props.theme.space[10]}px;
-  }
-`;
+  [theme.breakpoints.down("lg")]: {
+    flexDirection: "column",
+  },
+}));
 
-export const FooterSubtitle = styled.h3`
-  margin-bottom: ${(props) => props.theme.space[5]}px;
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.ms};
-`;
+export const FooterSocials = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down("lg")]: {
+    marginBottom: theme.spacing(4),
+  },
 
-export const FooterSocialsList = styled.ul`
-  display: flex;
-  @media screen and (max-width: 767px) {
-    justify-content: center;
-  }
-  @media screen and (min-width: 768px) {
-    margin-bottom: ${(props) => props.theme.space[6]}px;
-  }
-`;
+  [theme.breakpoints.up("lg")]: {
+    marginRight: theme.spacing(6),
+  },
+}));
 
-export const FooterSocialsItem = styled.li`
-  &:not(:last-child) {
-    margin-right: ${(props) => props.theme.space[4]}px;
-  }
-`;
+export const FooterStack = styled(Stack)(({ theme }) => ({
+  [theme.breakpoints.down("md")]: {
+    justifyContent: "center",
+  },
+}));
 
-export const FooterSocialsLink = styled.a`
-  width: 42px;
-  height: 42px;
-  background-color: rgba(41, 41, 41, 0.76);
-  color: ${(props) => props.theme.colors.text};
-  border: 2px solid transparent;
-  border-radius: ${(props) => props.theme.radii.round};
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 250ms;
+export const FooterSubtitle = styled(Typography)(({ theme }) => ({
+  marginTop: theme.spacing(1.6),
+  marginBottom: theme.spacing(6),
+  fontWeight: "bold",
+}));
 
-  svg {
-    fill: currentColor;
-    transition: ${(props) => props.theme.animation.color};
-  }
+export const FooterSocialsLink = styled(Link)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  width: "35px",
+  height: "35px",
+  backgroundColor: "rgba(41, 41, 41, 0.76)",
+  color: theme.palette.common.white,
+  border: "2px solid transparent",
+  borderRadius: "50%",
+  boxShadow:
+    "rgba(0, 0, 0, 0.4) 0px 2px 4px,rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset",
 
-  &:hover {
-    border-color: ${(props) => props.theme.colors.hover};
-    box-shadow: 0 0 10px #ff4040;
-  }
+  transition: theme.transitions.create(["all"], {
+    duration: theme.transitions.duration.short,
+    easing: theme.transitions.easing.easeIn,
+  }),
 
-  &:hover svg {
-    color: ${(props) => props.theme.colors.hover};
-  }
-`;
+  svg: {
+    transition: theme.transitions.create(["color"], {
+      duration: theme.transitions.duration.short,
+      easing: theme.transitions.easing.easeIn,
+    }),
+  },
 
-export const FooterStore = styled.div`
-  @media screen and (max-width: 767px) {
-    margin-top: ${(props) => props.theme.space[4]}px;
-  }
-  @media screen and (min-width: 1280px) {
-    margin-left: ${(props) => props.theme.space[10]}px;
-  }
-`;
+  "&:hover": {
+    borderColor: theme.palette.secondary.light,
+    boxShadow: "0 0 10px #ff4040",
+  },
 
-export const FooterStoreList = styled.ul`
-  display: flex;
-  @media screen and (max-width: 767px) {
-    justify-content: center;
-  }
-`;
+  "&:hover svg": {
+    color: theme.palette.secondary.light,
+  },
+}));
 
-export const FooterStoreItem = styled.li`
-  :not(:last-child) {
-    margin-right: ${(props) => props.theme.space[1]}px;
-  }
-`;
+export const FooterStores = styled(Box)(({ theme }) => ({}));
+
+export const FooterSotoresLink = styled(Link)(({ theme }) => ({}));
