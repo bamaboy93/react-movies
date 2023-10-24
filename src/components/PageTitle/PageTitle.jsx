@@ -1,11 +1,14 @@
+import { Typography } from "@mui/material";
 import PropTypes from "prop-types";
 
-import { Title, TitleWrapper } from "./PageTitle.styled";
+import { TitleWrapper } from "./PageTitle.styled";
 
 export default function PageTitle({ title }) {
   return (
     <TitleWrapper>
-      <Title>{title}</Title>
+      <Typography variant="h2" fontWeight={"bold"}>
+        {title}
+      </Typography>
     </TitleWrapper>
   );
 }

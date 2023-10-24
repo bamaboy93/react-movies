@@ -1,100 +1,74 @@
-import styled from "@emotion/styled";
+import { styled, Typography, Box } from "@mui/material";
 import getColor from "../../services/getColor";
 
-export const MoviesListItem = styled.li`
-  position: relative;
-  cursor: pointer;
-  text-align: center;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  transition: all 250ms ease-in;
-  img {
-    object-fit: cover;
-    object-position: top;
-    height: 100%;
-    width: 100%;
-  }
+export const Card = styled(Box)(({ theme }) => ({
+  position: "relative",
+  textAlign: "center",
+  boxShadow:
+    "rgba(0, 0, 0, 0.4) 0px 2px 4px,rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset",
 
-  &:hover {
-    transform: translateY(-8px);
-  }
-  &:hover .movieCard,
-  &:focus .movieCard {
-    opacity: 0;
-  }
-  &:hover .overlay,
-  &:focus .overlay {
-    opacity: 1;
-  }
-`;
+  transition: theme.transitions.create(["transform"], {
+    duration: theme.transitions.duration.complex,
+    easing: theme.transitions.easing.easeIn,
+  }),
 
-export const Overlay = styled.div`
-  position: absolute;
-  z-index: 33;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  transition: opacity 250ms ease-in;
-  &::before {
-    position: absolute;
-    left: 0;
-    display: inline-block;
-    content: " ";
-    width: 4px;
-    height: 100%;
-    background-color: ${(props) => props.theme.colors.red};
-  }
-`;
+  "&:hover,&:focus": {
+    transform: "translateY(-8px)",
+  },
+  "&:hover #CardTitleOverlay,&:focus #CardTitleOverlay,&:hover #CardRatingOverlay,&:focus #CardRatingOverlay":
+    {
+      opacity: 1,
+    },
+}));
 
-export const OverlayTitle = styled.p`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.m};
-  text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
-    0px -4px 10px rgba(255, 255, 255, 0.3);
-`;
+export const CardTitleOverlay = styled(Box)(({ theme }) => ({
+  position: "absolute",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  width: "100%",
+  minHeight: "60px",
+  bottom: 0,
+  padding: theme.spacing(1),
+  opacity: 0,
+  borderBottom: `4px solid ${theme.palette.secondary.main}`,
 
-export const OverlayVote = styled.div`
-  position: absolute;
-  z-index: 33;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  width: 30px;
-  height: 30px;
-  right: 10px;
-  top: 10px;
+  backgroundColor: "rgba(49, 50, 60, 0.647)",
 
-  background-color: rgba(49, 50, 60, 0.412);
-`;
+  transition: theme.transitions.create(["opacity"], {
+    duration: theme.transitions.duration.complex,
+    easing: theme.transitions.easing.easeIn,
+  }),
+}));
 
-export const Rating = styled.p`
-  font-family: ${(props) => props.theme.fonts.numbers};
-  font-size: ${(props) => props.theme.fontSizes.s};
-  color: ${(props) => getColor(props.vote)};
-`;
+export const CardTitle = styled(Typography)(({ theme }) => ({
+  color: theme.palette.common.white,
+  textShadow: "0 3px 7px rgba(0, 0, 0, 0.3)",
+}));
 
-export const MovieCard = styled.div`
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-height: 60px;
-  bottom: 0;
-  padding: ${(props) => props.theme.space[1]}px;
+export const CardRatingOverlay = styled(Box)(({ theme }) => ({
+  position: "absolute",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  width: "40px",
+  height: "40px",
+  top: "10px",
+  right: "10px",
+  borderRadius: "4px",
 
-  background-color: rgba(49, 50, 60, 0.647);
-  cursor: pointer;
-  transition: opacity 250ms ease-in;
-`;
+  opacity: 0,
 
-export const MovieTitle = styled.p`
-  color: ${(props) => props.theme.colors.mainText};
-  text-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-`;
+  backgroundColor: "rgba(49, 50, 60, 0.647)",
+
+  transition: theme.transitions.create(["opacity"], {
+    duration: theme.transitions.duration.complex,
+    easing: theme.transitions.easing.easeIn,
+  }),
+}));
+
+export const Rating = styled(Typography)(({ theme, vote }) => ({
+  fontFamily: theme.typography.numsFont,
+  fontSize: 20,
+  color: getColor(vote),
+}));

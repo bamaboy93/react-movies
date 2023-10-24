@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useSearchQuery } from "../../hooks/useInfiniteQueries";
 import { useSearchParams } from "react-router-dom";
+import { Container } from "@mui/material";
 
-import Container from "../../components/Container";
 import AlertMessage from "../../components/AlertMessage";
 import PageTitle from "../../components/PageTitle";
 import DataGrid from "../../components/DataGrid";

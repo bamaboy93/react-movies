@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { usePopularQuery } from "../../hooks/useInfiniteQueries";
-
-import Container from "../../components/Container";
+import { Container } from "@mui/material";
 import AlertMessage from "../../components/AlertMessage";
 import PageTitle from "../../components/PageTitle";
 import DataGrid from "../../components/DataGrid";
