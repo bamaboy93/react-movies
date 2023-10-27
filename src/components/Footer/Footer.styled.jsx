@@ -12,6 +12,10 @@ export const FooterLine = styled("footer")(({ theme }) => ({
   padding: theme.spacing(5, 0),
   backgroundColor: theme.palette.primary.main,
 
+  [theme.breakpoints.down("sm")]: {
+    marginTop: theme.spacing(8),
+  },
+
   [theme.breakpoints.down("md")]: {
     textAlign: "center",
   },
@@ -100,8 +104,8 @@ export const FooterSocialsLink = styled(Link)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  width: "35px",
-  height: "35px",
+  width: "42px",
+  height: "42px",
   backgroundColor: "rgba(41, 41, 41, 0.76)",
   color: theme.palette.common.white,
   border: "2px solid transparent",

@@ -6,4 +6,6 @@ export const ButtonsBox = styled(Box)(({ theme }) => ({
   marginTop: theme.spacing(4),
 }));
 
-export const ShortDesc = styled(Typography)(({ theme }) => ({}));
+export const ShortDesc = styled(Typography)(({ theme }) => ({
+  color: theme.palette.common.white,
+}));

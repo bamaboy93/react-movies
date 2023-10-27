@@ -7,7 +7,7 @@ export const Button = styled(IconButton)(({ theme }) => ({
     width: "150px",
     height: "150px",
 
-    opacity: 0.5,
+    opacity: 0.7,
 
     transition: theme.transitions.create(["all"], {
       duration: theme.transitions.duration.short,
@@ -20,7 +20,7 @@ export const Button = styled(IconButton)(({ theme }) => ({
     transform: "scale(1.3)",
   },
 
-  [theme.breakpoints.down("lg")]: {
+  [theme.breakpoints.down("md")]: {
     display: "none",
   },
 }));

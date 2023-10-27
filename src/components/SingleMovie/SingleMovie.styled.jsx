@@ -1,56 +1,64 @@
-import styled from "@emotion/styled";
+import { styled, Box, Typography } from "@mui/material";
 
-export const MovieScreen = styled.div`
-  position: relative;
-  min-height: 100svh;
+export const MovieSection = styled("section")(({ theme, backdrop }) => ({
+  position: "relative",
+  minHeight: "100svh",
+  backgroundImage: `url(https://image.tmdb.org/t/p/original${backdrop})`,
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
 
-  background-image: ${(props) =>
-    `url(https://image.tmdb.org/t/p/original${props.backdrop})`};
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
+  zIndex: 43,
 
-  z-index: 1;
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 
-  @media (min-width: 1280px) {
-    background-position: center !important;
-  }
-  &:before {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    position: absolute;
-    background: rgba(0, 0, 0, 0.2);
-    z-index: -1;
-  }
-`;
+  "&:before": {
+    content: "''",
+    display: "block",
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    left: 0,
+    top: 0,
+    zIndex: -1,
+    background: "rgba(0, 0, 0, 0.2)",
+  },
+}));
 
-export const NavigationWrapper = styled.div`
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, -10%);
-`;
+export const StyledSection = styled("section")(({ theme }) => ({
+  paddingTop: theme.spacing(6),
+}));
 
-export const MovieWrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
+export const NavWrapper = styled(Box)(({ theme }) => ({
+  position: "absolute",
+  top: "10%",
+  left: "50%",
+  transform: "translate(-50%, -10%)",
+}));
 
-export const Title = styled.h1`
-  margin-bottom: ${(props) => props.theme.space[7]}px;
-  max-width: 750px;
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.xl};
-  line-height: ${(props) => props.theme.lineHeights.heading};
+export const MovieInfoWrapper = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
 
-  text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
-    0px -4px 10px rgba(255, 255, 255, 0.3);
-  @media (min-width: 768px) and (max-width: 1279px) {
-    font-size: ${(props) => props.theme.fontSizes.l};
-  }
-`;
+  paddingRight: theme.spacing(18),
+
+  [theme.breakpoints.up("lg")]: {
+    paddingRight: theme.spacing(24),
+  },
+}));
+
+export const MovieInfo = styled(Box)(({ theme }) => ({}));
+
+export const MovieTitle = styled(Typography)(({ theme }) => ({
+  maxWidth: "750px",
+  marginBottom: theme.spacing(6),
+  fontWeight: 700,
+  fontSize: 64,
+  textShadow: theme.userShadows.text,
+
+  [theme.breakpoints.down("lg")]: {
+    fontSize: 56,
+  },
+}));

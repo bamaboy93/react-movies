@@ -1,155 +1,152 @@
-import styled from "@emotion/styled";
+import { styled, Box, Typography } from "@mui/material";
+
 import getColor from "../../../services/getColor";
 
-export const DetailsButton = styled.button`
-  display: inline-flex;
-  align-items: center;
-  margin-top: ${(props) => props.theme.space[7]}px;
-  padding: 10px 15px;
-  border: none;
-  outline: none;
-  border-radius: 5%;
-  color: ${(props) => props.theme.colors.white};
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.xs};
-  text-transform: uppercase;
-  background-color: ${(props) => props.theme.colors.red};
-  transition: ${(props) => props.theme.animation.main};
+export const DetailsButton = styled("button")(({ theme }) => ({
+  display: "inline-flex",
+  alignItems: "center",
 
-  &:hover {
-    letter-spacing: 2px;
-    border-left: 3px solid ${(props) => props.theme.colors.hover};
-    background-color: transparent;
-    color: ${(props) => props.theme.colors.hover};
-  }
+  marginTop: theme.spacing(6),
+  padding: theme.spacing(1.1, 2),
+  border: "none",
+  outline: "none",
+  borderRadius: "4px",
+  boxShadow: theme.userShadows.card,
 
-  svg {
-    width: 20px;
-    height: 20px;
-    margin-right: ${(props) => props.theme.space[1]}px;
-    fill: currentColor;
-  }
-`;
+  color: theme.palette.common.white,
+  backgroundColor: theme.palette.secondary.main,
 
-export const DetailsWrapper = styled.div`
-  padding: ${(props) => props.theme.space[9]}px;
-`;
+  fontWeight: 700,
+  fontSize: 14,
+  textTransform: "uppercase",
+  letterSpacing: "1px",
 
-export const MovieWrapper = styled.div`
-  display: flex;
-  margin-bottom: ${(props) => props.theme.space[6]}px;
-`;
+  transition: theme.transitions.create(["all"], {
+    duration: theme.transitions.duration.short,
+    easing: theme.transitions.easing.easeIn,
+  }),
 
-export const PosterWrapper = styled.div`
-  position: relative;
-  margin-right: ${(props) => props.theme.space[9]}px;
-  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
-    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-`;
+  "&:hover": {
+    letterSpacing: "2px",
+    borderLeft: `2px solid ${theme.palette.secondary.light}`,
+    backgroundColor: "transparent",
+    color: theme.palette.secondary.light,
+  },
 
-export const Poster = styled.img`
-  width: 400px;
-  border-radius: 4px;
-  object-fit: contain;
-`;
+  svg: {
+    width: "20px",
+    height: "20px",
+    marginRight: theme.spacing(1),
+  },
+}));
 
-export const Rating = styled.p`
-  position: absolute;
-  right: 15px;
-  top: 10px;
-  font-family: ${(props) => props.theme.fonts.numbers};
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.m};
-  color: ${(props) => getColor(props.vote)};
-`;
+export const DrawerWrapper = styled(Box)(({ theme }) => ({
+  width: 750,
+  height: "100%",
+  padding: theme.spacing(7),
+}));
 
-export const InfoWrapper = styled.div``;
+export const MovieWrapper = styled(Box)(({ theme }) => ({
+  display: "flex",
+  marginBottom: theme.spacing(10),
+}));
 
-export const Title = styled.h2`
-  margin-bottom: ${(props) => props.theme.space[4]}px;
-  text-align: left;
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.m};
-  color: ${(props) => props.theme.colors.white};
-  text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
-    0px -4px 10px rgba(255, 255, 255, 0.3);
-`;
+export const PosterWrapper = styled(Box)(({ theme }) => ({
+  position: "relative",
+  marginRight: theme.spacing(8),
+}));
 
-export const Info = styled.div`
-  display: flex;
-  align-items: center;
-`;
+export const Poster = styled("img")(({ theme }) => ({
+  width: "400px",
+  borderRadius: "4px",
+  objectFit: "contain",
+  boxShadow: theme.userShadows.card,
+}));
 
-export const Year = styled.p`
-  margin-bottom: ${(props) => props.theme.space[2]}px;
-  font-family: ${(props) => props.theme.fonts.numbers};
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.ms};
-  color: ${(props) => props.theme.colors.red};
-`;
+export const Rating = styled(Typography)(({ theme, vote }) => ({
+  position: "absolute",
+  right: "15px",
+  top: "10px",
 
-export const Subtitle = styled.h3`
-  margin-bottom: ${(props) => props.theme.space[1]}px;
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.s};
-  color: ${(props) => props.theme.colors.white};
-`;
+  fontFamily: theme.typography.numsFont,
+  fontWeight: 700,
+  fontSize: 22,
+  color: getColor(vote),
+}));
 
-export const Genres = styled.ul`
-  margin-bottom: ${(props) => props.theme.space[3]}px;
-`;
+export const InfoWrapper = styled(Box)(({ theme }) => ({}));
 
-export const Genre = styled.li`
-  display: inline-block;
-  color: ${(props) => props.theme.colors.red};
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.ms};
-  :not(:last-child)::after {
-  content: ",";
-  margin-right: ${(props) => props.theme.space[1]}px;
-`;
+export const MovieTitle = styled(Typography)(({ theme }) => ({
+  marginBottom: theme.spacing(4),
+  fontWeight: 700,
+  fontSize: 24,
+  color: theme.palette.common.white,
+  textShadow: theme.userShadows.text,
+}));
 
-export const Runtime = styled.p`
-  display: inline-block;
-  margin-bottom: ${(props) => props.theme.space[3]}px;
-  color: ${(props) => props.theme.colors.red};
-  font-family: ${(props) => props.theme.fonts.numbers};
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.ms};
+export const ReleaseYear = styled(Typography)(({ theme, vote }) => ({
+  fontFamily: theme.typography.numsFont,
+  fontWeight: 700,
+  fontSize: 22,
+  color: theme.palette.secondary.main,
+}));
 
-  border: 1px solid ${(props) => props.theme.colors.red};
-  padding: 5px;
-  border-radius: 5px;
-  margin-right: ${(props) => props.theme.space[4]}px;
-`;
+export const Subtitle = styled(Typography)(({ theme }) => ({
+  marginTop: theme.spacing(3),
+  marginBottom: theme.spacing(1),
+  fontWeight: 700,
+  fontSize: 18,
+  color: theme.palette.common.white,
+}));
 
-export const Overview = styled.p`
-  width: 550px;
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.s};
-  color: ${(props) => props.theme.colors.white};
-  text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
-    0px -4px 10px rgba(255, 255, 255, 0.3);
-`;
+export const GenreItem = styled(Typography)(({ theme }) => ({
+  display: "inline-block",
+  fontWeight: 700,
+  fontSize: 20,
+  color: theme.palette.secondary.main,
 
-export const CastList = styled.ul`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-`;
+  ":not(:last-child)::after": {
+    content: "','",
+  },
+}));
 
-export const CastListItem = styled.li`
-  display: inline-block;
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.s};
-  color: ${(props) => props.theme.colors.red};
-  &:not(:last-child)::after {
-    content: ",";
-    margin-right: ${(props) => props.theme.space[1]}px;
-  }
-`;
+export const Runtime = styled(Typography)(({ theme }) => ({
+  display: "inline-block",
+  fontFamily: theme.typography.numsFont,
+  fontWeight: 700,
+  fontSize: 22,
+  color: theme.palette.secondary.main,
 
-export const CastError = styled.p`
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.s};
-`;
+  border: `2px solid ${theme.palette.secondary.main}`,
+  padding: theme.spacing(1),
+  borderRadius: "4px",
+}));
+
+export const CastList = styled("ul")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+}));
+
+export const CastListItem = styled("li")(({ theme }) => ({
+  fontWeight: "bold",
+  color: theme.palette.secondary.main,
+
+  [theme.breakpoints.up("lg")]: {
+    fontSize: 20,
+  },
+
+  "&:not(:last-child)::after": {
+    content: "','",
+    marginRight: theme.spacing(1),
+  },
+}));
+
+export const CastError = styled(Typography)(({ theme }) => ({}));
+
+export const Overview = styled(Typography)(({ theme }) => ({
+  fontWeight: 700,
+  fontSize: 20,
+  color: theme.palette.common.white,
+  textShadow: theme.userShadows.text,
+}));

@@ -2,12 +2,12 @@ import { styled, Box, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import getColor from "../../services/getColor";
 
-// export const Section = styled.section`
-//   padding: 80px 0;
-// `;
-
 export const Section = styled("section")(({ theme }) => ({
   padding: theme.spacing(10, 0),
+
+  [theme.breakpoints.down("sm")]: {
+    display: "none",
+  },
 }));
 
 export const MovieBox = styled(Box)(({ theme, backdrop }) => ({
@@ -38,10 +38,6 @@ export const MovieBox = styled(Box)(({ theme, backdrop }) => ({
   [theme.breakpoints.up("lg")]: {
     height: "900px",
     backgroundAttachment: "fixed",
-  },
-
-  [theme.breakpoints.down("sm")]: {
-    display: "none",
   },
 }));
 

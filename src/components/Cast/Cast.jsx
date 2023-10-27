@@ -1,33 +1,51 @@
 import PropTypes from "prop-types";
-import Container from "../../components/Container";
+import { AccordionDetails, AccordionSummary, Grid } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
 import noImageFound from "../../styles/images/noimage.jpg";
-import { CastInfo, CastList, CastListItem, CastName } from "./Cast.styled";
+import {
+  AccordionTitle,
+  ActorName,
+  Item,
+  StyledAccordion,
+} from "./Cast.styled";
 
-export default function Cast({ cast }) {
+export default function CastMobile({ cast }) {
   return (
-    <Container>
-      {cast && (
-        <CastList>
-          {cast.slice(0, 10).map(({ id, name, profile_path }) => (
-            <CastListItem key={id}>
-              {profile_path ? (
-                <img
-                  src={`https://image.tmdb.org/t/p/w300${profile_path}`}
-                  alt="actor"
-                />
-              ) : (
-                <img src={`${noImageFound}`} alt={name} />
-              )}
+    <StyledAccordion>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="cast-content"
+        id="cast-header"
+      >
+        <AccordionTitle>Cast</AccordionTitle>
+      </AccordionSummary>
+      <AccordionDetails>
+        {cast && (
+          <Grid container spacing={1} columns={{ xs: 12, sm: 8 }}>
+            {cast.slice(0, 8).map(({ id, name, profile_path }) => (
+              <Grid item xs={6} sm={2} key={id}>
+                <Item>
+                  {profile_path ? (
+                    <img
+                      src={`https://image.tmdb.org/t/p/w300${profile_path}`}
+                      alt={name}
+                    />
+                  ) : (
+                    <img src={`${noImageFound}`} alt={name} />
+                  )}
 
-              <CastInfo>{name && <CastName>{name}</CastName>}</CastInfo>
-            </CastListItem>
-          ))}
-        </CastList>
-      )}
-    </Container>
+                  <ActorName>{name}</ActorName>
+                </Item>
+              </Grid>
+            ))}
+          </Grid>
+        )}
+      </AccordionDetails>
+    </StyledAccordion>
   );
 }
 
-Cast.propTypes = {
+CastMobile.propTypes = {
   cast: PropTypes.arrayOf(PropTypes.shape),
 };

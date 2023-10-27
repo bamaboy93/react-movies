@@ -1,35 +1,39 @@
-import styled from "@emotion/styled";
+import { styled, Accordion, Typography, Paper } from "@mui/material";
 
-export const CastList = styled.ul`
-  margin-top: ${(props) => props.theme.space[9]}px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 15px;
-  @media (min-width: 768px) and (max-width: 1279px) {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 10px;
-  }
-`;
+export const StyledAccordion = styled(Accordion)(({ theme }) => ({
+  marginTop: theme.spacing(8),
+  backgroundColor: "rgba(49, 50, 60, 0.55)",
+  color: theme.palette.common.white,
+  borderRadius: "4px",
+  boxShadow: theme.userShadows.card,
 
-export const CastListItem = styled.li`
-  position: relative;
-  text-align: center;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; ;
-`;
+  "& .MuiAccordionSummary-root": {
+    paddingLeft: theme.spacing(3),
+  },
+  "& .MuiAccordionSummary-expandIconWrapper": {
+    color: theme.palette.common.white,
+  },
 
-export const CastInfo = styled.div`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  min-height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(49, 50, 60, 0.647);
-`;
+  [theme.breakpoints.up("sm")]: {
+    marginTop: theme.spacing(2),
+  },
+}));
 
-export const CastName = styled.p`
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  font-size: ${(props) => props.theme.fontSizes.s};
-`;
+export const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  padding: theme.spacing(1),
+  textAlign: "center",
+  color: theme.colors.white,
+  boxShadow: theme.userShadows.card,
+}));
+
+export const AccordionTitle = styled(Typography)(({ theme }) => ({
+  fontWeight: 700,
+  fontSize: 20,
+}));
+
+export const ActorName = styled(Typography)(({ theme }) => ({
+  padding: theme.spacing(2),
+  fontWeight: 700,
+  fontSize: 16,
+}));

@@ -83,7 +83,7 @@ export default function Footer() {
             </FooterSocials>
             <FooterStores>
               <FooterSubtitle variant="h3">App</FooterSubtitle>
-              <FooterStack direction="row" spacing={2}>
+              <FooterStack direction="row" spacing={2} sx={{ pt: 0.5 }}>
                 {storesLinks.map(({ href, src, alt }) => (
                   <FooterSotoresLink key={alt} href={href}>
                     <img src={src} alt={alt} />

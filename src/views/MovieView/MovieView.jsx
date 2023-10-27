@@ -28,7 +28,7 @@ export default function MovieView() {
     }, 0);
   }, [pathname]);
 
-  const isMobile = useMediaQuery("(max-width: 767px)");
+  const isMobile = useMediaQuery("(max-width: 600px)");
 
   const [movieQuery, castQuery, imagesQuery, trailerQuery] = useQueries({
     queries: [

@@ -1,19 +1,22 @@
 import PropTypes from "prop-types";
+import { Container } from "@mui/material";
 import Overview from "./Overview/Overview";
 import ButtonPlay from "../Buttons/ButtonPlay/ButtonPlay";
+
 import Cast from "../Cast";
 import ImagesSwiper from "../ImagesSwiper";
-import Container from "../Container";
-import MovieInfo from "./MovieInfo";
-import Navigation from "./Navigation/Navigation";
+import MovieOptions from "./MovieOptions/MovieOptions";
+import Navigation from "../Navigation/Navigation";
+import Details from "./Details/Details";
 
 import {
-  MovieScreen,
-  NavigationWrapper,
-  MovieWrapper,
-  Title,
+  MovieInfo,
+  MovieInfoWrapper,
+  MovieSection,
+  MovieTitle,
+  NavWrapper,
+  StyledSection,
 } from "./SingleMovie.styled";
-import Details from "./Details/Details";
 
 export default function SingleMovie({ movie, onToggle, cast, images }) {
   const { backdrop_path, original_title } = movie;
@@ -21,24 +24,30 @@ export default function SingleMovie({ movie, onToggle, cast, images }) {
   return (
     <>
       {movie && (
-        <MovieScreen backdrop={backdrop_path}>
-          <NavigationWrapper>
+        <MovieSection backdrop={backdrop_path}>
+          <NavWrapper>
             <Navigation title={original_title} />
-          </NavigationWrapper>
-          <MovieWrapper>
-            <Container>
-              <Title>{original_title}</Title>
-              <MovieInfo movie={movie} />
-              <Overview movie={movie} onToggle={onToggle} />
+          </NavWrapper>
+          <Container>
+            <MovieInfoWrapper>
+              <MovieInfo>
+                <MovieTitle>{original_title}</MovieTitle>
+                <MovieOptions movie={movie} />
+                <Overview movie={movie} onToggle={onToggle} />
+                <Details movie={movie} cast={cast} />
+              </MovieInfo>
 
               <ButtonPlay onToggle={onToggle} />
-              <Details movie={movie} cast={cast} />
-            </Container>
-          </MovieWrapper>
-        </MovieScreen>
+            </MovieInfoWrapper>
+          </Container>
+        </MovieSection>
       )}
-      <Cast cast={cast} />
-      <ImagesSwiper images={images} />
+      <StyledSection>
+        <Container>
+          <Cast cast={cast} />
+          <ImagesSwiper images={images} />
+        </Container>
+      </StyledSection>
     </>
   );
 }

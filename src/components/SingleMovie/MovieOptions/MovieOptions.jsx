@@ -6,9 +6,9 @@ import {
   RatingFull,
   Runtime,
   Year,
-} from "./MovieInfo.styled";
+} from "./MovieOptions.styled";
 
-export default function MovieInfo({ movie }) {
+export default function MovieOptions({ movie }) {
   const { release_date, genres, runtime, vote_average } = movie;
   return (
     <Options>
@@ -25,7 +25,7 @@ export default function MovieInfo({ movie }) {
   );
 }
 
-MovieInfo.propTypes = {
+MovieOptions.propTypes = {
   movie: PropTypes.shape({
     genres: PropTypes.arrayOf(PropTypes.shape),
     year: PropTypes.string,

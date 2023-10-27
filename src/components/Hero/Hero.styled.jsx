@@ -1,4 +1,4 @@
-import { styled, Box, Link, Typography, Item, Accordion } from "@mui/material";
+import { styled, Box, Link, Typography, Accordion } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import getColor from "../../services/getColor";
 
@@ -9,22 +9,23 @@ export const HeroSection = styled("section")(({ theme, backdrop }) => ({
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
   backgroundPosition: "center",
+  zIndex: 55,
 
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
 
-  //   "&:before": {
-  //     content: "''",
-  //     display: "block",
-  //     width: "100%",
-  //     height: "100%",
-  //     position: "absolute",
-  //     left: 0,
-  //     top: 0,
-  //     zIndex: -1,
-  //     background: "rgba(0, 0, 0, 0.2)",
-  //   },
+  "&:before": {
+    content: "''",
+    display: "block",
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    left: 0,
+    top: 0,
+    zIndex: -1,
+    background: "rgba(0, 0, 0, 0.2)",
+  },
 }));
 
 export const ContentBox = styled(Box)(({ theme }) => ({}));
@@ -132,6 +133,7 @@ export const OverviewAccordion = styled(Accordion)(({ theme }) => ({
 
   backgroundColor: "rgba(49, 50, 60, 0.55)",
   color: theme.palette.common.white,
+  boxShadow: theme.userShadows.card,
 
   "& .MuiAccordionSummary-root": {
     paddingLeft: theme.spacing(1),
@@ -141,11 +143,15 @@ export const OverviewAccordion = styled(Accordion)(({ theme }) => ({
   },
 }));
 
-export const Overview = styled(Typography)(({ theme }) => ({}));
+export const Overview = styled(Typography)(({ theme }) => ({
+  [theme.breakpoints.down("sm")]: {
+    fontSize: 14,
+  },
+}));
 
 export const Subtitle = styled(Typography)(({ theme }) => ({
-  marginRight: theme.spacing(2),
   marginBottom: theme.spacing(1),
+  paddingTop: theme.spacing(2),
   fontWeight: "bold",
   fontSize: 18,
   color: theme.palette.secondary.main,
@@ -209,6 +215,7 @@ export const ButtonWatchMobile = styled(NavLink)(({ theme }) => ({
   padding: theme.spacing(0.6, 2),
   marginLeft: theme.spacing(3),
   fontWeight: "bold",
+  fontSize: 14,
   textTransform: "uppercase",
   backgroundColor: "rgba(49, 50, 60, 0.55)",
   borderRadius: theme.spacing(0.7),

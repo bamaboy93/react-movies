@@ -1,25 +1,25 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { Box, Drawer } from "@mui/material";
+import { Drawer, Stack } from "@mui/material";
 import { BsFillPlayFill } from "react-icons/bs";
+
 import {
   DetailsButton,
-  DetailsWrapper,
+  DrawerWrapper,
   MovieWrapper,
   PosterWrapper,
   Poster,
   Rating,
   InfoWrapper,
-  Title,
-  Runtime,
-  Year,
+  MovieTitle,
   Subtitle,
-  Genres,
-  Genre,
-  Overview,
+  ReleaseYear,
+  GenreItem,
+  Runtime,
   CastList,
   CastListItem,
   CastError,
+  Overview,
 } from "./Details.styled";
 
 export default function Details({ cast, movie }) {
@@ -48,49 +48,50 @@ export default function Details({ cast, movie }) {
       <DetailsButton onClick={toggleDrawer()}>
         <BsFillPlayFill /> Details
       </DetailsButton>
-      <Drawer anchor={"right"} open={open} onClose={toggleDrawer()}>
-        <Box
-          sx={{ width: 750 }}
-          onClick={toggleDrawer()}
-          onKeyDown={toggleDrawer()}
-        >
-          <DetailsWrapper>
-            <MovieWrapper>
-              <PosterWrapper>
-                <Poster
-                  src={`https://image.tmdb.org/t/p/original${poster_path}`}
-                  alt={original_title}
-                />
-                <Rating vote={vote_average}>{vote_average.toFixed()}</Rating>
-              </PosterWrapper>
-              <InfoWrapper>
-                <Title>{original_title}</Title>
-                <Year>{release_date.split("").slice(0, 4).join("")}</Year>
-                <Subtitle>Genres:</Subtitle>
-                <Genres>
-                  {movie.genres.slice(0, 2).map((genre) => (
-                    <Genre key={genre.id}>{genre.name}</Genre>
+      <Drawer
+        anchor={"right"}
+        open={open}
+        onClose={toggleDrawer()}
+        onKeyDown={toggleDrawer()}
+      >
+        <DrawerWrapper>
+          <MovieWrapper>
+            <PosterWrapper>
+              <Poster
+                src={`https://image.tmdb.org/t/p/original${poster_path}`}
+                alt={original_title}
+              />
+              <Rating vote={vote_average}>{vote_average.toFixed()}</Rating>
+            </PosterWrapper>
+            <InfoWrapper>
+              <MovieTitle variant="h2">{original_title}</MovieTitle>
+              <ReleaseYear>
+                {release_date.split("").slice(0, 4).join("")}
+              </ReleaseYear>
+              <Subtitle variant="h4">Genres:</Subtitle>
+              <Stack direction="row" spacing={0.7}>
+                {movie.genres.slice(0, 2).map((genre) => (
+                  <GenreItem key={genre.id}>{genre.name}</GenreItem>
+                ))}
+              </Stack>
+              <Subtitle variant="h4">Runtime:</Subtitle>
+              <Runtime>{runtime}min</Runtime>
+              <Subtitle variant="h4">Cast:</Subtitle>
+              {cast ? (
+                <CastList>
+                  {cast.slice(0, 4).map((actor) => (
+                    <CastListItem key={actor.id}>
+                      {actor.original_name}
+                    </CastListItem>
                   ))}
-                </Genres>
-                <Subtitle>Runtime:</Subtitle>
-                <Runtime>{runtime}min</Runtime>
-                <Subtitle>Cast:</Subtitle>
-                {cast ? (
-                  <CastList>
-                    {cast.slice(0, 4).map((actor) => (
-                      <CastListItem key={actor.id}>
-                        {actor.original_name}
-                      </CastListItem>
-                    ))}
-                  </CastList>
-                ) : (
-                  <CastError>...</CastError>
-                )}
-              </InfoWrapper>
-            </MovieWrapper>
-            <Overview>{overview}</Overview>
-          </DetailsWrapper>
-        </Box>
+                </CastList>
+              ) : (
+                <CastError>...</CastError>
+              )}
+            </InfoWrapper>
+          </MovieWrapper>
+          <Overview>{overview}</Overview>
+        </DrawerWrapper>
       </Drawer>
     </>
   );

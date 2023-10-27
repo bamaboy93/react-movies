@@ -1,9 +1,6 @@
-import styled from "@emotion/styled";
+import { styled, Box } from "@mui/material";
 
-export const ImageSwiper = styled.div`
-  margin-top: ${(props) => props.theme.space[7]}px;
-  width: 100%;
-  @media (min-width: 768px) {
-    margin-bottom: ${(props) => props.theme.space[7]}px;
-  }
-`;
+export const SwiperWrapper = styled(Box)(({ theme }) => ({
+  margin: theme.spacing(8, 0),
+  width: "100%",
+}));
