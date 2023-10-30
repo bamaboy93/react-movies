@@ -10,7 +10,7 @@ import {
 
 export const FooterLine = styled("footer")(({ theme }) => ({
   padding: theme.spacing(5, 0),
-  backgroundColor: theme.palette.primary.main,
+  backgroundColor: theme.palette.custom.darkGrey,
 
   [theme.breakpoints.down("sm")]: {
     marginTop: theme.spacing(8),
@@ -62,7 +62,7 @@ export const FooterLinksItem = styled(ListItem)(({ theme }) => ({
   }),
 
   "&:hover": {
-    color: theme.palette.secondary.main,
+    color: theme.palette.primary.main,
   },
 }));
 
@@ -106,8 +106,8 @@ export const FooterSocialsLink = styled(Link)(({ theme }) => ({
   justifyContent: "center",
   width: "42px",
   height: "42px",
-  backgroundColor: "rgba(41, 41, 41, 0.76)",
-  color: theme.palette.common.white,
+  backgroundColor: theme.palette.custom.bgColor,
+  color: theme.palette.secondary.main,
   border: "2px solid transparent",
   borderRadius: "50%",
   boxShadow:
@@ -126,12 +126,12 @@ export const FooterSocialsLink = styled(Link)(({ theme }) => ({
   },
 
   "&:hover": {
-    borderColor: theme.palette.secondary.light,
+    borderColor: theme.palette.primary.main,
     boxShadow: "0 0 10px #ff4040",
   },
 
   "&:hover svg": {
-    color: theme.palette.secondary.light,
+    color: theme.palette.primary.main,
   },
 }));
 

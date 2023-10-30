@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 export const AppBarLine = styled(AppBar)(({ theme }) => ({
   height: "65px",
   // top: visible ? "0" : "-65px",
-  backgroundColor: theme.palette.primary.main,
+  backgroundColor: theme.palette.custom.darkGrey,
 
   transition: "top 0.4s ease-out",
 }));
@@ -23,7 +23,7 @@ export const Logo = styled(NavLink)(({ theme }) => ({
   fontSize: "32px",
   lineHeight: "1",
 
-  color: theme.palette.secondary.main,
+  color: theme.palette.primary.dark,
 
   [theme.breakpoints.down("md")]: {
     display: "none",
@@ -45,7 +45,7 @@ export const PageLink = styled(NavLink)(({ theme }) => ({
   fontSize: "20px",
   lineHeight: "1",
 
-  color: theme.palette.common.white,
+  color: theme.palette.secondary.main,
 
   transition: theme.transitions.create(["color"], {
     duration: theme.transitions.duration.short,
@@ -53,6 +53,6 @@ export const PageLink = styled(NavLink)(({ theme }) => ({
   }),
 
   "&:hover, &:focus": {
-    color: theme.palette.secondary.main,
+    color: theme.palette.primary.main,
   },
 }));

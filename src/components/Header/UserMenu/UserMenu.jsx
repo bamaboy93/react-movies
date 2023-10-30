@@ -1,42 +1,36 @@
 import { useState } from "react";
+import { useNavigate, NavLink } from "react-router-dom";
+import { signInWithGoogle, logout } from "../../../services/firebase";
+import {
+  Badge,
+  Box,
+  IconButton,
+  Menu,
+  MenuItem,
+  ListItemIcon,
+} from "@mui/material";
 
-import { Badge, Box, IconButton, Menu, MenuItem } from "@mui/material";
+import {
+  AccountCircle,
+  Google,
+  Logout,
+  Notifications,
+  FavoriteBorder,
+} from "@mui/icons-material";
 
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-
-export default function UserMenu({ children }) {
+export default function UserMenu({ children, user }) {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
-  const isMenuOpen = Boolean(anchorEl);
+  const open = Boolean(anchorEl);
 
-  const handleProfileMenuOpen = (event) => {
+  const handleUserMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleMenuClose = () => {
+  const logOut = () => {
     setAnchorEl(null);
+    logout();
   };
-
-  const menuId = "primary-search-account-menu";
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: "bottom",
-        horizontal: "left",
-      }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{
-        vertical: "bottom",
-        horizontal: "left",
-      }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
-    </Menu>
-  );
 
   return (
     <>
@@ -48,22 +42,63 @@ export default function UserMenu({ children }) {
           color="inherit"
         >
           <Badge badgeContent={2} color="error">
-            <NotificationsIcon />
+            <Notifications />
           </Badge>
         </IconButton>
-        <IconButton
-          size="large"
-          edge="end"
-          aria-label="account of current user"
-          aria-controls={menuId}
-          aria-haspopup="true"
-          onClick={handleProfileMenuOpen}
-          color="inherit"
+        {user ? (
+          <IconButton
+            id="icon-button"
+            size="large"
+            aria-label="user menu"
+            aria-controls={open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleUserMenuOpen}
+            color="inherit"
+          >
+            <AccountCircle />
+          </IconButton>
+        ) : (
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            onClick={signInWithGoogle}
+            color="inherit"
+          >
+            <Google />
+          </IconButton>
+        )}
+
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={() => setAnchorEl(null)}
+          MenuListProps={{
+            "aria-labelledby": "icon-button",
+          }}
+          transformOrigin={{ horizontal: "left", vertical: "top" }}
+          anchorOrigin={{ horizontal: "left", vertical: "bottom" }}
         >
-          <AccountCircle />
-        </IconButton>
+          <MenuItem
+            component={NavLink}
+            to="/favourites"
+            // onClick={() => setAnchorEl(null)}
+          >
+            <ListItemIcon>
+              <FavoriteBorder fontSize="small" />
+            </ListItemIcon>
+            Favourites
+          </MenuItem>
+
+          <MenuItem onClick={logOut}>
+            <ListItemIcon>
+              <Logout fontSize="small" />
+            </ListItemIcon>
+            Logout
+          </MenuItem>
+        </Menu>
       </Box>
-      {renderMenu}
     </>
   );
 }

@@ -7,7 +7,7 @@ import noImageFound from "../../styles/images/noimage.jpg";
 import "swiper/scss";
 import "swiper/scss/navigation";
 
-import { Navigation, Autoplay } from "swiper";
+import { Navigation } from "swiper";
 import {
   Image,
   MovieTitle,
@@ -43,12 +43,8 @@ export default function SwiperCarousel({ movies }) {
           slidesPerView: 6,
         },
       }}
-      autoplay={{
-        delay: 4500,
-        disableOnInteraction: false,
-      }}
       navigation={true}
-      modules={[Autoplay, Navigation]}
+      modules={[Navigation]}
     >
       {movies.map(({ id, poster_path, title, vote_average }) => (
         <SwiperSlide key={id}>

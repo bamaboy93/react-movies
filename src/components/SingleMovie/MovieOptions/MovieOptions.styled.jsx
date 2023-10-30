@@ -40,18 +40,22 @@ export const Runtime = styled(Typography)(({ theme }) => ({
   borderRadius: "5px",
 }));
 
-export const Rating = styled(Typography)(({ theme, vote }) => ({
+export const RatingBox = styled(Box)(({ theme, vote }) => ({
   display: "flex",
+}));
+
+export const Rating = styled(Typography)(({ theme, vote }) => ({
   fontFamily: theme.typography.numsFont,
   fontWeight: "bold",
   fontSize: 24,
-  marginRight: theme.spacing(3),
+
   color: getColor(vote),
 }));
 
 export const RatingFull = styled(Typography)(({ theme, vote }) => ({
   alignItems: "flex-start",
   marginLeft: theme.spacing(1),
+  fontWeight: "bold",
   fontSize: 16,
 
   color: theme.palette.common.white,

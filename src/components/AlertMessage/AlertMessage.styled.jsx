@@ -2,7 +2,7 @@ import { Box, styled } from "@mui/material";
 
 export const AlertWrapper = styled(Box)(({ theme }) => ({
   marginTop: theme.spacing(5),
-  width: 1,
+  width: "100%",
   height: "50vh",
   "& .MuiAlert-root": {
     alignItems: "center",

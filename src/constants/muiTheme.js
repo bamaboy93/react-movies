@@ -2,18 +2,24 @@ import { createTheme } from "@mui/material/styles";
 
 export const muiTheme = createTheme({
   palette: {
+    // primary: {
+    //   light: "#484a4d",
+    //   main: "#191919",
+    //   dark: "#14141480",
+    // },
     primary: {
-      light: "#484a4d",
-      main: "#191919",
-      dark: "#14141480",
-    },
-    secondary: {
       main: "#e50914",
       dark: "#ff1717",
     },
-    accent: { peach: "#ffcab0", lightviolet: "#9896f1" },
-    neutral: {
-      main: "#d1d0cf",
+    secondary: {
+      main: "#fff",
+      dark: "#ededed",
+    },
+    custom: {
+      peach: "#ffcab0",
+      lightviolet: "#9896f1",
+      bgColor: "rgba(49, 50, 60, 0.55)",
+      darkGrey: "#191919",
     },
   },
   typography: {

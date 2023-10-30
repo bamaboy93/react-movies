@@ -2,8 +2,8 @@ import { styled, Accordion, Typography, Paper } from "@mui/material";
 
 export const StyledAccordion = styled(Accordion)(({ theme }) => ({
   marginTop: theme.spacing(8),
-  backgroundColor: "rgba(49, 50, 60, 0.55)",
-  color: theme.palette.common.white,
+  backgroundColor: theme.palette.custom.bgColor,
+  color: theme.palette.secondary.main,
   borderRadius: "4px",
   boxShadow: theme.userShadows.card,
 
@@ -11,7 +11,7 @@ export const StyledAccordion = styled(Accordion)(({ theme }) => ({
     paddingLeft: theme.spacing(3),
   },
   "& .MuiAccordionSummary-expandIconWrapper": {
-    color: theme.palette.common.white,
+    color: theme.palette.secondary.main,
   },
 
   [theme.breakpoints.up("sm")]: {

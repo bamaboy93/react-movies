@@ -12,7 +12,6 @@ function usePopularQuery() {
     ({ pageParam = 1 }) => getPopularMovies(pageParam),
     {
       getNextPageParam: (lastPage, allPages) => {
-        console.log(allPages);
         const nextPage = allPages.length + 1;
         return lastPage.results.length !== 0 ? nextPage : undefined;
       },

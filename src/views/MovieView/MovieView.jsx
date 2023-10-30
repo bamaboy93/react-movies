@@ -19,7 +19,7 @@ import SingleMovieMobile from "../../components/SingleMovieMobile";
 
 export default function MovieView() {
   const { movieId } = useParams();
-  const [showPopUp, setPopUp] = useState(false);
+  const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export default function MovieView() {
   });
 
   const togglePopUp = () => {
-    setPopUp(!showPopUp);
+    setOpen(!open);
   };
 
   if (movieQuery.isFetching) {
@@ -72,8 +72,8 @@ export default function MovieView() {
         />
       )}
 
-      {showPopUp && (
-        <PopUp onClose={togglePopUp}>
+      {open && (
+        <PopUp open={open} onToggle={togglePopUp}>
           {trailerQuery.isSuccess ? (
             <Trailer videos={trailerQuery.data} />
           ) : (

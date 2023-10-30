@@ -1,4 +1,4 @@
-import Container from "../Container/Container";
+import { Container } from "@mui/material";
 import { ErrorWrapper, Link } from "./NotFound.styled";
 
 export default function NotFound() {

@@ -1,38 +1,17 @@
-import { useEffect } from "react";
-import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
+import Modal from "@mui/material/Modal";
+import { ModalContent } from "./PopUp.styled";
 
-import { Modal, Overlay } from "./PopUp.styled";
-
-const modalRoot = document.querySelector("#modal-root");
-const PopUp = ({ onClose, children }) => {
-  useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  });
-  const handleKeyDown = (e) => {
-    if (e.code === "Escape") {
-      onClose();
-    }
-  };
-  const handleBackdropClick = (e) => {
-    if (e.currentTarget === e.target) {
-      onClose();
-    }
-  };
-  return createPortal(
-    <Overlay onClick={handleBackdropClick}>
-      <Modal>{children}</Modal>
-    </Overlay>,
-    modalRoot
+export default function PopUp({ open, onToggle, children }) {
+  return (
+    <div>
+      <Modal open={open} onClose={onToggle}>
+        <ModalContent>{children}</ModalContent>
+      </Modal>
+    </div>
   );
-};
+}
 
 PopUp.propTypes = {
-  onClose: PropTypes.func.isRequired,
+  onToggle: PropTypes.func.isRequired,
 };
-
-export default PopUp;

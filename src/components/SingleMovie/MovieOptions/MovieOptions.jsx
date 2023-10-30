@@ -3,6 +3,7 @@ import {
   Genre,
   Options,
   Rating,
+  RatingBox,
   RatingFull,
   Runtime,
   Year,
@@ -17,10 +18,10 @@ export default function MovieOptions({ movie }) {
         <Genre key={genre.id}>{genre.name}</Genre>
       ))}
       <Runtime>{runtime}min</Runtime>
-      <Rating vote={vote_average}>
-        {vote_average.toFixed(1)}
+      <RatingBox>
+        <Rating vote={vote_average}>{vote_average.toFixed(1)}</Rating>
         <RatingFull>/10</RatingFull>
-      </Rating>
+      </RatingBox>
     </Options>
   );
 }

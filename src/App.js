@@ -7,6 +7,8 @@ const Layout = lazy(() => import("./views/Layout"));
 
 const HomeView = lazy(() => import("./views/HomeView"));
 
+const MoviesView = lazy(() => import("./views/MoviesView"));
+
 const QueryView = lazy(() => import("./views/QueryView"));
 
 const TopRatedView = lazy(() => import("./views/TopRatedView"));
@@ -31,6 +33,7 @@ export default function App() {
             <Layout
               showHeader={[
                 "/",
+                "/movies",
                 "/search",
                 "/popular",
                 "/top_rated",
@@ -42,6 +45,9 @@ export default function App() {
         >
           <Route path="/" element={<HomeView />} />
           <Route path=":movieId" element={<MovieView />} />
+
+          <Route path="movies" element={<MoviesView />} />
+          <Route path="movies/:movieId" element={<MovieView />} />
 
           <Route path="search" element={<QueryView />} />
           <Route path="search/:movieId" element={<MovieView />} />

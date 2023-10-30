@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { Video } from "./Trailer.styled";
+import { VideoTrailer } from "./Trailer.styled";
 
 export default function Trailer({ videos }) {
   const [trailer, setTrailer] = useState(null);
@@ -13,7 +13,7 @@ export default function Trailer({ videos }) {
   return (
     <>
       {trailer && (
-        <Video
+        <VideoTrailer
           src={`https://www.youtube.com/embed/${trailer.key}`}
           title="YouTube video player"
           frameBorder="0"

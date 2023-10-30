@@ -48,7 +48,7 @@ export default function Header() {
               ))}
             </StyledStack>
 
-            <UserMenu>
+            <UserMenu user={user}>
               <SearchDrawer />
             </UserMenu>
           </StyledToolbar>

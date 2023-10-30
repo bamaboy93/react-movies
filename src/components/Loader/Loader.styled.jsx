@@ -1,17 +1,17 @@
-import styled from "@emotion/styled";
+import { Box, styled } from "@mui/material";
 
-export const MainWrapper = styled.div`
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-`;
+export const MainWrapper = styled(Box)(({ theme }) => ({
+  position: "relative",
+  width: "100vw",
+  height: "100vh",
+}));
 
-export const LoaderWrapper = styled.div`
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -50px;
-  margin-top: -50px;
-`;
+export const LoaderWrapper = styled(Box)(({ theme }) => ({
+  position: "absolute",
+  width: "100vw",
+  height: "100vh",
+  top: "50%",
+  left: "50%",
+  marginLeft: "-50px",
+  marginTop: "-50px",
+}));
